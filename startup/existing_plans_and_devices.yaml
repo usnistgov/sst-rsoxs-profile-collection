@@ -1109,6 +1109,12 @@ existing_devices:
         is_movable: true
         is_readable: true
         module: ophyd.signal
+      gain:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
       mean:
         classname: Signal
         is_flyable: false
@@ -2270,6 +2276,12 @@ existing_devices:
         is_movable: true
         is_readable: true
         module: ophyd.signal
+      gain:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
       mean:
         classname: Signal
         is_flyable: false
@@ -3323,9 +3335,15 @@ existing_devices:
     is_readable: true
     module: ophyd.signal
   Sample_TEY_int:
-    classname: ophScalar
+    classname: ADCBuffer
     components:
       exposure_time:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      gain:
         classname: Signal
         is_flyable: false
         is_movable: true
@@ -3810,6 +3828,12 @@ existing_devices:
     classname: ophScalar
     components:
       exposure_time:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      gain:
         classname: Signal
         is_flyable: false
         is_movable: true
@@ -4480,6 +4504,139 @@ existing_devices:
     is_movable: true
     is_readable: true
     module: sst_base.motors
+  dm7_cam:
+    classname: StandardProsilicawstats
+    is_flyable: false
+    is_movable: false
+    is_readable: true
+    module: sst_base.cameras
+  dm8:
+    classname: PrettyMotor
+    components:
+      acceleration:
+        classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      direction_of_travel:
+        classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      high_limit_switch:
+        classname: EpicsSignalRO
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      high_limit_travel:
+        classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      home_forward:
+        classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      home_reverse:
+        classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      low_limit_switch:
+        classname: EpicsSignalRO
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      low_limit_travel:
+        classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      motor_done_move:
+        classname: EpicsSignalRO
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      motor_egu:
+        classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      motor_is_moving:
+        classname: EpicsSignalRO
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      motor_stop:
+        classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      offset_freeze_switch:
+        classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      set_use_switch:
+        classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      user_offset:
+        classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      user_offset_dir:
+        classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      user_readback:
+        classname: EpicsSignalRO
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      user_setpoint:
+        classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      velocity:
+        classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+    is_flyable: false
+    is_movable: true
+    is_readable: true
+    module: sst_base.motors
+  dm8_cam:
+    classname: StandardProsilicawstats
+    is_flyable: false
+    is_movable: false
+    is_readable: true
+    module: sst_base.cameras
   en:
     classname: EnPos
     components:
@@ -7000,6 +7157,12 @@ existing_devices:
         is_movable: true
         is_readable: true
         module: ophyd.signal
+      gain:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
       mean:
         classname: Signal
         is_flyable: false
@@ -7056,6 +7219,12 @@ existing_devices:
     classname: ADCBuffer
     components:
       exposure_time:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      gain:
         classname: Signal
         is_flyable: false
         is_movable: true
@@ -12458,6 +12627,12 @@ existing_devices:
     classname: ophScalar
     components:
       exposure_time:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      gain:
         classname: Signal
         is_flyable: false
         is_movable: true
@@ -18024,6 +18199,12 @@ existing_devices:
         is_movable: true
         is_readable: true
         module: ophyd.signal
+      gain:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
       mean:
         classname: Signal
         is_flyable: false
@@ -18080,6 +18261,12 @@ existing_devices:
     classname: ophScalar
     components:
       exposure_time:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      gain:
         classname: Signal
         is_flyable: false
         is_movable: true
@@ -18146,6 +18333,12 @@ existing_devices:
         is_movable: true
         is_readable: true
         module: ophyd.signal
+      gain:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
       mean:
         classname: Signal
         is_flyable: false
@@ -18202,6 +18395,12 @@ existing_devices:
     classname: ophScalar
     components:
       exposure_time:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      gain:
         classname: Signal
         is_flyable: false
         is_movable: true
@@ -22657,573 +22856,6 @@ existing_devices:
     is_movable: true
     is_readable: true
     module: sst_base.slits
-  slits_frontend:
-    classname: QuadSlits
-    components:
-      bottom:
-        classname: EpicsMotor
-        components:
-          acceleration:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          direction_of_travel:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          high_limit_switch:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          high_limit_travel:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          home_forward:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          home_reverse:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          low_limit_switch:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          low_limit_travel:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          motor_done_move:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          motor_egu:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          motor_is_moving:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          motor_stop:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          offset_freeze_switch:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          set_use_switch:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          user_offset:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          user_offset_dir:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          user_readback:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          user_setpoint:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          velocity:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.epics_motor
-      hcenter:
-        classname: PseudoSingle
-        components:
-          readback:
-            classname: AttributeSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          setpoint:
-            classname: AttributeSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.pseudopos
-      hsize:
-        classname: PseudoSingle
-        components:
-          readback:
-            classname: AttributeSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          setpoint:
-            classname: AttributeSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.pseudopos
-      inboard:
-        classname: EpicsMotor
-        components:
-          acceleration:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          direction_of_travel:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          high_limit_switch:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          high_limit_travel:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          home_forward:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          home_reverse:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          low_limit_switch:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          low_limit_travel:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          motor_done_move:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          motor_egu:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          motor_is_moving:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          motor_stop:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          offset_freeze_switch:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          set_use_switch:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          user_offset:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          user_offset_dir:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          user_readback:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          user_setpoint:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          velocity:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.epics_motor
-      outboard:
-        classname: EpicsMotor
-        components:
-          acceleration:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          direction_of_travel:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          high_limit_switch:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          high_limit_travel:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          home_forward:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          home_reverse:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          low_limit_switch:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          low_limit_travel:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          motor_done_move:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          motor_egu:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          motor_is_moving:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          motor_stop:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          offset_freeze_switch:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          set_use_switch:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          user_offset:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          user_offset_dir:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          user_readback:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          user_setpoint:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          velocity:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.epics_motor
-      top:
-        classname: EpicsMotor
-        components:
-          acceleration:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          direction_of_travel:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          high_limit_switch:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          high_limit_travel:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          home_forward:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          home_reverse:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          low_limit_switch:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          low_limit_travel:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          motor_done_move:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          motor_egu:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          motor_is_moving:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          motor_stop:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          offset_freeze_switch:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          set_use_switch:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          user_offset:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          user_offset_dir:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          user_readback:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          user_setpoint:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          velocity:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.epics_motor
-      vcenter:
-        classname: PseudoSingle
-        components:
-          readback:
-            classname: AttributeSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          setpoint:
-            classname: AttributeSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.pseudopos
-      vsize:
-        classname: PseudoSingle
-        components:
-          readback:
-            classname: AttributeSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          setpoint:
-            classname: AttributeSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.pseudopos
-    is_flyable: false
-    is_movable: true
-    is_readable: true
-    module: sst_base.slits
   slitsc:
     classname: PrettyMotorFMBO
     components:
@@ -23899,6 +23531,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -24052,6 +23690,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -24286,6 +23930,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -24440,6 +24090,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -24618,6 +24274,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -24772,6 +24434,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -24939,6 +24607,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -25092,6 +24766,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -25271,6 +24951,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -25424,6 +25110,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -25591,6 +25283,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -25744,6 +25442,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -26005,6 +25709,10 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: stream
+    - kind:
+        name: VAR_KEYWORD
+        value: 4
+      name: kwargs
     properties:
       is_generator: true
   grating_to_1200:
@@ -26115,6 +25823,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -26268,6 +25982,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -26496,6 +26216,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -26649,6 +26375,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -26816,6 +26548,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -26969,6 +26707,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -27136,6 +26880,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -27289,6 +27039,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -27456,6 +27212,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -27609,6 +27371,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -27783,8 +27551,8 @@ existing_plans:
     module: rsoxs.Functions.alignment
     name: move_to_location
     parameters:
-    - default: '[{''motor'': ''x'', ''position'': 0.29905499999999563, ''order'':
-        0}, {''motor'': ''y'', ''position'': 345.29964, ''order'': 0}, {''motor'':
+    - default: '[{''motor'': ''x'', ''position'': 0.007379999999997722, ''order'':
+        0}, {''motor'': ''y'', ''position'': 345.03255, ''order'': 0}, {''motor'':
         ''z'', ''position'': -0.34676999999999225, ''order'': 0}, {''motor'': ''th'',
         ''position'': -0.007022058000018205, ''order'': 0}]'
       kind:
@@ -27793,6 +27561,34 @@ existing_plans:
       name: locs
     properties:
       is_generator: true
+  mv:
+    description: Move one or more devices to a setpoint. Wait for all to complete.
+    module: bluesky.plan_stubs
+    name: mv
+    parameters:
+    - annotation:
+        type: typing.Union[__MOVABLE__, typing.Any]
+      convert_device_names: true
+      description: device1, value1, device2, value2, ...
+      kind:
+        name: VAR_POSITIONAL
+        value: 2
+      name: args
+    - annotation:
+        type: typing.Optional[collections.abc.Hashable]
+      default: None
+      description: Used to mark these as a unit to be waited on.
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: group
+    - description: passed to obj.set()
+      kind:
+        name: VAR_KEYWORD
+        value: 4
+      name: kwargs
+    properties:
+      is_generator: false
   n_rsoxs:
     description: 'Perform an in-place RSoXS scan for  with energy pattern [380, 395,
       0.5, 397, 0.1, 403, 0.05, 407, 0.1, 417, 0.2, 440, 0.5, 480, 2] '
@@ -27817,6 +27613,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -27970,6 +27772,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -28137,6 +27945,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -28290,6 +28104,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -28438,7 +28258,9 @@ existing_plans:
     module: nbs_bl.plans.preprocessors
     name: nbs_count
     parameters:
-    - default: '1'
+    - annotation:
+        type: typing.Optional[int]
+      default: '1'
       description: 'number of readings to take; default is 1
 
 
@@ -28447,7 +28269,9 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: num
-    - default: None
+    - annotation:
+        type: typing.Union[float, collections.abc.Iterable[float]]
+      default: '0.0'
       description: Time delay in seconds between successive readings; default is 0.
       kind:
         name: POSITIONAL_OR_KEYWORD
@@ -28461,6 +28285,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_shot
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -28634,6 +28464,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -28827,6 +28663,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: stream
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -28960,6 +28802,10 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: md
+    - kind:
+        name: VAR_KEYWORD
+        value: 4
+      name: kwargs
     properties:
       is_generator: true
   nbs_grid_scan:
@@ -28971,7 +28817,9 @@ existing_plans:
         name: VAR_POSITIONAL
         value: 2
       name: args
-    - default: None
+    - annotation:
+        type: typing.Union[collections.abc.Iterable, bool, NoneType]
+      default: None
       description: 'which axes should be snaked, either ``False`` (do not snake any
         axes),
 
@@ -28998,6 +28846,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -29176,6 +29030,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -29324,7 +29184,10 @@ existing_plans:
     module: nbs_bl.plans.preprocessors
     name: nbs_list_grid_scan
     parameters:
-    - description: "patterned like (``motor1, position_list1,``\n                ``motor2,\
+    - annotation:
+        type: typing.Union[__MOVABLE__, typing.Any]
+      convert_device_names: true
+      description: "patterned like (``motor1, position_list1,``\n                ``motor2,\
         \ position_list2,``\n                ``motor3, position_list3,``\n       \
         \         ``...,``\n                ``motorN, position_listN``)\n\nThe first\
         \ motor is the \"slowest\", the outer loop. ``position_list``'s\nare lists\
@@ -29334,7 +29197,9 @@ existing_plans:
         name: VAR_POSITIONAL
         value: 2
       name: args
-    - default: 'False'
+    - annotation:
+        type: bool
+      default: 'False'
       description: 'which axes should be snaked, either ``False`` (do not snake any
         axes),
 
@@ -29361,6 +29226,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -29501,7 +29372,10 @@ existing_plans:
     module: nbs_bl.plans.preprocessors
     name: nbs_list_scan
     parameters:
-    - description: "For one dimension, ``motor, [point1, point2, ....]``.\nIn general:\n\
+    - annotation:
+        type: tuple[typing.Union[__MOVABLE__, typing.Any], list[typing.Any]]
+      convert_device_names: true
+      description: "For one dimension, ``motor, [point1, point2, ....]``.\nIn general:\n\
         \n.. code-block:: python\n\n    motor1, [point1, point2, ...],\n    motor2,\
         \ [point1, point2, ...],\n    ...,\n    motorN, [point1, point2, ...]\n\n\
         Motors can be any 'settable' object (motor, temp controller, etc.)"
@@ -29519,6 +29393,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -29664,17 +29544,23 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: motor
-    - description: starting position of motor
+    - annotation:
+        type: float
+      description: starting position of motor
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: start
-    - description: ending position of motor
+    - annotation:
+        type: float
+      description: ending position of motor
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: stop
-    - description: number of steps
+    - annotation:
+        type: int
+      description: number of steps
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -29687,6 +29573,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -29827,11 +29719,16 @@ existing_plans:
     module: nbs_bl.plans.preprocessors
     name: nbs_rel_grid_scan
     parameters:
-    - kind:
+    - annotation:
+        type: typing.Union[__MOVABLE__, typing.Any]
+      convert_device_names: true
+      kind:
         name: VAR_POSITIONAL
         value: 2
       name: args
-    - default: None
+    - annotation:
+        type: typing.Union[collections.abc.Iterable, bool, NoneType]
+      default: None
       description: 'which axes should be snaked, either ``False`` (do not snake any
         axes),
 
@@ -29858,6 +29755,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -29998,7 +29901,10 @@ existing_plans:
     module: nbs_bl.plans.preprocessors
     name: nbs_rel_list_grid_scan
     parameters:
-    - description: "patterned like (``motor1, position_list1,``\n                ``motor2,\
+    - annotation:
+        type: typing.Union[__MOVABLE__, typing.Any]
+      convert_device_names: true
+      description: "patterned like (``motor1, position_list1,``\n                ``motor2,\
         \ position_list2,``\n                ``motor3, position_list3,``\n       \
         \         ``...,``\n                ``motorN, position_listN``)\n\nThe first\
         \ motor is the \"slowest\", the outer loop. ``position_list``'s\nare lists\
@@ -30008,7 +29914,9 @@ existing_plans:
         name: VAR_POSITIONAL
         value: 2
       name: args
-    - default: 'False'
+    - annotation:
+        type: bool
+      default: 'False'
       description: 'which axes should be snaked, either ``False`` (do not snake any
         axes),
 
@@ -30035,6 +29943,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -30175,7 +30089,10 @@ existing_plans:
     module: nbs_bl.plans.preprocessors
     name: nbs_rel_list_scan
     parameters:
-    - description: "For one dimension, ``motor, [point1, point2, ....]``.\nIn general:\n\
+    - annotation:
+        type: typing.Union[__MOVABLE__, typing.Any]
+      convert_device_names: true
+      description: "For one dimension, ``motor, [point1, point2, ....]``.\nIn general:\n\
         \n.. code-block:: python\n\n    motor1, [point1, point2, ...],\n    motor2,\
         \ [point1, point2, ...],\n    ...,\n    motorN, [point1, point2, ...]\n\n\
         Motors can be any 'settable' object (motor, temp controller, etc.)\npoint1,\
@@ -30192,6 +30109,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -30332,22 +30255,31 @@ existing_plans:
     module: nbs_bl.plans.preprocessors
     name: nbs_rel_log_scan
     parameters:
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: motor
-    - description: starting position of motor
+    - annotation:
+        type: float
+      description: starting position of motor
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: start
-    - description: ending position of motor
+    - annotation:
+        type: float
+      description: ending position of motor
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: stop
-    - description: number of steps
+    - annotation:
+        type: int
+      description: number of steps
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -30360,6 +30292,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -30500,7 +30438,10 @@ existing_plans:
     module: nbs_bl.plans.preprocessors
     name: nbs_rel_scan
     parameters:
-    - description: "For one dimension, ``motor, start, stop``.\nIn general:\n\n..\
+    - annotation:
+        type: typing.Union[__MOVABLE__, typing.Any]
+      convert_device_names: true
+      description: "For one dimension, ``motor, start, stop``.\nIn general:\n\n..\
         \ code-block:: python\n\n    motor1, start1, stop1,\n    motor2, start2, start2,\n\
         \    ...,\n    motorN, startN, stopN,\n\nMotors can be any 'settable' object\
         \ (motor, temp controller, etc.)"
@@ -30524,6 +30465,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -30664,37 +30611,53 @@ existing_plans:
     module: nbs_bl.plans.preprocessors
     name: nbs_rel_spiral
     parameters:
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_motor
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: y_motor
-    - description: x width of spiral
+    - annotation:
+        type: float
+      description: x width of spiral
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_range
-    - description: y width of spiral
+    - annotation:
+        type: float
+      description: y width of spiral
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: y_range
-    - description: Delta radius along the minor axis of the ellipse.
+    - annotation:
+        type: float
+      description: Delta radius along the minor axis of the ellipse.
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: dr
-    - description: Number of theta steps
+    - annotation:
+        type: float
+      description: Number of theta steps
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: nth
-    - default: None
+    - annotation:
+        type: typing.Optional[float]
+      default: None
       description: 'Delta radius along the major axis of the ellipse. If None, it
 
         defaults to dr.'
@@ -30702,7 +30665,9 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: dr_y
-    - default: '0.0'
+    - annotation:
+        type: float
+      default: '0.0'
       description: Tilt angle in radians, default 0.0
       kind:
         name: KEYWORD_ONLY
@@ -30718,6 +30683,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -30858,37 +30829,53 @@ existing_plans:
     module: nbs_bl.plans.preprocessors
     name: nbs_rel_spiral_fermat
     parameters:
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_motor
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: y_motor
-    - description: x width of spiral
+    - annotation:
+        type: float
+      description: x width of spiral
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_range
-    - description: y width of spiral
+    - annotation:
+        type: float
+      description: y width of spiral
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: y_range
-    - description: delta radius
+    - annotation:
+        type: float
+      description: delta radius
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: dr
-    - description: radius gets divided by this
+    - annotation:
+        type: float
+      description: radius gets divided by this
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: factor
-    - default: None
+    - annotation:
+        type: typing.Optional[float]
+      default: None
       description: 'Delta radius along the major axis of the ellipse, if not specifed
 
         defaults to dr'
@@ -30896,7 +30883,9 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: dr_y
-    - default: '0.0'
+    - annotation:
+        type: typing.Optional[float]
+      default: '0.0'
       description: Tilt angle in radians, default 0.0
       kind:
         name: KEYWORD_ONLY
@@ -30912,6 +30901,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -31052,32 +31047,46 @@ existing_plans:
     module: nbs_bl.plans.preprocessors
     name: nbs_rel_spiral_square
     parameters:
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_motor
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: y_motor
-    - description: x width of spiral
+    - annotation:
+        type: float
+      description: x width of spiral
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_range
-    - description: y width of spiral
+    - annotation:
+        type: float
+      description: y width of spiral
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: y_range
-    - description: number of x axis points
+    - annotation:
+        type: float
+      description: number of x axis points
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_num
-    - description: Number of y axis points.
+    - annotation:
+        type: float
+      description: Number of y axis points.
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -31092,6 +31101,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -31232,7 +31247,10 @@ existing_plans:
     module: nbs_bl.plans.preprocessors
     name: nbs_scan
     parameters:
-    - description: "For one dimension, ``motor, start, stop``.\nIn general:\n\n..\
+    - annotation:
+        type: typing.Union[__MOVABLE__, typing.Any]
+      convert_device_names: true
+      description: "For one dimension, ``motor, start, stop``.\nIn general:\n\n..\
         \ code-block:: python\n\n    motor1, start1, stop1,\n    motor2, start2, stop2,\n\
         \    ...,\n    motorN, startN, stopN\n\nMotors can be any 'settable' object\
         \ (motor, temp controller, etc.)"
@@ -31240,7 +31258,9 @@ existing_plans:
         name: VAR_POSITIONAL
         value: 2
       name: args
-    - default: None
+    - annotation:
+        type: typing.Optional[int]
+      default: None
       description: number of points
       kind:
         name: KEYWORD_ONLY
@@ -31256,6 +31276,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -31411,6 +31437,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -31561,37 +31593,51 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: y_motor
-    - description: x center
+    - annotation:
+        type: float
+      description: x center
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_start
-    - description: y center
+    - annotation:
+        type: float
+      description: y center
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: y_start
-    - description: x width of spiral
+    - annotation:
+        type: float
+      description: x width of spiral
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_range
-    - description: y width of spiral
+    - annotation:
+        type: float
+      description: y width of spiral
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: y_range
-    - description: Delta radius along the minor axis of the ellipse.
+    - annotation:
+        type: float
+      description: Delta radius along the minor axis of the ellipse.
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: dr
-    - description: Number of theta steps
+    - annotation:
+        type: float
+      description: Number of theta steps
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: nth
-    - default: None
+    - annotation:
+        type: typing.Optional[float]
+      default: None
       description: 'Delta radius along the major axis of the ellipse. If None, defaults
         to
 
@@ -31600,7 +31646,9 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: dr_y
-    - default: '0.0'
+    - annotation:
+        type: typing.Optional[float]
+      default: '0.0'
       description: Tilt angle in radians, default 0.0
       kind:
         name: KEYWORD_ONLY
@@ -31616,6 +31664,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -31766,37 +31820,51 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: y_motor
-    - description: x center
+    - annotation:
+        type: float
+      description: x center
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_start
-    - description: y center
+    - annotation:
+        type: float
+      description: y center
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: y_start
-    - description: x width of spiral
+    - annotation:
+        type: float
+      description: x width of spiral
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_range
-    - description: y width of spiral
+    - annotation:
+        type: float
+      description: y width of spiral
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: y_range
-    - description: delta radius
+    - annotation:
+        type: float
+      description: delta radius
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: dr
-    - description: radius gets divided by this
+    - annotation:
+        type: float
+      description: radius gets divided by this
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: factor
-    - default: None
+    - annotation:
+        type: typing.Optional[float]
+      default: None
       description: 'Delta radius along the major axis of the ellipse, if not specifed
 
         defaults to dr.'
@@ -31804,7 +31872,9 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: dr_y
-    - default: '0.0'
+    - annotation:
+        type: typing.Optional[float]
+      default: '0.0'
       description: Tilt angle in radians, default 0.0
       kind:
         name: KEYWORD_ONLY
@@ -31820,6 +31890,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -31970,32 +32046,44 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: y_motor
-    - description: x center
+    - annotation:
+        type: float
+      description: x center
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_center
-    - description: y center
+    - annotation:
+        type: float
+      description: y center
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: y_center
-    - description: x width of spiral
+    - annotation:
+        type: float
+      description: x width of spiral
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_range
-    - description: y width of spiral
+    - annotation:
+        type: float
+      description: y width of spiral
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: y_range
-    - description: number of x axis points
+    - annotation:
+        type: float
+      description: number of x axis points
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_num
-    - description: Number of y axis points.
+    - annotation:
+        type: float
+      description: Number of y axis points.
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -32010,6 +32098,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -32182,6 +32276,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -32343,6 +32443,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -32496,6 +32602,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -32663,6 +32775,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -32816,6 +32934,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -33052,6 +33176,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -33280,427 +33410,94 @@ existing_plans:
     module: rsoxs.plans.run_acquisitions
     name: run_acquisitions_queue
     parameters:
-    - default: '[{''bar_name'': ''20250226_DataSecurity'', ''sample_id'': ''AF1_front'',
-        ''sample_name'': ''AF1_front'', ''project_name'': ''calibration'', ''institution'':
-        ''NIST'', ''proposal_id'': 315993, ''bar_spot'': ''0A'', ''front'': True,
-        ''grazing'': False, ''angle'': 0, ''height'': 0.0, ''sample_priority'': 1,
-        ''notes'': ''Top fiducial hole for aligning bar.'', ''location'': [], ''bar_loc'':
-        {''spot'': ''0A'', ''th'': 0}, ''proposal'': {''_id'': ''66452482f5fde497bd9736fb'',
-        ''proposal_id'': ''315993'', ''data_session'': ''pass-315993'', ''title'':
-        ''SST1 RSoXS station commissioning'', ''type'': ''Beamline Commissioning (beamline
-        staff only)'', ''pass_type_id'': ''300005'', ''instruments'': [''SST1''],
-        ''cycles'': [''2024-2'', ''2024-3'', ''2025-1''], ''users'': [{''first_name'':
-        ''Priyanka'', ''last_name'': ''Ketkar'', ''email'': ''pketkar@bnl.gov'', ''bnl_id'':
-        ''8985A'', ''username'': ''pketkar'', ''is_pi'': True}, {''first_name'': ''Eliot'',
-        ''last_name'': ''Gann'', ''email'': ''egann@bnl.gov'', ''bnl_id'': ''27713'',
-        ''username'': ''egann'', ''is_pi'': False}, {''first_name'': ''Christopher'',
-        ''last_name'': ''McNeill'', ''email'': ''christopher.mcneill@monash.edu'',
-        ''bnl_id'': ''C8981'', ''username'': ''cmcneill'', ''is_pi'': False}, {''first_name'':
-        ''Matthew'', ''last_name'': ''Gebert'', ''email'': ''matthew.gebert@monash.edu'',
-        ''bnl_id'': ''7778B'', ''username'': ''mgebert'', ''is_pi'': False}, {''first_name'':
-        ''Subhrangsu'', ''last_name'': ''Mukherjee'', ''email'': ''subhrangsu.mukherjee@nist.gov'',
-        ''bnl_id'': ''W9305'', ''username'': ''smukherje'', ''is_pi'': False}, {''first_name'':
-        ''Supriya'', ''last_name'': ''Gupta'', ''email'': ''supriya@lbl.gov'', ''bnl_id'':
-        ''7479B'', ''username'': ''sgupta3'', ''is_pi'': False}, {''first_name'':
-        ''Gregory'', ''last_name'': ''Su'', ''email'': ''GSu@lbl.gov'', ''bnl_id'':
-        ''D8938'', ''username'': ''gsu'', ''is_pi'': False}, {''first_name'': ''Daniel'',
-        ''last_name'': ''Sunday'', ''email'': ''daniel.sunday@nist.gov'', ''bnl_id'':
-        ''W9108'', ''username'': ''dsunday'', ''is_pi'': False}, {''first_name'':
-        ''Katelyn'', ''last_name'': ''Randazzo'', ''email'': ''randazzobnl@gmail.com'',
-        ''bnl_id'': ''8435B'', ''username'': ''krandazzo'', ''is_pi'': False}, {''first_name'':
+    - default: '[{''bar_name'': ''20250522Test'', ''sample_id'': ''NoBar'', ''sample_name'':
+        ''NoBar'', ''project_name'': ''calibration'', ''institution'': ''NIST'', ''proposal_id'':
+        316980, ''bar_spot'': ''40A'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0, ''sample_priority'': 1, ''notes'': None, ''location'': [],
+        ''bar_loc'': {''spot'': ''40A'', ''th'': 0}, ''proposal'': {''_id'': ''67770f059141cf7c2b6d78e0'',
+        ''proposal_id'': ''316980'', ''data_session'': ''pass-316980'', ''title'':
+        ''Characterization of Molecular Orientation in Physically Adsorbed Polymer
+        Chains via Polarized Resonant Soft X-Ray Scattering'', ''type'': ''General
+        User'', ''pass_type_id'': ''300044'', ''instruments'': [''SST1''], ''cycles'':
+        [''2025-1'', ''2025-2''], ''users'': [{''first_name'': ''Daniel'', ''last_name'':
+        ''Sunday'', ''email'': ''daniel.sunday@nist.gov'', ''bnl_id'': ''W9108'',
+        ''username'': ''dsunday'', ''is_pi'': False}, {''first_name'': ''Dean'', ''last_name'':
+        ''DeLongchamp'', ''email'': ''dean.delongchamp@nist.gov'', ''bnl_id'': ''U8680'',
+        ''username'': ''ddelongch'', ''is_pi'': False}, {''first_name'': ''Katelyn'',
+        ''last_name'': ''Randazzo'', ''email'': ''randazzobnl@gmail.com'', ''bnl_id'':
+        ''8435B'', ''username'': ''krandazzo'', ''is_pi'': True}, {''first_name'':
+        ''Lucas'', ''last_name'': ''Flagg'', ''email'': ''lucas.flagg@nist.gov'',
+        ''bnl_id'': ''2523A'', ''username'': ''lflagg'', ''is_pi'': False}, {''first_name'':
         ''Julia'', ''last_name'': ''Murphy'', ''email'': ''julia.murphy@nist.gov'',
         ''bnl_id'': ''8530A'', ''username'': ''jmurphy1'', ''is_pi'': False}, {''first_name'':
-        ''Peter'', ''last_name'': ''Beaucage'', ''email'': ''peter.beaucage@nist.gov'',
-        ''bnl_id'': ''B9298'', ''username'': ''pbeaucage'', ''is_pi'': False}], ''safs'':
-        [{''saf_id'': ''313874'', ''status'': ''APPROVED'', ''instruments'': [''SST1'']}],
-        ''slack_channel_id'': None, ''created_on'': ''2024-05-17T14:44:48.380000'',
-        ''last_updated'': ''2025-02-25T20:07:06.323000''}, ''SAF'': ''313874'', ''analysis_dir'':
-        ''/nsls2/data/sst/proposals/commissioning/pass-315993'', ''data_session'':
-        ''pass-315993'', ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250226_DataSecurity'', ''sample_id'': ''SiN_Blank'', ''sample_name'':
-        ''SiN_Blank'', ''project_name'': ''Ketkar'', ''institution'': ''NIST'', ''proposal_id'':
-        315993, ''bar_spot'': ''18B'', ''front'': True, ''grazing'': False, ''angle'':
-        0, ''height'': 0.25, ''sample_priority'': 0, ''notes'': ''Blank Norcada window
-        for transmission measurements'', ''location'': [], ''bar_loc'': {''spot'':
-        ''18B'', ''th'': 0}, ''proposal'': {''_id'': ''66452482f5fde497bd9736fb'',
-        ''proposal_id'': ''315993'', ''data_session'': ''pass-315993'', ''title'':
-        ''SST1 RSoXS station commissioning'', ''type'': ''Beamline Commissioning (beamline
-        staff only)'', ''pass_type_id'': ''300005'', ''instruments'': [''SST1''],
-        ''cycles'': [''2024-2'', ''2024-3'', ''2025-1''], ''users'': [{''first_name'':
-        ''Priyanka'', ''last_name'': ''Ketkar'', ''email'': ''pketkar@bnl.gov'', ''bnl_id'':
-        ''8985A'', ''username'': ''pketkar'', ''is_pi'': True}, {''first_name'': ''Eliot'',
-        ''last_name'': ''Gann'', ''email'': ''egann@bnl.gov'', ''bnl_id'': ''27713'',
-        ''username'': ''egann'', ''is_pi'': False}, {''first_name'': ''Christopher'',
-        ''last_name'': ''McNeill'', ''email'': ''christopher.mcneill@monash.edu'',
-        ''bnl_id'': ''C8981'', ''username'': ''cmcneill'', ''is_pi'': False}, {''first_name'':
-        ''Matthew'', ''last_name'': ''Gebert'', ''email'': ''matthew.gebert@monash.edu'',
-        ''bnl_id'': ''7778B'', ''username'': ''mgebert'', ''is_pi'': False}, {''first_name'':
-        ''Subhrangsu'', ''last_name'': ''Mukherjee'', ''email'': ''subhrangsu.mukherjee@nist.gov'',
-        ''bnl_id'': ''W9305'', ''username'': ''smukherje'', ''is_pi'': False}, {''first_name'':
-        ''Supriya'', ''last_name'': ''Gupta'', ''email'': ''supriya@lbl.gov'', ''bnl_id'':
-        ''7479B'', ''username'': ''sgupta3'', ''is_pi'': False}, {''first_name'':
-        ''Gregory'', ''last_name'': ''Su'', ''email'': ''GSu@lbl.gov'', ''bnl_id'':
-        ''D8938'', ''username'': ''gsu'', ''is_pi'': False}, {''first_name'': ''Daniel'',
-        ''last_name'': ''Sunday'', ''email'': ''daniel.sunday@nist.gov'', ''bnl_id'':
-        ''W9108'', ''username'': ''dsunday'', ''is_pi'': False}, {''first_name'':
-        ''Katelyn'', ''last_name'': ''Randazzo'', ''email'': ''randazzobnl@gmail.com'',
-        ''bnl_id'': ''8435B'', ''username'': ''krandazzo'', ''is_pi'': False}, {''first_name'':
-        ''Julia'', ''last_name'': ''Murphy'', ''email'': ''julia.murphy@nist.gov'',
-        ''bnl_id'': ''8530A'', ''username'': ''jmurphy1'', ''is_pi'': False}, {''first_name'':
-        ''Peter'', ''last_name'': ''Beaucage'', ''email'': ''peter.beaucage@nist.gov'',
-        ''bnl_id'': ''B9298'', ''username'': ''pbeaucage'', ''is_pi'': False}], ''safs'':
-        [{''saf_id'': ''313874'', ''status'': ''APPROVED'', ''instruments'': [''SST1'']}],
-        ''slack_channel_id'': None, ''created_on'': ''2024-05-17T14:44:48.380000'',
-        ''last_updated'': ''2025-02-25T20:07:06.323000''}, ''SAF'': ''313874'', ''analysis_dir'':
-        ''/nsls2/data/sst/proposals/commissioning/pass-315993'', ''data_session'':
-        ''pass-315993'', ''acq_history'': [], ''acquisitions'': [{''sample_id'': ''SiN_Blank'',
-        ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'':
-        ''carbon_NEXAFS'', ''polarization_frame'': ''lab'', ''polarizations'': [0],
-        ''exposure_time'': 1.0, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''group_name'': ''TransmissionNEXAFS'', ''priority'':
-        5, ''acquire_status'': ''Finished_DontRun'', ''uid_local'': ''4d876ecb-9d01-42c1-95f4-2ed70d8d2ea2'',
-        ''notes'': ''Typical transmission NEXAFS scan across the carbon edge.''},
-        {''sample_id'': ''SiN_Blank'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''oxygen_NEXAFS'',
-        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
-        1.0, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''group_name'': ''TransmissionNEXAFS'', ''priority'': 6, ''acquire_status'':
-        ''Finished_DontRun'', ''uid_local'': ''5ee72f5d-20ae-4d42-b53e-86a68d9b6dbc'',
-        ''notes'': ''Typical transmission NEXAFS scan across the oxygen edge.''},
-        {''sample_id'': ''SiN_Blank'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''nitrogen_NEXAFS'',
-        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
-        1.0, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''group_name'': ''TransmissionNEXAFS'', ''priority'': 7, ''acquire_status'':
-        ''Finished_DontRun'', ''uid_local'': ''27531f38-b088-4e24-b139-281fdbb1c6f7'',
-        ''notes'': ''Typical transmission NEXAFS scan across the nitrogen edge.''},
-        {''sample_id'': ''SiN_Blank'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
-        ''rsoxs'', ''energy_list_parameters'': ''carbon_RSoXS'', ''polarization_frame'':
-        ''lab'', ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'': ''RSoXS'',
-        ''priority'': 10, ''acquire_status'': ''Finished_DontRun'', ''uid_local'':
-        ''da8e74f0-e432-4011-9032-81346fa283bb'', ''notes'': ''Typical RSoXS scan
-        across carbon edge at 0 and 90 degrees polarization.  Exposure time per energy
-        is 0.1 s.''}, {''sample_id'': ''SiN_Blank'', ''configuration_instrument'':
-        ''WAXS'', ''scan_type'': ''rsoxs'', ''energy_list_parameters'': ''oxygen_RSoXS'',
-        ''polarization_frame'': ''lab'', ''polarizations'': [0, 90], ''exposure_time'':
-        1.0, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''group_name'': ''RSoXS'', ''priority'': 11, ''acquire_status'': ''Finished_DontRun'',
-        ''uid_local'': ''29921308-c946-4376-900b-5dd3369285e5'', ''notes'': ''Typical
-        RSoXS scan across oxygen edge at 0 and 90 degrees polarization''}, {''sample_id'':
-        ''SiN_Blank'', ''configuration_instrument'': ''WAXS'', ''scan_type'': ''rsoxs'',
-        ''energy_list_parameters'': ''nitrogen_RSoXS'', ''polarization_frame'': ''lab'',
-        ''polarizations'': [0, 90], ''exposure_time'': 1.0, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'': ''RSoXS'',
-        ''priority'': 12, ''acquire_status'': ''Finished_DontRun'', ''uid_local'':
-        ''3fd197d8-03e6-48f3-8f54-ce2e682c3ebf'', ''notes'': ''Typical RSoXS scan
-        across nitro edge at 0 and 90 degrees polarization''}, {''sample_id'': ''SiN_Blank'',
-        ''configuration_instrument'': ''WAXS'', ''scan_type'': ''rsoxs'', ''energy_list_parameters'':
-        [270, 280, 1, 300, 0.1, 320, 0.5], ''polarization_frame'': ''lab'', ''polarizations'':
-        [0, 90], ''exposure_time'': 1.0, ''exposures_per_energy'': 1, ''sample_angles'':
-        [0], ''spiral_dimensions'': None, ''group_name'': ''RSoXS'', ''priority'':
-        13, ''acquire_status'': ''Finished_DontRun'', ''uid_local'': ''07b305ce-c30e-4165-a499-9051c04d148c'',
-        ''notes'': ''RSoXS scan for a custom list of energies.  Between 270 and 280
-        eV, scans will be taken in 1 eV steps.  Between 280 and 300 eV, scans will
-        be taken in 0.1 eV steps.  Between 300 and 320 eV, scans will be taken in  0.5
-        eV steps.  The list should contain at least 3 items, but no maximum limit.''},
-        {''sample_id'': ''SiN_Blank'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
-        ''rsoxs'', ''energy_list_parameters'': [285, 285, 0], ''polarization_frame'':
-        ''lab'', ''polarizations'': [0, 90], ''exposure_time'': 1.0, ''exposures_per_energy'':
-        200, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
-        ''RSoXS'', ''priority'': 14, ''acquire_status'': ''Finished_DontRun'', ''uid_local'':
-        ''13353f29-1ceb-4f7f-ae57-3ab43be65888'', ''notes'': ''RSoXS scan at which
-        200 images are taken at 285 eV, both at 0 and 90 degrees polarization.''}]},
-        {''bar_name'': ''20250226_DataSecurity'', ''sample_id'': ''HOPG'', ''sample_name'':
-        ''HOPG'', ''project_name'': ''calibration'', ''institution'': ''NIST'', ''proposal_id'':
-        315993, ''bar_spot'': ''30C'', ''front'': True, ''grazing'': True, ''angle'':
-        90, ''height'': 0.5, ''sample_priority'': 1, ''notes'': ''Highly-ordered pyrolitic
-        graphene (HOPG) used to calibrate energy'', ''location'': [], ''bar_loc'':
-        {''spot'': ''30C'', ''th'': 90}, ''proposal'': {''_id'': ''66452482f5fde497bd9736fb'',
-        ''proposal_id'': ''315993'', ''data_session'': ''pass-315993'', ''title'':
-        ''SST1 RSoXS station commissioning'', ''type'': ''Beamline Commissioning (beamline
-        staff only)'', ''pass_type_id'': ''300005'', ''instruments'': [''SST1''],
-        ''cycles'': [''2024-2'', ''2024-3'', ''2025-1''], ''users'': [{''first_name'':
-        ''Priyanka'', ''last_name'': ''Ketkar'', ''email'': ''pketkar@bnl.gov'', ''bnl_id'':
-        ''8985A'', ''username'': ''pketkar'', ''is_pi'': True}, {''first_name'': ''Eliot'',
-        ''last_name'': ''Gann'', ''email'': ''egann@bnl.gov'', ''bnl_id'': ''27713'',
-        ''username'': ''egann'', ''is_pi'': False}, {''first_name'': ''Christopher'',
-        ''last_name'': ''McNeill'', ''email'': ''christopher.mcneill@monash.edu'',
-        ''bnl_id'': ''C8981'', ''username'': ''cmcneill'', ''is_pi'': False}, {''first_name'':
-        ''Matthew'', ''last_name'': ''Gebert'', ''email'': ''matthew.gebert@monash.edu'',
-        ''bnl_id'': ''7778B'', ''username'': ''mgebert'', ''is_pi'': False}, {''first_name'':
-        ''Subhrangsu'', ''last_name'': ''Mukherjee'', ''email'': ''subhrangsu.mukherjee@nist.gov'',
-        ''bnl_id'': ''W9305'', ''username'': ''smukherje'', ''is_pi'': False}, {''first_name'':
-        ''Supriya'', ''last_name'': ''Gupta'', ''email'': ''supriya@lbl.gov'', ''bnl_id'':
-        ''7479B'', ''username'': ''sgupta3'', ''is_pi'': False}, {''first_name'':
-        ''Gregory'', ''last_name'': ''Su'', ''email'': ''GSu@lbl.gov'', ''bnl_id'':
-        ''D8938'', ''username'': ''gsu'', ''is_pi'': False}, {''first_name'': ''Daniel'',
-        ''last_name'': ''Sunday'', ''email'': ''daniel.sunday@nist.gov'', ''bnl_id'':
-        ''W9108'', ''username'': ''dsunday'', ''is_pi'': False}, {''first_name'':
-        ''Katelyn'', ''last_name'': ''Randazzo'', ''email'': ''randazzobnl@gmail.com'',
-        ''bnl_id'': ''8435B'', ''username'': ''krandazzo'', ''is_pi'': False}, {''first_name'':
-        ''Julia'', ''last_name'': ''Murphy'', ''email'': ''julia.murphy@nist.gov'',
-        ''bnl_id'': ''8530A'', ''username'': ''jmurphy1'', ''is_pi'': False}, {''first_name'':
-        ''Peter'', ''last_name'': ''Beaucage'', ''email'': ''peter.beaucage@nist.gov'',
-        ''bnl_id'': ''B9298'', ''username'': ''pbeaucage'', ''is_pi'': False}], ''safs'':
-        [{''saf_id'': ''313874'', ''status'': ''APPROVED'', ''instruments'': [''SST1'']}],
-        ''slack_channel_id'': None, ''created_on'': ''2024-05-17T14:44:48.380000'',
-        ''last_updated'': ''2025-02-25T20:07:06.323000''}, ''SAF'': ''313874'', ''analysis_dir'':
-        ''/nsls2/data/sst/proposals/commissioning/pass-315993'', ''data_session'':
-        ''pass-315993'', ''acq_history'': [], ''acquisitions'': [{''sample_id'': ''HOPG'',
-        ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'':
-        ''carbon_NEXAFS'', ''polarization_frame'': ''lab'', ''polarizations'': [0],
-        ''exposure_time'': 1.0, ''exposures_per_energy'': 1, ''sample_angles'': [20,
-        30, 55, 70, 90], ''spiral_dimensions'': None, ''group_name'': ''TEY_NEXAFS'',
-        ''priority'': 8, ''acquire_status'': ''Finished_DontRun'', ''uid_local'':
-        ''0c333bdf-5193-4465-8184-a5407c8e54a3'', ''notes'': ''TEY NEXAFS where a
-        series of carbon edge scans are taken at different sample angles''}, {''sample_id'':
-        ''HOPG'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'': ''nexafs'',
-        ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarization_frame'': ''lab'',
-        ''polarizations'': [0, 20, 30, 55, 70, 90], ''exposure_time'': 1.0, ''exposures_per_energy'':
-        1, ''sample_angles'': [20], ''spiral_dimensions'': None, ''group_name'': ''TEY_NEXAFS'',
-        ''priority'': 9, ''acquire_status'': ''Finished_DontRun'', ''uid_local'':
-        ''d13768ce-14ff-4169-9e49-25c6a2ffa8e0'', ''notes'': ''TEY NEXAFS where the
-        sample is rotated to an angle of 20 (angle between incident beam and sample
-        is 20 degrees) and a series of carbon edge scans are taken at different beam
-        polarizations.''}]}, {''bar_name'': ''20250226_DataSecurity'', ''sample_id'':
-        ''HOPG_back'', ''sample_name'': ''HOPG_back'', ''project_name'': ''calibration'',
-        ''institution'': ''NIST'', ''proposal_id'': 315993, ''bar_spot'': ''30C'',
-        ''front'': False, ''grazing'': True, ''angle'': 90, ''height'': 0.5, ''sample_priority'':
-        1, ''notes'': ''Testing that samples on the back are sanitized correctly and
-        load the correct motor positions'', ''location'': [], ''bar_loc'': {''spot'':
-        ''30C'', ''th'': 90}, ''proposal'': {''_id'': ''66452482f5fde497bd9736fb'',
-        ''proposal_id'': ''315993'', ''data_session'': ''pass-315993'', ''title'':
-        ''SST1 RSoXS station commissioning'', ''type'': ''Beamline Commissioning (beamline
-        staff only)'', ''pass_type_id'': ''300005'', ''instruments'': [''SST1''],
-        ''cycles'': [''2024-2'', ''2024-3'', ''2025-1''], ''users'': [{''first_name'':
-        ''Priyanka'', ''last_name'': ''Ketkar'', ''email'': ''pketkar@bnl.gov'', ''bnl_id'':
-        ''8985A'', ''username'': ''pketkar'', ''is_pi'': True}, {''first_name'': ''Eliot'',
-        ''last_name'': ''Gann'', ''email'': ''egann@bnl.gov'', ''bnl_id'': ''27713'',
-        ''username'': ''egann'', ''is_pi'': False}, {''first_name'': ''Christopher'',
-        ''last_name'': ''McNeill'', ''email'': ''christopher.mcneill@monash.edu'',
-        ''bnl_id'': ''C8981'', ''username'': ''cmcneill'', ''is_pi'': False}, {''first_name'':
-        ''Matthew'', ''last_name'': ''Gebert'', ''email'': ''matthew.gebert@monash.edu'',
-        ''bnl_id'': ''7778B'', ''username'': ''mgebert'', ''is_pi'': False}, {''first_name'':
-        ''Subhrangsu'', ''last_name'': ''Mukherjee'', ''email'': ''subhrangsu.mukherjee@nist.gov'',
-        ''bnl_id'': ''W9305'', ''username'': ''smukherje'', ''is_pi'': False}, {''first_name'':
-        ''Supriya'', ''last_name'': ''Gupta'', ''email'': ''supriya@lbl.gov'', ''bnl_id'':
-        ''7479B'', ''username'': ''sgupta3'', ''is_pi'': False}, {''first_name'':
-        ''Gregory'', ''last_name'': ''Su'', ''email'': ''GSu@lbl.gov'', ''bnl_id'':
-        ''D8938'', ''username'': ''gsu'', ''is_pi'': False}, {''first_name'': ''Daniel'',
-        ''last_name'': ''Sunday'', ''email'': ''daniel.sunday@nist.gov'', ''bnl_id'':
-        ''W9108'', ''username'': ''dsunday'', ''is_pi'': False}, {''first_name'':
-        ''Katelyn'', ''last_name'': ''Randazzo'', ''email'': ''randazzobnl@gmail.com'',
-        ''bnl_id'': ''8435B'', ''username'': ''krandazzo'', ''is_pi'': False}, {''first_name'':
-        ''Julia'', ''last_name'': ''Murphy'', ''email'': ''julia.murphy@nist.gov'',
-        ''bnl_id'': ''8530A'', ''username'': ''jmurphy1'', ''is_pi'': False}, {''first_name'':
-        ''Peter'', ''last_name'': ''Beaucage'', ''email'': ''peter.beaucage@nist.gov'',
-        ''bnl_id'': ''B9298'', ''username'': ''pbeaucage'', ''is_pi'': False}], ''safs'':
-        [{''saf_id'': ''313874'', ''status'': ''APPROVED'', ''instruments'': [''SST1'']}],
-        ''slack_channel_id'': None, ''created_on'': ''2024-05-17T14:44:48.380000'',
-        ''last_updated'': ''2025-02-25T20:07:06.323000''}, ''SAF'': ''313874'', ''analysis_dir'':
-        ''/nsls2/data/sst/proposals/commissioning/pass-315993'', ''data_session'':
-        ''pass-315993'', ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250226_DataSecurity'', ''sample_id'': ''AF2_front'', ''sample_name'':
-        ''AF2_front'', ''project_name'': ''calibration'', ''institution'': ''NIST'',
-        ''proposal_id'': 315993, ''bar_spot'': ''31A'', ''front'': True, ''grazing'':
-        False, ''angle'': 0, ''height'': 0.0, ''sample_priority'': 1, ''notes'': ''Bottom
-        fiducial hole for aligning bar.'', ''location'': [], ''bar_loc'': {''spot'':
-        ''31A'', ''th'': 0}, ''proposal'': {''_id'': ''66452482f5fde497bd9736fb'',
-        ''proposal_id'': ''315993'', ''data_session'': ''pass-315993'', ''title'':
-        ''SST1 RSoXS station commissioning'', ''type'': ''Beamline Commissioning (beamline
-        staff only)'', ''pass_type_id'': ''300005'', ''instruments'': [''SST1''],
-        ''cycles'': [''2024-2'', ''2024-3'', ''2025-1''], ''users'': [{''first_name'':
-        ''Priyanka'', ''last_name'': ''Ketkar'', ''email'': ''pketkar@bnl.gov'', ''bnl_id'':
-        ''8985A'', ''username'': ''pketkar'', ''is_pi'': True}, {''first_name'': ''Eliot'',
-        ''last_name'': ''Gann'', ''email'': ''egann@bnl.gov'', ''bnl_id'': ''27713'',
-        ''username'': ''egann'', ''is_pi'': False}, {''first_name'': ''Christopher'',
-        ''last_name'': ''McNeill'', ''email'': ''christopher.mcneill@monash.edu'',
-        ''bnl_id'': ''C8981'', ''username'': ''cmcneill'', ''is_pi'': False}, {''first_name'':
-        ''Matthew'', ''last_name'': ''Gebert'', ''email'': ''matthew.gebert@monash.edu'',
-        ''bnl_id'': ''7778B'', ''username'': ''mgebert'', ''is_pi'': False}, {''first_name'':
-        ''Subhrangsu'', ''last_name'': ''Mukherjee'', ''email'': ''subhrangsu.mukherjee@nist.gov'',
-        ''bnl_id'': ''W9305'', ''username'': ''smukherje'', ''is_pi'': False}, {''first_name'':
-        ''Supriya'', ''last_name'': ''Gupta'', ''email'': ''supriya@lbl.gov'', ''bnl_id'':
-        ''7479B'', ''username'': ''sgupta3'', ''is_pi'': False}, {''first_name'':
-        ''Gregory'', ''last_name'': ''Su'', ''email'': ''GSu@lbl.gov'', ''bnl_id'':
-        ''D8938'', ''username'': ''gsu'', ''is_pi'': False}, {''first_name'': ''Daniel'',
-        ''last_name'': ''Sunday'', ''email'': ''daniel.sunday@nist.gov'', ''bnl_id'':
-        ''W9108'', ''username'': ''dsunday'', ''is_pi'': False}, {''first_name'':
-        ''Katelyn'', ''last_name'': ''Randazzo'', ''email'': ''randazzobnl@gmail.com'',
-        ''bnl_id'': ''8435B'', ''username'': ''krandazzo'', ''is_pi'': False}, {''first_name'':
-        ''Julia'', ''last_name'': ''Murphy'', ''email'': ''julia.murphy@nist.gov'',
-        ''bnl_id'': ''8530A'', ''username'': ''jmurphy1'', ''is_pi'': False}, {''first_name'':
-        ''Peter'', ''last_name'': ''Beaucage'', ''email'': ''peter.beaucage@nist.gov'',
-        ''bnl_id'': ''B9298'', ''username'': ''pbeaucage'', ''is_pi'': False}], ''safs'':
-        [{''saf_id'': ''313874'', ''status'': ''APPROVED'', ''instruments'': [''SST1'']}],
-        ''slack_channel_id'': None, ''created_on'': ''2024-05-17T14:44:48.380000'',
-        ''last_updated'': ''2025-02-25T20:07:06.323000''}, ''SAF'': ''313874'', ''analysis_dir'':
-        ''/nsls2/data/sst/proposals/commissioning/pass-315993'', ''data_session'':
-        ''pass-315993'', ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250226_DataSecurity'', ''sample_id'': ''OpenBeam'', ''sample_name'': ''OpenBeam'',
-        ''project_name'': ''calibration'', ''institution'': ''NIST'', ''proposal_id'':
-        315993, ''bar_spot'': ''40A'', ''front'': True, ''grazing'': False, ''angle'':
-        0, ''height'': 0.0, ''sample_priority'': 1, ''notes'': ''Sample bar moves
-        out of beam path for open-beam measurements.  Writing out data to commissioning
-        proposal 315993.'', ''location'': [], ''bar_loc'': {''spot'': ''40A'', ''th'':
-        0}, ''proposal'': {''_id'': ''66452482f5fde497bd9736fb'', ''proposal_id'':
-        ''315993'', ''data_session'': ''pass-315993'', ''title'': ''SST1 RSoXS station
-        commissioning'', ''type'': ''Beamline Commissioning (beamline staff only)'',
-        ''pass_type_id'': ''300005'', ''instruments'': [''SST1''], ''cycles'': [''2024-2'',
-        ''2024-3'', ''2025-1''], ''users'': [{''first_name'': ''Priyanka'', ''last_name'':
-        ''Ketkar'', ''email'': ''pketkar@bnl.gov'', ''bnl_id'': ''8985A'', ''username'':
-        ''pketkar'', ''is_pi'': True}, {''first_name'': ''Eliot'', ''last_name'':
-        ''Gann'', ''email'': ''egann@bnl.gov'', ''bnl_id'': ''27713'', ''username'':
-        ''egann'', ''is_pi'': False}, {''first_name'': ''Christopher'', ''last_name'':
-        ''McNeill'', ''email'': ''christopher.mcneill@monash.edu'', ''bnl_id'': ''C8981'',
-        ''username'': ''cmcneill'', ''is_pi'': False}, {''first_name'': ''Matthew'',
-        ''last_name'': ''Gebert'', ''email'': ''matthew.gebert@monash.edu'', ''bnl_id'':
-        ''7778B'', ''username'': ''mgebert'', ''is_pi'': False}, {''first_name'':
-        ''Subhrangsu'', ''last_name'': ''Mukherjee'', ''email'': ''subhrangsu.mukherjee@nist.gov'',
-        ''bnl_id'': ''W9305'', ''username'': ''smukherje'', ''is_pi'': False}, {''first_name'':
-        ''Supriya'', ''last_name'': ''Gupta'', ''email'': ''supriya@lbl.gov'', ''bnl_id'':
-        ''7479B'', ''username'': ''sgupta3'', ''is_pi'': False}, {''first_name'':
-        ''Gregory'', ''last_name'': ''Su'', ''email'': ''GSu@lbl.gov'', ''bnl_id'':
-        ''D8938'', ''username'': ''gsu'', ''is_pi'': False}, {''first_name'': ''Daniel'',
-        ''last_name'': ''Sunday'', ''email'': ''daniel.sunday@nist.gov'', ''bnl_id'':
-        ''W9108'', ''username'': ''dsunday'', ''is_pi'': False}, {''first_name'':
-        ''Katelyn'', ''last_name'': ''Randazzo'', ''email'': ''randazzobnl@gmail.com'',
-        ''bnl_id'': ''8435B'', ''username'': ''krandazzo'', ''is_pi'': False}, {''first_name'':
-        ''Julia'', ''last_name'': ''Murphy'', ''email'': ''julia.murphy@nist.gov'',
-        ''bnl_id'': ''8530A'', ''username'': ''jmurphy1'', ''is_pi'': False}, {''first_name'':
-        ''Peter'', ''last_name'': ''Beaucage'', ''email'': ''peter.beaucage@nist.gov'',
-        ''bnl_id'': ''B9298'', ''username'': ''pbeaucage'', ''is_pi'': False}], ''safs'':
-        [{''saf_id'': ''313874'', ''status'': ''APPROVED'', ''instruments'': [''SST1'']}],
-        ''slack_channel_id'': None, ''created_on'': ''2024-05-17T14:44:48.380000'',
-        ''last_updated'': ''2025-02-25T20:07:06.323000''}, ''SAF'': ''313874'', ''analysis_dir'':
-        ''/nsls2/data/sst/proposals/commissioning/pass-315993'', ''data_session'':
-        ''pass-315993'', ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250226_DataSecurity'', ''sample_id'': ''OpenBeam_Su'', ''sample_name'':
-        ''OpenBeam_Su'', ''project_name'': ''Su'', ''institution'': ''LBNL'', ''proposal_id'':
-        317698, ''bar_spot'': ''40A'', ''front'': True, ''grazing'': False, ''angle'':
-        0, ''height'': 0.0, ''sample_priority'': 1, ''notes'': ''Testing that we can
-        switch to PU proposal 317698 (Greg Su) and save data here'', ''location'':
-        [], ''bar_loc'': {''spot'': ''40A'', ''th'': 0}, ''proposal'': {''_id'': ''67770f319141cf7c2b6d7903'',
-        ''proposal_id'': ''317698'', ''data_session'': ''pass-317698'', ''title'':
-        ''Determining Chain Orientation in Polymer-Grafted Nanoparticles using P-RSoXS
-        (PU-316865)'', ''type'': ''Partner User - Project'', ''pass_type_id'': ''300071'',
-        ''instruments'': [''SST1''], ''cycles'': [''2025-1''], ''users'': [{''first_name'':
-        ''Supriya'', ''last_name'': ''Gupta'', ''email'': ''supriya@lbl.gov'', ''bnl_id'':
-        ''7479B'', ''username'': ''sgupta3'', ''is_pi'': False}, {''first_name'':
-        ''Jonathan'', ''last_name'': ''Chan'', ''email'': ''jmchan@lbl.gov'', ''bnl_id'':
-        ''7114B'', ''username'': ''jchan2'', ''is_pi'': False}, {''first_name'': ''Kam
-        Yun'', ''last_name'': ''Li'', ''email'': ''Kelvinkyli@lbl.gov'', ''bnl_id'':
-        None, ''username'': None, ''is_pi'': False}, {''first_name'': ''Jose Carlos'',
-        ''last_name'': ''Diaz'', ''email'': ''jcdiaz@umich.edu'', ''bnl_id'': ''7875B'',
-        ''username'': ''jdiaz'', ''is_pi'': False}, {''first_name'': ''Aidan'', ''last_name'':
-        ''Coffey'', ''email'': ''ahcoffey@lbl.gov'', ''bnl_id'': ''1222C'', ''username'':
-        ''acoffey'', ''is_pi'': False}, {''first_name'': ''Kam Yun'', ''last_name'':
-        ''Li'', ''email'': ''kelvinkyli@berkeley.edu'', ''bnl_id'': ''7482B'', ''username'':
-        ''kli1'', ''is_pi'': False}, {''first_name'': ''Noah'', ''last_name'': ''Wamble'',
-        ''email'': ''noah.wamble@utexas.edu'', ''bnl_id'': ''7051B'', ''username'':
-        ''nwamble'', ''is_pi'': False}, {''first_name'': ''Matthew'', ''last_name'':
-        ''Landsman'', ''email'': ''mrlandsman@lbl.gov'', ''bnl_id'': ''3089A'', ''username'':
-        ''mlandsman'', ''is_pi'': False}, {''first_name'': ''Gregory'', ''last_name'':
-        ''Su'', ''email'': ''GSu@lbl.gov'', ''bnl_id'': ''D8938'', ''username'': ''gsu'',
-        ''is_pi'': True}], ''safs'': [{''saf_id'': ''315508'', ''status'': ''DRAFT'',
-        ''instruments'': [''SST1'']}, {''saf_id'': ''315536'', ''status'': ''APPROVED'',
-        ''instruments'': [''SST1'']}], ''slack_channel_id'': None, ''created_on'':
-        ''2025-01-02T22:12:01.995000'', ''last_updated'': ''2025-02-25T20:08:48.912000''},
-        ''SAF'': ''315536'', ''analysis_dir'': ''/nsls2/data/sst/proposals/2025-1/pass-317698'',
-        ''data_session'': ''pass-317698'', ''acq_history'': [], ''acquisitions'':
-        []}, {''bar_name'': ''20250226_DataSecurity'', ''sample_id'': ''OpenBeam_Melody'',
-        ''sample_name'': ''OpenBeam_Melody'', ''project_name'': ''Melody'', ''institution'':
-        ''WSU'', ''proposal_id'': 317233, ''bar_spot'': ''40A'', ''front'': True,
-        ''grazing'': False, ''angle'': 0, ''height'': 0.0, ''sample_priority'': 1,
-        ''notes'': ''Testing that we can switch to GU proposal 317233 (Tanner Melody)
-        and save data here'', ''location'': [], ''bar_loc'': {''spot'': ''40A'', ''th'':
-        0}, ''proposal'': {''_id'': ''67770f2b9141cf7c2b6d78f5'', ''proposal_id'':
-        ''317233'', ''data_session'': ''pass-317233'', ''title'': ''Resonant X-ray
-        scattering to reveal spatiochemical mechanisms of ternary organic solar cells'',
-        ''type'': ''General User'', ''pass_type_id'': ''300044'', ''instruments'':
-        [''SST1''], ''cycles'': [''2025-1''], ''users'': [{''first_name'': ''Brian'',
-        ''last_name'': ''Collins'', ''email'': ''brian.collins@wsu.edu'', ''bnl_id'':
-        ''W9452'', ''username'': ''bcollins'', ''is_pi'': False}, {''first_name'':
-        ''Acacia'', ''last_name'': ''Patterson'', ''email'': ''acacia.patterson@wsu.edu'',
-        ''bnl_id'': ''7785A'', ''username'': ''apatterso'', ''is_pi'': False}, {''first_name'':
         ''Priyanka'', ''last_name'': ''Ketkar'', ''email'': ''priyanka.ketkar@nist.gov'',
         ''bnl_id'': ''8985A'', ''username'': ''pketkar'', ''is_pi'': False}, {''first_name'':
-        ''Tanner'', ''last_name'': ''Melody'', ''email'': ''tanner.melody@wsu.edu'',
-        ''bnl_id'': ''2336B'', ''username'': ''tmelody'', ''is_pi'': True}], ''safs'':
-        [{''saf_id'': ''315742'', ''status'': ''APPROVED'', ''instruments'': [''SST1'']}],
-        ''slack_channel_id'': None, ''created_on'': ''2025-01-02T22:11:55.110000'',
-        ''last_updated'': ''2025-02-25T20:08:43.027000''}, ''SAF'': ''315742'', ''analysis_dir'':
-        ''/nsls2/data/sst/proposals/2025-1/pass-317233'', ''data_session'': ''pass-317233'',
-        ''acq_history'': [], ''acquisitions'': []}, {''bar_name'': ''20250226_DataSecurity'',
-        ''sample_id'': ''OpenBeam_GateClosed'', ''sample_name'': ''OpenBeam_GateClosed'',
-        ''project_name'': ''calibration'', ''institution'': ''NIST'', ''proposal_id'':
-        315993, ''bar_spot'': ''40A'', ''front'': True, ''grazing'': False, ''angle'':
-        0, ''height'': 0.0, ''sample_priority'': 1, ''notes'': ''Sample bar moves
-        out of beam path for open-beam measurements.  Writing out data to commissioning
-        proposal 315993.'', ''location'': [{''motor'': ''x'', ''position'': 0.0037999999999982492,
-        ''order'': 0}, {''motor'': ''y'', ''position'': 345.032745, ''order'': 0},
-        {''motor'': ''z'', ''position'': -0.34676999999999225, ''order'': 0}, {''motor'':
-        ''th'', ''position'': -0.007022058000018205, ''order'': 0}], ''bar_loc'':
-        {''spot'': ''40A'', ''th'': 0}, ''proposal'': {''_id'': ''66452482f5fde497bd9736fb'',
-        ''proposal_id'': ''315993'', ''data_session'': ''pass-315993'', ''title'':
-        ''SST1 RSoXS station commissioning'', ''type'': ''Beamline Commissioning (beamline
-        staff only)'', ''pass_type_id'': ''300005'', ''instruments'': [''SST1''],
-        ''cycles'': [''2024-2'', ''2024-3'', ''2025-1''], ''users'': [{''first_name'':
-        ''Priyanka'', ''last_name'': ''Ketkar'', ''email'': ''pketkar@bnl.gov'', ''bnl_id'':
-        ''8985A'', ''username'': ''pketkar'', ''is_pi'': True}, {''first_name'': ''Eliot'',
-        ''last_name'': ''Gann'', ''email'': ''egann@bnl.gov'', ''bnl_id'': ''27713'',
-        ''username'': ''egann'', ''is_pi'': False}, {''first_name'': ''Christopher'',
-        ''last_name'': ''McNeill'', ''email'': ''christopher.mcneill@monash.edu'',
-        ''bnl_id'': ''C8981'', ''username'': ''cmcneill'', ''is_pi'': False}, {''first_name'':
-        ''Matthew'', ''last_name'': ''Gebert'', ''email'': ''matthew.gebert@monash.edu'',
-        ''bnl_id'': ''7778B'', ''username'': ''mgebert'', ''is_pi'': False}, {''first_name'':
-        ''Subhrangsu'', ''last_name'': ''Mukherjee'', ''email'': ''subhrangsu.mukherjee@nist.gov'',
-        ''bnl_id'': ''W9305'', ''username'': ''smukherje'', ''is_pi'': False}, {''first_name'':
-        ''Supriya'', ''last_name'': ''Gupta'', ''email'': ''supriya@lbl.gov'', ''bnl_id'':
-        ''7479B'', ''username'': ''sgupta3'', ''is_pi'': False}, {''first_name'':
-        ''Gregory'', ''last_name'': ''Su'', ''email'': ''GSu@lbl.gov'', ''bnl_id'':
-        ''D8938'', ''username'': ''gsu'', ''is_pi'': False}, {''first_name'': ''Daniel'',
-        ''last_name'': ''Sunday'', ''email'': ''daniel.sunday@nist.gov'', ''bnl_id'':
-        ''W9108'', ''username'': ''dsunday'', ''is_pi'': False}, {''first_name'':
-        ''Katelyn'', ''last_name'': ''Randazzo'', ''email'': ''randazzobnl@gmail.com'',
-        ''bnl_id'': ''8435B'', ''username'': ''krandazzo'', ''is_pi'': False}, {''first_name'':
+        ''Peter'', ''last_name'': ''Beaucage'', ''email'': ''peter.beaucage@nist.gov'',
+        ''bnl_id'': ''B9298'', ''username'': ''pbeaucage'', ''is_pi'': False}, {''first_name'':
+        ''Joe'', ''last_name'': ''Kline'', ''email'': ''rjkline10@gmail.com'', ''bnl_id'':
+        ''Z6809'', ''username'': ''rkline'', ''is_pi'': False}, {''first_name'': ''Matthew'',
+        ''last_name'': ''Wade'', ''email'': ''matthew.wade@nist.gov'', ''bnl_id'':
+        ''9547B'', ''username'': ''mwade1'', ''is_pi'': False}, {''first_name'': ''Trey'',
+        ''last_name'': ''Diulus'', ''email'': ''john.diulus@nist.gov'', ''bnl_id'':
+        ''2304B'', ''username'': ''jdiulus'', ''is_pi'': False}, {''first_name'':
+        ''Eliot'', ''last_name'': ''Gann'', ''email'': ''egann@bnl.gov'', ''bnl_id'':
+        ''27713'', ''username'': ''egann'', ''is_pi'': False}, {''first_name'': ''Eliot'',
+        ''last_name'': ''Gann'', ''email'': ''ehgann@lbl.gov'', ''bnl_id'': ''E8622'',
+        ''username'': None, ''is_pi'': False}, {''first_name'': ''Supriya'', ''last_name'':
+        ''Gupta'', ''email'': ''supriya@lbl.gov'', ''bnl_id'': ''7479B'', ''username'':
+        ''sgupta3'', ''is_pi'': False}], ''safs'': [{''saf_id'': ''316041'', ''status'':
+        ''APPROVED'', ''instruments'': [''SST1'']}], ''slack_channel_id'': None, ''created_on'':
+        ''2025-01-02T22:11:17.900000'', ''last_updated'': ''2025-05-22T16:08:07.661000''},
+        ''SAF'': ''316041'', ''analysis_dir'': ''/nsls2/data/sst/proposals/2025-1/pass-316980'',
+        ''data_session'': ''pass-316980'', ''composition'': None, ''sample_state'':
+        None, ''sample_desc'': None, ''density'': None, ''acq_history'': [], ''components'':
+        None, ''sample_set'': None, ''project_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250522Test'', ''sample_id'': ''NoBar_1'', ''sample_name'':
+        ''NoBar_1'', ''project_name'': ''calibration'', ''institution'': ''NIST'',
+        ''proposal_id'': 316980, ''bar_spot'': ''40A'', ''front'': True, ''grazing'':
+        False, ''angle'': 0, ''height'': 0, ''sample_priority'': 1, ''notes'': None,
+        ''location'': [{''motor'': ''x'', ''position'': 0.007404999999998552, ''order'':
+        0}, {''motor'': ''y'', ''position'': 345.03255, ''order'': 0}, {''motor'':
+        ''z'', ''position'': -0.34676999999999225, ''order'': 0}, {''motor'': ''th'',
+        ''position'': -0.007022058000018205, ''order'': 0}], ''bar_loc'': {''spot'':
+        ''40A'', ''th'': 0}, ''proposal'': {''_id'': ''67770f059141cf7c2b6d78e0'',
+        ''proposal_id'': ''316980'', ''data_session'': ''pass-316980'', ''title'':
+        ''Characterization of Molecular Orientation in Physically Adsorbed Polymer
+        Chains via Polarized Resonant Soft X-Ray Scattering'', ''type'': ''General
+        User'', ''pass_type_id'': ''300044'', ''instruments'': [''SST1''], ''cycles'':
+        [''2025-1'', ''2025-2''], ''users'': [{''first_name'': ''Daniel'', ''last_name'':
+        ''Sunday'', ''email'': ''daniel.sunday@nist.gov'', ''bnl_id'': ''W9108'',
+        ''username'': ''dsunday'', ''is_pi'': False}, {''first_name'': ''Dean'', ''last_name'':
+        ''DeLongchamp'', ''email'': ''dean.delongchamp@nist.gov'', ''bnl_id'': ''U8680'',
+        ''username'': ''ddelongch'', ''is_pi'': False}, {''first_name'': ''Katelyn'',
+        ''last_name'': ''Randazzo'', ''email'': ''randazzobnl@gmail.com'', ''bnl_id'':
+        ''8435B'', ''username'': ''krandazzo'', ''is_pi'': True}, {''first_name'':
+        ''Lucas'', ''last_name'': ''Flagg'', ''email'': ''lucas.flagg@nist.gov'',
+        ''bnl_id'': ''2523A'', ''username'': ''lflagg'', ''is_pi'': False}, {''first_name'':
         ''Julia'', ''last_name'': ''Murphy'', ''email'': ''julia.murphy@nist.gov'',
         ''bnl_id'': ''8530A'', ''username'': ''jmurphy1'', ''is_pi'': False}, {''first_name'':
+        ''Priyanka'', ''last_name'': ''Ketkar'', ''email'': ''priyanka.ketkar@nist.gov'',
+        ''bnl_id'': ''8985A'', ''username'': ''pketkar'', ''is_pi'': False}, {''first_name'':
         ''Peter'', ''last_name'': ''Beaucage'', ''email'': ''peter.beaucage@nist.gov'',
-        ''bnl_id'': ''B9298'', ''username'': ''pbeaucage'', ''is_pi'': False}], ''safs'':
-        [{''saf_id'': ''313874'', ''status'': ''APPROVED'', ''instruments'': [''SST1'']}],
-        ''slack_channel_id'': None, ''created_on'': ''2024-05-17T14:44:48.380000'',
-        ''last_updated'': ''2025-02-25T20:07:06.323000''}, ''SAF'': ''313874'', ''analysis_dir'':
-        ''/nsls2/data/sst/proposals/commissioning/pass-315993'', ''data_session'':
-        ''pass-315993'', ''acq_history'': [], ''acquisitions'': [{''sample_id'': ''OpenBeam_GateClosed'',
-        ''configuration_instrument'': ''NoBeam'', ''scan_type'': ''spiral'', ''energy_list_parameters'':
-        270, ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
-        1.0, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        [0.3, 0.6, 0.6], ''group_name'': ''Spirals'', ''priority'': 1, ''acquire_status'':
-        ''Finished 2025-02-25_15-23-17'', ''uid_local'': ''d3964981-d826-4318-bc3d-c4e040991813'',
-        ''notes'': ''Typical spiral scan at 270 eV to survey different spots on your
-        sample.  The spiral dimensions correspond to 0.3 mm step size between spots,
-        1.8 mm width of the full spiral scan, and 1.8 mm height of the full spiral
-        scan.  In most cases, width and height should be the same.''}, {''sample_id'':
-        ''OpenBeam_GateClosed'', ''configuration_instrument'': ''NoBeam'', ''scan_type'':
-        ''time2D'', ''energy_list_parameters'': 150, ''polarization_frame'': ''lab'',
-        ''polarizations'': [0], ''exposure_time'': 0.1, ''exposures_per_energy'':
-        3, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'': ''Test'',
-        ''priority'': 2, ''acquire_status'': ''Finished 2025-02-25_15-23-59'', ''uid_local'':
-        ''8439de28-1b4e-46ab-abc6-c788709bce7a'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam_GateClosed'', ''configuration_instrument'': ''NoBeam'', ''scan_type'':
-        ''time'', ''energy_list_parameters'': 150, ''polarization_frame'': ''lab'',
-        ''polarizations'': [0], ''exposure_time'': 0.1, ''exposures_per_energy'':
-        10, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'': ''Test'',
-        ''priority'': 3, ''acquire_status'': ''Finished 2025-02-25_15-24-07'', ''uid_local'':
-        ''66f71aea-5e51-40e5-b2a7-0a9aff87e430'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam_GateClosed'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
-        ''spiral'', ''energy_list_parameters'': 270, ''polarization_frame'': ''lab'',
-        ''polarizations'': [0], ''exposure_time'': 1.0, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': [0.3, 1.8, 1.8], ''group_name'':
-        ''Spirals'', ''priority'': 4, ''acquire_status'': ''Finished_DontRun'', ''uid_local'':
-        ''a1cf1823-265e-47f2-8258-247830738fb6'', ''notes'': None}]}]'
+        ''bnl_id'': ''B9298'', ''username'': ''pbeaucage'', ''is_pi'': False}, {''first_name'':
+        ''Joe'', ''last_name'': ''Kline'', ''email'': ''rjkline10@gmail.com'', ''bnl_id'':
+        ''Z6809'', ''username'': ''rkline'', ''is_pi'': False}, {''first_name'': ''Matthew'',
+        ''last_name'': ''Wade'', ''email'': ''matthew.wade@nist.gov'', ''bnl_id'':
+        ''9547B'', ''username'': ''mwade1'', ''is_pi'': False}, {''first_name'': ''Trey'',
+        ''last_name'': ''Diulus'', ''email'': ''john.diulus@nist.gov'', ''bnl_id'':
+        ''2304B'', ''username'': ''jdiulus'', ''is_pi'': False}, {''first_name'':
+        ''Eliot'', ''last_name'': ''Gann'', ''email'': ''egann@bnl.gov'', ''bnl_id'':
+        ''27713'', ''username'': ''egann'', ''is_pi'': False}, {''first_name'': ''Eliot'',
+        ''last_name'': ''Gann'', ''email'': ''ehgann@lbl.gov'', ''bnl_id'': ''E8622'',
+        ''username'': None, ''is_pi'': False}, {''first_name'': ''Supriya'', ''last_name'':
+        ''Gupta'', ''email'': ''supriya@lbl.gov'', ''bnl_id'': ''7479B'', ''username'':
+        ''sgupta3'', ''is_pi'': False}], ''safs'': [{''saf_id'': ''316041'', ''status'':
+        ''APPROVED'', ''instruments'': [''SST1'']}], ''slack_channel_id'': None, ''created_on'':
+        ''2025-01-02T22:11:17.900000'', ''last_updated'': ''2025-05-22T16:08:07.661000''},
+        ''SAF'': ''316041'', ''analysis_dir'': ''/nsls2/data/sst/proposals/2025-1/pass-316980'',
+        ''data_session'': ''pass-316980'', ''composition'': None, ''sample_state'':
+        None, ''sample_desc'': None, ''density'': None, ''acq_history'': [], ''components'':
+        None, ''sample_set'': None, ''project_desc'': None, ''acquisitions'': []}]'
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -33837,6 +33634,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -33990,6 +33793,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -34188,6 +33997,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -34443,6 +34258,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -34596,6 +34417,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -34801,6 +34628,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -34954,6 +34787,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -35121,6 +34960,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -35274,6 +35119,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -35447,6 +35298,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -35600,6 +35457,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
