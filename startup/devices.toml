@@ -150,6 +150,7 @@ prefix = "XF:07IDA-OP{Mir:M1"
 name = "SST 1 Mirror 1 fmb" 
 kind = "hinted"
 _baseline = true
+## Accessible in Phoebus by going to File --> Open --> /opt/css/opi/production/cs-studio-xf/07id/edl_conv/MC02/6Pod_TopLevel_M1.bob
 
 [mir1_temperature] # was Temperature_M1
 _target = "ophyd.EpicsSignalRO"
