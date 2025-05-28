@@ -27551,10 +27551,10 @@ existing_plans:
     module: rsoxs.Functions.alignment
     name: move_to_location
     parameters:
-    - default: '[{''motor'': ''x'', ''position'': 0.007179999999998188, ''order'':
-        0}, {''motor'': ''y'', ''position'': 345.03329, ''order'': 0}, {''motor'':
+    - default: '[{''motor'': ''x'', ''position'': 1.9997199999999964, ''order'': 0},
+        {''motor'': ''y'', ''position'': 340.00061000000005, ''order'': 0}, {''motor'':
         ''z'', ''position'': -0.34676999999999225, ''order'': 0}, {''motor'': ''th'',
-        ''position'': -0.007022058000018205, ''order'': 0}]'
+        ''position'': -0.008395349000011265, ''order'': 0}]'
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -33410,155 +33410,42 @@ existing_plans:
     module: rsoxs.plans.run_acquisitions
     name: run_acquisitions_queue
     parameters:
-    - default: '[{''bar_name'': ''20250220_LBNL'', ''sample_id'': ''rsoxs_sample'',
-        ''sample_name'': ''rsoxs_sample'', ''project_name'': ''Ketkar'', ''institution'':
-        ''LBNL'', ''proposal_id'': 318915, ''bar_spot'': ''1A'', ''front'': True,
-        ''grazing'': False, ''angle'': 0, ''height'': 0.25, ''sample_priority'': 1,
-        ''notes'': ''Typical transmission RSoXS sample on SiN membrane that is mounted
-        to the front of the bar.  0 degrees angle corresponds to normal incidence.  bar_spot
-        can be filled in after you mount samples.'', ''location'': [], ''bar_loc'':
-        {''spot'': ''1A'', ''th'': 0}, ''acq_history'': [], ''data_session'': ''pass-318915'',
-        ''analysis_dir'': ''/nsls2/data/sst/proposals/commissioning/pass-318915'',
-        ''SAF'': ''316405'', ''proposal'': {''_id'': ''682ddb7f215f522b4a77bd31'',
-        ''proposal_id'': ''318915'', ''data_session'': ''pass-318915'', ''title'':
-        ''SST1 RSoXS station commissioning'', ''type'': ''Beamline Commissioning (beamline
-        staff only)'', ''pass_type_id'': ''300005'', ''instruments'': [''SST1''],
-        ''cycles'': [''2025-2''], ''users'': [{''first_name'': ''Priyanka'', ''last_name'':
-        ''Ketkar'', ''email'': ''pketkar@bnl.gov'', ''bnl_id'': ''8985A'', ''username'':
-        ''pketkar'', ''is_pi'': True}], ''safs'': [{''saf_id'': ''316405'', ''status'':
-        ''APPROVED'', ''instruments'': [''SST1'']}], ''slack_channel_id'': None, ''created_on'':
-        ''2025-05-21T13:56:15.856000'', ''last_updated'': ''2025-05-26T19:56:18.030000''},
-        ''acquisitions'': [{''sample_id'': ''rsoxs_sample'', ''configuration_instrument'':
-        ''WAXS'', ''scan_type'': ''spiral'', ''energy_list_parameters'': 270, ''polarization_frame'':
-        ''lab'', ''polarizations'': [0], ''exposure_time'': 1.0, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': [0.3, 1.8, 1.8], ''group_name'':
-        ''Spirals'', ''priority'': 1, ''notes'': ''Typical spiral scan at 270 eV to
-        survey different spots on your sample.  The spiral dimensions correspond to
-        0.3 mm step size between spots, 1.8 mm width of the full spiral scan, and
-        1.8 mm height of the full spiral scan.  In most cases, width and height should
-        be the same.'', ''acquire_status'': ''Not begun'', ''uid_local'': ''819b5bf2-3b8f-4096-bad4-f312eb451a31''},
-        {''sample_id'': ''rsoxs_sample'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
+    - default: '[{''bar_name'': ''20250528_Commissioning'', ''sample_id'': ''SiN_Blank'',
+        ''sample_name'': ''SiN_Blank'', ''project_name'': ''calibration'', ''institution'':
+        ''NIST'', ''bar_spot'': ''18A'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': ''Typical transmission
+        RSoXS sample on SiN membrane that is mounted to the front of the bar.  0 degrees
+        angle corresponds to normal incidence.  bar_spot can be filled in after you
+        mount samples.'', ''location'': [], ''bar_loc'': {''spot'': ''18A'', ''th'':
+        0}, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'': ''20250528_Commissioning'',
+        ''sample_id'': ''AlFoil'', ''sample_name'': ''AlFoil'', ''project_name'':
+        ''calibration'', ''institution'': ''NIST'', ''bar_spot'': ''21A'', ''front'':
+        True, ''grazing'': True, ''angle'': 90, ''height'': 0.5, ''sample_priority'':
+        1, ''notes'': ''For camera characterization'', ''location'': [], ''bar_loc'':
+        {''spot'': ''21A'', ''th'': 90}, ''acq_history'': [], ''acquisitions'': []},
+        {''bar_name'': ''20250528_Commissioning'', ''sample_id'': ''SBA15'', ''sample_name'':
+        ''SBA15'', ''project_name'': ''calibration'', ''institution'': ''NIST'', ''bar_spot'':
+        ''28A'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.25,
+        ''sample_priority'': 1, ''notes'': ''For SDD calibration'', ''location'':
+        [], ''bar_loc'': {''spot'': ''28A'', ''th'': 0}, ''acq_history'': [], ''acquisitions'':
+        []}, {''bar_name'': ''20250528_Commissioning'', ''sample_id'': ''HOPG'', ''sample_name'':
+        ''HOPG'', ''project_name'': ''calibration'', ''institution'': ''NIST'', ''bar_spot'':
+        ''30A'', ''front'': True, ''grazing'': True, ''angle'': 90, ''height'': 0.5,
+        ''sample_priority'': 1, ''notes'': "Energy calibrant.  Don''t change this
+        row.", ''location'': [], ''bar_loc'': {''spot'': ''30A'', ''th'': 90}, ''acq_history'':
+        [], ''acquisitions'': [{''sample_id'': ''HOPG'', ''configuration_instrument'':
+        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
         ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
-        1.0, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''group_name'': ''TransmissionNEXAFS'', ''priority'': 2, ''notes'':
-        ''Typical transmission NEXAFS scan across the carbon edge.'', ''acquire_status'':
-        ''Not begun'', ''uid_local'': ''1f8718ed-f685-47d4-9752-4990c4717f54''}, {''sample_id'':
-        ''rsoxs_sample'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''oxygen_NEXAFS'', ''polarization_frame'':
-        ''lab'', ''polarizations'': [0], ''exposure_time'': 1.0, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'': ''TransmissionNEXAFS'',
-        ''priority'': 2, ''notes'': ''Typical transmission NEXAFS scan across the
-        oxygen edge.'', ''acquire_status'': ''Not begun'', ''uid_local'': ''3f6abe87-1324-49cc-b72c-220a2f7a7699''},
-        {''sample_id'': ''rsoxs_sample'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''nitrogen_NEXAFS'',
-        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
-        1.0, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''group_name'': ''TransmissionNEXAFS'', ''priority'': 2, ''notes'':
-        ''Typical transmission NEXAFS scan across the nitrogen edge.'', ''acquire_status'':
-        ''Not begun'', ''uid_local'': ''c3d2e562-22ba-448e-b05b-84d7727b3fe7''}, {''sample_id'':
-        ''rsoxs_sample'', ''configuration_instrument'': ''WAXS'', ''scan_type'': ''rsoxs'',
-        ''energy_list_parameters'': ''carbon_RSoXS'', ''polarization_frame'': ''lab'',
-        ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'': ''RSoXS'',
-        ''priority'': 5, ''notes'': ''Typical RSoXS scan across carbon edge at 0 and
-        90 degrees polarization.  Exposure time per energy is 0.1 s.'', ''acquire_status'':
-        ''Not begun'', ''uid_local'': ''af53c77f-1432-44f0-a40d-2f44d69b5907''}, {''sample_id'':
-        ''rsoxs_sample'', ''configuration_instrument'': ''WAXS'', ''scan_type'': ''rsoxs'',
-        ''energy_list_parameters'': ''oxygen_RSoXS'', ''polarization_frame'': ''lab'',
-        ''polarizations'': [0, 90], ''exposure_time'': 1.0, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'': ''RSoXS'',
-        ''priority'': 5, ''notes'': ''Typical RSoXS scan across oxygen edge at 0 and
-        90 degrees polarization'', ''acquire_status'': ''Not begun'', ''uid_local'':
-        ''4042e31e-0d9d-48df-8c82-76b7f3f2d915''}, {''sample_id'': ''rsoxs_sample'',
-        ''configuration_instrument'': ''WAXS'', ''scan_type'': ''rsoxs'', ''energy_list_parameters'':
-        ''nitrogen_RSoXS'', ''polarization_frame'': ''lab'', ''polarizations'': [0,
-        90], ''exposure_time'': 1.0, ''exposures_per_energy'': 1, ''sample_angles'':
-        [0], ''spiral_dimensions'': None, ''group_name'': ''RSoXS'', ''priority'':
-        5, ''notes'': ''Typical RSoXS scan across nitro edge at 0 and 90 degrees polarization'',
-        ''acquire_status'': ''Not begun'', ''uid_local'': ''7f41b81b-2b9e-4ebb-ba53-1cbbee351b8f''},
-        {''sample_id'': ''rsoxs_sample'', ''configuration_instrument'': ''WAXS'',
-        ''scan_type'': ''rsoxs'', ''energy_list_parameters'': [270, 280, 1, 300, 0.1,
-        320, 0.5], ''polarization_frame'': ''lab'', ''polarizations'': [0, 90], ''exposure_time'':
-        1.0, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''group_name'': ''RSoXS'', ''priority'': 6, ''notes'': ''RSoXS scan
-        for a custom list of energies.  Between 270 and 280 eV, scans will be taken
-        in 1 eV steps.  Between 280 and 300 eV, scans will be taken in 0.1 eV steps.  Between
-        300 and 320 eV, scans will be taken in  0.5 eV steps.  The list should contain
-        at least 3 items, but no maximum limit.'', ''acquire_status'': ''Not begun'',
-        ''uid_local'': ''edbaa894-acce-43d3-b9e1-ee070ddf00fb''}, {''sample_id'':
-        ''rsoxs_sample'', ''configuration_instrument'': ''WAXS'', ''scan_type'': ''rsoxs'',
-        ''energy_list_parameters'': [285, 285, 0], ''polarization_frame'': ''lab'',
-        ''polarizations'': [0, 90], ''exposure_time'': 1.0, ''exposures_per_energy'':
-        200, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
-        ''RSoXS'', ''priority'': 7, ''notes'': ''RSoXS scan at which 200 images are
-        taken at 285 eV, both at 0 and 90 degrees polarization.'', ''acquire_status'':
-        ''Not begun'', ''uid_local'': ''8395b945-85f2-45ef-aaf0-70f6d4e3aace''}]},
-        {''bar_name'': ''20250220_LBNL'', ''sample_id'': ''TEY_NEXAFS_sample'', ''sample_name'':
-        ''rsoxs_sample'', ''project_name'': ''Ketkar'', ''institution'': ''LBNL'',
-        ''proposal_id'': 318915, ''bar_spot'': ''20A'', ''front'': True, ''grazing'':
-        True, ''angle'': 90, ''height'': 0.5, ''sample_priority'': 1, ''notes'': ''Typical
-        TEY NEXAFS sample on silicon wafer.  For grazing samples, 90 degrees corresponds
-        to normal incidence.'', ''location'': [], ''bar_loc'': {''spot'': ''20A'',
-        ''th'': 90}, ''acq_history'': [], ''data_session'': ''pass-318915'', ''analysis_dir'':
-        ''/nsls2/data/sst/proposals/commissioning/pass-318915'', ''SAF'': ''316405'',
-        ''proposal'': {''_id'': ''682ddb7f215f522b4a77bd31'', ''proposal_id'': ''318915'',
-        ''data_session'': ''pass-318915'', ''title'': ''SST1 RSoXS station commissioning'',
-        ''type'': ''Beamline Commissioning (beamline staff only)'', ''pass_type_id'':
-        ''300005'', ''instruments'': [''SST1''], ''cycles'': [''2025-2''], ''users'':
-        [{''first_name'': ''Priyanka'', ''last_name'': ''Ketkar'', ''email'': ''pketkar@bnl.gov'',
-        ''bnl_id'': ''8985A'', ''username'': ''pketkar'', ''is_pi'': True}], ''safs'':
-        [{''saf_id'': ''316405'', ''status'': ''APPROVED'', ''instruments'': [''SST1'']}],
-        ''slack_channel_id'': None, ''created_on'': ''2025-05-21T13:56:15.856000'',
-        ''last_updated'': ''2025-05-26T19:56:18.030000''}, ''acquisitions'': [{''sample_id'':
-        ''TEY_NEXAFS_sample'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarization_frame'':
-        ''lab'', ''polarizations'': [0], ''exposure_time'': 1.0, ''exposures_per_energy'':
-        1, ''sample_angles'': [20, 30, 55, 70, 90], ''spiral_dimensions'': None, ''group_name'':
-        ''TEY_NEXAFS'', ''priority'': 3, ''notes'': ''TEY NEXAFS where a series of
-        carbon edge scans are taken at different sample angles'', ''acquire_status'':
-        ''Not begun'', ''uid_local'': ''70bc5bb2-e950-4bb0-8e29-88ae0b8f4201''}, {''sample_id'':
-        ''TEY_NEXAFS_sample'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarization_frame'':
-        ''lab'', ''polarizations'': [0, 20, 30, 55, 70, 90], ''exposure_time'': 1.0,
-        ''exposures_per_energy'': 1, ''sample_angles'': [20], ''spiral_dimensions'':
-        None, ''group_name'': ''TEY_NEXAFS'', ''priority'': 4, ''notes'': ''TEY NEXAFS
-        where the sample is rotated to an angle of 20 (angle between incident beam
-        and sample is 20 degrees) and a series of carbon edge scans are taken at different
-        beam polarizations.'', ''acquire_status'': ''Not begun'', ''uid_local'': ''8f84c1d2-9c81-42fc-8fb2-cf60ea8c31a3''}]},
-        {''bar_name'': ''20250220_LBNL'', ''sample_id'': ''HOPG'', ''sample_name'':
-        ''HOPG'', ''project_name'': ''calibration'', ''institution'': ''LBNL'', ''proposal_id'':
-        318915, ''bar_spot'': ''30A'', ''front'': True, ''grazing'': True, ''angle'':
-        90, ''height'': 0.5, ''sample_priority'': 1, ''notes'': "Energy calibrant.  Don''t
-        change this row.", ''location'': [], ''bar_loc'': {''spot'': ''30A'', ''th'':
-        90}, ''acq_history'': [], ''data_session'': ''pass-318915'', ''analysis_dir'':
-        ''/nsls2/data/sst/proposals/commissioning/pass-318915'', ''SAF'': ''316405'',
-        ''proposal'': {''_id'': ''682ddb7f215f522b4a77bd31'', ''proposal_id'': ''318915'',
-        ''data_session'': ''pass-318915'', ''title'': ''SST1 RSoXS station commissioning'',
-        ''type'': ''Beamline Commissioning (beamline staff only)'', ''pass_type_id'':
-        ''300005'', ''instruments'': [''SST1''], ''cycles'': [''2025-2''], ''users'':
-        [{''first_name'': ''Priyanka'', ''last_name'': ''Ketkar'', ''email'': ''pketkar@bnl.gov'',
-        ''bnl_id'': ''8985A'', ''username'': ''pketkar'', ''is_pi'': True}], ''safs'':
-        [{''saf_id'': ''316405'', ''status'': ''APPROVED'', ''instruments'': [''SST1'']}],
-        ''slack_channel_id'': None, ''created_on'': ''2025-05-21T13:56:15.856000'',
-        ''last_updated'': ''2025-05-26T19:56:18.030000''}, ''acquisitions'': []},
-        {''bar_name'': ''20250220_LBNL'', ''sample_id'': ''OpenBeam'', ''sample_name'':
-        ''OpenBeam'', ''project_name'': ''calibration'', ''institution'': ''LBNL'',
-        ''proposal_id'': 318915, ''bar_spot'': ''40A'', ''front'': True, ''grazing'':
+        1, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
+        None, ''group_name'': ''Check calibration'', ''priority'': 1, ''acquire_status'':
+        ''Not begun'', ''uid_local'': ''c2350d5e-3ee6-40ad-9509-21e05b50df45'', ''notes'':
+        None}]}, {''bar_name'': ''20250528_Commissioning'', ''sample_id'': ''OpenBeam_NoBeamNoBar_2'',
+        ''sample_name'': ''OpenBeam_NoBeamNoBar_2'', ''project_name'': ''calibration'',
+        ''institution'': ''NIST'', ''bar_spot'': ''40A'', ''front'': True, ''grazing'':
         False, ''angle'': 0, ''height'': 0.0, ''sample_priority'': 1, ''notes'': "Bar
         moved out of beam path for reference scan.  Don''t change this row.", ''location'':
-        [], ''bar_loc'': {''spot'': ''40A'', ''th'': 0}, ''acq_history'': [], ''data_session'':
-        ''pass-318915'', ''analysis_dir'': ''/nsls2/data/sst/proposals/commissioning/pass-318915'',
-        ''SAF'': ''316405'', ''proposal'': {''_id'': ''682ddb7f215f522b4a77bd31'',
-        ''proposal_id'': ''318915'', ''data_session'': ''pass-318915'', ''title'':
-        ''SST1 RSoXS station commissioning'', ''type'': ''Beamline Commissioning (beamline
-        staff only)'', ''pass_type_id'': ''300005'', ''instruments'': [''SST1''],
-        ''cycles'': [''2025-2''], ''users'': [{''first_name'': ''Priyanka'', ''last_name'':
-        ''Ketkar'', ''email'': ''pketkar@bnl.gov'', ''bnl_id'': ''8985A'', ''username'':
-        ''pketkar'', ''is_pi'': True}], ''safs'': [{''saf_id'': ''316405'', ''status'':
-        ''APPROVED'', ''instruments'': [''SST1'']}], ''slack_channel_id'': None, ''created_on'':
-        ''2025-05-21T13:56:15.856000'', ''last_updated'': ''2025-05-26T19:56:18.030000''},
-        ''acquisitions'': []}]'
+        [], ''bar_loc'': {''spot'': ''40A'', ''th'': 0}, ''acq_history'': [], ''acquisitions'':
+        []}]'
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
