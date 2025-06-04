@@ -498,7 +498,7 @@ prefix = "XF:07ID-ES1{Slt1:I400-1}:IC2_MON"
 name = "RSoXS Sample Current"
 
 [Sample_TEY_int]
-_target = "ophyd.EpicsSignalRO" #_target = "sst_base.detectors.scalar.ADCBuffer"
+_target = "sst_base.detectors.scalar.ADCBuffer" #_target = "sst_base.detectors.scalar.ADCBuffer"
 _group = "detectors"
 kind = "normal"
 prefix = "XF:07ID-BI[ADC:2-Ch:7]" #prefix = "XF:07ID-ES1{Slt1:I400-1}:IC2_MON" ## 20250604 - moving to "XF:07ID-BI[ADC:2-Ch:7]"...need to connect on sample end  #prefix = "XF:07ID-BI[ADC:2-Ch:2]" ## 20250528 not working?
