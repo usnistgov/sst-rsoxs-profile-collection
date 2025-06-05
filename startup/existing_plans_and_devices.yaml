@@ -3335,11 +3335,72 @@ existing_devices:
     is_readable: true
     module: ophyd.signal
   Sample_TEY_int:
-    classname: EpicsSignalRO
-    is_flyable: false
-    is_movable: true
+    classname: ADCBuffer
+    components:
+      exposure_time:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      gain:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      mean:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      median:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      npts:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      offset:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      rescale:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      std:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      sum:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      target:
+        classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+    is_flyable: true
+    is_movable: false
     is_readable: true
-    module: ophyd.signal
+    module: sst_base.detectors.scalar
   Sample_cam:
     classname: StandardProsilicaWithTIFF
     is_flyable: false
@@ -27490,10 +27551,10 @@ existing_plans:
     module: rsoxs.Functions.alignment
     name: move_to_location
     parameters:
-    - default: '[{''motor'': ''x'', ''position'': -4.257255000000001, ''order'': 0},
-        {''motor'': ''y'', ''position'': -5.022345000000001, ''order'': 0}, {''motor'':
+    - default: '[{''motor'': ''x'', ''position'': 1.2254450000000006, ''order'': 0},
+        {''motor'': ''y'', ''position'': 53.95017499999999, ''order'': 0}, {''motor'':
         ''z'', ''position'': -0.34676999999999225, ''order'': 0}, {''motor'': ''th'',
-        ''position'': 70.00197983100003, ''order'': 0}]'
+        ''position'': 180.002588931, ''order'': 0}]'
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -33357,14 +33418,14 @@ existing_plans:
         0}, {''motor'': ''y'', ''position'': -187.10256642993238, ''order'': 0}, {''motor'':
         ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
         180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''0A'', ''ximg'': 0.8034561158142015,
-        ''yimg'': -185.36832416064578, ''th0'': 0.0, ''th'': 180.0, ''xoff'': -0.6924953703178427,
+        ''yimg'': -185.36832416064578, ''th0'': 0.0, ''th'': 0, ''xoff'': -0.6924953703178427,
         ''x0'': 0.006096857657708112, ''y0'': -187.10256642993238, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 3.1291665512458997}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': ''Calibration'',
-        ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
-        []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''AF2_front'', ''sample_name'':
+        ''zoff'': 3.1291665512458997}, ''project_desc'': ''Calibration'', ''sample_state'':
+        None, ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''AF2_front'', ''sample_name'':
         ''AF2_front'', ''project_name'': ''Calibration'', ''institution'': ''MCC'',
         ''proposal_id'': 318188, ''bar_spot'': ''0A'', ''front'': True, ''grazing'':
         False, ''angle'': 0, ''height'': 0.0, ''sample_priority'': 1, ''notes'': None,
@@ -33372,14 +33433,14 @@ existing_plans:
         0}, {''motor'': ''y'', ''position'': 3.2836969449937277, ''order'': 0}, {''motor'':
         ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
         180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''0A'', ''ximg'': 1.7992742501876577,
-        ''yimg'': 4.982430728390279, ''th0'': 0.0, ''th'': 180.0, ''xoff'': -0.6653754302803351,
+        ''yimg'': 4.982430728390279, ''th0'': 0.0, ''th'': 0, ''xoff'': -0.6653754302803351,
         ''x0'': 1.1014332898123056, ''y0'': 3.2836969449937277, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.5709265706715705}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': ''Calibration'',
-        ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
-        []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''diode'', ''sample_name'':
+        ''zoff'': 2.5709265706715705}, ''project_desc'': ''Calibration'', ''sample_state'':
+        None, ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''diode'', ''sample_name'':
         ''diode'', ''project_name'': ''Calibration'', ''institution'': ''MCC'', ''proposal_id'':
         318188, ''bar_spot'': ''0A'', ''front'': True, ''grazing'': False, ''angle'':
         0, ''height'': 0.0, ''sample_priority'': 1, ''notes'': None, ''location'':
@@ -33387,43 +33448,43 @@ existing_plans:
         ''y'', ''position'': 46.204595760714696, ''order'': 0}, {''motor'': ''z'',
         ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
         ''order'': 0}], ''bar_loc'': {''spot'': ''0A'', ''ximg'': -2.032000412243633,
-        ''yimg'': 47.895324470095034, ''th0'': 0.0, ''th'': 180.0, ''xoff'': -0.659261479716864,
+        ''yimg'': 47.895324470095034, ''th0'': 0.0, ''th'': 0, ''xoff'': -0.659261479716864,
         ''x0'': -2.7074058527781157, ''y0'': 46.204595760714696, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.4450763055506237}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': ''Calibration'',
-        ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
-        []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-100-nm-1'',
-        ''sample_name'': ''N1-100-nm-1'', ''project_name'': ''epoxy'', ''institution'':
-        ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''A1'', ''front'': True, ''grazing'':
-        False, ''angle'': 0, ''height'': 0.25, ''sample_priority'': 1, ''notes'':
-        None, ''location'': [{''motor'': ''x'', ''position'': 4.382250688890507, ''order'':
-        0}, {''motor'': ''y'', ''position'': -178.99774057863522, ''order'': 0}, {''motor'':
-        ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
-        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''A1'', ''th'': 180.0, ''ximg'':
-        -4.9718096932603295, ''yimg'': -177.2650099210021, ''th0'': 0.0, ''xoff'':
-        -0.6913408627015617, ''x0'': -5.764932414293631, ''y0'': -178.99774057863522,
-        ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
-        ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
-        -1.9290725000000002, ''zoff'': 2.855402033020777}, ''sample_state'': None,
-        ''sample_set'': None, ''sample_desc'': None, ''components'': None, ''project_desc'':
-        None, ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
-        []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-100-micro-1'',
-        ''sample_name'': ''N1-100-micro-1'', ''project_name'': ''epoxy'', ''institution'':
-        ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''A2'', ''front'': True, ''grazing'':
+        ''zoff'': 2.4450763055506237}, ''project_desc'': ''Calibration'', ''sample_state'':
+        None, ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-100-nm-1'', ''sample_name'':
+        ''N1-100-nm-1'', ''project_name'': ''epoxy'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''A1'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': 4.382250688890507, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -178.99774057863522, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''A1'', ''th'': 0, ''ximg'': -4.9718096932603295,
+        ''yimg'': -177.2650099210021, ''th0'': 0.0, ''xoff'': -0.6913408627015617,
+        ''x0'': -5.764932414293631, ''y0'': -178.99774057863522, ''af1y'': -187.10289,
+        ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
+        -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
+        ''zoff'': 2.855402033020777}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-100-micro-1'', ''sample_name'':
+        ''N1-100-micro-1'', ''project_name'': ''epoxy'', ''institution'': ''MCC'',
+        ''proposal_id'': 318188, ''bar_spot'': ''A2'', ''front'': True, ''grazing'':
         False, ''angle'': 0, ''height'': 0.25, ''sample_priority'': 1, ''notes'':
         None, ''location'': [{''motor'': ''x'', ''position'': -3.630333952102513,
         ''order'': 0}, {''motor'': ''y'', ''position'': -179.54416394030883, ''order'':
         0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
         ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''A2'', ''th'':
-        180.0, ''ximg'': 3.040904900307922, ''yimg'': -177.81133137056358, ''th0'':
-        0.0, ''xoff'': -0.6914186990356596, ''x0'': 2.2474965540311933, ''y0'': -179.54416394030883,
+        0, ''ximg'': 3.040904900307922, ''yimg'': -177.81133137056358, ''th0'': 0.0,
+        ''xoff'': -0.6914186990356596, ''x0'': 2.2474965540311933, ''y0'': -179.54416394030883,
         ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
         ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
-        -1.9290725000000002, ''zoff'': 2.857004225119087}, ''sample_state'': None,
-        ''sample_set'': None, ''sample_desc'': None, ''components'': None, ''project_desc'':
-        None, ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
+        -1.9290725000000002, ''zoff'': 2.857004225119087}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
         []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-100-nano-2'',
         ''sample_name'': ''N1-100-nano-2'', ''project_name'': ''epoxy'', ''institution'':
         ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''B1'', ''front'': True, ''grazing'':
@@ -33431,14 +33492,14 @@ existing_plans:
         None, ''location'': [{''motor'': ''x'', ''position'': 3.60686582368421, ''order'':
         0}, {''motor'': ''y'', ''position'': -172.9870836002252, ''order'': 0}, {''motor'':
         ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
-        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''B1'', ''th'': 180.0, ''ximg'':
+        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''B1'', ''th'': 0, ''ximg'':
         -4.197854306381577, ''yimg'': -171.2554739758259, ''th0'': 0.0, ''xoff'':
         -0.6904846630264859, ''x0'': -4.987835149737182, ''y0'': -172.9870836002252,
         ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
         ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
-        -1.9290725000000002, ''zoff'': 2.8377779199393682}, ''sample_state'': None,
-        ''sample_set'': None, ''sample_desc'': None, ''components'': None, ''project_desc'':
-        None, ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
+        -1.9290725000000002, ''zoff'': 2.8377779199393682}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
         []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-100-micro-2'',
         ''sample_name'': ''N1-100-micro-2'', ''project_name'': ''epoxy'', ''institution'':
         ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''B2'', ''front'': True, ''grazing'':
@@ -33447,13 +33508,13 @@ existing_plans:
         ''order'': 0}, {''motor'': ''y'', ''position'': -172.85047775980678, ''order'':
         0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
         ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''B2'', ''th'':
-        180.0, ''ximg'': 2.9953781128444668, ''yimg'': -171.11889361343555, ''th0'':
-        0.0, ''xoff'': -0.6904652039429615, ''x0'': 2.2054686757997186, ''y0'': -172.85047775980678,
+        0, ''ximg'': 2.9953781128444668, ''yimg'': -171.11889361343555, ''th0'': 0.0,
+        ''xoff'': -0.6904652039429615, ''x0'': 2.2054686757997186, ''y0'': -172.85047775980678,
         ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
         ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
-        -1.9290725000000002, ''zoff'': 2.8373773719147906}, ''sample_state'': None,
-        ''sample_set'': None, ''sample_desc'': None, ''components'': None, ''project_desc'':
-        None, ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
+        -1.9290725000000002, ''zoff'': 2.8373773719147906}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
         []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-90-nano-1'',
         ''sample_name'': ''N1-90-nano-1'', ''project_name'': ''epoxy'', ''institution'':
         ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''C1'', ''front'': True, ''grazing'':
@@ -33462,13 +33523,13 @@ existing_plans:
         ''order'': 0}, {''motor'': ''y'', ''position'': -167.20410302251253, ''order'':
         0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
         ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''C1'', ''th'':
-        180.0, ''ximg'': -4.425488243698858, ''yimg'': -165.47357196796702, ''th0'':
-        0.0, ''xoff'': -0.6896608951572842, ''x0'': -5.212446219894861, ''y0'': -167.20410302251253,
+        0, ''ximg'': -4.425488243698858, ''yimg'': -165.47357196796702, ''th0'': 0.0,
+        ''xoff'': -0.6896608951572842, ''x0'': -5.212446219894861, ''y0'': -167.20410302251253,
         ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
         ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
-        -1.9290725000000002, ''zoff'': 2.820821386898922}, ''sample_state'': None,
-        ''sample_set'': None, ''sample_desc'': None, ''components'': None, ''project_desc'':
-        None, ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
+        -1.9290725000000002, ''zoff'': 2.820821386898922}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
         []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-90-micro-1'',
         ''sample_name'': ''N1-90-micro-1'', ''project_name'': ''epoxy'', ''institution'':
         ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''C2'', ''front'': True, ''grazing'':
@@ -33477,13 +33538,13 @@ existing_plans:
         ''order'': 0}, {''motor'': ''y'', ''position'': -167.06749718209412, ''order'':
         0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
         ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''C2'', ''th'':
-        180.0, ''ximg'': 2.4945834507464504, ''yimg'': -165.33699160557666, ''th0'':
-        0.0, ''xoff'': -0.6896414360737598, ''x0'': 1.7076968808613038, ''y0'': -167.06749718209412,
+        0, ''ximg'': 2.4945834507464504, ''yimg'': -165.33699160557666, ''th0'': 0.0,
+        ''xoff'': -0.6896414360737598, ''x0'': 1.7076968808613038, ''y0'': -167.06749718209412,
         ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
         ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
-        -1.9290725000000002, ''zoff'': 2.8204208388743446}, ''sample_state'': None,
-        ''sample_set'': None, ''sample_desc'': None, ''components'': None, ''project_desc'':
-        None, ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
+        -1.9290725000000002, ''zoff'': 2.8204208388743446}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
         []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-90-nano-2'',
         ''sample_name'': ''N1-90-nano-2'', ''project_name'': ''epoxy'', ''institution'':
         ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''D1'', ''front'': True, ''grazing'':
@@ -33491,14 +33552,14 @@ existing_plans:
         None, ''location'': [{''motor'': ''x'', ''position'': 3.968286143024384, ''order'':
         0}, {''motor'': ''y'', ''position'': -161.238981324242, ''order'': 0}, {''motor'':
         ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
-        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''D1'', ''th'': 180.0, ''ximg'':
+        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''D1'', ''th'': 0, ''ximg'':
         -4.562068606089225, ''yimg'': -159.5095628102543, ''th0'': 0.0, ''xoff'':
         -0.6888111818433833, ''x0'': -5.345908506711151, ''y0'': -161.238981324242,
         ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
         ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
-        -1.9290725000000002, ''zoff'': 2.8033307898257056}, ''sample_state'': None,
-        ''sample_set'': None, ''sample_desc'': None, ''components'': None, ''project_desc'':
-        None, ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
+        -1.9290725000000002, ''zoff'': 2.8033307898257056}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
         []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-90-micro-2'',
         ''sample_name'': ''N1-90-micro-2'', ''project_name'': ''epoxy'', ''institution'':
         ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''D2'', ''front'': True, ''grazing'':
@@ -33507,13 +33568,13 @@ existing_plans:
         ''order'': 0}, {''motor'': ''y'', ''position'': -161.1934460441025, ''order'':
         0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
         ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''D2'', ''th'':
-        180.0, ''ximg'': 2.5856370256733605, ''yimg'': -159.46403602279082, ''th0'':
-        0.0, ''xoff'': -0.6888046954822085, ''x0'': 1.8018209271550536, ''y0'': -161.1934460441025,
+        0, ''ximg'': 2.5856370256733605, ''yimg'': -159.46403602279082, ''th0'': 0.0,
+        ''xoff'': -0.6888046954822085, ''x0'': 1.8018209271550536, ''y0'': -161.1934460441025,
         ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
         ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
-        -1.9290725000000002, ''zoff'': 2.803197273817513}, ''sample_state'': None,
-        ''sample_set'': None, ''sample_desc'': None, ''components'': None, ''project_desc'':
-        None, ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
+        -1.9290725000000002, ''zoff'': 2.803197273817513}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
         []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-80-nano-1'',
         ''sample_name'': ''N1-80-nano-1'', ''project_name'': ''epoxy'', ''institution'':
         ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''E1'', ''front'': True, ''grazing'':
@@ -33521,14 +33582,14 @@ existing_plans:
         None, ''location'': [{''motor'': ''x'', ''position'': 3.511415519961971, ''order'':
         0}, {''motor'': ''y'', ''position'': -154.49975986360045, ''order'': 0}, {''motor'':
         ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
-        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''E1'', ''th'': 180.0, ''ximg'':
+        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''E1'', ''th'': 0, ''ximg'':
         -4.1068007314546655, ''yimg'': -152.7715982656628, ''th0'': 0.0, ''xoff'':
         -0.6878512003895104, ''x0'': -4.887117920740993, ''y0'': -154.49975986360045,
         ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
         ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
-        -1.9290725000000002, ''zoff'': 2.7835704206132172}, ''sample_state'': None,
-        ''sample_set'': None, ''sample_desc'': None, ''components'': None, ''project_desc'':
-        None, ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
+        -1.9290725000000002, ''zoff'': 2.7835704206132172}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
         []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-80-micro-1'',
         ''sample_name'': ''N1-80-micro-1'', ''project_name'': ''epoxy'', ''institution'':
         ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''E2'', ''front'': True, ''grazing'':
@@ -33537,13 +33598,13 @@ existing_plans:
         ''order'': 0}, {''motor'': ''y'', ''position'': -154.63636570401886, ''order'':
         0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
         ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''E2'', ''th'':
-        180.0, ''ximg'': 2.1303691510388028, ''yimg'': -152.90817862805318, ''th0'':
-        0.0, ''xoff'': -0.6878706594730348, ''x0'': 1.349980555441619, ''y0'': -154.63636570401886,
+        0, ''ximg'': 2.1303691510388028, ''yimg'': -152.90817862805318, ''th0'': 0.0,
+        ''xoff'': -0.6878706594730348, ''x0'': 1.349980555441619, ''y0'': -154.63636570401886,
         ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
         ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
-        -1.9290725000000002, ''zoff'': 2.7839709686377945}, ''sample_state'': None,
-        ''sample_set'': None, ''sample_desc'': None, ''components'': None, ''project_desc'':
-        None, ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
+        -1.9290725000000002, ''zoff'': 2.7839709686377945}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
         []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-80-nano-2'',
         ''sample_name'': ''N1-80-nano-2'', ''project_name'': ''epoxy'', ''institution'':
         ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''F1'', ''front'': True, ''grazing'':
@@ -33552,13 +33613,13 @@ existing_plans:
         ''order'': 0}, {''motor'': ''y'', ''position'': -149.2632026475614, ''order'':
         0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
         ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''F1'', ''th'':
-        180.0, ''ximg'': -3.697059644283561, ''yimg'': -147.53601770736535, ''th0'':
-        0.0, ''xoff'': -0.6871052688544065, ''x0'': -4.474639591653713, ''y0'': -149.2632026475614,
+        0, ''ximg'': -3.697059644283561, ''yimg'': -147.53601770736535, ''th0'': 0.0,
+        ''xoff'': -0.6871052688544065, ''x0'': -4.474639591653713, ''y0'': -149.2632026475614,
         ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
         ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
-        -1.9290725000000002, ''zoff'': 2.7682160796710806}, ''sample_state'': None,
-        ''sample_set'': None, ''sample_desc'': None, ''components'': None, ''project_desc'':
-        None, ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
+        -1.9290725000000002, ''zoff'': 2.7682160796710806}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
         []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-80-micro-2'',
         ''sample_name'': ''N1-80-micro-2'', ''project_name'': ''epoxy'', ''institution'':
         ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''F2'', ''front'': True, ''grazing'':
@@ -33567,13 +33628,13 @@ existing_plans:
         ''order'': 0}, {''motor'': ''y'', ''position'': -148.9899909667246, ''order'':
         0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
         ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''F2'', ''th'':
-        180.0, ''ximg'': 2.2669495134291715, ''yimg'': -147.26285698258462, ''th0'':
-        0.0, ''xoff'': -0.6870663506873576, ''x0'': 1.489512378680733, ''y0'': -148.9899909667246,
+        0, ''ximg'': 2.2669495134291715, ''yimg'': -147.26285698258462, ''th0'': 0.0,
+        ''xoff'': -0.6870663506873576, ''x0'': 1.489512378680733, ''y0'': -148.9899909667246,
         ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
         ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
-        -1.9290725000000002, ''zoff'': 2.7674149836219257}, ''sample_state'': None,
-        ''sample_set'': None, ''sample_desc'': None, ''components'': None, ''project_desc'':
-        None, ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
+        -1.9290725000000002, ''zoff'': 2.7674149836219257}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
         []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-70-nano-1'',
         ''sample_name'': ''N1-70-nano-1'', ''project_name'': ''epoxy'', ''institution'':
         ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''G1'', ''front'': True, ''grazing'':
@@ -33582,13 +33643,13 @@ existing_plans:
         ''order'': 0}, {''motor'': ''y'', ''position'': -143.02486926845404, ''order'':
         0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
         ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''G1'', ''th'':
-        180.0, ''ximg'': -4.471015031162313, ''yimg'': -141.29884782487187, ''th0'':
-        0.0, ''xoff'': -0.6862166373734566, ''x0'': -5.245334090336674, ''y0'': -143.02486926845404,
+        0, ''ximg'': -4.471015031162313, ''yimg'': -141.29884782487187, ''th0'': 0.0,
+        ''xoff'': -0.6862166373734566, ''x0'': -5.245334090336674, ''y0'': -143.02486926845404,
         ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
         ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
-        -1.9290725000000002, ''zoff'': 2.7499243865487095}, ''sample_state'': None,
-        ''sample_set'': None, ''sample_desc'': None, ''components'': None, ''project_desc'':
-        None, ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
+        -1.9290725000000002, ''zoff'': 2.7499243865487095}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
         []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-70-micro-1'',
         ''sample_name'': ''N1-70-micro-1'', ''project_name'': ''epoxy'', ''institution'':
         ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''G2'', ''front'': True, ''grazing'':
@@ -33596,239 +33657,239 @@ existing_plans:
         None, ''location'': [{''motor'': ''x'', ''position'': -2.81961274720715, ''order'':
         0}, {''motor'': ''y'', ''position'': -142.70612230747776, ''order'': 0}, {''motor'':
         ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
-        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''G2'', ''th'': 180.0, ''ximg'':
+        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''G2'', ''th'': 0, ''ximg'':
         2.221422725965713, ''yimg'': -140.9801603126277, ''th0'': 0.0, ''xoff'': -0.6861712328452328,
         ''x0'': 1.4472702815166842, ''y0'': -142.70612230747776, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.748989774491362}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''N1-70-nano-2'', ''sample_name'': ''N1-70-nano-2'',
-        ''project_name'': ''epoxy'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''H1'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': 3.7347935104404244, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -136.60439476878878, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''H1'', ''th'': 180.0, ''ximg'': -4.334434668771946,
+        ''zoff'': 2.748989774491362}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-70-nano-2'', ''sample_name'':
+        ''N1-70-nano-2'', ''project_name'': ''epoxy'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''H1'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': 3.7347935104404244, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -136.60439476878878, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''H1'', ''th'': 0, ''ximg'': -4.334434668771946,
         ''yimg'': -134.8795707925246, ''th0'': 0.0, ''xoff'': -0.6853020604478075,
         ''x0'': -5.10539763133604, ''y0'': -136.60439476878878, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.731098629393568}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''N1-70-micro-2'', ''sample_name'': ''N1-70-micro-2'',
-        ''project_name'': ''epoxy'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''H2'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': -2.9120416535552622, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -136.9231417297651, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''H2'', ''th'': 180.0, ''ximg'': 2.3124763008926266,
-        ''yimg'': -135.19825830476879, ''th0'': 0.0, ''xoff'': -0.6853474649760312,
-        ''x0'': 1.5413467236031997, ''y0'': -136.9231417297651, ''af1y'': -187.10289,
-        ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
-        -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.7320332414509156}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''N1-60-nano-1'', ''sample_name'': ''N1-60-nano-1'',
-        ''project_name'': ''epoxy'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''I1'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': 3.050667978405157, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -131.4589081130287, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''I1'', ''th'': 180.0, ''ximg'': -3.651532856820106,
-        ''yimg'': -129.73504380915406, ''th0'': 0.0, ''xoff'': -0.6845691016350531,
-        ''x0'': -4.419806181675264, ''y0'': -131.4589081130287, ''af1y'': -187.10289,
-        ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
-        -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.7160113204678167}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''N1-60-micro-1'', ''sample_name'': ''N1-60-micro-1'',
-        ''project_name'': ''epoxy'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''I2'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': -2.7312015413099444, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -131.59551395344712, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''I2'', ''th'': 180.0, ''ximg'': 2.1303691510388028,
-        ''yimg'': -129.87162417154445, ''th0'': 0.0, ''xoff'': -0.6845885607185777,
-        ''x0'': 1.3620244198727887, ''y0'': -131.59551395344712, ''af1y'': -187.10289,
-        ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
-        -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.7164118684923944}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''N1-60-nano-2'', ''sample_name'': ''N1-60-nano-2'',
-        ''project_name'': ''epoxy'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''J1'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': 3.140248757479448, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -125.26611001406081, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''J1'', ''th'': 180.0, ''ximg'': -3.7425864317470197,
-        ''yimg'': -123.54340071412406, ''th0'': 0.0, ''xoff'': -0.6836869565152781,
-        ''x0'': -4.507622670510005, ''y0'': -125.26611001406081, ''af1y'': -187.10289,
-        ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
-        -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.697853143353638}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''N1-60-micro-2'', ''sample_name'': ''N1-60-micro-2'',
-        ''project_name'': ''epoxy'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''J2'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': -2.626064802510044, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -124.97952082000529, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''J2'', ''th'': 180.0, ''ximg'': 2.0236589704615042,
-        ''yimg'': -123.25686497113256, ''th0'': 0.0, ''xoff'': -0.6836461327624485,
-        ''x0'': 1.2587725369851466, ''y0'': -124.97952082000529, ''af1y'': -187.10289,
-        ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
-        -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.6970128225065015}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''SEBS1-nano'', ''sample_name'': ''SEBS1-nano'',
-        ''project_name'': ''SEBS'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''K1'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': 3.1976714108402837, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -119.13072476540229, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''K1'', ''th'': 180.0, ''ximg'': -3.8014682268082716,
+        ''zoff'': 2.731098629393568}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-70-micro-2'', ''sample_name'':
+        ''N1-70-micro-2'', ''project_name'': ''epoxy'', ''institution'': ''MCC'',
+        ''proposal_id'': 318188, ''bar_spot'': ''H2'', ''front'': True, ''grazing'':
+        False, ''angle'': 0, ''height'': 0.25, ''sample_priority'': 1, ''notes'':
+        None, ''location'': [{''motor'': ''x'', ''position'': -2.9120416535552622,
+        ''order'': 0}, {''motor'': ''y'', ''position'': -136.9231417297651, ''order'':
+        0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
+        ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''H2'', ''th'':
+        0, ''ximg'': 2.3124763008926266, ''yimg'': -135.19825830476879, ''th0'': 0.0,
+        ''xoff'': -0.6853474649760312, ''x0'': 1.5413467236031997, ''y0'': -136.9231417297651,
+        ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
+        ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
+        -1.9290725000000002, ''zoff'': 2.7320332414509156}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
+        []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-60-nano-1'',
+        ''sample_name'': ''N1-60-nano-1'', ''project_name'': ''epoxy'', ''institution'':
+        ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''I1'', ''front'': True, ''grazing'':
+        False, ''angle'': 0, ''height'': 0.25, ''sample_priority'': 1, ''notes'':
+        None, ''location'': [{''motor'': ''x'', ''position'': 3.050667978405157, ''order'':
+        0}, {''motor'': ''y'', ''position'': -131.4589081130287, ''order'': 0}, {''motor'':
+        ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
+        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''I1'', ''th'': 0, ''ximg'':
+        -3.651532856820106, ''yimg'': -129.73504380915406, ''th0'': 0.0, ''xoff'':
+        -0.6845691016350531, ''x0'': -4.419806181675264, ''y0'': -131.4589081130287,
+        ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
+        ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
+        -1.9290725000000002, ''zoff'': 2.7160113204678167}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
+        []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-60-micro-1'',
+        ''sample_name'': ''N1-60-micro-1'', ''project_name'': ''epoxy'', ''institution'':
+        ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''I2'', ''front'': True, ''grazing'':
+        False, ''angle'': 0, ''height'': 0.25, ''sample_priority'': 1, ''notes'':
+        None, ''location'': [{''motor'': ''x'', ''position'': -2.7312015413099444,
+        ''order'': 0}, {''motor'': ''y'', ''position'': -131.59551395344712, ''order'':
+        0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
+        ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''I2'', ''th'':
+        0, ''ximg'': 2.1303691510388028, ''yimg'': -129.87162417154445, ''th0'': 0.0,
+        ''xoff'': -0.6845885607185777, ''x0'': 1.3620244198727887, ''y0'': -131.59551395344712,
+        ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
+        ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
+        -1.9290725000000002, ''zoff'': 2.7164118684923944}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
+        []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-60-nano-2'',
+        ''sample_name'': ''N1-60-nano-2'', ''project_name'': ''epoxy'', ''institution'':
+        ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''J1'', ''front'': True, ''grazing'':
+        False, ''angle'': 0, ''height'': 0.25, ''sample_priority'': 1, ''notes'':
+        None, ''location'': [{''motor'': ''x'', ''position'': 3.140248757479448, ''order'':
+        0}, {''motor'': ''y'', ''position'': -125.26611001406081, ''order'': 0}, {''motor'':
+        ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
+        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''J1'', ''th'': 0, ''ximg'':
+        -3.7425864317470197, ''yimg'': -123.54340071412406, ''th0'': 0.0, ''xoff'':
+        -0.6836869565152781, ''x0'': -4.507622670510005, ''y0'': -125.26611001406081,
+        ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
+        ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
+        -1.9290725000000002, ''zoff'': 2.697853143353638}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
+        []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''N1-60-micro-2'',
+        ''sample_name'': ''N1-60-micro-2'', ''project_name'': ''epoxy'', ''institution'':
+        ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''J2'', ''front'': True, ''grazing'':
+        False, ''angle'': 0, ''height'': 0.25, ''sample_priority'': 1, ''notes'':
+        None, ''location'': [{''motor'': ''x'', ''position'': -2.626064802510044,
+        ''order'': 0}, {''motor'': ''y'', ''position'': -124.97952082000529, ''order'':
+        0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
+        ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''J2'', ''th'':
+        0, ''ximg'': 2.0236589704615042, ''yimg'': -123.25686497113256, ''th0'': 0.0,
+        ''xoff'': -0.6836461327624485, ''x0'': 1.2587725369851466, ''y0'': -124.97952082000529,
+        ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
+        ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
+        -1.9290725000000002, ''zoff'': 2.6970128225065015}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
+        []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''SEBS1-nano'', ''sample_name'':
+        ''SEBS1-nano'', ''project_name'': ''SEBS'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''K1'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': 3.1976714108402837, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -119.13072476540229, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''K1'', ''th'': 0, ''ximg'': -3.8014682268082716,
         ''yimg'': -117.40915976147025, ''th0'': 0.0, ''xoff'': -0.6828129896801659,
         ''x0'': -4.563297390200616, ''y0'': -119.13072476540229, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.6798633089963015}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''SEBS1-micro'', ''sample_name'': ''SEBS1-micro'',
-        ''project_name'': ''SEBS'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''K2'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': -2.80807988556964, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -119.13072476540229, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''K2'', ''th'': 180.0, ''ximg'': 2.2042830696016527,
+        ''zoff'': 2.6798633089963015}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''SEBS1-micro'', ''sample_name'':
+        ''SEBS1-micro'', ''project_name'': ''SEBS'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''K2'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': -2.80807988556964, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -119.13072476540229, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''K2'', ''th'': 0, ''ximg'': 2.2042830696016527,
         ''yimg'': -117.40915976147025, ''th0'': 0.0, ''xoff'': -0.6828129896801659,
         ''x0'': 1.4424539062093078, ''y0'': -119.13072476540229, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.6798633089963015}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''SEBS4-nano'', ''sample_name'': ''SEBS4-nano'',
-        ''project_name'': ''SEBS'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''L1'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': 3.008254532584122, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -112.68229204531323, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''L1'', ''th'': 180.0, ''ximg'': -3.6135849404461577,
+        ''zoff'': 2.6798633089963015}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''SEBS4-nano'', ''sample_name'':
+        ''SEBS4-nano'', ''project_name'': ''SEBS'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''L1'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': 3.008254532584122, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -112.68229204531323, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''L1'', ''th'': 0, ''ximg'': -3.6135849404461577,
         ''yimg'': -110.96192972311985, ''th0'': 0.0, ''xoff'': -0.6818944301916574,
         ''x0'': -4.372043392967437, ''y0'': -112.68229204531323, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.6609555743069118}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''SEBS4-micro-1'', ''sample_name'': ''SEBS4-micro-1'',
-        ''project_name'': ''SEBS'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''L2'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': -2.4231081527250713, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -113.11214754752929, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''L2'', ''th'': 180.0, ''ximg'': 1.8178799748067165,
+        ''zoff'': 2.6609555743069118}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''SEBS4-micro-1'', ''sample_name'':
+        ''SEBS4-micro-1'', ''project_name'': ''SEBS'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''L2'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': -2.4231081527250713, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -113.11214754752929, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''L2'', ''th'': 0, ''ximg'': 1.8178799748067165,
         ''yimg'': -111.39170505401596, ''th0'': 0.0, ''xoff'': -0.6819556617912395,
         ''x0'': 1.0591968291425917, ''y0'': -113.11214754752929, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.6622159726305785}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''SEBS4-micro-2'', ''sample_name'': ''SEBS4-micro-2'',
-        ''project_name'': ''SEBS'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''L3'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': -8.326703014396974, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -113.86918295870328, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''L3'', ''th'': 180.0, ''ximg'': 7.721654877648386,
+        ''zoff'': 2.6622159726305785}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''SEBS4-micro-2'', ''sample_name'':
+        ''SEBS4-micro-2'', ''project_name'': ''SEBS'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''L3'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': -8.326703014396974, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -113.86918295870328, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''L3'', ''th'': 0, ''ximg'': 7.721654877648386,
         ''yimg'': -112.14859927232898, ''th0'': 0.0, ''xoff'': -0.6820634991666539,
         ''x0'': 6.962576016063666, ''y0'': -113.86918295870328, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.6644357096312232}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''SEBS7-nano'', ''sample_name'': ''SEBS7-nano'',
-        ''project_name'': ''SEBS'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''M1'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': 3.005651867507362, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -107.24507558170195, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''M1'', ''th'': 180.0, ''ximg'': -3.6122753757949955,
+        ''zoff'': 2.6644357096312232}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''SEBS7-nano'', ''sample_name'':
+        ''SEBS7-nano'', ''project_name'': ''SEBS'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''M1'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': 3.005651867507362, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -107.24507558170195, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''M1'', ''th'': 0, ''ximg'': -3.6122753757949955,
         ''yimg'': -105.52572734172574, ''th0'': 0.0, ''xoff'': -0.6811199153613847,
         ''x0'': -4.367891698230132, ''y0'': -107.24507558170195, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.6450128715130266}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''SEBS7-micro'', ''sample_name'': ''SEBS7-micro'',
-        ''project_name'': ''SEBS'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''M2'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': -2.9780199091291872, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -107.89649794228541, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''M2'', ''th'': 180.0, ''ximg'': 2.3715513246959468,
+        ''zoff'': 2.6450128715130266}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''SEBS7-micro'', ''sample_name'':
+        ''SEBS7-micro'', ''project_name'': ''SEBS'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''M2'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': -2.9780199091291872, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -107.89649794228541, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''M2'', ''th'': 0, ''ximg'': 2.3715513246959468,
         ''yimg'': -106.17702820708527, ''th0'': 0.0, ''xoff'': -0.6812127084812503,
         ''x0'': 1.615594492166686, ''y0'': -107.89649794228541, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.6469229358184627}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''SEBS8-nano'', ''sample_name'': ''SEBS8-nano'',
-        ''project_name'': ''SEBS'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''N1'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': 2.8927621724734247, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -100.78429298420266, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''N1'', ''th'': 180.0, ''ximg'': -3.5009222097520283,
+        ''zoff'': 2.6469229358184627}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''SEBS8-nano'', ''sample_name'':
+        ''SEBS8-nano'', ''project_name'': ''SEBS'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''N1'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': 2.8927621724734247, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -100.78429298420266, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''N1'', ''th'': 0, ''ximg'': -3.5009222097520283,
         ''yimg'': -99.06614972931116, ''th0'': 0.0, ''xoff'': -0.6801995966706685,
         ''x0'': -4.253161365814762, ''y0'': -100.78429298420266, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.6260689252020453}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''SEBS8-micro'', ''sample_name'': ''SEBS8-micro'',
-        ''project_name'': ''SEBS'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''N2'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': -2.853235668433078, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -100.8614351058507, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''N2'', ''th'': 180.0, ''ximg'': 2.245093977400389,
+        ''zoff'': 2.6260689252020453}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''SEBS8-micro'', ''sample_name'':
+        ''SEBS8-micro'', ''project_name'': ''SEBS'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''N2'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': -2.853235668433078, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -100.8614351058507, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''N2'', ''th'': 0, ''ximg'': 2.245093977400389,
         ''yimg'': -99.1432774633669, ''th0'': 0.0, ''xoff'': -0.6802105853296, ''x0'':
         1.4928144977738773, ''y0'': -100.8614351058507, ''af1y'': -187.10289, ''af2y'':
         3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'': -0.6656175000000033,
         ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002, ''zoff'':
-        2.626295117027689}, ''sample_state'': None, ''sample_set'': None, ''sample_desc'':
-        None, ''components'': None, ''project_desc'': None, ''density'': None, ''composition'':
-        None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'': ''20250604_Iwayama'',
+        2.626295117027689}, ''project_desc'': None, ''sample_state'': None, ''composition'':
+        None, ''acq_history'': [], ''sample_set'': None, ''density'': None, ''components'':
+        None, ''sample_desc'': None, ''acquisitions'': []}, {''bar_name'': ''20250604_Iwayama'',
         ''sample_id'': ''SEBS9-nano'', ''sample_name'': ''SEBS9-nano'', ''project_name'':
         ''SEBS'', ''institution'': ''MCC'', ''proposal_id'': 318188, ''bar_spot'':
         ''O1'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.25,
@@ -33836,14 +33897,14 @@ existing_plans:
         ''position'': 4.684739031108571, ''order'': 0}, {''motor'': ''y'', ''position'':
         -95.55791424254777, ''order'': 0}, {''motor'': ''z'', ''position'': 0.0, ''order'':
         0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}], ''bar_loc'':
-        {''spot'': ''O1'', ''th'': 180.0, ''ximg'': -5.294142026547917, ''yimg'':
-        -93.84074574703499, ''th0'': 0.0, ''xoff'': -0.6794551150280626, ''x0'': -6.043649261164696,
-        ''y0'': -95.55791424254777, ''af1y'': -187.10289, ''af2y'': 3.283379999999994,
-        ''af1xoff'': -0.6927425000000014, ''af2xoff'': -0.6656175000000033, ''af1zoff'':
-        -1.3708324999999988, ''af2zoff'': -1.9290725000000002, ''zoff'': 2.6107444290146815},
-        ''sample_state'': None, ''sample_set'': None, ''sample_desc'': None, ''components'':
-        None, ''project_desc'': None, ''density'': None, ''composition'': None, ''acq_history'':
-        [], ''acquisitions'': []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'':
+        {''spot'': ''O1'', ''th'': 0, ''ximg'': -5.294142026547917, ''yimg'': -93.84074574703499,
+        ''th0'': 0.0, ''xoff'': -0.6794551150280626, ''x0'': -6.043649261164696, ''y0'':
+        -95.55791424254777, ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'':
+        -0.6927425000000014, ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988,
+        ''af2zoff'': -1.9290725000000002, ''zoff'': 2.6107444290146815}, ''project_desc'':
+        None, ''sample_state'': None, ''composition'': None, ''acq_history'': [],
+        ''sample_set'': None, ''density'': None, ''components'': None, ''sample_desc'':
+        None, ''acquisitions'': []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'':
         ''SEBS9-micro-1'', ''sample_name'': ''SEBS9-micro-1'', ''project_name'': ''SEBS'',
         ''institution'': ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''O2'', ''front'':
         True, ''grazing'': False, ''angle'': 0, ''height'': 0.25, ''sample_priority'':
@@ -33851,13 +33912,13 @@ existing_plans:
         ''order'': 0}, {''motor'': ''y'', ''position'': -95.19148916471956, ''order'':
         0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
         ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''O2'', ''th'':
-        180.0, ''ximg'': 1.840173373607767, ''yimg'': -93.47438901027023, ''th0'':
-        0.0, ''xoff'': -0.6794029188981381, ''x0'': 1.0908576759189326, ''y0'': -95.19148916471956,
+        0, ''ximg'': 1.840173373607767, ''yimg'': -93.47438901027023, ''th0'': 0.0,
+        ''xoff'': -0.6794029188981381, ''x0'': 1.0908576759189326, ''y0'': -95.19148916471956,
         ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
         ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
-        -1.9290725000000002, ''zoff'': 2.6096700178428733}, ''sample_state'': None,
-        ''sample_set'': None, ''sample_desc'': None, ''components'': None, ''project_desc'':
-        None, ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
+        -1.9290725000000002, ''zoff'': 2.6096700178428733}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
         []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''SEBS9-micro-2'',
         ''sample_name'': ''SEBS9-micro-2'', ''project_name'': ''SEBS'', ''institution'':
         ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''O3'', ''front'': True, ''grazing'':
@@ -33866,13 +33927,13 @@ existing_plans:
         ''order'': 0}, {''motor'': ''y'', ''position'': -95.28791681677961, ''order'':
         0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
         ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''O3'', ''th'':
-        180.0, ''ximg'': 7.721163095357723, ''yimg'': -93.5707986778399, ''th0'':
-        0.0, ''xoff'': -0.6794166547218025, ''x0'': 6.971796993214166, ''y0'': -95.28791681677961,
+        0, ''ximg'': 7.721163095357723, ''yimg'': -93.5707986778399, ''th0'': 0.0,
+        ''xoff'': -0.6794166547218025, ''x0'': 6.971796993214166, ''y0'': -95.28791681677961,
         ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
         ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
-        -1.9290725000000002, ''zoff'': 2.609952757624928}, ''sample_state'': None,
-        ''sample_set'': None, ''sample_desc'': None, ''components'': None, ''project_desc'':
-        None, ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
+        -1.9290725000000002, ''zoff'': 2.609952757624928}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
         []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''PBzMA-1'', ''sample_name'':
         ''PBzMA-1'', ''project_name'': ''Acryl'', ''institution'': ''MCC'', ''proposal_id'':
         318188, ''bar_spot'': ''P1'', ''front'': True, ''grazing'': False, ''angle'':
@@ -33880,178 +33941,179 @@ existing_plans:
         [{''motor'': ''x'', ''position'': 3.777075495018202, ''order'': 0}, {''motor'':
         ''y'', ''position'': -89.61797087564845, ''order'': 0}, {''motor'': ''z'',
         ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
-        ''order'': 0}], ''bar_loc'': {''spot'': ''P1'', ''th'': 180.0, ''ximg'': -4.387891151393005,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''P1'', ''th'': 0, ''ximg'': -4.387891151393005,
         ''yimg'': -87.90191022474322, ''th0'': 0.0, ''xoff'': -0.6786089882903406,
         ''x0'': -5.134293471598884, ''y0'': -89.61797087564845, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.5933276584401126}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''PBzMA-2'', ''sample_name'': ''PBzMA-2'',
-        ''project_name'': ''Acryl'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''P2'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': -3.83943501295316, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -89.00083390246411, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''P2'', ''th'': 180.0, ''ximg'': 3.228472586611037,
+        ''zoff'': 2.5933276584401126}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''PBzMA-2'', ''sample_name'':
+        ''PBzMA-2'', ''project_name'': ''Acryl'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''P2'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': -3.83943501295316, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -89.00083390246411, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''P2'', ''th'': 0, ''ximg'': 3.228472586611037,
         ''yimg'': -87.28488835229732, ''th0'': 0.0, ''xoff'': -0.6785210790188889,
         ''x0'': 2.482392854915381, ''y0'': -89.00083390246411, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.5915181238349625}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''Block-1'', ''sample_name'': ''Block-1'',
-        ''project_name'': ''Acryl'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''Q1'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': 3.794742958891615, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -82.82946417062067, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''Q1'', ''th'': 180.0, ''ximg'': -4.407173084906939,
+        ''zoff'': 2.5915181238349625}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''Block-1'', ''sample_name'':
+        ''Block-1'', ''project_name'': ''Acryl'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''Q1'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': 3.794742958891615, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -82.82946417062067, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''Q1'', ''th'': 0, ''ximg'': -4.407173084906939,
         ''yimg'': -81.11466962783835, ''th0'': 0.0, ''xoff'': -0.6776419863043726,
         ''x0'': -5.150026931500361, ''y0'': -82.82946417062067, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.573422777783463}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''Block-2'', ''sample_name'': ''Block-2'',
-        ''project_name'': ''Acryl'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''Q2'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': -3.9180396198050556, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -82.79089310979666, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''Q2'', ''th'': 180.0, ''ximg'': 3.305600320666775,
+        ''zoff'': 2.573422777783463}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''Block-2'', ''sample_name'':
+        ''Block-2'', ''project_name'': ''Acryl'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''Q2'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': -3.9180396198050556, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -82.79089310979666, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''Q2'', ''th'': 0, ''ximg'': 3.305600320666775,
         ''yimg'': -81.07610576081049, ''th0'': 0.0, ''xoff'': -0.6776364919749068,
         ''x0'': 2.5627666358552417, ''y0'': -82.79089310979666, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.573309681870641}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''Random-1'', ''sample_name'': ''Random-1'',
-        ''project_name'': ''Acryl'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''R1'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': 3.6968747647716977, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -76.69666549960128, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''R1'', ''th'': 180.0, ''ximg'': -4.310763417337265,
+        ''zoff'': 2.573309681870641}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''Random-1'', ''sample_name'':
+        ''Random-1'', ''project_name'': ''Acryl'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''R1'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': 3.6968747647716977, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -76.69666549960128, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''R1'', ''th'': 0, ''ximg'': -4.310763417337265,
         ''yimg'': -74.98301477040727, ''th0'': 0.0, ''xoff'': -0.676768387919322,
         ''x0'': -5.050411540610343, ''y0'': -76.69666549960128, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.5554405276447847}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''Random-2'', ''sample_name'': ''Random-2'',
-        ''project_name'': ''Acryl'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''R2'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': -3.244648819613516, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -76.5809523171292, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''R2'', ''th'': 180.0, ''ximg'': 2.6307326476790767,
+        ''zoff'': 2.5554405276447847}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''Random-2'', ''sample_name'':
+        ''Random-2'', ''project_name'': ''Acryl'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''R2'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': -3.244648819613516, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -76.5809523171292, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''R2'', ''th'': 0, ''ximg'': 2.6307326476790767,
         ''yimg'': -74.86732316932365, ''th0'': 0.0, ''xoff'': -0.6767519049309249,
         ''x0'': 1.8911450097516658, ''y0'': -76.5809523171292, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.5551012399063193}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''Blend-1'', ''sample_name'': ''Blend-1'',
-        ''project_name'': ''Acryl'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''S1'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': 3.348479031814998, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -71.14243274094217, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''S1'', ''th'': 180.0, ''ximg'': -3.963688614086445,
+        ''zoff'': 2.5551012399063193}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''Blend-1'', ''sample_name'':
+        ''Blend-1'', ''project_name'': ''Acryl'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''S1'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': 3.348479031814998, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -71.14243274094217, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''S1'', ''th'': 0, ''ximg'': -3.963688614086445,
         ''yimg'': -69.42981791839418, ''th0'': 0.0, ''xoff'': -0.6759772044762573,
         ''x0'': -4.700433440767513, ''y0'': -71.14243274094217, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.539154716198435}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''Blend-2'', ''sample_name'': ''Blend-2'',
-        ''project_name'': ''Acryl'', ''institution'': ''MCC'', ''proposal_id'': 318188,
-        ''bar_spot'': ''S2'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'':
-        0.25, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': -2.6674933976554573, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -71.10386168011817, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''S2'', ''th'': 180.0, ''ximg'': 2.052274642261052,
+        ''zoff'': 2.539154716198435}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''Blend-2'', ''sample_name'':
+        ''Blend-2'', ''project_name'': ''Acryl'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''S2'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': -2.6674933976554573, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -71.10386168011817, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''S2'', ''th'': 0, ''ximg'': 2.052274642261052,
         ''yimg'': -69.39125405136633, ''th0'': 0.0, ''xoff'': -0.6759717101467916,
         ''x0'': 1.3155499773618735, ''y0'': -71.10386168011817, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.539041620285613}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''PET'', ''sample_name'': ''PET'', ''project_name'':
-        ''Acryl'', ''institution'': ''MCC'', ''proposal_id'': 318188, ''bar_spot'':
-        ''V1'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.25,
-        ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'': ''x'',
-        ''position'': 4.443242460880699, ''order'': 0}, {''motor'': ''y'', ''position'':
-        -53.03331968406411, ''order'': 0}, {''motor'': ''z'', ''position'': 0.0, ''order'':
-        0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}], ''bar_loc'':
-        {''spot'': ''V1'', ''th'': 180.0, ''ximg'': -5.062758824380696, ''yimg'':
-        -51.32408234880991, ''th0'': 0.0, ''xoff'': -0.6733976167920984, ''x0'': -5.790037694464896,
-        ''y0'': -53.03331968406411, ''af1y'': -187.10289, ''af2y'': 3.283379999999994,
-        ''af1xoff'': -0.6927425000000014, ''af2xoff'': -0.6656175000000033, ''af1zoff'':
-        -1.3708324999999988, ''af2zoff'': -1.9290725000000002, ''zoff'': 2.4860561851285654},
-        ''sample_state'': None, ''sample_set'': None, ''sample_desc'': None, ''components'':
-        None, ''project_desc'': None, ''density'': None, ''composition'': None, ''acq_history'':
-        [], ''acquisitions'': []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'':
-        ''Nylon-1'', ''sample_name'': ''Nylon-1'', ''project_name'': ''Acryl'', ''institution'':
-        ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''V2'', ''front'': True, ''grazing'':
-        False, ''angle'': 0, ''height'': 0.25, ''sample_priority'': 1, ''notes'':
-        None, ''location'': [{''motor'': ''x'', ''position'': -1.1870683655036742,
-        ''order'': 0}, {''motor'': ''y'', ''position'': -53.09117627530014, ''order'':
-        0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
-        ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''V2'', ''th'':
-        180.0, ''ximg'': 0.5675657616881136, ''yimg'': -51.381928149351715, ''th0'':
-        0.0, ''xoff'': -0.6734058582862971, ''x0'': -0.15974335106892024, ''y0'':
-        -53.09117627530014, ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'':
-        -0.6927425000000014, ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988,
-        ''af2zoff'': -1.9290725000000002, ''zoff'': 2.4862258289977976}, ''sample_state'':
-        None, ''sample_set'': None, ''sample_desc'': None, ''components'': None, ''project_desc'':
-        None, ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
-        []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''Nylon-2'', ''sample_name'':
+        ''zoff'': 2.539041620285613}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''PET'', ''sample_name'':
+        ''PET'', ''project_name'': ''Acryl'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''V1'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': 4.443242460880699, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -53.03331968406411, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''V1'', ''th'': 0, ''ximg'': -5.062758824380696,
+        ''yimg'': -51.32408234880991, ''th0'': 0.0, ''xoff'': -0.6733976167920984,
+        ''x0'': -5.790037694464896, ''y0'': -53.03331968406411, ''af1y'': -187.10289,
+        ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
+        -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
+        ''zoff'': 2.4860561851285654}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''Nylon-1'', ''sample_name'':
+        ''Nylon-1'', ''project_name'': ''Acryl'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''V2'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': -1.1870683655036742, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -53.09117627530014, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''V2'', ''th'': 0, ''ximg'': 0.5675657616881136,
+        ''yimg'': -51.381928149351715, ''th0'': 0.0, ''xoff'': -0.6734058582862971,
+        ''x0'': -0.15974335106892024, ''y0'': -53.09117627530014, ''af1y'': -187.10289,
+        ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
+        -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
+        ''zoff'': 2.4862258289977976}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''Nylon-2'', ''sample_name'':
         ''Nylon-2'', ''project_name'': ''Acryl'', ''institution'': ''MCC'', ''proposal_id'':
         318188, ''bar_spot'': ''V3'', ''front'': True, ''grazing'': False, ''angle'':
         0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
         [{''motor'': ''x'', ''position'': -8.996260611770017, ''order'': 0}, {''motor'':
         ''y'', ''position'': -53.052605214476124, ''order'': 0}, {''motor'': ''z'',
         ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
-        ''order'': 0}], ''bar_loc'': {''spot'': ''V3'', ''th'': 180.0, ''ximg'': 8.3767488348315,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''V3'', ''th'': 0, ''ximg'': 8.3767488348315,
         ''yimg'': -51.34336428232385, ''th0'': 0.0, ''xoff'': -0.6734003639568313,
         ''x0'': 7.649459883856355, ''y0'': -53.052605214476124, ''af1y'': -187.10289,
         ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
         -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
-        ''zoff'': 2.486112733084976}, ''sample_state'': None, ''sample_set'': None,
-        ''sample_desc'': None, ''components'': None, ''project_desc'': None, ''density'':
-        None, ''composition'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250604_Iwayama'', ''sample_id'': ''SBA15'', ''sample_name'': ''SBA15'',
-        ''project_name'': ''calibration'', ''institution'': ''MCC'', ''proposal_id'':
+        ''zoff'': 2.486112733084976}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''SBA15'', ''sample_name'':
+        ''SBA15'', ''project_name'': ''calibration'', ''institution'': ''MCC'', ''proposal_id'':
         318188, ''bar_spot'': ''30C'', ''front'': True, ''grazing'': False, ''angle'':
         0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': ''For SDD calibration'',
         ''location'': [{''motor'': ''x'', ''position'': -7.353714209328628, ''order'':
         0}, {''motor'': ''y'', ''position'': -4.926181118516719, ''order'': 0}, {''motor'':
         ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
-        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''30C'', ''th'': 180.0, ''ximg'':
+        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''30C'', ''th'': 0, ''ximg'':
         6.722756814968502, ''yimg'': -3.2259161304302424, ''th0'': 0.0, ''xoff'':
         -0.6665449022624559, ''x0'': 6.0206244048037165, ''y0'': -4.926181118516719,
         ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
         ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
-        -1.9290725000000002, ''zoff'': 2.344999117132899}, ''sample_state'': None,
-        ''sample_set'': None, ''sample_desc'': None, ''components'': None, ''project_desc'':
-        None, ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
+        -1.9290725000000002, ''zoff'': 2.344999117132899}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
         []}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''HOPG'', ''sample_name'':
         ''HOPG'', ''project_name'': ''calibration'', ''institution'': ''MCC'', ''proposal_id'':
         318188, ''bar_spot'': ''30A'', ''front'': True, ''grazing'': True, ''angle'':
@@ -34060,35 +34122,35 @@ existing_plans:
         ''order'': 0}, {''motor'': ''y'', ''position'': -5.0195120295852576, ''order'':
         0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
         ''position'': 0.0, ''order'': 0}], ''bar_loc'': {''spot'': ''30A'', ''th'':
-        0.0, ''ximg'': -4.708147442659573, ''yimg'': -3.3192296345741426, ''th0'':
+        90, ''ximg'': -4.708147442659573, ''yimg'': -3.3192296345741426, ''th0'':
         0.0, ''xoff'': -0.6665581969648517, ''x0'': -5.410328638557296, ''y0'': -5.0195120295852576,
         ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
         ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
-        -1.9290725000000002, ''zoff'': 2.0952727768237733}, ''sample_state'': None,
-        ''sample_set'': None, ''sample_desc'': None, ''components'': None, ''project_desc'':
-        None, ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
+        -1.9290725000000002, ''zoff'': 2.0952727768237733}, ''project_desc'': None,
+        ''sample_state'': None, ''composition'': None, ''acq_history'': [], ''sample_set'':
+        None, ''density'': None, ''components'': None, ''sample_desc'': None, ''acquisitions'':
         [{''sample_id'': ''HOPG'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
         ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarization_frame'':
-        ''lab'', ''polarizations'': [0], ''exposure_time'': 1, ''exposures_per_energy'':
+        ''lab'', ''polarizations'': [90], ''exposure_time'': 1, ''exposures_per_energy'':
         1, ''sample_angles'': [20], ''spiral_dimensions'': None, ''group_name'': ''Group'',
-        ''priority'': 6, ''acquire_status'': ''Not begun'', ''uid_local'': ''af685994-17e3-482e-97fa-37b0119226a7'',
-        ''notes'': None}]}, {''bar_name'': ''20250604_Iwayama'', ''sample_id'': ''OpenBeam'',
-        ''sample_name'': ''OpenBeam'', ''project_name'': ''calibration'', ''institution'':
-        ''MCC'', ''proposal_id'': 318188, ''bar_spot'': ''40A'', ''front'': True,
-        ''grazing'': False, ''angle'': 0, ''height'': 0.0, ''sample_priority'': 1,
-        ''notes'': "Bar moved out of beam path for reference scan.  Don''t change
-        this row.", ''location'': [{''motor'': ''x'', ''position'': 1.225577280061304,
-        ''order'': 0}, {''motor'': ''y'', ''position'': 53.956221854518304, ''order'':
-        0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
-        ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''40A'', ''th'':
-        180.0, ''ximg'': -1.8705383214813196, ''yimg'': 55.645504826685794, ''th0'':
-        0.0, ''xoff'': -0.6581572843241368, ''x0'': -2.541891848709578, ''y0'': 53.956221854518304,
-        ''af1y'': -187.10289, ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014,
-        ''af2xoff'': -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'':
-        -1.9290725000000002, ''zoff'': 2.4223474199508113}, ''sample_state'': None,
-        ''sample_set'': None, ''sample_desc'': None, ''components'': None, ''project_desc'':
-        None, ''density'': None, ''composition'': None, ''acq_history'': [], ''acquisitions'':
-        []}]'
+        ''priority'': 6, ''acquire_status'': ''Started 2025-06-04_16-50-59'', ''uid_local'':
+        ''af685994-17e3-482e-97fa-37b0119226a7'', ''notes'': None}]}, {''bar_name'':
+        ''20250604_Iwayama'', ''sample_id'': ''OpenBeam'', ''sample_name'': ''OpenBeam'',
+        ''project_name'': ''calibration'', ''institution'': ''MCC'', ''proposal_id'':
+        318188, ''bar_spot'': ''40A'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.0, ''sample_priority'': 1, ''notes'': "Bar moved out of beam
+        path for reference scan.  Don''t change this row.", ''location'': [{''motor'':
+        ''x'', ''position'': 1.225577280061304, ''order'': 0}, {''motor'': ''y'',
+        ''position'': 53.956221854518304, ''order'': 0}, {''motor'': ''z'', ''position'':
+        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
+        ''bar_loc'': {''spot'': ''40A'', ''th'': 0, ''ximg'': -1.8705383214813196,
+        ''yimg'': 55.645504826685794, ''th0'': 0.0, ''xoff'': -0.6581572843241368,
+        ''x0'': -2.541891848709578, ''y0'': 53.956221854518304, ''af1y'': -187.10289,
+        ''af2y'': 3.283379999999994, ''af1xoff'': -0.6927425000000014, ''af2xoff'':
+        -0.6656175000000033, ''af1zoff'': -1.3708324999999988, ''af2zoff'': -1.9290725000000002,
+        ''zoff'': 2.4223474199508113}, ''project_desc'': None, ''sample_state'': None,
+        ''composition'': None, ''acq_history'': [], ''sample_set'': None, ''density'':
+        None, ''components'': None, ''sample_desc'': None, ''acquisitions'': []}]'
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
