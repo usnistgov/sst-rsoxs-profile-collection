@@ -150,6 +150,7 @@ prefix = "XF:07IDA-OP{Mir:M1"
 name = "SST 1 Mirror 1 fmb" 
 kind = "hinted"
 _baseline = true
+## Accessible in Phoebus by going to File --> Open --> /opt/css/opi/production/cs-studio-xf/07id/edl_conv/MC02/6Pod_TopLevel_M1.bob
 
 [mir1_temperature] # was Temperature_M1
 _target = "ophyd.EpicsSignalRO"
@@ -384,10 +385,10 @@ string = true
 
 
 [izero_mesh] #was Izero_Mesh_int and Izero_Mesh
-_target = "sst_base.detectors.scalar.ADCBuffer"
+_target = "ophyd.EpicsSignalRO"
 _group = "detectors"
 kind = "normal"
-prefix = "XF:07ID-BI[ADC:2-Ch:0]" #prefix = "XF:07ID-ES1{Slt1:I400-1}:IC1_MON" #prefix = "XF:07ID-BI[ADC:2-Ch:0]"
+prefix = "XF:07ID-ES1{Slt1:I400-1}:IC1_MON" #prefix = "XF:07ID-BI[ADC:2-Ch:7]" ## 20250604 - Putting TEY into this channel instead #prefix = "XF:07ID-BI[ADC:2-Ch:0]" ## 20250528 not reading anymore? #prefix = "XF:07ID-ES1{Slt1:I400-1}:IC1_MON" #prefix = "XF:07ID-BI[ADC:2-Ch:0]"
 name = "RSoXS Au Mesh Current"
 #_baseline = true
 
@@ -497,10 +498,10 @@ prefix = "XF:07ID-ES1{Slt1:I400-1}:IC2_MON"
 name = "RSoXS Sample Current"
 
 [Sample_TEY_int]
-_target = "sst_base.detectors.scalar.ADCBuffer"
+_target = "sst_base.detectors.scalar.ADCBuffer" #_target = "sst_base.detectors.scalar.ADCBuffer"
 _group = "detectors"
 kind = "normal"
-prefix = "XF:07ID-BI[ADC:2-Ch:2]"
+prefix = "XF:07ID-BI[ADC:2-Ch:7]" #prefix = "XF:07ID-ES1{Slt1:I400-1}:IC2_MON" ## 20250604 - moving to "XF:07ID-BI[ADC:2-Ch:7]"...need to connect on sample end  #prefix = "XF:07ID-BI[ADC:2-Ch:2]" ## 20250528 not working?
 name = "RSoXS Sample Current"
 
 [Sample_cam]
