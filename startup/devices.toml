@@ -730,6 +730,7 @@ _load_order = 2
 prefix = "XF:07ID1-ES:1{GE:2}"
 name = "Wide Angle CCD Detector" ## TODO: Not sure how this is different from DetS_cam
 read_attrs = ['tiff', 'stats1.total', 'saturated','under_exposed','cam']
+## Greateyes GE 4k4k camera, serial number GE060232
 
 [BeamStopS]
 _target = "sst_base.motors.PrettyMotorFMBODeadband"
@@ -766,6 +767,7 @@ _target = "sst_base.cameras.StandardProsilica"
 _group = "all_standard_pros"
 prefix = "XF:07ID1-ES:1{Scr:3}"
 name = "WAXS Detector Area Camera"
+## Greateyes GE 4k4k camera, serial number GE060230
 
 [mc19_fault]
 _target = "ophyd.EpicsSignalRO"
