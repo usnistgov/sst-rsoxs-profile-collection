@@ -461,6 +461,7 @@ kind = "hinted"
 _baseline = true
 
 ## RSoXS slit 2
+## If desired to measure slit drain currents, connect the slit 1 drain current cables here and use those PVs.
 [slits2]
 _target = "sst_base.slits.FMBOQuadSlits"
 _group = "motors"
