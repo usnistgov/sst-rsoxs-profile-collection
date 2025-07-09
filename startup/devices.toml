@@ -44,6 +44,8 @@ prefix = "SR-OPS{}Mode-Sts"
 name = "NSLS-II Ring Status"
 string = true
 
+## EPU60: https://www.osti.gov/biblio/1569013
+
 [en]
 _target = "sst_base.energy.EnPosFactory"
 _group = "source"
