@@ -223,25 +223,25 @@ _baseline = true
 _alias = "en.monoen.mirror2"
 _group = "motors"
 _load_order = 2
-_baseline = true
+#_baseline = true
 
 [mirror2x]
 _alias = "en.monoen.mirror2x"
 _group = "motors"
 _load_order = 2
-_baseline = true
+#_baseline = true
 
 [grating] ## angle
 _alias = "en.monoen.grating"
 _group = "motors"
 _load_order = 2
-_baseline = true
+#_baseline = true
 
 [gratingx]
 _alias = "en.monoen.gratingx"
 _group = "motors"
 _load_order = 2
-_baseline = true
+#_baseline = true
 
 [mono_pgm_temperature] #was Temperature_MonoPGM
 _target = "ophyd.EpicsSignalRO"

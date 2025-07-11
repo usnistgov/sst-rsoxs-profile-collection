@@ -27472,8 +27472,8 @@ existing_plans:
     module: rsoxs.Functions.alignment
     name: move_to_location
     parameters:
-    - default: '[{''motor'': ''x'', ''position'': -0.0007550000000051682, ''order'':
-        0}, {''motor'': ''y'', ''position'': 344.99914, ''order'': 0}, {''motor'':
+    - default: '[{''motor'': ''x'', ''position'': -0.000775000000004411, ''order'':
+        0}, {''motor'': ''y'', ''position'': 344.999155, ''order'': 0}, {''motor'':
         ''z'', ''position'': -0.34676999999999225, ''order'': 0}, {''motor'': ''th'',
         ''position'': -0.00015560299999606286, ''order'': 0}]'
       kind:
