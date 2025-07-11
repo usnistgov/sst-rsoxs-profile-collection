@@ -46,7 +46,7 @@ _group = "source"
 _load_order = 2
 prefix = ""
 name = "en" ## TODO: what is the difference between en and energy?
-_baseline = true
+#_baseline = true
 ## Relates to EPU and mono motors
 
 [energy]
@@ -54,7 +54,7 @@ _alias = "en.energy"
 _group = "motors"
 _role = "energy"
 _load_order = 2
-_baseline = true
+#_baseline = true
 
 [polarization]
 _alias = "en.polarization"
