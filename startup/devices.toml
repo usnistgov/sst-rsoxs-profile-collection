@@ -12,6 +12,10 @@
 ## Everything on this list other than 2D camera images are being archived.  TODO: make sure all new additions are archived.
 
 
+## References:
+## Beamline optics: Reininger, R.;  Woicik, J. C.;  Hulbert, S. L.;  Fischer, D. A., NIST NSLS-II spectroscopy beamline optical plan for soft and tender X-ray spectroscopy and microscopy (100 eV to 7.5 keV). Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment 2011, 649 (1), 49-51. https://doi.org/10.1016/j.nima.2010.11.172
+## RSoXS instrument design: Gann, E.; Crofts, T.; Holland, G.; Beaucage, P.; McAfee, T.; Kline, R. J.; Collins, B. A.; McNeill, C. R.; Fischer, D. A.; DeLongchamp, D. M., A NIST facility for resonant soft x-ray scattering measuring nano-scale soft matter structure at NSLS-II. Journal of Physics: Condensed Matter 2021, 33 (16), 164001. https://doi.org/10.1088/1361-648X/abdffb
+
 
 
 #[ring_current_epics]
@@ -39,6 +43,8 @@ kind = "normal"
 prefix = "SR-OPS{}Mode-Sts"
 name = "NSLS-II Ring Status"
 string = true
+
+## EPU60: https://www.osti.gov/biblio/1569013
 
 [en]
 _target = "sst_base.energy.EnPosFactory"
@@ -150,6 +156,7 @@ prefix = "XF:07IDA-OP{Mir:M1"
 name = "SST 1 Mirror 1 fmb" 
 kind = "hinted"
 _baseline = true
+## Plane (flat) mirror
 ## Accessible in Phoebus by going to File --> Open --> /opt/css/opi/production/cs-studio-xf/07id/edl_conv/MC02/6Pod_TopLevel_M1.bob
 
 [mir1_temperature] # was Temperature_M1
@@ -209,6 +216,7 @@ kind = "hinted"
 _baseline = true
 
 ## M2 and PGM
+## M2 is a plane (flat) mirror.  PGM grating focuses the beam vertically.
 ## RSoXS 250 l/mm grating is made from nickel oxide.  250 l/mm is made from gold.  1200 l/mm grating is made from gold.
 
 [mirror2] ## angle
@@ -250,6 +258,7 @@ prefix = "XF:07ID1-OP{Mir:M3ABC"
 name = "SST 1 Mirror 3 fmb"
 kind = "hinted"
 _baseline = true
+## M3A/B (?) are curved mirrors that focus the beam horizontally.  M3C (?) is a plane mirror that steers the beam into the tender branch. 
 
 [mir3_temperature] #was Temperature_M3
 _target = "ophyd.EpicsSignalRO"
@@ -424,11 +433,11 @@ _baseline = true ## To check that the shutter starts closed and ends closed for 
 prefix = "XF:07IDB-CT{DIODE-Local:1}OutPt01:Data-Sel"
 name = "RSoXS Shutter Toggle"
 kind = "normal"
-## Specs and manual of amplifier (dsm linear piezoelectric amplifier, model: VF-500 XRS, serial number: E18-01499): https://www.dynamic-structures.com/product/open-loop-vf-500
+## Specs and manual of amplifier (dsm linear piezoelectric amplifier, model: VF-500 XRS, serial number: E18-01499, driver software: E18-01499, shipped to FMB Oxford on June 5, 2018): https://www.dynamic-structures.com/product/open-loop-vf-500
 ## The amplifier at the beamline is a specialized version likely with some customization.
 ## Input is a TTL signal from WAXS CCD camera through shutter PV filtered through DIODE box so that delays can be added and the signal can be turned off.  TTL signal is amplified to a -30 to 200V signal while controlling the current so that the piezo shutter is not burnt out
 ## Shutter should only be activated using a controlled amplifier and never manually, as it requires 160 V with correct polarity, otherwise, the piezo could get damaged.
-## Specs and manual for XRS1-900 Piezo Shutter: https://www.dynamic-structures.com/product/xrs1-900
+## Specs and manual for XRS1-900 (model number) Piezo Shutter (serial number: C17-00544): https://www.dynamic-structures.com/product/xrs1-900
 
 [shutter_enable] #was Shutter_enable
 _target = "ophyd.EpicsSignal"
@@ -461,6 +470,7 @@ kind = "hinted"
 _baseline = true
 
 ## RSoXS slit 2
+## If desired to measure slit drain currents, connect the slit 1 drain current cables here and use those PVs.
 [slits2]
 _target = "sst_base.slits.FMBOQuadSlits"
 _group = "motors"
@@ -844,6 +854,7 @@ _group = "motors"
 prefix = "XF:07ID2-OP{Mir:M4CD-Ax:"
 name = "SST 1 Mirror 4" 
 kind = "hinted"
+## M4C is curved (meridional cylinder)
 
 [DownstreamLargeDiode] 
 _target = "ophyd.EpicsSignalRO"
@@ -899,6 +910,7 @@ name = "Photon Shutter 8"
 ## GV30
 
 ## M5C
+## M5C is a plane mirror
 
 ## FS14
 
