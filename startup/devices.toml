@@ -425,6 +425,7 @@ prefix = "XF:07ID2-ES1{Scr-Ax:1}Mtr"
 name = "Izero Assembly Vertical Translation" ## TODO: would like to name it something more generic like RSoXS diagnostic module to indicate that there is also a yag and photodiode
 kind = "hinted"
 _baseline = true
+## Motor range is -43 to 170.  Normally retracted at 144.
 
 [shutter_control] #was Shutter_control
 _target = "rsoxs.HW.motors.ShutterWait"
