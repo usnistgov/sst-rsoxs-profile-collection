@@ -158,6 +158,7 @@ kind = "hinted"
 _baseline = true
 ## Plane (flat) mirror
 ## Accessible in Phoebus by going to File --> Open --> /opt/css/opi/production/cs-studio-xf/07id/edl_conv/MC02/6Pod_TopLevel_M1.bob
+## Does not have drain current meausred
 
 [mir1_temperature] # was Temperature_M1
 _target = "ophyd.EpicsSignalRO"
@@ -224,6 +225,7 @@ _alias = "en.monoen.mirror2"
 _group = "motors"
 _load_order = 2
 #_baseline = true
+## Does not have drain current meausred
 
 [mirror2x]
 _alias = "en.monoen.mirror2x"
@@ -236,6 +238,7 @@ _alias = "en.monoen.grating"
 _group = "motors"
 _load_order = 2
 #_baseline = true
+## Does not have drain current meausred
 
 [gratingx]
 _alias = "en.monoen.gratingx"
@@ -259,6 +262,7 @@ name = "SST 1 Mirror 3 fmb"
 kind = "hinted"
 _baseline = true
 ## M3A/B (?) are curved mirrors that focus the beam horizontally.  M3C (?) is a plane mirror that steers the beam into the tender branch. 
+## Does not have drain current meausred
 
 [mir3_temperature] #was Temperature_M3
 _target = "ophyd.EpicsSignalRO"
@@ -856,6 +860,7 @@ prefix = "XF:07ID2-OP{Mir:M4CD-Ax:"
 name = "SST 1 Mirror 4" 
 kind = "hinted"
 ## M4C is curved (meridional cylinder)
+## M4 and downstream mirrors have drain currents measured
 
 [DownstreamLargeDiode] 
 _target = "ophyd.EpicsSignalRO"
