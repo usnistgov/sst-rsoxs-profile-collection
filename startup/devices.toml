@@ -404,6 +404,7 @@ kind = "normal"
 prefix = "XF:07ID-ES1{Slt1:I400-1}:IC1_MON" #prefix = "XF:07ID-BI[ADC:2-Ch:7]" ## 20250604 - Putting TEY into this channel instead #prefix = "XF:07ID-BI[ADC:2-Ch:0]" ## 20250528 not reading anymore? #prefix = "XF:07ID-ES1{Slt1:I400-1}:IC1_MON" #prefix = "XF:07ID-BI[ADC:2-Ch:0]"
 name = "RSoXS Au Mesh Current"
 #_baseline = true
+## Mesh specs; https://www.2spi.com/item/02901g-ab/ , catalog number: 02901G-AB.  25 mm x 25 mm size, 5.6 um thickness, 1500 lines per inch, ~55% maximum transmission
 
 [izero_diode] # was Izero_Diode # This is Jamie's definition, can be used for flyscanning (?)
 _target = "sst_base.detectors.scalar.ophScalar" #"ophyd.EpicsSignalRO"
