@@ -252,6 +252,9 @@ kind = "normal"
 prefix = "XF:07IDA-OP{Mono:PGM}T:Grg-I"
 name = "mono_pgm_temperature"
 
+## Zero-order mask to block out zero-order reflections from PGM
+## Other masks are also present between PGM nad M3
+
 ## GV15
 
 [mir3]
