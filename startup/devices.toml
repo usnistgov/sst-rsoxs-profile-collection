@@ -52,7 +52,7 @@ _group = "source"
 _load_order = 2
 prefix = ""
 name = "en" ## TODO: what is the difference between en and energy?
-#_baseline = true
+_baseline = true
 ## Relates to EPU and mono motors
 
 [energy]
@@ -60,7 +60,7 @@ _alias = "en.energy"
 _group = "motors"
 _role = "energy"
 _load_order = 2
-#_baseline = true
+_baseline = true
 
 [polarization]
 _alias = "en.polarization"
@@ -224,27 +224,27 @@ _baseline = true
 _alias = "en.monoen.mirror2"
 _group = "motors"
 _load_order = 2
-#_baseline = true
+_baseline = true
 ## Does not have drain current meausred
 
 [mirror2x]
 _alias = "en.monoen.mirror2x"
 _group = "motors"
 _load_order = 2
-#_baseline = true
+_baseline = true
 
 [grating] ## angle
 _alias = "en.monoen.grating"
 _group = "motors"
 _load_order = 2
-#_baseline = true
+_baseline = true
 ## Does not have drain current meausred
 
 [gratingx]
 _alias = "en.monoen.gratingx"
 _group = "motors"
 _load_order = 2
-#_baseline = true
+_baseline = true
 
 [mono_pgm_temperature] #was Temperature_MonoPGM
 _target = "ophyd.EpicsSignalRO"

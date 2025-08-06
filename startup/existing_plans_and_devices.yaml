@@ -4977,6 +4977,12 @@ existing_devices:
             is_movable: true
             is_readable: true
             module: ophyd.signal
+          num_scans:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
           scan_speed_ev:
             classname: EpicsSignal
             is_flyable: false
@@ -5008,6 +5014,12 @@ existing_devices:
             is_readable: true
             module: ophyd.signal
           scan_trigger_width:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          scan_type:
             classname: EpicsSignal
             is_flyable: false
             is_movable: true
@@ -23410,6 +23422,12 @@ existing_devices:
     is_readable: true
     module: rsoxs.devices.detectors
 existing_plans:
+  M1_parameter_sweep_FS6:
+    module: rsoxs.plans.run_acquisitions
+    name: M1_parameter_sweep_FS6
+    parameters: []
+    properties:
+      is_generator: true
   all_out:
     module: rsoxs.configuration_setup.configurations_instrument
     name: all_out
@@ -27472,10 +27490,10 @@ existing_plans:
     module: rsoxs.Functions.alignment
     name: move_to_location
     parameters:
-    - default: '[{''motor'': ''x'', ''position'': -0.000775000000004411, ''order'':
-        0}, {''motor'': ''y'', ''position'': 344.999155, ''order'': 0}, {''motor'':
-        ''z'', ''position'': -0.34676999999999225, ''order'': 0}, {''motor'': ''th'',
-        ''position'': -0.00015560299999606286, ''order'': 0}]'
+    - default: '[{''motor'': ''x'', ''position'': -2.000300000000003, ''order'': 0},
+        {''motor'': ''y'', ''position'': 345.03103, ''order'': 0}, {''motor'': ''z'',
+        ''position'': -0.34676999999999225, ''order'': 0}, {''motor'': ''th'', ''position'':
+        70.01021957699999, ''order'': 0}]'
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -33331,72 +33349,70 @@ existing_plans:
     module: rsoxs.plans.run_acquisitions
     name: run_acquisitions_queue
     parameters:
-    - default: '[{''bar_name'': ''20250630_Test'', ''sample_id'': ''AF1_front'', ''sample_name'':
-        ''AF1_front'', ''project_name'': ''Calibration'', ''institution'': ''NIST'',
-        ''proposal_id'': 318915, ''bar_spot'': ''0A'', ''front'': True, ''grazing'':
-        False, ''angle'': 0, ''height'': 0, ''sample_priority'': 1, ''notes'': None,
-        ''location'': [{''motor'': ''x'', ''position'': -1.414841131333362, ''order'':
-        0}, {''motor'': ''y'', ''position'': -187.33463703198572, ''order'': 0}, {''motor'':
-        ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
-        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''0A'', ''ximg'': 0.7810069666062889,
-        ''yimg'': -185.46664079235336, ''th0'': 0.0, ''th'': 180.0, ''xoff'': -0.5913774327585793,
-        ''x0'': 0.23208626581620284, ''y0'': -187.33463703198572, ''af1y'': -187.33704500000005,
-        ''af2y'': 3.259079999999983, ''af1xoff'': -0.5898300000000027, ''af2xoff'':
-        -0.7475150000000035, ''af1zoff'': -1.4221900000000005, ''af2zoff'': -1.917234999999998,
-        ''zoff'': 3.0778037456623224}, ''sample_desc'': None, ''sample_set'': None,
-        ''composition'': None, ''project_desc'': ''Calibration'', ''components'':
-        None, ''density'': None, ''sample_state'': None, ''acq_history'': [], ''acquisitions'':
-        []}, {''bar_name'': ''20250630_Test'', ''sample_id'': ''AF2_front'', ''sample_name'':
-        ''AF2_front'', ''project_name'': ''Calibration'', ''institution'': ''NIST'',
-        ''proposal_id'': 318915, ''bar_spot'': ''0A'', ''front'': True, ''grazing'':
-        False, ''angle'': 0, ''height'': 0, ''sample_priority'': 1, ''notes'': None,
-        ''location'': [{''motor'': ''x'', ''position'': -2.6767245359789116, ''order'':
-        0}, {''motor'': ''y'', ''position'': 3.2611720717044657, ''order'': 0}, {''motor'':
-        ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
-        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''0A'', ''ximg'': 1.4947446080184168,
-        ''yimg'': 4.8841097742592465, ''th0'': 0.0, ''th'': 180.0, ''xoff'': -0.7488594282770951,
-        ''x0'': 1.179005679424721, ''y0'': 3.2611720717044657, ''af1y'': -187.33704500000005,
-        ''af2y'': 3.259079999999983, ''af1xoff'': -0.5898300000000027, ''af2xoff'':
-        -0.7475150000000035, ''af1zoff'': -1.4221900000000005, ''af2zoff'': -1.917234999999998,
-        ''zoff'': 2.582759566155862}, ''sample_desc'': None, ''sample_set'': None,
-        ''composition'': None, ''project_desc'': ''Calibration'', ''components'':
-        None, ''density'': None, ''sample_state'': None, ''acq_history'': [], ''acquisitions'':
-        []}, {''bar_name'': ''20250630_Test'', ''sample_id'': ''diode'', ''sample_name'':
-        ''diode'', ''project_name'': ''Calibration'', ''institution'': ''NIST'', ''proposal_id'':
-        318915, ''bar_spot'': ''0A'', ''front'': True, ''grazing'': False, ''angle'':
-        0, ''height'': 0, ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'':
-        ''x'', ''position'': -1.8585083787280547, ''order'': 0}, {''motor'': ''y'',
-        ''position'': 45.65011405736218, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''0A'', ''ximg'': 0.5546195847402657, ''yimg'': 47.21855018320275,
-        ''th0'': 0.0, ''th'': 180.0, ''xoff'': -0.7838837827118155, ''x0'': 0.29074081330442353,
-        ''y0'': 45.65011405736218, ''af1y'': -187.33704500000005, ''af2y'': 3.259079999999983,
-        ''af1xoff'': -0.5898300000000027, ''af2xoff'': -0.7475150000000035, ''af1zoff'':
-        -1.4221900000000005, ''af2zoff'': -1.917234999999998, ''zoff'': 2.472660613276889},
-        ''sample_desc'': None, ''sample_set'': None, ''composition'': None, ''project_desc'':
-        ''Calibration'', ''components'': None, ''density'': None, ''sample_state'':
-        None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'': ''20250630_Test'',
-        ''sample_id'': ''OpenBeam'', ''sample_name'': ''OpenBeam'', ''project_name'':
-        ''calibration'', ''institution'': ''NIST'', ''proposal_id'': 318915, ''bar_spot'':
-        ''40A'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0,
-        ''sample_priority'': 1, ''notes'': "Bar moved out of beam path for reference
-        scan.  Don''t change this row.", ''location'': [{''motor'': ''x'', ''position'':
-        -1.8585083787280547, ''order'': 0}, {''motor'': ''y'', ''position'': 45.65011405736218,
-        ''order'': 0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'':
-        ''th'', ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''40A'',
-        ''th'': 180.0, ''ximg'': 0.5546195847402657, ''yimg'': 47.21855018320275,
-        ''th0'': 0.0, ''xoff'': -0.7838837827118155, ''x0'': 0.29074081330442353,
-        ''y0'': 45.65011405736218, ''af1y'': -187.33704500000005, ''af2y'': 3.259079999999983,
-        ''af1xoff'': -0.5898300000000027, ''af2xoff'': -0.7475150000000035, ''af1zoff'':
-        -1.4221900000000005, ''af2zoff'': -1.917234999999998, ''zoff'': 2.472660613276889},
-        ''sample_desc'': None, ''sample_set'': None, ''composition'': None, ''project_desc'':
-        None, ''components'': None, ''density'': None, ''sample_state'': None, ''acq_history'':
-        [], ''acquisitions'': [{''sample_id'': ''OpenBeam'', ''configuration_instrument'':
+    - default: '[{''bar_name'': ''20250611_Test'', ''sample_id'': ''OpenBeam'', ''sample_name'':
+        ''OpenBeam'', ''project_name'': ''calibration'', ''institution'': ''NIST'',
+        ''proposal_id'': 318915, ''bar_spot'': ''40A'', ''front'': True, ''grazing'':
+        False, ''angle'': 0, ''height'': 0, ''sample_priority'': 1, ''notes'': "Bar
+        moved out of beam path for reference scan.  Don''t change this row.", ''location'':
+        [], ''bar_loc'': {''spot'': ''40A'', ''th'': 0}, ''acq_history'': [], ''acquisitions'':
+        []}, {''bar_name'': ''20250611_Test'', ''sample_id'': ''OpenBeam_1'', ''sample_name'':
+        ''OpenBeam_1'', ''project_name'': ''calibration'', ''institution'': ''NIST'',
+        ''proposal_id'': 318915, ''bar_spot'': ''40A'', ''front'': True, ''grazing'':
+        False, ''angle'': 0, ''height'': 0, ''sample_priority'': 1, ''notes'': "Bar
+        moved out of beam path for reference scan.  Don''t change this row.", ''location'':
+        [{''motor'': ''x'', ''position'': 0.010614999999994268, ''order'': 0}, {''motor'':
+        ''y'', ''position'': 345.02974, ''order'': 0}, {''motor'': ''z'', ''position'':
+        -0.34676999999999225, ''order'': 0}, {''motor'': ''th'', ''position'': -0.0015288939999891227,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''40A'', ''th'': 0}, ''acq_history'':
+        [], ''acquisitions'': [{''sample_id'': ''OpenBeam_1'', ''configuration_instrument'':
         ''NoBeam'', ''scan_type'': ''time2D'', ''energy_list_parameters'': 150, ''polarization_frame'':
         ''lab'', ''polarizations'': [0], ''exposure_time'': 1, ''exposures_per_energy'':
         3, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'': ''Test'',
-        ''priority'': 1, ''acquire_status'': ''Finished 2025-06-30_15-27-29'', ''uid_local'':
-        ''78d7aa6d-819a-47a0-a78f-a0eb973bd4dc'', ''notes'': None}]}]'
+        ''priority'': 1, ''acquire_status'': ''Not begun'', ''uid_local'': ''785efc9d-6d2c-4251-b9e2-05e876303605'',
+        ''notes'': None}]}, {''bar_name'': ''20250611_Test'', ''sample_id'': ''OpenBeam_2'',
+        ''sample_name'': ''OpenBeam_2'', ''project_name'': ''calibration'', ''institution'':
+        ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''40A'', ''front'': True,
+        ''grazing'': False, ''angle'': 0, ''height'': 0, ''sample_priority'': 1, ''notes'':
+        "Bar moved out of beam path for reference scan.  Don''t change this row.",
+        ''location'': [{''motor'': ''x'', ''position'': 1.0005049999999969, ''order'':
+        0}, {''motor'': ''y'', ''position'': 339.99903500000005, ''order'': 0}, {''motor'':
+        ''z'', ''position'': -0.34676999999999225, ''order'': 0}, {''motor'': ''th'',
+        ''position'': -0.0029021849999821825, ''order'': 0}], ''bar_loc'': {''spot'':
+        ''40A'', ''th'': 0}, ''acq_history'': [], ''acquisitions'': [{''sample_id'':
+        ''OpenBeam_2'', ''configuration_instrument'': ''NoBeam'', ''scan_type'': ''time2D'',
+        ''energy_list_parameters'': 150, ''polarization_frame'': ''lab'', ''polarizations'':
+        [0], ''exposure_time'': 1, ''exposures_per_energy'': 3, ''sample_angles'':
+        [0], ''spiral_dimensions'': None, ''group_name'': ''Test'', ''priority'':
+        2, ''acquire_status'': ''Not begun'', ''uid_local'': ''3ad6b108-26de-4573-91b5-6b0b951127e2'',
+        ''notes'': None}]}, {''bar_name'': ''20250611_Test'', ''sample_id'': ''OpenBeam_3'',
+        ''sample_name'': ''OpenBeam_3'', ''project_name'': ''calibration'', ''institution'':
+        ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''40A'', ''front'': True,
+        ''grazing'': False, ''angle'': 0, ''height'': 0, ''sample_priority'': 1, ''notes'':
+        "Bar moved out of beam path for reference scan.  Don''t change this row.",
+        ''location'': [{''motor'': ''x'', ''position'': 2.000489999999999, ''order'':
+        0}, {''motor'': ''y'', ''position'': 334.99977, ''order'': 0}, {''motor'':
+        ''z'', ''position'': -0.34676999999999225, ''order'': 0}, {''motor'': ''th'',
+        ''position'': -0.0029021849999821825, ''order'': 0}], ''bar_loc'': {''spot'':
+        ''40A'', ''th'': 0}, ''acq_history'': [], ''acquisitions'': [{''sample_id'':
+        ''OpenBeam_3'', ''configuration_instrument'': ''NoBeam'', ''scan_type'': ''time2D'',
+        ''energy_list_parameters'': 150, ''polarization_frame'': ''lab'', ''polarizations'':
+        [0], ''exposure_time'': 1, ''exposures_per_energy'': 3, ''sample_angles'':
+        [0], ''spiral_dimensions'': None, ''group_name'': ''Test'', ''priority'':
+        3, ''acquire_status'': ''Not begun'', ''uid_local'': ''6eedc38f-8455-4ad8-bc78-d2f487a62e2b'',
+        ''notes'': None}]}, {''bar_name'': ''20250611_Test'', ''sample_id'': ''OpenBeam_4'',
+        ''sample_name'': ''OpenBeam_4'', ''project_name'': ''calibration'', ''institution'':
+        ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''40A'', ''front'': True,
+        ''grazing'': True, ''angle'': 20, ''height'': 0, ''sample_priority'': 1, ''notes'':
+        "Bar moved out of beam path for reference scan.  Don''t change this row.",
+        ''location'': [{''motor'': ''x'', ''position'': -1.9998090539793114, ''order'':
+        0}, {''motor'': ''y'', ''position'': 345.02974, ''order'': 0}, {''motor'':
+        ''z'', ''position'': -0.34676999999999225, ''order'': 0}, {''motor'': ''th'',
+        ''position'': 70.0, ''order'': 0}], ''bar_loc'': {''spot'': ''40A'', ''th'':
+        70.0, ''ximg'': -2.935716071875106, ''yimg'': 46.42392741042411, ''th0'':
+        0.0, ''xoff'': 0.3675285183903402, ''x0'': 0.010614999999994268, ''y0'': 345.02974,
+        ''af1y'': -187.29666000000003, ''af2y'': 3.136, ''af1xoff'': -0.6260800000000053,
+        ''af2xoff'': 0.1835, ''af1zoff'': -1.4803549999999994, ''af2zoff'': -1.9980000000000002,
+        ''zoff'': 2.3893621275615606}, ''acq_history'': [], ''acquisitions'': []}]'
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
