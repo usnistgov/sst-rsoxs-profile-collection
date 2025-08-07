@@ -23606,6 +23606,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -23771,6 +23777,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -24005,6 +24017,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -24171,6 +24189,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -24349,6 +24373,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -24515,6 +24545,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -24682,6 +24718,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -24847,6 +24889,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -25026,6 +25074,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -25191,6 +25245,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -25358,6 +25418,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -25523,6 +25589,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -25898,6 +25970,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -26063,6 +26141,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -26273,6 +26357,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -26438,6 +26528,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -26605,6 +26701,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -26770,6 +26872,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -26937,6 +27045,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -27102,6 +27216,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -27269,6 +27389,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -27434,6 +27560,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -27490,10 +27622,10 @@ existing_plans:
     module: rsoxs.Functions.alignment
     name: move_to_location
     parameters:
-    - default: '[{''motor'': ''x'', ''position'': -2.000300000000003, ''order'': 0},
-        {''motor'': ''y'', ''position'': 345.03103, ''order'': 0}, {''motor'': ''z'',
-        ''position'': -0.34676999999999225, ''order'': 0}, {''motor'': ''th'', ''position'':
-        70.01021957699999, ''order'': 0}]'
+    - default: '[{''motor'': ''x'', ''position'': 6.043005000000001, ''order'': 0},
+        {''motor'': ''y'', ''position'': -4.004095000000007, ''order'': 0}, {''motor'':
+        ''z'', ''position'': -1.1315599999999932, ''order'': 0}, {''motor'': ''th'',
+        ''position'': -0.0029021849999821825, ''order'': 0}]'
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -27670,6 +27802,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -27835,6 +27973,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -28002,6 +28146,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -28167,6 +28317,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -28355,6 +28511,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -28527,6 +28689,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -28733,6 +28901,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -28916,6 +29090,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -29093,6 +29273,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -29296,6 +29482,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -29463,6 +29655,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -29643,6 +29841,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -29825,6 +30029,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -30013,6 +30223,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -30179,6 +30395,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -30362,6 +30584,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -30535,6 +30763,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -30753,6 +30987,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -30971,6 +31211,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -31171,6 +31417,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -31346,6 +31598,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -31507,6 +31765,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -31734,6 +31998,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -31960,6 +32230,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -32168,6 +32444,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -32333,6 +32615,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -32500,6 +32788,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -32665,6 +32959,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -32832,6 +33132,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -32997,6 +33303,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -33233,6 +33545,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -33349,70 +33667,153 @@ existing_plans:
     module: rsoxs.plans.run_acquisitions
     name: run_acquisitions_queue
     parameters:
-    - default: '[{''bar_name'': ''20250611_Test'', ''sample_id'': ''OpenBeam'', ''sample_name'':
-        ''OpenBeam'', ''project_name'': ''calibration'', ''institution'': ''NIST'',
-        ''proposal_id'': 318915, ''bar_spot'': ''40A'', ''front'': True, ''grazing'':
-        False, ''angle'': 0, ''height'': 0, ''sample_priority'': 1, ''notes'': "Bar
-        moved out of beam path for reference scan.  Don''t change this row.", ''location'':
-        [], ''bar_loc'': {''spot'': ''40A'', ''th'': 0}, ''acq_history'': [], ''acquisitions'':
-        []}, {''bar_name'': ''20250611_Test'', ''sample_id'': ''OpenBeam_1'', ''sample_name'':
-        ''OpenBeam_1'', ''project_name'': ''calibration'', ''institution'': ''NIST'',
-        ''proposal_id'': 318915, ''bar_spot'': ''40A'', ''front'': True, ''grazing'':
-        False, ''angle'': 0, ''height'': 0, ''sample_priority'': 1, ''notes'': "Bar
-        moved out of beam path for reference scan.  Don''t change this row.", ''location'':
-        [{''motor'': ''x'', ''position'': 0.010614999999994268, ''order'': 0}, {''motor'':
-        ''y'', ''position'': 345.02974, ''order'': 0}, {''motor'': ''z'', ''position'':
-        -0.34676999999999225, ''order'': 0}, {''motor'': ''th'', ''position'': -0.0015288939999891227,
-        ''order'': 0}], ''bar_loc'': {''spot'': ''40A'', ''th'': 0}, ''acq_history'':
-        [], ''acquisitions'': [{''sample_id'': ''OpenBeam_1'', ''configuration_instrument'':
-        ''NoBeam'', ''scan_type'': ''time2D'', ''energy_list_parameters'': 150, ''polarization_frame'':
-        ''lab'', ''polarizations'': [0], ''exposure_time'': 1, ''exposures_per_energy'':
-        3, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'': ''Test'',
-        ''priority'': 1, ''acquire_status'': ''Not begun'', ''uid_local'': ''785efc9d-6d2c-4251-b9e2-05e876303605'',
-        ''notes'': None}]}, {''bar_name'': ''20250611_Test'', ''sample_id'': ''OpenBeam_2'',
-        ''sample_name'': ''OpenBeam_2'', ''project_name'': ''calibration'', ''institution'':
-        ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''40A'', ''front'': True,
-        ''grazing'': False, ''angle'': 0, ''height'': 0, ''sample_priority'': 1, ''notes'':
-        "Bar moved out of beam path for reference scan.  Don''t change this row.",
-        ''location'': [{''motor'': ''x'', ''position'': 1.0005049999999969, ''order'':
-        0}, {''motor'': ''y'', ''position'': 339.99903500000005, ''order'': 0}, {''motor'':
-        ''z'', ''position'': -0.34676999999999225, ''order'': 0}, {''motor'': ''th'',
-        ''position'': -0.0029021849999821825, ''order'': 0}], ''bar_loc'': {''spot'':
-        ''40A'', ''th'': 0}, ''acq_history'': [], ''acquisitions'': [{''sample_id'':
-        ''OpenBeam_2'', ''configuration_instrument'': ''NoBeam'', ''scan_type'': ''time2D'',
-        ''energy_list_parameters'': 150, ''polarization_frame'': ''lab'', ''polarizations'':
-        [0], ''exposure_time'': 1, ''exposures_per_energy'': 3, ''sample_angles'':
-        [0], ''spiral_dimensions'': None, ''group_name'': ''Test'', ''priority'':
-        2, ''acquire_status'': ''Not begun'', ''uid_local'': ''3ad6b108-26de-4573-91b5-6b0b951127e2'',
-        ''notes'': None}]}, {''bar_name'': ''20250611_Test'', ''sample_id'': ''OpenBeam_3'',
-        ''sample_name'': ''OpenBeam_3'', ''project_name'': ''calibration'', ''institution'':
-        ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''40A'', ''front'': True,
-        ''grazing'': False, ''angle'': 0, ''height'': 0, ''sample_priority'': 1, ''notes'':
-        "Bar moved out of beam path for reference scan.  Don''t change this row.",
-        ''location'': [{''motor'': ''x'', ''position'': 2.000489999999999, ''order'':
-        0}, {''motor'': ''y'', ''position'': 334.99977, ''order'': 0}, {''motor'':
-        ''z'', ''position'': -0.34676999999999225, ''order'': 0}, {''motor'': ''th'',
-        ''position'': -0.0029021849999821825, ''order'': 0}], ''bar_loc'': {''spot'':
-        ''40A'', ''th'': 0}, ''acq_history'': [], ''acquisitions'': [{''sample_id'':
-        ''OpenBeam_3'', ''configuration_instrument'': ''NoBeam'', ''scan_type'': ''time2D'',
-        ''energy_list_parameters'': 150, ''polarization_frame'': ''lab'', ''polarizations'':
-        [0], ''exposure_time'': 1, ''exposures_per_energy'': 3, ''sample_angles'':
-        [0], ''spiral_dimensions'': None, ''group_name'': ''Test'', ''priority'':
-        3, ''acquire_status'': ''Not begun'', ''uid_local'': ''6eedc38f-8455-4ad8-bc78-d2f487a62e2b'',
-        ''notes'': None}]}, {''bar_name'': ''20250611_Test'', ''sample_id'': ''OpenBeam_4'',
-        ''sample_name'': ''OpenBeam_4'', ''project_name'': ''calibration'', ''institution'':
-        ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''40A'', ''front'': True,
-        ''grazing'': True, ''angle'': 20, ''height'': 0, ''sample_priority'': 1, ''notes'':
-        "Bar moved out of beam path for reference scan.  Don''t change this row.",
-        ''location'': [{''motor'': ''x'', ''position'': -1.9998090539793114, ''order'':
-        0}, {''motor'': ''y'', ''position'': 345.02974, ''order'': 0}, {''motor'':
-        ''z'', ''position'': -0.34676999999999225, ''order'': 0}, {''motor'': ''th'',
-        ''position'': 70.0, ''order'': 0}], ''bar_loc'': {''spot'': ''40A'', ''th'':
-        70.0, ''ximg'': -2.935716071875106, ''yimg'': 46.42392741042411, ''th0'':
-        0.0, ''xoff'': 0.3675285183903402, ''x0'': 0.010614999999994268, ''y0'': 345.02974,
-        ''af1y'': -187.29666000000003, ''af2y'': 3.136, ''af1xoff'': -0.6260800000000053,
-        ''af2xoff'': 0.1835, ''af1zoff'': -1.4803549999999994, ''af2zoff'': -1.9980000000000002,
-        ''zoff'': 2.3893621275615606}, ''acq_history'': [], ''acquisitions'': []}]'
+    - default: '[{''bar_name'': ''20250528_Commissioning'', ''sample_id'': ''AF1_front'',
+        ''sample_name'': ''AF1_front'', ''project_name'': ''Calibration'', ''institution'':
+        ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''0A'', ''front'': True,
+        ''grazing'': False, ''angle'': 0, ''height'': 0.0, ''sample_priority'': 1,
+        ''notes'': None, ''location'': [{''motor'': ''x'', ''position'': -1.712654498240615,
+        ''order'': 0}, {''motor'': ''y'', ''position'': -186.87946468086415, ''order'':
+        0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
+        ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''0A'', ''ximg'':
+        0.8278382062153362, ''yimg'': -185.53189419540766, ''th0'': 0.0, ''th'': 180.0,
+        ''xoff'': -0.8934686806304029, ''x0'': -0.07428286302019098, ''y0'': -186.87946468086415,
+        ''af1y'': -186.87915500000003, ''af2y'': 3.5667649999999753, ''af1xoff'':
+        -0.8936125000000033, ''af2xoff'': -0.873282500000002, ''af1zoff'': -1.412957500000001,
+        ''af2zoff'': -4.362500000000001, ''zoff'': 3.0870472962007796}, ''components'':
+        None, ''sample_set'': None, ''project_desc'': ''Calibration'', ''composition'':
+        None, ''density'': None, ''sample_desc'': None, ''sample_state'': None, ''acq_history'':
+        [], ''acquisitions'': []}, {''bar_name'': ''20250528_Commissioning'', ''sample_id'':
+        ''AF2_front'', ''sample_name'': ''AF2_front'', ''project_name'': ''Calibration'',
+        ''institution'': ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''0A'',
+        ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.0, ''sample_priority'':
+        1, ''notes'': None, ''location'': [{''motor'': ''x'', ''position'': -2.2201828552463883,
+        ''order'': 0}, {''motor'': ''y'', ''position'': 3.566445256840437, ''order'':
+        0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
+        ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''0A'', ''ximg'':
+        1.5383326797849488, ''yimg'': 4.957801632461294, ''th0'': 0.0, ''th'': 180.0,
+        ''xoff'': -0.8731340075842131, ''x0'': 0.4739148400779619, ''y0'': 3.566445256840437,
+        ''af1y'': -186.87915500000003, ''af2y'': 3.5667649999999753, ''af1xoff'':
+        -0.8936125000000033, ''af2xoff'': -0.873282500000002, ''af1zoff'': -1.412957500000001,
+        ''af2zoff'': -4.362500000000001, ''zoff'': 0.13750495204117819}, ''components'':
+        None, ''sample_set'': None, ''project_desc'': ''Calibration'', ''composition'':
+        None, ''density'': None, ''sample_desc'': None, ''sample_state'': None, ''acq_history'':
+        [], ''acquisitions'': []}, {''bar_name'': ''20250528_Commissioning'', ''sample_id'':
+        ''diode'', ''sample_name'': ''diode'', ''project_name'': ''Calibration'',
+        ''institution'': ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''0A'',
+        ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.0, ''sample_priority'':
+        1, ''notes'': None, ''location'': [{''motor'': ''x'', ''position'': 0.34539441501223783,
+        ''order'': 0}, {''motor'': ''y'', ''position'': 47.89305013084599, ''order'':
+        0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
+        ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''0A'', ''ximg'':
+        -0.9800038865137992, ''yimg'': 49.29459774582193, ''th0'': 0.0, ''th'': 180.0,
+        ''xoff'': -0.8684010783359274, ''x0'': -2.0821965716840927, ''y0'': 47.89305013084599,
+        ''af1y'': -186.87915500000003, ''af2y'': 3.5667649999999753, ''af1xoff'':
+        -0.8936125000000033, ''af2xoff'': -0.873282500000002, ''af1zoff'': -1.412957500000001,
+        ''af2zoff'': -4.362500000000001, ''zoff'': -0.549005974297315}, ''components'':
+        None, ''sample_set'': None, ''project_desc'': ''Calibration'', ''composition'':
+        None, ''density'': None, ''sample_desc'': None, ''sample_state'': None, ''acq_history'':
+        [], ''acquisitions'': []}, {''bar_name'': ''20250528_Commissioning'', ''sample_id'':
+        ''diode'', ''sample_name'': ''diode'', ''project_name'': ''Calibration'',
+        ''institution'': ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''0A'',
+        ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.0, ''sample_priority'':
+        1, ''notes'': None, ''location'': [{''motor'': ''x'', ''position'': 0.34519978485851516,
+        ''order'': 0}, {''motor'': ''y'', ''position'': 47.71042596995367, ''order'':
+        0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
+        ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''0A'', ''ximg'':
+        -0.9800038865137992, ''yimg'': 49.11193159735711, ''th0'': 0.0, ''th'': 180.0,
+        ''xoff'': -0.8684205778494811, ''x0'': -2.0820409405574773, ''y0'': 47.71042596995367,
+        ''af1y'': -186.87915500000003, ''af2y'': 3.5667649999999753, ''af1xoff'':
+        -0.8936125000000033, ''af2xoff'': -0.873282500000002, ''af1zoff'': -1.412957500000001,
+        ''af2zoff'': -4.362500000000001, ''zoff'': -0.5461775717561697}, ''components'':
+        None, ''sample_set'': None, ''project_desc'': ''Calibration'', ''composition'':
+        None, ''density'': None, ''sample_desc'': None, ''sample_state'': None, ''acq_history'':
+        [], ''acquisitions'': []}, {''bar_name'': ''20250528_Commissioning'', ''sample_id'':
+        ''SiN_Blank'', ''sample_name'': ''SiN_Blank'', ''project_name'': ''calibration'',
+        ''institution'': ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''18A'',
+        ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.25, ''sample_priority'':
+        1, ''notes'': ''Typical transmission RSoXS sample on SiN membrane that is
+        mounted to the front of the bar.  0 degrees angle corresponds to normal incidence.  bar_spot
+        can be filled in after you mount samples.'', ''location'': [{''motor'': ''x'',
+        ''position'': -1.441179718445693, ''order'': 0}, {''motor'': ''y'', ''position'':
+        -76.77870826493469, ''order'': 0}, {''motor'': ''z'', ''position'': 0.0, ''order'':
+        0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}], ''bar_loc'':
+        {''spot'': ''18A'', ''th'': 180.0, ''ximg'': 0.6737023756674319, ''yimg'':
+        -75.40582424226956, ''th0'': 0.0, ''xoff'': -0.8817127816216583, ''x0'': -0.32224584479762397,
+        ''y0'': -76.77870826493469, ''af1y'': -186.87915500000003, ''af2y'': 3.5667649999999753,
+        ''af1xoff'': -0.8936125000000033, ''af2xoff'': -0.873282500000002, ''af1zoff'':
+        -1.412957500000001, ''af2zoff'': -4.362500000000001, ''zoff'': 1.1318552903498191},
+        ''components'': None, ''sample_set'': None, ''project_desc'': None, ''composition'':
+        None, ''density'': None, ''sample_desc'': None, ''sample_state'': None, ''acq_history'':
+        [], ''acquisitions'': []}, {''bar_name'': ''20250528_Commissioning'', ''sample_id'':
+        ''AlFoil'', ''sample_name'': ''AlFoil'', ''project_name'': ''calibration'',
+        ''institution'': ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''21A'',
+        ''front'': True, ''grazing'': True, ''angle'': 90, ''height'': 0.5, ''sample_priority'':
+        1, ''notes'': ''For camera characterization'', ''location'': [{''motor'':
+        ''x'', ''position'': -0.13232727864261262, ''order'': 0}, {''motor'': ''y'',
+        ''position'': -48.217510308046336, ''order'': 0}, {''motor'': ''z'', ''position'':
+        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 0.0, ''order'': 0}],
+        ''bar_loc'': {''spot'': ''21A'', ''th'': 0.0, ''ximg'': 0.887960609661544,
+        ''yimg'': -46.83805970972141, ''th0'': 0.0, ''xoff'': -0.8786631880522779,
+        ''x0'': -0.13232727864261262, ''y0'': -48.217510308046336, ''af1y'': -186.87915500000003,
+        ''af2y'': 3.5667649999999753, ''af1xoff'': -0.8936125000000033, ''af2xoff'':
+        -0.873282500000002, ''af1zoff'': -1.412957500000001, ''af2zoff'': -4.362500000000001,
+        ''zoff'': 0.4395120402305448}, ''components'': None, ''sample_set'': None,
+        ''project_desc'': None, ''composition'': None, ''density'': None, ''sample_desc'':
+        None, ''sample_state'': None, ''acq_history'': [], ''acquisitions'': []},
+        {''bar_name'': ''20250528_Commissioning'', ''sample_id'': ''SBA15'', ''sample_name'':
+        ''SBA15'', ''project_name'': ''calibration'', ''institution'': ''NIST'', ''proposal_id'':
+        318915, ''bar_spot'': ''28A'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': ''For SDD calibration'',
+        ''location'': [{''motor'': ''x'', ''position'': -1.1633042775478497, ''order'':
+        0}, {''motor'': ''y'', ''position'': -17.085804535038026, ''order'': 0}, {''motor'':
+        ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
+        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''28A'', ''th'': 180.0, ''ximg'':
+        0.4594441416733197, ''yimg'': -15.699196369243936, ''th0'': 0.0, ''xoff'':
+        -0.8753391310616533, ''x0'': -0.5873739845754568, ''y0'': -17.085804535038026,
+        ''af1y'': -186.87915500000003, ''af2y'': 3.5667649999999753, ''af1xoff'':
+        -0.8936125000000033, ''af2xoff'': -0.873282500000002, ''af1zoff'': -1.412957500000001,
+        ''af2zoff'': -4.362500000000001, ''zoff'': 0.20735789760053525}, ''components'':
+        None, ''sample_set'': None, ''project_desc'': None, ''composition'': None,
+        ''density'': None, ''sample_desc'': None, ''sample_state'': None, ''acq_history'':
+        [], ''acquisitions'': []}, {''bar_name'': ''20250528_Commissioning'', ''sample_id'':
+        ''HOPG'', ''sample_name'': ''HOPG'', ''project_name'': ''calibration'', ''institution'':
+        ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''30A'', ''front'': True,
+        ''grazing'': True, ''angle'': 90, ''height'': 0.5, ''sample_priority'': 1,
+        ''notes'': "Energy calibrant.  Don''t change this row.", ''location'': [{''motor'':
+        ''x'', ''position'': 6.043495871205599, ''order'': 0}, {''motor'': ''y'',
+        ''position'': -4.019056469761603, ''order'': 0}, {''motor'': ''z'', ''position'':
+        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 0.0, ''order'': 0}],
+        ''bar_loc'': {''spot'': ''30A'', ''th'': 0.0, ''ximg'': 7.101449395490764,
+        ''yimg'': -2.629444095603162, ''th0'': 0.0, ''xoff'': -0.8739439420036617,
+        ''x0'': 6.043495871205599, ''y0'': -4.019056469761603, ''af1y'': -186.87915500000003,
+        ''af2y'': 3.5667649999999753, ''af1xoff'': -0.8936125000000033, ''af2xoff'':
+        -0.873282500000002, ''af1zoff'': -1.412957500000001, ''af2zoff'': -4.362500000000001,
+        ''zoff'': -0.24501413932903304}, ''components'': None, ''sample_set'': None,
+        ''project_desc'': None, ''composition'': None, ''density'': None, ''sample_desc'':
+        None, ''sample_state'': None, ''acq_history'': [], ''acquisitions'': [{''sample_id'':
+        ''HOPG'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'': ''nexafs'',
+        ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarization_frame'': ''lab'',
+        ''polarizations'': [0], ''exposure_time'': 1, ''exposures_per_energy'': 1,
+        ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'': ''Check
+        calibration'', ''priority'': 1, ''acquire_status'': ''Not begun'', ''uid_local'':
+        ''c2350d5e-3ee6-40ad-9509-21e05b50df45'', ''notes'': None, ''cycles'': 0}]},
+        {''bar_name'': ''20250528_Commissioning'', ''sample_id'': ''OpenBeam_NoBeamNoBar_2'',
+        ''sample_name'': ''OpenBeam_NoBeamNoBar_2'', ''project_name'': ''calibration'',
+        ''institution'': ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''40A'',
+        ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.0, ''sample_priority'':
+        1, ''notes'': "Bar moved out of beam path for reference scan.  Don''t change
+        this row.", ''location'': [{''motor'': ''x'', ''position'': 0.709364300865837,
+        ''order'': 0}, {''motor'': ''y'', ''position'': 46.61468100459968, ''order'':
+        0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
+        ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''40A'', ''th'':
+        180.0, ''ximg'': -1.3453361834434574, ''yimg'': 48.015934706568146, ''th0'':
+        0.0, ''xoff'': -0.8685375749308034, ''x0'': -2.4464394507274436, ''y0'': 46.61468100459968,
+        ''af1y'': -186.87915500000003, ''af2y'': 3.5667649999999753, ''af1xoff'':
+        -0.8936125000000033, ''af2xoff'': -0.873282500000002, ''af1zoff'': -1.412957500000001,
+        ''af2zoff'': -4.362500000000001, ''zoff'': -0.5292071565092975}, ''components'':
+        None, ''sample_set'': None, ''project_desc'': None, ''composition'': None,
+        ''density'': None, ''sample_desc'': None, ''sample_state'': None, ''acq_history'':
+        [], ''acquisitions'': []}]'
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -33667,6 +34068,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -33832,6 +34239,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -34007,6 +34420,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -34200,6 +34619,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -34365,6 +34790,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -34570,6 +35001,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -34735,6 +35172,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -34902,6 +35345,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -35067,6 +35516,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -35240,6 +35695,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -35405,6 +35866,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: open_shutter
+    - default: None
+      description: The name of an RSoXS configuration to load (optional)
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: configuration_name
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
