@@ -787,6 +787,7 @@ _group = "all_standard_pros"
 prefix = "XF:07ID1-ES:1{Scr:3}"
 name = "WAXS Detector Area Camera"
 ## Greateyes GE 4k4k camera, serial number GE060230
+## Power supply: Serial number PSK2002, Input 85-264VAC 50/60Hz 1.9/3.8A max 230/115VAC, Output 400 W 36VDC max, CE certified
 
 [mc19_fault]
 _target = "ophyd.EpicsSignalRO"
