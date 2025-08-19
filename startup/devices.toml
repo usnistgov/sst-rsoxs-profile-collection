@@ -860,65 +860,65 @@ closeval = 1
 prefix = "XF:07IDA-PPS{PSh:7}"
 name = "Photon Shutter 7"
 
-[mir4OLD]
-_target = "sst_base.mirrors.HexapodMirror"
-_group = "motors"
-prefix = "XF:07ID2-OP{Mir:M4CD-Ax:"
-name = "SST 1 Mirror 4" 
-kind = "hinted"
+#[mir4OLD]
+#_target = "sst_base.mirrors.HexapodMirror"
+#_group = "motors"
+#prefix = "XF:07ID2-OP{Mir:M4CD-Ax:"
+#name = "SST 1 Mirror 4" 
+#kind = "hinted"
 ## M4C is curved (meridional cylinder)
 ## M4 and downstream mirrors have drain currents measured
 
-[DownstreamLargeDiode] 
-_target = "ophyd.EpicsSignalRO"
-kind = "normal"
-prefix = "XF:07ID-ES1{DMR:I400-1}:IC4_MON"
-name = "DownstreamLargeDiode"
+#[DownstreamLargeDiode] 
+#_target = "ophyd.EpicsSignalRO"
+#kind = "normal"
+#prefix = "XF:07ID-ES1{DMR:I400-1}:IC4_MON"
+#name = "DownstreamLargeDiode"
 
-[DownstreamLargeDiode_int] 
-_target = "sst_base.detectors.scalar.ophScalar"
-kind = "normal"
-prefix = "XF:07ID-ES1{DMR:I400-1}:IC4_MON"
-name = "DownstreamLargeDiode"
+#[DownstreamLargeDiode_int] 
+#_target = "sst_base.detectors.scalar.ophScalar"
+#kind = "normal"
+#prefix = "XF:07ID-ES1{DMR:I400-1}:IC4_MON"
+#name = "DownstreamLargeDiode"
 
-[bpm13_sum]
-_target = "ophyd.EpicsSignalRO"
-prefix = "XF:07ID-BI{BPM:13}Stats5:Total_RBV"
-name = "Downstream Izero Phosphor Intensity"
+#[bpm13_sum]
+#_target = "ophyd.EpicsSignalRO"
+#prefix = "XF:07ID-BI{BPM:13}Stats5:Total_RBV"
+#name = "Downstream Izero Phosphor Intensity"
 
-[Izero_ds]
-_target = "sst_base.motors.PrettyMotorFMBO"
-_group = "motors"
-prefix = "XF:07ID2-BI{Diag:07-Ax:Y}Mtr"
-name = "Downstream Izero DM7 Vertical Translation" ## TODO: would like to name it something more generic like diagnostic module 7 to indicate that there is also a yag and photodiode.  In the description, I can indicate that it is downstream of RSoXS.
-kind = "hinted"
-_baseline = true
+#[Izero_ds]
+#_target = "sst_base.motors.PrettyMotorFMBO"
+#_group = "motors"
+#prefix = "XF:07ID2-BI{Diag:07-Ax:Y}Mtr"
+#name = "Downstream Izero DM7 Vertical Translation" ## TODO: would like to name it something more generic like diagnostic module 7 to indicate that there is also a yag and photodiode.  In the description, I can indicate that it is downstream of RSoXS.
+#kind = "hinted"
+#_baseline = true
 
-[dm7] ## TODO: I believe this is a repeat of the above Izero_ds, but the motor class and normal vs. hinting is different, so I am not sure which one is more correct
-_target = "sst_base.motors.PrettyMotorFMBODeadbandFlyer"
-_group = "motors"
-prefix = "XF:07ID2-BI{Diag:07-Ax:Y}Mtr"
-name = "Downstream diagnostic module translation" 
-kind = "normal"
+#[dm7] ## TODO: I believe this is a repeat of the above Izero_ds, but the motor class and normal vs. hinting is different, so I am not sure which one is more correct
+#_target = "sst_base.motors.PrettyMotorFMBODeadbandFlyer"
+#_group = "motors"
+#prefix = "XF:07ID2-BI{Diag:07-Ax:Y}Mtr"
+#name = "Downstream diagnostic module translation" 
+#kind = "normal"
 
-[dm7_cam] 
-_target = "sst_base.cameras.StandardProsilicawstatsFactory"
-prefix = "XF:07ID-BI{BPM:13}"
-name = "dm7_cam"
-camera_name = "fs13_cam-1"
-date_template = "%Y/%m"
-read_attrs = ['tiff','stats5']
+#[dm7_cam] 
+#_target = "sst_base.cameras.StandardProsilicawstatsFactory"
+#prefix = "XF:07ID-BI{BPM:13}"
+#name = "dm7_cam"
+#camera_name = "fs13_cam-1"
+#date_template = "%Y/%m"
+#read_attrs = ['tiff','stats5']
 
 ## LARIAT 1
 
-[psh8]
-_target = "sst_base.shutters.EPS_Shutter"
-_group = "shutters"
-shutter_type = "PH"
-openval = 0
-closeval = 1
-prefix = "XF:07IDA-PPS{PSh:8}"
-name = "Photon Shutter 8"
+#[psh8]
+#_target = "sst_base.shutters.EPS_Shutter"
+#_group = "shutters"
+#shutter_type = "PH"
+#openval = 0
+#closeval = 1
+#prefix = "XF:07IDA-PPS{PSh:8}"
+#name = "Photon Shutter 8"
 
 ## GV30
 
@@ -929,18 +929,18 @@ name = "Photon Shutter 8"
 
 ## GV31
 
-[dm8]
-_target = "sst_base.motors.PrettyMotor"
-prefix = "XF:07ID2-BI{Diag:08-Ax:Y}Mtr"
-name = "DM8Motor"
+#[dm8]
+#_target = "sst_base.motors.PrettyMotor"
+#prefix = "XF:07ID2-BI{Diag:08-Ax:Y}Mtr"
+#name = "DM8Motor"
 
-[dm8_cam] #was 
-_target = "sst_base.cameras.StandardProsilicawstatsFactory"
-prefix = "XF:07ID-BI{BPM:14}"
-name = "dm8_cam"
-camera_name = "fs14_cam-1"
-date_template = "%Y/%m"
-read_attrs = ['tiff','stats5']
+#[dm8_cam] #was 
+#_target = "sst_base.cameras.StandardProsilicawstatsFactory"
+#prefix = "XF:07ID-BI{BPM:14}"
+#name = "dm8_cam"
+#camera_name = "fs14_cam-1"
+#date_template = "%Y/%m"
+#read_attrs = ['tiff','stats5']
 
 
 ## PEY NEXAFS
