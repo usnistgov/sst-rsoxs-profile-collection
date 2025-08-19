@@ -582,6 +582,8 @@ _group = "motors"
 #prefix = "XF:07ID2-ES1{Stg-Ax:Yaw}Mtr"
 _baseline = true
 
+## Readback values of the positions: XF:07ID2-ES1{Stg-Ax:X}Mtr.RBV, XF:07ID2-ES1{Stg-Ax:Y}Mtr.RBV, XF:07ID2-ES1{Stg-Ax:Z}Mtr.RBV, XF:07ID2-ES1{Stg-Ax:Yaw}Mtr.RBV
+
 [rsoxs_ll_gpwr]
 _target = "ophyd.EpicsSignal"
 kind = "hinted"
