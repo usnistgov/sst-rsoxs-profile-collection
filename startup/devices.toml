@@ -425,6 +425,8 @@ camera_name = "izero_cam-1"
 date_template = "%Y/%m"
 read_attrs=['tiff','stats5']
 ## Manufacturer: Allied Vision Mako (some other cameras for flurescence screens are Alled Vision Prosilica, but all image processesing is done with classes named Prosilica)
+## TODO: find specs of the YAG that we have
+## If needed, see 20250829 email from racevedo@bnl.gov and gwang@bnl.gov "Question About Material Used in HEX Commissioning" for specs and vendor of a flurescence screen used at HEX.
 
 [izero_y] # was Izero_Y
 _target = "sst_base.motors.PrettyMotorFMBODeadband"
