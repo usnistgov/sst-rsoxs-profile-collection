@@ -30,11 +30,14 @@ pydantic-numpy = "*"
 hdf5-external-filter-plugins = ">=0.1.0,<0.2"
 blosc-hdf5-plugin = ">=1.0.1,<2"
 databroker = "==2.0.0b68"
-
+pyhyperscattering = ">=0.2.10,<0.3"
 
 [feature.profile.pypi-dependencies]
 ophyd-async = { version = ">=0.9.0, <0.10", extras = ["ca", "pva"] }
-
+sst-base = { git = "https://github.com/nsls-ii-sst/sst_base", rev = "v0.1.0" }
+nbs-bl = { git = "https://github.com/xraygui/nbs-bl", rev = "v0.1.2" }
+nbs-core = { git = "https://github.com/xraygui/nbs-core", rev="v0.0.2" }
+rsoxs = { git = "https://github.com/usnistgov/sst-rsoxs", branch = "spiralViewer" }
 
 [feature.qs.dependencies]
 bluesky-queueserver = "*"
@@ -59,6 +62,20 @@ numpy = ">2"
 start = "ipython --profile-dir=."
 pvs = "ipython --profile-dir=. -c 'get_pv_types(); exit()'"
 
+[feature.gui.tasks]
+nbs-gui = "nbs-gui --profile collection"
+nbs-viewer = "nbs-viewer"
+
+[feature.gui.pypi-dependencies]
+nbs-viewer = ">=0.3.2, <0.4"
+
+[feature.gui.dependencies]
+asteval = ">=1.0.6,<2"
+pyqtgraph = ">=0.13.7,<0.14"
+bluesky-widgets = ">=0.0.17,<0.0.18"
+bluesky-live = ">=0.0.8,<0.0.9"
+
 [environments]
 terminal = {features=["profile", "terminal"], solve-group="profile"}
 qs = {features=["profile", "qs"], solve-group="profile"}
+gui = {features=["profile", "gui"], solve-group="profile"}
