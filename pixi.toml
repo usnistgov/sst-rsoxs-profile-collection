@@ -67,7 +67,7 @@ nbs-gui = "nbs-gui --profile collection"
 nbs-viewer = "nbs-viewer"
 
 [feature.gui.pypi-dependencies]
-nbs-viewer = ">=0.3.2, <0.4"
+nbs-viewer = { git = "https://github.com/xraygui/nbs-viewer", rev="v0.3.3" }
 
 [feature.gui.dependencies]
 asteval = ">=1.0.6,<2"

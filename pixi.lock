@@ -637,7 +637,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/5b/08/185c3b29b0698328b202e6c965c23187e2e29ead78cb468aab0a09ee97fc/aioca-1.8.1-py3-none-any.whl
       - pypi: git+https://github.com/xraygui/nbs-bl?rev=v0.1.2#3b2afa619db555295a9068cd71483133153a0eae
       - pypi: git+https://github.com/xraygui/nbs-core?rev=v0.0.2#2c2f50ad423927df146a4e981c3c8c1c45b0f0d0
-      - pypi: https://files.pythonhosted.org/packages/12/e2/778bea0b189571b6f78f2e5da6c3781ccfb2644a1940814487eabdd9f53e/nbs_viewer-0.3.2-py3-none-any.whl
+      - pypi: git+https://github.com/xraygui/nbs-viewer?rev=v0.3.3#8001fbf62791e81ce0e73cc5a83a79d4636bdaad
       - pypi: https://files.pythonhosted.org/packages/d7/40/e352883ce7ca9364f6429e19a91bb46d40e62e66668a0eb6d17f8de6a84c/ophyd_async-0.9.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/41/2f/f5066e95bb60a3a510727171c79499abed9b623f72e8bbad848634946e0a/p4p-4.2.0-cp312-cp312-manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
@@ -7350,10 +7350,9 @@ packages:
   name: nbs-core
   version: 0.0.2
   requires_python: '>=3.7'
-- pypi: https://files.pythonhosted.org/packages/12/e2/778bea0b189571b6f78f2e5da6c3781ccfb2644a1940814487eabdd9f53e/nbs_viewer-0.3.2-py3-none-any.whl
+- pypi: git+https://github.com/xraygui/nbs-viewer?rev=v0.3.3#8001fbf62791e81ce0e73cc5a83a79d4636bdaad
   name: nbs-viewer
-  version: 0.3.2
-  sha256: 17e6a829cdc1a068d5fee68f1abed4c622c6312ca793a488eb843816138c1cd5
+  version: 0.3.3
   requires_dist:
   - numpy
   - qtpy
