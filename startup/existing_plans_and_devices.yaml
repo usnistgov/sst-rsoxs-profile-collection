@@ -2261,6 +2261,79 @@ existing_devices:
     is_movable: true
     is_readable: true
     module: ophyd.signal
+  DownstreamLargeDiode:
+    classname: EpicsSignalRO
+    is_flyable: false
+    is_movable: true
+    is_readable: true
+    module: ophyd.signal
+  DownstreamLargeDiode_int:
+    classname: ophScalar
+    components:
+      exposure_time:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      gain:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      mean:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      median:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      npts:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      offset:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      rescale:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      std:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      sum:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      target:
+        classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+    is_flyable: true
+    is_movable: false
+    is_readable: true
+    module: sst_base.detectors.scalar
   Gap_C07U42:
     classname: EpicsSignalRO
     is_flyable: false
@@ -2733,7 +2806,7 @@ existing_devices:
     is_readable: true
     module: ophyd.signal
   Sample_TEY_int:
-    classname: ophScalar
+    classname: ADCBuffer
     components:
       exposure_time:
         classname: Signal
@@ -5946,7 +6019,7 @@ existing_devices:
     is_readable: true
     module: sst_base.detectors.scalar
   izero_mesh:
-    classname: ophScalar
+    classname: ADCBuffer
     components:
       exposure_time:
         classname: Signal
@@ -22127,6 +22200,12 @@ existing_devices:
     is_readable: true
     module: rsoxs.devices.detectors
 existing_plans:
+  HOPG_energy_resolution_series:
+    module: rsoxs.plans.run_acquisitions
+    name: HOPG_energy_resolution_series
+    parameters: []
+    properties:
+      is_generator: true
   I0_mesh_vertical_profile_energy_scan:
     module: rsoxs.plans.run_acquisitions
     name: I0_mesh_vertical_profile_energy_scan
@@ -22137,6 +22216,23 @@ existing_plans:
     module: rsoxs.plans.run_acquisitions
     name: M1_parameter_sweep_FS6
     parameters: []
+    properties:
+      is_generator: true
+  TEY_20250914:
+    module: rsoxs.plans.run_acquisitions
+    name: TEY_20250914
+    parameters: []
+    properties:
+      is_generator: true
+  WAXS_camera_energy_polarization_series:
+    module: rsoxs.plans.run_acquisitions
+    name: WAXS_camera_energy_polarization_series
+    parameters:
+    - default: '1'
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: iterations
     properties:
       is_generator: true
   WAXS_camera_flat_field_illumination_Al_foil:
@@ -22601,6 +22697,47 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: scan_time
+    properties:
+      is_generator: true
+  cdsaxs_scan:
+    module: rsoxs.Functions.energyscancore
+    name: cdsaxs_scan
+    parameters:
+    - default: None
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: det
+    - default: None
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: angle_mot
+    - default: None
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: shutter
+    - default: '50'
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: start_angle
+    - default: '85'
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: end_angle
+    - default: '9'
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: exp_time
+    - default: None
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: md
     properties:
       is_generator: true
   ce_rsoxs:
@@ -23305,9 +23442,9 @@ existing_plans:
       name: md
     properties:
       is_generator: true
-  commissioning_scans_20250808:
+  commissioning_scans_20250913:
     module: rsoxs.plans.run_acquisitions
-    name: commissioning_scans_20250808
+    name: commissioning_scans_20250913
     parameters: []
     properties:
       is_generator: true
@@ -23653,6 +23790,39 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: md
+    properties:
+      is_generator: true
+  do_cdsaxs:
+    module: rsoxs.plans.run_acquisitions
+    name: do_cdsaxs
+    parameters:
+    - kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: energies
+    - kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: samples
+    properties:
+      is_generator: true
+  do_rsoxs:
+    description: "inputs:\n    edge,\n    exposure_time = 1,\n    frames='full',\n\
+      \    ratios=None,\n    repeats =1,\n    polarizations = [0],\n    angles = None,\n\
+      \    grating='rsoxs',\n    diode_range='high',\n    temperatures=None,\n   \
+      \ temp_ramp_speed=10,\n    temp_wait=True,\n    md=None,"
+    module: rsoxs.Functions.rsoxs_plans
+    name: do_rsoxs
+    parameters:
+    - default: None
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: md
+    - kind:
+        name: VAR_KEYWORD
+        value: 4
+      name: kwargs
     properties:
       is_generator: true
   enc_clr_gx:
@@ -26363,10 +26533,10 @@ existing_plans:
     module: rsoxs.Functions.alignment
     name: move_to_location
     parameters:
-    - default: '[{''motor'': ''x'', ''position'': -0.00970500000000385, ''order'':
-        0}, {''motor'': ''y'', ''position'': 0.003544999999974152, ''order'': 0},
-        {''motor'': ''z'', ''position'': -1.1315599999999932, ''order'': 0}, {''motor'':
-        ''th'', ''position'': -0.007022058000018205, ''order'': 0}]'
+    - default: '[{''motor'': ''x'', ''position'': 9.999600000000001, ''order'': 0},
+        {''motor'': ''y'', ''position'': -168.395915, ''order'': 0}, {''motor'': ''z'',
+        ''position'': -1.1315599999999932, ''order'': 0}, {''motor'': ''th'', ''position'':
+        90.00258995500002, ''order'': 0}]'
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -32087,8 +32257,27 @@ existing_plans:
     properties:
       is_generator: true
   open_beam_waxs_photodiode_scans:
+    description: "Purpose: \n1. Check beam flux and normalized signal stability over\
+      \ time\n2. Check contamination level of upstream optics\n3. Run at polarizations\
+      \ below and above 90 degrees in an attempt to reproduce EPU errors and troubleshoot\
+      \ further."
     module: rsoxs.plans.run_acquisitions
     name: open_beam_waxs_photodiode_scans
+    parameters:
+    - default: '1'
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: iterations
+    properties:
+      is_generator: true
+  open_beam_waxs_photodiode_scans_carbon:
+    description: "Purpose: \n1. Check beam flux and normalized signal stability over\
+      \ time\n2. Check contamination level of upstream optics\n3. Run at polarizations\
+      \ below and above 90 degrees in an attempt to reproduce EPU errors and troubleshoot\
+      \ further."
+    module: rsoxs.plans.run_acquisitions
+    name: open_beam_waxs_photodiode_scans_carbon
     parameters:
     - default: '1'
       kind:
@@ -32387,921 +32576,335 @@ existing_plans:
     module: rsoxs.plans.run_acquisitions
     name: run_acquisitions_queue
     parameters:
-    - default: '[{''bar_name'': ''20250808_Commissioning'', ''sample_id'': ''AF1_front'',
+    - default: '[{''bar_name'': ''20250914_Tiwale'', ''sample_id'': ''AF1_front'',
         ''sample_name'': ''AF1_front'', ''project_name'': ''Calibration'', ''institution'':
-        ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''0A'', ''front'': True,
-        ''grazing'': False, ''angle'': 0, ''height'': 0.0, ''sample_priority'': 1,
-        ''notes'': None, ''location'': [{''motor'': ''x'', ''position'': -1.3619550777725156,
-        ''order'': 0}, {''motor'': ''y'', ''position'': -186.86162867797665, ''order'':
-        0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
-        ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''0A'', ''ximg'':
-        0.7668522618567337, ''yimg'': -185.48584749058006, ''th0'': 0.0, ''th'': 0,
-        ''xoff'': -0.5600057411623452, ''x0'': 0.24194359544782473, ''y0'': -186.86162867797665,
-        ''af1y'': -186.86112500000002, ''af2y'': 3.4385349999999733, ''af1xoff'':
-        -0.5587075000000006, ''af2xoff'': -0.7383475000000033, ''af1zoff'': -1.432212500000002,
-        ''af2zoff'': -4.296250000000001, ''zoff'': 3.0677950804266416}, ''density'':
-        None, ''composition'': None, ''components'': None, ''sample_state'': None,
-        ''sample_set'': None, ''project_desc'': ''Calibration'', ''sample_desc'':
-        None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'': ''20250808_Commissioning'',
-        ''sample_id'': ''AF2_front'', ''sample_name'': ''AF2_front'', ''project_name'':
-        ''Calibration'', ''institution'': ''NIST'', ''proposal_id'': 318915, ''bar_spot'':
-        ''0A'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.0,
-        ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'': ''x'',
-        ''position'': -2.0403170584851376, ''order'': 0}, {''motor'': ''y'', ''position'':
-        3.4380057971700846, ''order'': 0}, {''motor'': ''z'', ''position'': 0.0, ''order'':
-        0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}], ''bar_loc'':
-        {''spot'': ''0A'', ''ximg'': 1.3988319386793564, ''yimg'': 4.883507350675398,
-        ''th0'': 0.0, ''th'': 0, ''xoff'': -0.7397115320380812, ''x0'': 0.5608939944089756,
-        ''y0'': 3.4380057971700846, ''af1y'': -186.86112500000002, ''af2y'': 3.4385349999999733,
-        ''af1xoff'': -0.5587075000000006, ''af2xoff'': -0.7383475000000033, ''af1zoff'':
-        -1.432212500000002, ''af2zoff'': -4.296250000000001, ''zoff'': 0.20375796457938922},
-        ''density'': None, ''composition'': None, ''components'': None, ''sample_state'':
-        None, ''sample_set'': None, ''project_desc'': ''Calibration'', ''sample_desc'':
-        None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'': ''20250808_Commissioning'',
-        ''sample_id'': ''diode'', ''sample_name'': ''diode'', ''project_name'': ''Calibration'',
-        ''institution'': ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''0A'',
-        ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.0, ''sample_priority'':
-        1, ''notes'': None, ''location'': [{''motor'': ''x'', ''position'': -2.3578047910251216,
-        ''order'': 0}, {''motor'': ''y'', ''position'': 46.4023076620934, ''order'':
-        0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
-        ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''0A'', ''ximg'':
-        1.7058478523374134, ''yimg'': 47.863550112126916, ''th0'': 0.0, ''th'': 0,
-        ''xoff'': -0.7802840421606283, ''x0'': 0.797236706703865, ''y0'': 46.4023076620934,
-        ''af1y'': -186.86112500000002, ''af2y'': 3.4385349999999733, ''af1xoff'':
-        -0.5587075000000006, ''af2xoff'': -0.7383475000000033, ''af1zoff'': -1.432212500000002,
-        ''af2zoff'': -4.296250000000001, ''zoff'': -0.4428610136282449}, ''density'':
-        None, ''composition'': None, ''components'': None, ''sample_state'': None,
-        ''sample_set'': None, ''project_desc'': ''Calibration'', ''sample_desc'':
-        None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'': ''20250808_Commissioning'',
-        ''sample_id'': ''SiN_Blank'', ''sample_name'': ''SiN_Blank'', ''project_name'':
-        ''calibration'', ''institution'': ''NIST'', ''proposal_id'': 318915, ''bar_spot'':
-        ''18A'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.25,
-        ''sample_priority'': 1, ''notes'': ''Typical transmission RSoXS sample on
-        SiN membrane that is mounted to the front of the bar.  0 degrees angle corresponds
-        to normal incidence.  bar_spot can be filled in after you mount samples.'',
-        ''location'': [{''motor'': ''x'', ''position'': -1.0098549564221349, ''order'':
-        0}, {''motor'': ''y'', ''position'': -76.89330096864275, ''order'': 0}, {''motor'':
+        ''CFN'', ''proposal_id'': 319676, ''bar_spot'': ''0A'', ''front'': True, ''grazing'':
+        False, ''angle'': 0, ''height'': 0.0, ''sample_priority'': 1, ''notes'': None,
+        ''location'': [{''motor'': ''x'', ''position'': -1.3391235972115858, ''order'':
+        0}, {''motor'': ''y'', ''position'': -187.0224199842179, ''order'': 0}, {''motor'':
         ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
-        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''18A'', ''th'': 0, ''ximg'':
-        0.3879492283086652, ''yimg'': -75.47723051800399, ''th0'': 0.0, ''xoff'':
-        -0.6638522112661482, ''x0'': -0.3178494661101619, ''y0'': -76.89330096864275,
-        ''af1y'': -186.86112500000002, ''af2y'': 3.4385349999999733, ''af1xoff'':
-        -0.5587075000000006, ''af2xoff'': -0.7383475000000033, ''af1zoff'': -1.432212500000002,
-        ''af2zoff'': -4.296250000000001, ''zoff'': 1.1627557893852325}, ''density'':
-        None, ''composition'': None, ''components'': None, ''sample_state'': None,
-        ''sample_set'': None, ''project_desc'': None, ''sample_desc'': None, ''acq_history'':
-        [], ''acquisitions'': []}, {''bar_name'': ''20250808_Commissioning'', ''sample_id'':
-        ''AlFoil'', ''sample_name'': ''AlFoil'', ''project_name'': ''calibration'',
-        ''institution'': ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''21A'',
-        ''front'': True, ''grazing'': True, ''angle'': 90, ''height'': 0.5, ''sample_priority'':
-        1, ''notes'': ''For camera characterization'', ''location'': [{''motor'':
-        ''x'', ''position'': -0.17598745693877582, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -51.98841724710449, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 0.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''21A'', ''th'': 90, ''ximg'': 0.5707779886148003,
-        ''yimg'': -50.563222356391265, ''th0'': 0.0, ''xoff'': -0.687370658047147,
-        ''x0'': -0.17598745693877585, ''y0'': -51.98841724710449, ''af1y'': -186.86112500000002,
-        ''af2y'': 3.4385349999999733, ''af1xoff'': -0.5587075000000006, ''af2xoff'':
-        -0.7383475000000033, ''af1zoff'': -1.432212500000002, ''af2zoff'': -4.296250000000001,
-        ''zoff'': 0.5379336750860002}, ''density'': None, ''composition'': None, ''components'':
-        None, ''sample_state'': None, ''sample_set'': None, ''project_desc'': None,
-        ''sample_desc'': None, ''acq_history'': [], ''acquisitions'': []}, {''bar_name'':
-        ''20250808_Commissioning'', ''sample_id'': ''GoldGrid_AsIs'', ''sample_name'':
-        ''GoldGrid_AsIs'', ''project_name'': ''calibration'', ''institution'': ''NIST'',
-        ''proposal_id'': 318915, ''bar_spot'': ''26B'', ''front'': True, ''grazing'':
-        False, ''angle'': 0, ''height'': 0.25, ''sample_priority'': 1, ''notes'':
-        ''To assess contamination growth'', ''location'': [{''motor'': ''x'', ''position'':
-        -0.7582343027595982, ''order'': 0}, {''motor'': ''y'', ''position'': -29.829961680153975,
-        ''order'': 0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'':
-        ''th'', ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''26B'',
-        ''th'': 0, ''ximg'': 0.12485768500949135, ''yimg'': -28.39664856242054, ''th0'':
-        0.0, ''xoff'': -0.7082955683509751, ''x0'': -0.658356833942352, ''y0'': -29.829961680153975,
-        ''af1y'': -186.86112500000002, ''af2y'': 3.4385349999999733, ''af1xoff'':
-        -0.5587075000000006, ''af2xoff'': -0.7383475000000033, ''af1zoff'': -1.432212500000002,
-        ''af2zoff'': -4.296250000000001, ''zoff'': 0.4544457030852622}, ''density'':
-        None, ''composition'': None, ''components'': None, ''sample_state'': None,
-        ''sample_set'': None, ''project_desc'': None, ''sample_desc'': None, ''acq_history'':
-        [], ''acquisitions'': [{''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
+        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''0A'', ''ximg'': 0.7466977722398136,
+        ''yimg'': -185.43036338424466, ''th0'': 0.0, ''th'': 0, ''xoff'': -0.6097202307020293,
+        ''x0'': 0.11968313580752679, ''y0'': -187.0224199842179, ''af1y'': -187.02401500000002,
+        ''af2y'': 3.5522599999999898, ''af1xoff'': -0.608997500000001, ''af2xoff'':
+        -0.6954250000000002, ''af1zoff'': -1.4006049999999988, ''af2zoff'': -1.9994999999999998,
+        ''zoff'': 3.099389987587114}, ''acq_history'': [], ''sample_state'': None,
+        ''sample_desc'': None, ''components'': None, ''composition'': None, ''density'':
+        None, ''project_desc'': ''Calibration'', ''sample_set'': None, ''acquisitions'':
+        []}, {''bar_name'': ''20250914_Tiwale'', ''sample_id'': ''AF2_front'', ''sample_name'':
+        ''AF2_front'', ''project_name'': ''Calibration'', ''institution'': ''CFN'',
+        ''proposal_id'': 319676, ''bar_spot'': ''0A'', ''front'': True, ''grazing'':
+        False, ''angle'': 0, ''height'': 0.0, ''sample_priority'': 1, ''notes'': None,
+        ''location'': [{''motor'': ''x'', ''position'': -2.564083423626934, ''order'':
+        0}, {''motor'': ''y'', ''position'': 3.553664113100762, ''order'': 0}, {''motor'':
+        ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
+        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''0A'', ''ximg'': 1.7968090079949572,
+        ''yimg'': 4.9551722073918665, ''th0'': 0.0, ''th'': 0, ''xoff'': -0.6960612292200559,
+        ''x0'': 1.1719609651868221, ''y0'': 3.553664113100762, ''af1y'': -187.02401500000002,
+        ''af2y'': 3.5522599999999898, ''af1xoff'': -0.608997500000001, ''af2xoff'':
+        -0.6954250000000002, ''af1zoff'': -1.4006049999999988, ''af2zoff'': -1.9994999999999998,
+        ''zoff'': 2.5004955875078605}, ''acq_history'': [], ''sample_state'': None,
+        ''sample_desc'': None, ''components'': None, ''composition'': None, ''density'':
+        None, ''project_desc'': ''Calibration'', ''sample_set'': None, ''acquisitions'':
+        []}, {''bar_name'': ''20250914_Tiwale'', ''sample_id'': ''diode'', ''sample_name'':
+        ''diode'', ''project_name'': ''Calibration'', ''institution'': ''CFN'', ''proposal_id'':
+        319676, ''bar_spot'': ''0A'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.0, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': -0.9762357707284924, ''order'': 0}, {''motor'':
+        ''y'', ''position'': 48.000415038035776, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''0A'', ''ximg'': 0.16818261942535173,
+        ''yimg'': 49.35748281332627, ''th0'': 0.0, ''th'': 0, ''xoff'': -0.7161979471819027,
+        ''x0'': -0.4561601236353132, ''y0'': 48.000415038035776, ''af1y'': -187.02401500000002,
+        ''af2y'': 3.5522599999999898, ''af1xoff'': -0.608997500000001, ''af2xoff'':
+        -0.6954250000000002, ''af1zoff'': -1.4006049999999988, ''af2zoff'': -1.9994999999999998,
+        ''zoff'': 2.360819560703427}, ''acq_history'': [], ''sample_state'': None,
+        ''sample_desc'': None, ''components'': None, ''composition'': None, ''density'':
+        None, ''project_desc'': ''Calibration'', ''sample_set'': None, ''acquisitions'':
+        []}, {''bar_name'': ''20250914_Tiwale'', ''sample_id'': ''ZnMIP_unexposed'',
+        ''sample_name'': ''ZnMIP_unexposed'', ''project_name'': ''Tiwale'', ''institution'':
+        ''CFN'', ''proposal_id'': 319676, ''bar_spot'': ''1A'', ''front'': True, ''grazing'':
+        True, ''angle'': 55, ''height'': 0.5, ''sample_priority'': 1, ''notes'': None,
+        ''location'': [{''motor'': ''x'', ''position'': -1.298926022069586, ''order'':
+        0}, {''motor'': ''y'', ''position'': -178.4538989289939, ''order'': 0}, {''motor'':
+        ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
+        35.0, ''order'': 0}], ''bar_loc'': {''spot'': ''1A'', ''th'': 35.0, ''ximg'':
+        0.9779471081121542, ''yimg'': -176.8704096101185, ''th0'': 0.0, ''xoff'':
+        -0.6136022218093341, ''x0'': 0.35102988423388537, ''y0'': -178.4538989289939,
+        ''af1y'': -187.02401500000002, ''af2y'': 3.5522599999999898, ''af1xoff'':
+        -0.608997500000001, ''af2xoff'': -0.6954250000000002, ''af1zoff'': -1.4006049999999988,
+        ''af2zoff'': -1.9994999999999998, ''zoff'': 2.5724630030116815}, ''acq_history'':
+        [], ''sample_state'': None, ''sample_desc'': None, ''components'': None, ''composition'':
+        None, ''density'': None, ''project_desc'': None, ''sample_set'': None, ''acquisitions'':
+        [{''sample_id'': ''ZnMIP_unexposed'', ''configuration_instrument'': ''WAXSNEXAFS'',
+        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
         ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''group_name'': ''Measure contamination growth'', ''priority'': 1, ''acquire_status'':
-        ''Finished 2025-08-08_15-07-10'', ''uid_local'': ''6616a7f7-bd2c-4d98-9aca-c441a80e7a5f'',
-        ''notes'': None}, {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'':
+        1, ''exposures_per_energy'': 1, ''cycles'': 1, ''sample_angles'': [55], ''spiral_dimensions'':
+        None, ''group_name'': ''TEY'', ''priority'': 3, ''acquire_status'': ''Not
+        begun'', ''uid_local'': ''51afad79-2d22-477a-85ee-b15108ed3c8a'', ''notes'':
+        None}, {''sample_id'': ''ZnMIP_unexposed'', ''configuration_instrument'':
+        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''nitrogen_NEXAFS'',
+        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
+        2, ''exposures_per_energy'': 1, ''cycles'': 1, ''sample_angles'': [55], ''spiral_dimensions'':
+        None, ''group_name'': ''TEY'', ''priority'': 7, ''acquire_status'': ''Not
+        begun'', ''uid_local'': ''f8977dbc-aba1-4180-b4cb-00b49e017173'', ''notes'':
+        None}, {''sample_id'': ''ZnMIP_unexposed'', ''configuration_instrument'':
+        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''oxygen_NEXAFS'',
+        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
+        2, ''exposures_per_energy'': 1, ''cycles'': 1, ''sample_angles'': [55], ''spiral_dimensions'':
+        None, ''group_name'': ''TEY'', ''priority'': 11, ''acquire_status'': ''Not
+        begun'', ''uid_local'': ''4c78b467-89ee-4f62-b501-16c7e00849c3'', ''notes'':
+        None}, {''sample_id'': ''ZnMIP_unexposed'', ''configuration_instrument'':
         ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_12-08-15'',
-        ''uid_local'': ''4e19afc2-ec72-4619-87a5-35b7d5f4db50'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
+        ''polarizations'': [0], ''cycles'': 1, ''sample_angles'': [55], ''group_name'':
+        ''TEY'', ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'':
+        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
+        ''Started 2025-09-14_15-55-01'', ''uid_local'': ''f68d6b67-3c78-4223-b5c9-145c71e4bfa3'',
+        ''notes'': None}, {''sample_id'': ''ZnMIP_unexposed'', ''configuration_instrument'':
+        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
+        ''polarizations'': [0], ''cycles'': 1, ''sample_angles'': [55], ''group_name'':
+        ''TEY'', ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'':
+        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
+        ''Finished 2025-09-14_16-03-57'', ''uid_local'': ''f68d6b67-3c78-4223-b5c9-145c71e4bfa3'',
+        ''notes'': None}, {''sample_id'': ''ZnMIP_unexposed'', ''configuration_instrument'':
+        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''nitrogen_NEXAFS'',
+        ''polarizations'': [0], ''cycles'': 1, ''sample_angles'': [55], ''group_name'':
+        ''TEY'', ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'':
+        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
+        ''Started 2025-09-14_16-38-10'', ''uid_local'': ''a11d3f20-fd2c-43bb-9869-a5b43ad84a83'',
+        ''notes'': None}, {''sample_id'': ''ZnMIP_unexposed'', ''configuration_instrument'':
+        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''nitrogen_NEXAFS'',
+        ''polarizations'': [0], ''cycles'': 1, ''sample_angles'': [55], ''group_name'':
+        ''TEY'', ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'':
+        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
+        ''Finished 2025-09-14_16-46-48'', ''uid_local'': ''a11d3f20-fd2c-43bb-9869-a5b43ad84a83'',
+        ''notes'': None}, {''sample_id'': ''ZnMIP_unexposed'', ''configuration_instrument'':
+        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''oxygen_NEXAFS'',
+        ''polarizations'': [0], ''cycles'': 1, ''sample_angles'': [55], ''group_name'':
+        ''TEY'', ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'':
+        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
+        ''Started 2025-09-14_17-17-00'', ''uid_local'': ''3ee1ad26-bdbb-499b-866e-933eed41a607'',
+        ''notes'': None}, {''sample_id'': ''ZnMIP_unexposed'', ''configuration_instrument'':
+        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''oxygen_NEXAFS'',
+        ''polarizations'': [0], ''cycles'': 1, ''sample_angles'': [55], ''group_name'':
+        ''TEY'', ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'':
+        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
+        ''Finished 2025-09-14_17-26-14'', ''uid_local'': ''3ee1ad26-bdbb-499b-866e-933eed41a607'',
+        ''notes'': None}]}, {''bar_name'': ''20250914_Tiwale'', ''sample_id'': ''ZnMIP_exposed'',
+        ''sample_name'': ''ZnMIP_exposed'', ''project_name'': ''Tiwale'', ''institution'':
+        ''CFN'', ''proposal_id'': 319676, ''bar_spot'': ''3A'', ''front'': True, ''grazing'':
+        True, ''angle'': 55, ''height'': 0.5, ''sample_priority'': 1, ''notes'': None,
+        ''location'': [{''motor'': ''x'', ''position'': -1.2815006222283083, ''order'':
+        0}, {''motor'': ''y'', ''position'': -168.38065779602792, ''order'': 0}, {''motor'':
+        ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
+        35.0, ''order'': 0}], ''bar_loc'': {''spot'': ''3A'', ''th'': 35.0, ''ximg'':
+        0.9779471081121542, ''yimg'': -166.8072402605788, ''th0'': 0.0, ''xoff'':
+        -0.6181659303242442, ''x0'': 0.35114440343033443, ''y0'': -168.38065779602792,
+        ''af1y'': -187.02401500000002, ''af2y'': 3.5522599999999898, ''af1xoff'':
+        -0.608997500000001, ''af2xoff'': -0.6954250000000002, ''af1zoff'': -1.4006049999999988,
+        ''af2zoff'': -1.9994999999999998, ''zoff'': 2.5408073640905844}, ''acq_history'':
+        [], ''sample_state'': None, ''sample_desc'': None, ''components'': None, ''composition'':
+        None, ''density'': None, ''project_desc'': None, ''sample_set'': None, ''acquisitions'':
+        [{''sample_id'': ''ZnMIP_exposed'', ''configuration_instrument'': ''WAXSNEXAFS'',
         ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_12-17-50'',
-        ''uid_local'': ''4e19afc2-ec72-4619-87a5-35b7d5f4db50'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
+        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
+        1, ''exposures_per_energy'': 1, ''cycles'': 1, ''sample_angles'': [55], ''spiral_dimensions'':
+        None, ''group_name'': ''TEY'', ''priority'': 4, ''acquire_status'': ''Not
+        begun'', ''uid_local'': ''7c83266b-b55b-4e83-b6b4-8036c3c1b69b'', ''notes'':
+        None}, {''sample_id'': ''ZnMIP_exposed'', ''configuration_instrument'': ''WAXSNEXAFS'',
+        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''nitrogen_NEXAFS'',
+        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
+        2, ''exposures_per_energy'': 1, ''cycles'': 1, ''sample_angles'': [55], ''spiral_dimensions'':
+        None, ''group_name'': ''TEY'', ''priority'': 8, ''acquire_status'': ''Not
+        begun'', ''uid_local'': ''5e6ad200-61a0-4ece-926c-29142c3f102d'', ''notes'':
+        None}, {''sample_id'': ''ZnMIP_exposed'', ''configuration_instrument'': ''WAXSNEXAFS'',
+        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''oxygen_NEXAFS'',
+        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
+        2, ''exposures_per_energy'': 1, ''cycles'': 1, ''sample_angles'': [55], ''spiral_dimensions'':
+        None, ''group_name'': ''TEY'', ''priority'': 12, ''acquire_status'': ''Not
+        begun'', ''uid_local'': ''60fcccf0-c9dc-4903-9ce7-c712085f6abb'', ''notes'':
+        None}, {''sample_id'': ''ZnMIP_exposed'', ''configuration_instrument'': ''WAXSNEXAFS'',
         ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_15-03-35'',
-        ''uid_local'': ''dce328f6-1507-4658-b105-dd9dfb304a0d'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_15-13-09'',
-        ''uid_local'': ''dce328f6-1507-4658-b105-dd9dfb304a0d'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_16-46-36'',
-        ''uid_local'': ''0c7d639d-1440-4c06-87eb-646abdf242fc'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_16-55-34'',
-        ''uid_local'': ''0c7d639d-1440-4c06-87eb-646abdf242fc'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_17-16-00'',
-        ''uid_local'': ''3c85da31-6561-444b-8d84-76842491faa8'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_17-24-33'',
-        ''uid_local'': ''3c85da31-6561-444b-8d84-76842491faa8'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_17-45-11'',
-        ''uid_local'': ''84c9619c-6085-4b1f-9868-7d15f943a7e8'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_17-53-59'',
-        ''uid_local'': ''84c9619c-6085-4b1f-9868-7d15f943a7e8'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_18-14-39'',
-        ''uid_local'': ''807f48f9-d22d-4ade-904e-5ef2564c93b4'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_18-23-24'',
-        ''uid_local'': ''807f48f9-d22d-4ade-904e-5ef2564c93b4'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_18-43-53'',
-        ''uid_local'': ''4541dac9-b062-46ac-90cc-78e7835b70de'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_18-52-40'',
-        ''uid_local'': ''4541dac9-b062-46ac-90cc-78e7835b70de'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_19-13-53'',
-        ''uid_local'': ''d7229fa6-928e-4f48-8577-4d77a3766451'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_19-22-40'',
-        ''uid_local'': ''d7229fa6-928e-4f48-8577-4d77a3766451'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_19-43-25'',
-        ''uid_local'': ''6aae723d-23cd-4b5d-acae-4bd554ece060'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_19-52-06'',
-        ''uid_local'': ''6aae723d-23cd-4b5d-acae-4bd554ece060'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_20-12-51'',
-        ''uid_local'': ''e3e76b37-7fbd-447c-9c3f-3b78a2fb84f6'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_20-21-26'',
-        ''uid_local'': ''e3e76b37-7fbd-447c-9c3f-3b78a2fb84f6'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_20-41-54'',
-        ''uid_local'': ''cf0cd6e6-9da1-40d5-bb03-5ffb35c9942b'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_20-50-25'',
-        ''uid_local'': ''cf0cd6e6-9da1-40d5-bb03-5ffb35c9942b'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_21-10-49'',
-        ''uid_local'': ''3b9adf74-9a30-4452-84a3-28ead919069b'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_AsIs'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 1, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_21-19-18'',
-        ''uid_local'': ''3b9adf74-9a30-4452-84a3-28ead919069b'', ''notes'': None}]},
-        {''bar_name'': ''20250808_Commissioning'', ''sample_id'': ''GoldGrid_UVO90min'',
-        ''sample_name'': ''GoldGrid_UVO90min'', ''project_name'': ''calibration'',
-        ''institution'': ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''26A'',
-        ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.25, ''sample_priority'':
-        1, ''notes'': ''To assess contamination growth'', ''location'': [{''motor'':
-        ''x'', ''position'': 4.84292021264527, ''order'': 0}, {''motor'': ''y'', ''position'':
-        -29.54200419499595, ''order'': 0}, {''motor'': ''z'', ''position'': 0.0, ''order'':
-        0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}], ''bar_loc'':
-        {''spot'': ''26A'', ''th'': 0, ''ximg'': -5.4763670151417685, ''yimg'': -28.108585577841332,
-        ''th0'': 0.0, ''xoff'': -0.7085674954503183, ''x0'': -6.260055203545907, ''y0'':
-        -29.54200419499595, ''af1y'': -186.86112500000002, ''af2y'': 3.4385349999999733,
-        ''af1xoff'': -0.5587075000000006, ''af2xoff'': -0.7383475000000033, ''af1zoff'':
-        -1.432212500000002, ''af2zoff'': -4.296250000000001, ''zoff'': 0.4501119011441639},
-        ''density'': None, ''composition'': None, ''components'': None, ''sample_state'':
-        None, ''sample_set'': None, ''project_desc'': None, ''sample_desc'': None,
-        ''acq_history'': [], ''acquisitions'': [{''sample_id'': ''GoldGrid_UVO90min'',
-        ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'':
-        ''carbon_NEXAFS'', ''polarization_frame'': ''lab'', ''polarizations'': [0],
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''cycles'': 0, ''sample_angles'':
-        [0], ''spiral_dimensions'': None, ''group_name'': ''Measure contamination
-        growth'', ''priority'': 2, ''acquire_status'': ''Finished 2025-08-08_15-12-34'',
-        ''uid_local'': ''95181bc2-7883-4620-abe6-7262280986ef'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_12-18-42'',
-        ''uid_local'': ''05ba60d6-2022-4c40-b254-481d78f12005'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_12-27-24'',
-        ''uid_local'': ''05ba60d6-2022-4c40-b254-481d78f12005'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_15-13-58'',
-        ''uid_local'': ''3ed6b053-1a62-48fb-a8ec-dd1304cfa2f5'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_15-22-54'',
-        ''uid_local'': ''3ed6b053-1a62-48fb-a8ec-dd1304cfa2f5'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_16-56-19'',
-        ''uid_local'': ''7bebb27c-ccaf-47ed-80a3-f86fad379f25'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_17-04-58'',
-        ''uid_local'': ''7bebb27c-ccaf-47ed-80a3-f86fad379f25'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_17-25-18'',
-        ''uid_local'': ''9663b1b5-53b3-4580-bb24-3f7564cae69d'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_17-34-10'',
-        ''uid_local'': ''9663b1b5-53b3-4580-bb24-3f7564cae69d'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_17-54-50'',
-        ''uid_local'': ''d112c5b3-d8a4-4e17-a429-e143561e9e35'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_18-03-38'',
-        ''uid_local'': ''d112c5b3-d8a4-4e17-a429-e143561e9e35'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_18-24-15'',
-        ''uid_local'': ''d0ec645d-ecf2-4cbf-8c44-c93bc596ab7e'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_18-32-58'',
-        ''uid_local'': ''d0ec645d-ecf2-4cbf-8c44-c93bc596ab7e'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_18-53-30'',
-        ''uid_local'': ''e6d3adc7-0f17-4d28-b8d9-86c68bbb4e26'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_19-02-23'',
-        ''uid_local'': ''e6d3adc7-0f17-4d28-b8d9-86c68bbb4e26'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_19-23-23'',
-        ''uid_local'': ''4489ff8d-2d06-47ce-86c5-1e94fcb3b7d4'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_19-32-24'',
-        ''uid_local'': ''4489ff8d-2d06-47ce-86c5-1e94fcb3b7d4'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_19-52-46'',
-        ''uid_local'': ''9fdf7556-4349-47ae-a298-7e7dea9f2f9e'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_20-01-48'',
-        ''uid_local'': ''9fdf7556-4349-47ae-a298-7e7dea9f2f9e'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_20-22-11'',
-        ''uid_local'': ''f4e1dfd1-1376-4cdb-ad7a-0ddeef95d1b7'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_20-30-52'',
-        ''uid_local'': ''f4e1dfd1-1376-4cdb-ad7a-0ddeef95d1b7'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_20-51-10'',
-        ''uid_local'': ''867a8979-77c8-409f-95cd-9f6449ff8620'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_21-00-00'',
-        ''uid_local'': ''867a8979-77c8-409f-95cd-9f6449ff8620'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Started 2025-08-09_21-20-02'',
-        ''uid_local'': ''8715966f-a331-4e3c-8871-d4e609b26ac1'', ''notes'': None},
-        {''sample_id'': ''GoldGrid_UVO90min'', ''configuration_instrument'': ''WAXSNEXAFS'',
-        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 2, ''polarization_frame'': ''lab'',
-        ''exposure_time'': 1, ''exposures_per_energy'': 1, ''sample_angles'': [0],
-        ''spiral_dimensions'': None, ''acquire_status'': ''Finished 2025-08-09_21-28-52'',
-        ''uid_local'': ''8715966f-a331-4e3c-8871-d4e609b26ac1'', ''notes'': None}]},
-        {''bar_name'': ''20250808_Commissioning'', ''sample_id'': ''SBA15'', ''sample_name'':
-        ''SBA15'', ''project_name'': ''calibration'', ''institution'': ''NIST'', ''proposal_id'':
-        318915, ''bar_spot'': ''28A'', ''front'': True, ''grazing'': False, ''angle'':
+        ''polarizations'': [0], ''cycles'': 1, ''sample_angles'': [55], ''group_name'':
+        ''TEY'', ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'':
+        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
+        ''Started 2025-09-14_16-04-59'', ''uid_local'': ''50e9e97d-2b2e-4d36-b648-b8cb52e22868'',
+        ''notes'': None}, {''sample_id'': ''ZnMIP_exposed'', ''configuration_instrument'':
+        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
+        ''polarizations'': [0], ''cycles'': 1, ''sample_angles'': [55], ''group_name'':
+        ''TEY'', ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'':
+        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
+        ''Finished 2025-09-14_16-13-49'', ''uid_local'': ''50e9e97d-2b2e-4d36-b648-b8cb52e22868'',
+        ''notes'': None}, {''sample_id'': ''ZnMIP_exposed'', ''configuration_instrument'':
+        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''nitrogen_NEXAFS'',
+        ''polarizations'': [0], ''cycles'': 1, ''sample_angles'': [55], ''group_name'':
+        ''TEY'', ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'':
+        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
+        ''Started 2025-09-14_16-48-07'', ''uid_local'': ''51c1bef2-861e-4542-940f-e8781c3dd26a'',
+        ''notes'': None}, {''sample_id'': ''ZnMIP_exposed'', ''configuration_instrument'':
+        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''nitrogen_NEXAFS'',
+        ''polarizations'': [0], ''cycles'': 1, ''sample_angles'': [55], ''group_name'':
+        ''TEY'', ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'':
+        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
+        ''Finished 2025-09-14_16-56-39'', ''uid_local'': ''51c1bef2-861e-4542-940f-e8781c3dd26a'',
+        ''notes'': None}, {''sample_id'': ''ZnMIP_exposed'', ''configuration_instrument'':
+        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''oxygen_NEXAFS'',
+        ''polarizations'': [0], ''cycles'': 1, ''sample_angles'': [55], ''group_name'':
+        ''TEY'', ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'':
+        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
+        ''Started 2025-09-14_17-27-34'', ''uid_local'': ''988320a2-c959-4b08-8d45-313d7ba48231'',
+        ''notes'': None}, {''sample_id'': ''ZnMIP_exposed'', ''configuration_instrument'':
+        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''oxygen_NEXAFS'',
+        ''polarizations'': [0], ''cycles'': 1, ''sample_angles'': [55], ''group_name'':
+        ''TEY'', ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'':
+        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
+        ''Finished 2025-09-14_17-36-40'', ''uid_local'': ''988320a2-c959-4b08-8d45-313d7ba48231'',
+        ''notes'': None}]}, {''bar_name'': ''20250914_Tiwale'', ''sample_id'': ''ZnMIP_developed'',
+        ''sample_name'': ''ZnMIP_developed'', ''project_name'': ''Tiwale'', ''institution'':
+        ''CFN'', ''proposal_id'': 319676, ''bar_spot'': ''5A'', ''front'': True, ''grazing'':
+        True, ''angle'': 90, ''height'': 0.5, ''sample_priority'': 1, ''notes'': None,
+        ''location'': [{''motor'': ''x'', ''position'': -1.209963945463853, ''order'':
+        0}, {''motor'': ''y'', ''position'': -154.51558825179333, ''order'': 0}, {''motor'':
+        ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
+        0.0, ''order'': 0}], ''bar_loc'': {''spot'': ''5A'', ''th'': 90, ''ximg'':
+        1.6666811320350217, ''yimg'': -152.95603377946333, ''th0'': 0.0, ''xoff'':
+        -0.6244475367211926, ''x0'': 1.040036054536147, ''y0'': -154.51558825179333,
+        ''af1y'': -187.02401500000002, ''af2y'': 3.5522599999999898, ''af1xoff'':
+        -0.608997500000001, ''af2xoff'': -0.6954250000000002, ''af1zoff'': -1.4006049999999988,
+        ''af2zoff'': -1.9994999999999998, ''zoff'': 2.497235724206793}, ''acq_history'':
+        [], ''sample_state'': None, ''sample_desc'': None, ''components'': None, ''composition'':
+        None, ''density'': None, ''project_desc'': None, ''sample_set'': None, ''acquisitions'':
+        []}, {''bar_name'': ''20250914_Tiwale'', ''sample_id'': ''ZnMIP_undeveloped'',
+        ''sample_name'': ''ZnMIP_undeveloped'', ''project_name'': ''Tiwale'', ''institution'':
+        ''CFN'', ''proposal_id'': 319676, ''bar_spot'': ''7A'', ''front'': True, ''grazing'':
+        True, ''angle'': 90, ''height'': 0.5, ''sample_priority'': 1, ''notes'': None,
+        ''location'': [{''motor'': ''x'', ''position'': -1.2098320088991228, ''order'':
+        0}, {''motor'': ''y'', ''position'': -142.9102952354865, ''order'': 0}, {''motor'':
+        ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
+        0.0, ''order'': 0}], ''bar_loc'': {''spot'': ''7A'', ''th'': 90, ''ximg'':
+        1.6666811320350217, ''yimg'': -141.3623443767617, ''th0'': 0.0, ''xoff'':
+        -0.6297053453904615, ''x0'': 1.0401679911008772, ''y0'': -142.9102952354865,
+        ''af1y'': -187.02401500000002, ''af2y'': 3.5522599999999898, ''af1xoff'':
+        -0.608997500000001, ''af2xoff'': -0.6954250000000002, ''af1zoff'': -1.4006049999999988,
+        ''af2zoff'': -1.9994999999999998, ''zoff'': 2.4607655394421832}, ''acq_history'':
+        [], ''sample_state'': None, ''sample_desc'': None, ''components'': None, ''composition'':
+        None, ''density'': None, ''project_desc'': None, ''sample_set'': None, ''acquisitions'':
+        []}, {''bar_name'': ''20250914_Tiwale'', ''sample_id'': ''SBA15'', ''sample_name'':
+        ''SBA15'', ''project_name'': ''calibration'', ''institution'': ''CFN'', ''proposal_id'':
+        319676, ''bar_spot'': ''28A'', ''front'': True, ''grazing'': False, ''angle'':
         0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': ''For SDD and beam
-        center calibration'', ''location'': [{''motor'': ''x'', ''position'': -0.7614782718203978,
-        ''order'': 0}, {''motor'': ''y'', ''position'': -17.20772507526783, ''order'':
+        center calibration'', ''location'': [{''motor'': ''x'', ''position'': -7.596378076045015,
+        ''order'': 0}, {''motor'': ''y'', ''position'': -4.664580896677275, ''order'':
         0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
         ''position'': 180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''28A'', ''th'':
-        0, ''ximg'': 0.12502519827155023, ''yimg'': -15.769787529538878, ''th0'':
-        0.0, ''xoff'': -0.7202151341344709, ''x0'': -0.678951996448544, ''y0'': -17.20772507526783,
-        ''af1y'': -186.86112500000002, ''af2y'': 3.4385349999999733, ''af1xoff'':
-        -0.5587075000000006, ''af2xoff'': -0.7383475000000033, ''af1zoff'': -1.432212500000002,
-        ''af2zoff'': -4.296250000000001, ''zoff'': 0.26447921039543454}, ''density'':
-        None, ''composition'': None, ''components'': None, ''sample_state'': None,
-        ''sample_set'': None, ''project_desc'': None, ''sample_desc'': None, ''acq_history'':
-        [], ''acquisitions'': []}, {''bar_name'': ''20250808_Commissioning'', ''sample_id'':
-        ''HOPG'', ''sample_name'': ''HOPG'', ''project_name'': ''calibration'', ''institution'':
-        ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''30A'', ''front'': True,
-        ''grazing'': True, ''angle'': 90, ''height'': 0.5, ''sample_priority'': 1,
-        ''notes'': "Energy calibrant.  Don''t change this row.", ''location'': [{''motor'':
-        ''x'', ''position'': 6.393355778622302, ''order'': 0}, {''motor'': ''y'',
-        ''position'': -4.008755676886069, ''order'': 0}, {''motor'': ''z'', ''position'':
-        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 0.0, ''order'': 0}],
-        ''bar_loc'': {''spot'': ''30A'', ''th'': 90, ''ximg'': 7.219044333275832,
-        ''yimg'': -2.5659824046921074, ''th0'': 0.0, ''xoff'': -0.7326793264122055,
-        ''x0'': 6.393355778622302, ''y0'': -4.008755676886069, ''af1y'': -186.86112500000002,
-        ''af2y'': 3.4385349999999733, ''af1xoff'': -0.5587075000000006, ''af2xoff'':
-        -0.7383475000000033, ''af1zoff'': -1.432212500000002, ''af2zoff'': -4.296250000000001,
-        ''zoff'': -0.1841671945341261}, ''density'': None, ''composition'': None,
-        ''components'': None, ''sample_state'': None, ''sample_set'': None, ''project_desc'':
-        None, ''sample_desc'': None, ''acq_history'': [], ''acquisitions'': [{''sample_id'':
-        ''HOPG'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'': ''nexafs'',
-        ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarizations'': [0], ''cycles'':
-        1, ''sample_angles'': [20], ''group_name'': ''Monitor gold mesh contamination
-        buildup'', ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_12-35-17'', ''uid_local'': ''4914d7ef-e063-453f-bada-c45e762dc2bb'',
-        ''notes'': None}, {''sample_id'': ''HOPG'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''sample_angles'': [20], ''group_name'':
-        ''Monitor gold mesh contamination buildup'', ''priority'': 1, ''polarization_frame'':
-        ''lab'', ''exposure_time'': 1, ''exposures_per_energy'': 1, ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_12-43-52'', ''uid_local'':
-        ''4914d7ef-e063-453f-bada-c45e762dc2bb'', ''notes'': None}, {''sample_id'':
-        ''HOPG'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'': ''nexafs'',
-        ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarizations'': [0], ''cycles'':
-        1, ''group_name'': ''Monitor gold mesh contamination buildup'', ''priority'':
-        3, ''sample_angles'': [20], ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_15-24-25'', ''uid_local'': ''323d3ddf-c7b1-4479-b4cc-496365ba35f4'',
-        ''notes'': None}, {''sample_id'': ''HOPG'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 3, ''sample_angles'': [20], ''polarization_frame'':
-        ''lab'', ''exposure_time'': 1, ''exposures_per_energy'': 1, ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_15-33-14'', ''uid_local'':
-        ''323d3ddf-c7b1-4479-b4cc-496365ba35f4'', ''notes'': None}, {''sample_id'':
-        ''HOPG'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'': ''nexafs'',
-        ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarizations'': [0], ''cycles'':
-        1, ''group_name'': ''Monitor gold mesh contamination buildup'', ''priority'':
-        3, ''sample_angles'': [20], ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_17-06-30'', ''uid_local'': ''646de6da-7aba-44f0-a8ec-326c83314b16'',
-        ''notes'': None}, {''sample_id'': ''HOPG'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 3, ''sample_angles'': [20], ''polarization_frame'':
-        ''lab'', ''exposure_time'': 1, ''exposures_per_energy'': 1, ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_17-15-04'', ''uid_local'':
-        ''646de6da-7aba-44f0-a8ec-326c83314b16'', ''notes'': None}, {''sample_id'':
-        ''HOPG'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'': ''nexafs'',
-        ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarizations'': [0], ''cycles'':
-        1, ''group_name'': ''Monitor gold mesh contamination buildup'', ''priority'':
-        3, ''sample_angles'': [20], ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_17-35-41'', ''uid_local'': ''5467ac80-505c-4507-bacd-dd1165186e1a'',
-        ''notes'': None}, {''sample_id'': ''HOPG'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 3, ''sample_angles'': [20], ''polarization_frame'':
-        ''lab'', ''exposure_time'': 1, ''exposures_per_energy'': 1, ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_17-44-16'', ''uid_local'':
-        ''5467ac80-505c-4507-bacd-dd1165186e1a'', ''notes'': None}, {''sample_id'':
-        ''HOPG'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'': ''nexafs'',
-        ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarizations'': [0], ''cycles'':
-        1, ''group_name'': ''Monitor gold mesh contamination buildup'', ''priority'':
-        3, ''sample_angles'': [20], ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_18-05-09'', ''uid_local'': ''39bbec24-20ac-4f0d-8472-8a55d591879e'',
-        ''notes'': None}, {''sample_id'': ''HOPG'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 3, ''sample_angles'': [20], ''polarization_frame'':
-        ''lab'', ''exposure_time'': 1, ''exposures_per_energy'': 1, ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_18-13-44'', ''uid_local'':
-        ''39bbec24-20ac-4f0d-8472-8a55d591879e'', ''notes'': None}, {''sample_id'':
-        ''HOPG'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'': ''nexafs'',
-        ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarizations'': [0], ''cycles'':
-        1, ''group_name'': ''Monitor gold mesh contamination buildup'', ''priority'':
-        3, ''sample_angles'': [20], ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_18-34-26'', ''uid_local'': ''2cf67a46-b651-4be7-8017-beed0029ed1e'',
-        ''notes'': None}, {''sample_id'': ''HOPG'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 3, ''sample_angles'': [20], ''polarization_frame'':
-        ''lab'', ''exposure_time'': 1, ''exposures_per_energy'': 1, ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_18-42-56'', ''uid_local'':
-        ''2cf67a46-b651-4be7-8017-beed0029ed1e'', ''notes'': None}, {''sample_id'':
-        ''HOPG'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'': ''nexafs'',
-        ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarizations'': [0], ''cycles'':
-        1, ''group_name'': ''Monitor gold mesh contamination buildup'', ''priority'':
-        3, ''sample_angles'': [20], ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_19-03-54'', ''uid_local'': ''652ad442-d57a-459b-aa06-8909b8a8ac43'',
-        ''notes'': None}, {''sample_id'': ''HOPG'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 3, ''sample_angles'': [20], ''polarization_frame'':
-        ''lab'', ''exposure_time'': 1, ''exposures_per_energy'': 1, ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_19-12-56'', ''uid_local'':
-        ''652ad442-d57a-459b-aa06-8909b8a8ac43'', ''notes'': None}, {''sample_id'':
-        ''HOPG'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'': ''nexafs'',
-        ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarizations'': [0], ''cycles'':
-        1, ''group_name'': ''Monitor gold mesh contamination buildup'', ''priority'':
-        3, ''sample_angles'': [20], ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_19-33-55'', ''uid_local'': ''d00255cd-493a-40be-a46c-3184e1640d5d'',
-        ''notes'': None}, {''sample_id'': ''HOPG'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 3, ''sample_angles'': [20], ''polarization_frame'':
-        ''lab'', ''exposure_time'': 1, ''exposures_per_energy'': 1, ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_19-42-32'', ''uid_local'':
-        ''d00255cd-493a-40be-a46c-3184e1640d5d'', ''notes'': None}, {''sample_id'':
-        ''HOPG'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'': ''nexafs'',
-        ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarizations'': [0], ''cycles'':
-        1, ''group_name'': ''Monitor gold mesh contamination buildup'', ''priority'':
-        3, ''sample_angles'': [20], ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_20-03-15'', ''uid_local'': ''668a82ef-d704-4478-9871-21194ff457d4'',
-        ''notes'': None}, {''sample_id'': ''HOPG'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 3, ''sample_angles'': [20], ''polarization_frame'':
-        ''lab'', ''exposure_time'': 1, ''exposures_per_energy'': 1, ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_20-12-00'', ''uid_local'':
-        ''668a82ef-d704-4478-9871-21194ff457d4'', ''notes'': None}, {''sample_id'':
-        ''HOPG'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'': ''nexafs'',
-        ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarizations'': [0], ''cycles'':
-        1, ''group_name'': ''Monitor gold mesh contamination buildup'', ''priority'':
-        3, ''sample_angles'': [20], ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_20-32-24'', ''uid_local'': ''a74d1300-95a7-4c61-9568-192526966e63'',
-        ''notes'': None}, {''sample_id'': ''HOPG'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 3, ''sample_angles'': [20], ''polarization_frame'':
-        ''lab'', ''exposure_time'': 1, ''exposures_per_energy'': 1, ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_20-41-06'', ''uid_local'':
-        ''a74d1300-95a7-4c61-9568-192526966e63'', ''notes'': None}, {''sample_id'':
-        ''HOPG'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'': ''nexafs'',
-        ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarizations'': [0], ''cycles'':
-        1, ''group_name'': ''Monitor gold mesh contamination buildup'', ''priority'':
-        3, ''sample_angles'': [20], ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_21-01-31'', ''uid_local'': ''77e02cdc-ecd8-47f5-9393-5d82c086943f'',
-        ''notes'': None}, {''sample_id'': ''HOPG'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 3, ''sample_angles'': [20], ''polarization_frame'':
-        ''lab'', ''exposure_time'': 1, ''exposures_per_energy'': 1, ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_21-10-03'', ''uid_local'':
-        ''77e02cdc-ecd8-47f5-9393-5d82c086943f'', ''notes'': None}, {''sample_id'':
-        ''HOPG'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'': ''nexafs'',
-        ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarizations'': [0], ''cycles'':
-        1, ''group_name'': ''Monitor gold mesh contamination buildup'', ''priority'':
-        3, ''sample_angles'': [20], ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_21-30-19'', ''uid_local'': ''9cfa9c23-999e-4f31-b173-0b7564526ef5'',
-        ''notes'': None}, {''sample_id'': ''HOPG'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0], ''cycles'': 1, ''group_name'': ''Monitor gold mesh
-        contamination buildup'', ''priority'': 3, ''sample_angles'': [20], ''polarization_frame'':
-        ''lab'', ''exposure_time'': 1, ''exposures_per_energy'': 1, ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_21-39-00'', ''uid_local'':
-        ''9cfa9c23-999e-4f31-b173-0b7564526ef5'', ''notes'': None}]}, {''bar_name'':
-        ''20250808_Commissioning'', ''sample_id'': ''OpenBeam'', ''sample_name'':
-        ''OpenBeam'', ''project_name'': ''calibration'', ''institution'': ''NIST'',
-        ''proposal_id'': 318915, ''bar_spot'': ''40A'', ''front'': True, ''grazing'':
+        0, ''ximg'': 6.836643686038322, ''yimg'': -3.2548557466450987, ''th0'': 0.0,
+        ''xoff'': -0.6923379316007823, ''x0'': 6.21170221284345, ''y0'': -4.664580896677275,
+        ''af1y'': -187.02401500000002, ''af2y'': 3.5522599999999898, ''af1xoff'':
+        -0.608997500000001, ''af2xoff'': -0.6954250000000002, ''af1zoff'': -1.4006049999999988,
+        ''af2zoff'': -1.9994999999999998, ''zoff'': 2.276321812966045}, ''acq_history'':
+        [], ''sample_state'': None, ''sample_desc'': None, ''components'': None, ''composition'':
+        None, ''density'': None, ''project_desc'': None, ''sample_set'': None, ''acquisitions'':
+        []}, {''bar_name'': ''20250914_Tiwale'', ''sample_id'': ''HOPG'', ''sample_name'':
+        ''HOPG'', ''project_name'': ''calibration'', ''institution'': ''CFN'', ''proposal_id'':
+        319676, ''bar_spot'': ''30A'', ''front'': True, ''grazing'': True, ''angle'':
+        90, ''height'': 0.5, ''sample_priority'': 1, ''notes'': "Energy calibrant.  Don''t
+        change this row.", ''location'': [{''motor'': ''x'', ''position'': -5.119631238704072,
+        ''order'': 0}, {''motor'': ''y'', ''position'': -4.916640265925736, ''order'':
+        0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
+        ''position'': 0.0, ''order'': 0}], ''bar_loc'': {''spot'': ''30A'', ''th'':
+        90, ''ximg'': -4.49468689993336, ''yimg'': -3.5066630930000215, ''th0'': 0.0,
+        ''xoff'': -0.6922237354374503, ''x0'': -5.119631238704072, ''y0'': -4.916640265925736,
+        ''af1y'': -187.02401500000002, ''af2y'': 3.5522599999999898, ''af1xoff'':
+        -0.608997500000001, ''af2xoff'': -0.6954250000000002, ''af1zoff'': -1.4006049999999988,
+        ''af2zoff'': -1.9994999999999998, ''zoff'': 2.0271139215112775}, ''acq_history'':
+        [], ''sample_state'': None, ''sample_desc'': None, ''components'': None, ''composition'':
+        None, ''density'': None, ''project_desc'': None, ''sample_set'': None, ''acquisitions'':
+        [{''sample_id'': ''HOPG'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
+        ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarization_frame'':
+        ''lab'', ''polarizations'': [90], ''exposure_time'': 1, ''exposures_per_energy'':
+        1, ''cycles'': 1, ''sample_angles'': [20], ''spiral_dimensions'': None, ''group_name'':
+        ''Measure contamination growth'', ''priority'': 1, ''acquire_status'': ''Finished'',
+        ''uid_local'': ''86c82709-5176-4e48-abc4-7f9c6ddf8cf5'', ''notes'': None}]},
+        {''bar_name'': ''20250914_Tiwale'', ''sample_id'': ''OpenBeam'', ''sample_name'':
+        ''OpenBeam'', ''project_name'': ''calibration'', ''institution'': ''CFN'',
+        ''proposal_id'': 319676, ''bar_spot'': ''40A'', ''front'': True, ''grazing'':
         False, ''angle'': 0, ''height'': 0.0, ''sample_priority'': 1, ''notes'': "Bar
         moved out of beam path for reference scan.  Don''t change this row.", ''location'':
-        [{''motor'': ''x'', ''position'': -1.06054258210207, ''order'': 0}, {''motor'':
-        ''y'', ''position'': 46.240214210842694, ''order'': 0}, {''motor'': ''z'',
+        [{''motor'': ''x'', ''position'': -0.3129905978039725, ''order'': 0}, {''motor'':
+        ''y'', ''position'': 47.50282603505308, ''order'': 0}, {''motor'': ''z'',
         ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
-        ''order'': 0}], ''bar_loc'': {''spot'': ''40A'', ''th'': 0, ''ximg'': 0.4086251509401393,
-        ''yimg'': 47.70139727445229, ''th0'': 0.0, ''xoff'': -0.7801309723350707,
-        ''x0'': -0.4997193625680715, ''y0'': 46.240214210842694, ''af1y'': -186.86112500000002,
-        ''af2y'': 3.4385349999999733, ''af1xoff'': -0.5587075000000006, ''af2xoff'':
-        -0.7383475000000033, ''af1zoff'': -1.432212500000002, ''af2zoff'': -4.296250000000001,
-        ''zoff'': -0.4404214836633127}, ''density'': None, ''composition'': None,
-        ''components'': None, ''sample_state'': None, ''sample_set'': None, ''project_desc'':
-        None, ''sample_desc'': None, ''acq_history'': [], ''acquisitions'': [{''sample_id'':
-        ''OpenBeam'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarizations'':
-        [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM contamination'',
-        ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'': 1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_12-44-55'', ''uid_local'': ''4ecffa92-f8da-49da-bc56-f53587d2412f'',
-        ''notes'': None}, {''sample_id'': ''OpenBeam'', ''configuration_instrument'':
+        ''order'': 0}], ''bar_loc'': {''spot'': ''40A'', ''th'': 0, ''ximg'': -0.4946060285563263,
+        ''yimg'': 48.86039132734007, ''th0'': 0.0, ''xoff'': -0.715972513169169, ''x0'':
+        -1.1189544285343658, ''y0'': 47.50282603505308, ''af1y'': -187.02401500000002,
+        ''af2y'': 3.5522599999999898, ''af1xoff'': -0.608997500000001, ''af2xoff'':
+        -0.6954250000000002, ''af1zoff'': -1.4006049999999988, ''af2zoff'': -1.9994999999999998,
+        ''zoff'': 2.3623832577897583}, ''acq_history'': [], ''sample_state'': None,
+        ''sample_desc'': None, ''components'': None, ''composition'': None, ''density'':
+        None, ''project_desc'': None, ''sample_set'': None, ''acquisitions'': []},
+        {''bar_name'': ''20250914_Tiwale'', ''sample_id'': ''AF1_front_Rotated'',
+        ''sample_name'': ''AF1_front_Rotated'', ''project_name'': ''Calibration'',
+        ''institution'': ''CFN'', ''proposal_id'': 319676, ''bar_spot'': ''0A'', ''front'':
+        True, ''grazing'': False, ''angle'': 0, ''height'': 0.0, ''sample_priority'':
+        1, ''notes'': None, ''location'': [{''motor'': ''x'', ''position'': 10.000014999999998,
+        ''order'': 0}, {''motor'': ''y'', ''position'': -168.39973500000002, ''order'':
+        0}, {''motor'': ''z'', ''position'': -1.1315599999999932, ''order'': 0}, {''motor'':
+        ''th'', ''position'': 90.00121666400003, ''order'': 0}], ''bar_loc'': {''spot'':
+        ''0A'', ''ximg'': 0.7466977722398136, ''yimg'': -185.43036338424466, ''th0'':
+        0.0, ''th'': 0, ''xoff'': -0.6097202307020293, ''x0'': 0.11968313580752679,
+        ''y0'': -187.0224199842179, ''af1y'': -187.02401500000002, ''af2y'': 3.5522599999999898,
+        ''af1xoff'': -0.608997500000001, ''af2xoff'': -0.6954250000000002, ''af1zoff'':
+        -1.4006049999999988, ''af2zoff'': -1.9994999999999998, ''zoff'': 3.099389987587114},
+        ''acq_history'': [], ''sample_state'': None, ''sample_desc'': None, ''components'':
+        None, ''composition'': None, ''density'': None, ''project_desc'': ''Calibration'',
+        ''sample_set'': None, ''acquisitions'': []}, {''bar_name'': ''20250914_Tiwale'',
+        ''sample_id'': ''OpenBeam_Rotated'', ''sample_name'': ''OpenBeam_Rotated'',
+        ''project_name'': ''calibration'', ''institution'': ''CFN'', ''proposal_id'':
+        319676, ''bar_spot'': ''40A'', ''front'': True, ''grazing'': False, ''angle'':
+        90, ''height'': 0.0, ''sample_priority'': 1, ''notes'': "Bar moved out of
+        beam path for reference scan.  Don''t change this row.", ''location'': [{''motor'':
+        ''x'', ''position'': 10.000034999999997, ''order'': 0}, {''motor'': ''y'',
+        ''position'': -168.399695, ''order'': 0}, {''motor'': ''z'', ''position'':
+        -1.1315599999999932, ''order'': 0}, {''motor'': ''th'', ''position'': 90,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''40A'', ''th'': 90}, ''acq_history'':
+        [], ''sample_state'': None, ''sample_desc'': None, ''components'': None, ''composition'':
+        None, ''density'': None, ''project_desc'': None, ''sample_set'': None, ''acquisitions'':
+        [{''sample_id'': ''OpenBeam_Rotated'', ''configuration_instrument'': ''WAXSNEXAFS'',
+        ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
+        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
+        1, ''exposures_per_energy'': 1, ''cycles'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
+        None, ''group_name'': ''TEY'', ''priority'': 2, ''acquire_status'': ''Not
+        begun'', ''uid_local'': ''cd5c274e-9438-463e-a44b-f6d5cdddd5c6'', ''notes'':
+        None}, {''sample_id'': ''OpenBeam_Rotated'', ''configuration_instrument'':
         ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM
-        contamination'', ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_12-53-44'', ''uid_local'':
-        ''4ecffa92-f8da-49da-bc56-f53587d2412f'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarizations'':
-        [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM contamination'',
-        ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'': 1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_12-53-58'', ''uid_local'': ''4ecffa92-f8da-49da-bc56-f53587d2412f'',
-        ''notes'': None}, {''sample_id'': ''OpenBeam'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM
-        contamination'', ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_13-02-23'', ''uid_local'':
-        ''4ecffa92-f8da-49da-bc56-f53587d2412f'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarizations'':
-        [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM contamination'',
-        ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'': 1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_13-02-31'', ''uid_local'': ''4ecffa92-f8da-49da-bc56-f53587d2412f'',
-        ''notes'': None}, {''sample_id'': ''OpenBeam'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM
-        contamination'', ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_13-10-54'', ''uid_local'':
-        ''4ecffa92-f8da-49da-bc56-f53587d2412f'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''nitrogen_NEXAFS'', ''polarizations'':
-        [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM contamination'',
-        ''priority'': 2, ''polarization_frame'': ''lab'', ''exposure_time'': 1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_13-11-23'', ''uid_local'': ''05d02945-d57b-4490-9207-de49dffefb62'',
-        ''notes'': None}, {''sample_id'': ''OpenBeam'', ''configuration_instrument'':
+        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
+        1, ''exposures_per_energy'': 1, ''cycles'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
+        None, ''group_name'': ''TEY'', ''priority'': 5, ''acquire_status'': ''Not
+        begun'', ''uid_local'': ''ba42dc5b-2e0a-4696-b342-799f1f2ddb03'', ''notes'':
+        None}, {''sample_id'': ''OpenBeam_Rotated'', ''configuration_instrument'':
         ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''nitrogen_NEXAFS'',
-        ''polarizations'': [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM
-        contamination'', ''priority'': 2, ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_13-19-44'', ''uid_local'':
-        ''05d02945-d57b-4490-9207-de49dffefb62'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''nitrogen_NEXAFS'', ''polarizations'':
-        [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM contamination'',
-        ''priority'': 2, ''polarization_frame'': ''lab'', ''exposure_time'': 1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_13-19-59'', ''uid_local'': ''05d02945-d57b-4490-9207-de49dffefb62'',
-        ''notes'': None}, {''sample_id'': ''OpenBeam'', ''configuration_instrument'':
+        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
+        2, ''exposures_per_energy'': 1, ''cycles'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
+        None, ''group_name'': ''TEY'', ''priority'': 6, ''acquire_status'': ''Not
+        begun'', ''uid_local'': ''b06b125d-439d-4247-9db1-62a955934d39'', ''notes'':
+        None}, {''sample_id'': ''OpenBeam_Rotated'', ''configuration_instrument'':
         ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''nitrogen_NEXAFS'',
-        ''polarizations'': [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM
-        contamination'', ''priority'': 2, ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_13-28-06'', ''uid_local'':
-        ''05d02945-d57b-4490-9207-de49dffefb62'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''nitrogen_NEXAFS'', ''polarizations'':
-        [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM contamination'',
-        ''priority'': 2, ''polarization_frame'': ''lab'', ''exposure_time'': 1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_13-28-13'', ''uid_local'': ''05d02945-d57b-4490-9207-de49dffefb62'',
-        ''notes'': None}, {''sample_id'': ''OpenBeam'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''nitrogen_NEXAFS'',
-        ''polarizations'': [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM
-        contamination'', ''priority'': 2, ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_13-36-29'', ''uid_local'':
-        ''05d02945-d57b-4490-9207-de49dffefb62'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''oxygen_NEXAFS'', ''polarizations'':
-        [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM contamination'',
-        ''priority'': 3, ''polarization_frame'': ''lab'', ''exposure_time'': 1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_13-36-57'', ''uid_local'': ''a9cf0c04-e68b-4ee9-ac25-d87e39cfd67a'',
-        ''notes'': None}, {''sample_id'': ''OpenBeam'', ''configuration_instrument'':
+        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
+        2, ''exposures_per_energy'': 1, ''cycles'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
+        None, ''group_name'': ''TEY'', ''priority'': 9, ''acquire_status'': ''Not
+        begun'', ''uid_local'': ''51881bb7-d1e0-4f79-bc07-ca527c4cb947'', ''notes'':
+        None}, {''sample_id'': ''OpenBeam_Rotated'', ''configuration_instrument'':
         ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''oxygen_NEXAFS'',
-        ''polarizations'': [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM
-        contamination'', ''priority'': 3, ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_13-45-54'', ''uid_local'':
-        ''a9cf0c04-e68b-4ee9-ac25-d87e39cfd67a'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''oxygen_NEXAFS'', ''polarizations'':
-        [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM contamination'',
-        ''priority'': 3, ''polarization_frame'': ''lab'', ''exposure_time'': 1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_13-46-10'', ''uid_local'': ''a9cf0c04-e68b-4ee9-ac25-d87e39cfd67a'',
-        ''notes'': None}, {''sample_id'': ''OpenBeam'', ''configuration_instrument'':
+        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
+        2, ''exposures_per_energy'': 1, ''cycles'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
+        None, ''group_name'': ''TEY'', ''priority'': 10, ''acquire_status'': ''Not
+        begun'', ''uid_local'': ''64bfeab0-3b80-4b89-95f1-3a51083a6301'', ''notes'':
+        None}, {''sample_id'': ''OpenBeam_Rotated'', ''configuration_instrument'':
         ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''oxygen_NEXAFS'',
-        ''polarizations'': [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM
-        contamination'', ''priority'': 3, ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_13-55-08'', ''uid_local'':
-        ''a9cf0c04-e68b-4ee9-ac25-d87e39cfd67a'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''oxygen_NEXAFS'', ''polarizations'':
-        [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM contamination'',
-        ''priority'': 3, ''polarization_frame'': ''lab'', ''exposure_time'': 1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_13-55-15'', ''uid_local'': ''a9cf0c04-e68b-4ee9-ac25-d87e39cfd67a'',
-        ''notes'': None}, {''sample_id'': ''OpenBeam'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''oxygen_NEXAFS'',
-        ''polarizations'': [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM
-        contamination'', ''priority'': 3, ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_14-04-10'', ''uid_local'':
-        ''a9cf0c04-e68b-4ee9-ac25-d87e39cfd67a'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''fluorine_NEXAFS'', ''polarizations'':
-        [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM contamination'',
-        ''priority'': 4, ''polarization_frame'': ''lab'', ''exposure_time'': 1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_14-04-39'', ''uid_local'': ''563a013f-ccfd-4716-9c17-f46805ccb068'',
-        ''notes'': None}, {''sample_id'': ''OpenBeam'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''fluorine_NEXAFS'',
-        ''polarizations'': [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM
-        contamination'', ''priority'': 4, ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_14-14-29'', ''uid_local'':
-        ''563a013f-ccfd-4716-9c17-f46805ccb068'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''fluorine_NEXAFS'', ''polarizations'':
-        [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM contamination'',
-        ''priority'': 4, ''polarization_frame'': ''lab'', ''exposure_time'': 1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_14-14-45'', ''uid_local'': ''563a013f-ccfd-4716-9c17-f46805ccb068'',
-        ''notes'': None}, {''sample_id'': ''OpenBeam'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''fluorine_NEXAFS'',
-        ''polarizations'': [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM
-        contamination'', ''priority'': 4, ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_14-24-21'', ''uid_local'':
-        ''563a013f-ccfd-4716-9c17-f46805ccb068'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''fluorine_NEXAFS'', ''polarizations'':
-        [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM contamination'',
-        ''priority'': 4, ''polarization_frame'': ''lab'', ''exposure_time'': 1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_14-24-29'', ''uid_local'': ''563a013f-ccfd-4716-9c17-f46805ccb068'',
-        ''notes'': None}, {''sample_id'': ''OpenBeam'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''fluorine_NEXAFS'',
-        ''polarizations'': [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM
-        contamination'', ''priority'': 4, ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_14-34-14'', ''uid_local'':
-        ''563a013f-ccfd-4716-9c17-f46805ccb068'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarizations'':
-        [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM contamination'',
-        ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'': 1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_15-34-17'', ''uid_local'': ''25dc8948-2619-42b0-825a-2e4adaeca9a0'',
-        ''notes'': None}, {''sample_id'': ''OpenBeam'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM
-        contamination'', ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_15-43-01'', ''uid_local'':
-        ''25dc8948-2619-42b0-825a-2e4adaeca9a0'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarizations'':
-        [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM contamination'',
-        ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'': 1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_15-43-15'', ''uid_local'': ''25dc8948-2619-42b0-825a-2e4adaeca9a0'',
-        ''notes'': None}, {''sample_id'': ''OpenBeam'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM
-        contamination'', ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_15-51-40'', ''uid_local'':
-        ''25dc8948-2619-42b0-825a-2e4adaeca9a0'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarizations'':
-        [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM contamination'',
-        ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'': 1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_15-51-48'', ''uid_local'': ''25dc8948-2619-42b0-825a-2e4adaeca9a0'',
-        ''notes'': None}, {''sample_id'': ''OpenBeam'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
-        ''polarizations'': [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM
-        contamination'', ''priority'': 1, ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_16-00-24'', ''uid_local'':
-        ''25dc8948-2619-42b0-825a-2e4adaeca9a0'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''nitrogen_NEXAFS'', ''polarizations'':
-        [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM contamination'',
-        ''priority'': 2, ''polarization_frame'': ''lab'', ''exposure_time'': 1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_16-00-57'', ''uid_local'': ''afa82dce-1efc-4d4b-a368-901a79016db9'',
-        ''notes'': None}, {''sample_id'': ''OpenBeam'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''nitrogen_NEXAFS'',
-        ''polarizations'': [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM
-        contamination'', ''priority'': 2, ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_16-09-12'', ''uid_local'':
-        ''afa82dce-1efc-4d4b-a368-901a79016db9'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''nitrogen_NEXAFS'', ''polarizations'':
-        [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM contamination'',
-        ''priority'': 2, ''polarization_frame'': ''lab'', ''exposure_time'': 1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_16-09-27'', ''uid_local'': ''afa82dce-1efc-4d4b-a368-901a79016db9'',
-        ''notes'': None}, {''sample_id'': ''OpenBeam'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''nitrogen_NEXAFS'',
-        ''polarizations'': [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM
-        contamination'', ''priority'': 2, ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_16-17-37'', ''uid_local'':
-        ''afa82dce-1efc-4d4b-a368-901a79016db9'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''nitrogen_NEXAFS'', ''polarizations'':
-        [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM contamination'',
-        ''priority'': 2, ''polarization_frame'': ''lab'', ''exposure_time'': 1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_16-17-44'', ''uid_local'': ''afa82dce-1efc-4d4b-a368-901a79016db9'',
-        ''notes'': None}, {''sample_id'': ''OpenBeam'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''nitrogen_NEXAFS'',
-        ''polarizations'': [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM
-        contamination'', ''priority'': 2, ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_16-25-53'', ''uid_local'':
-        ''afa82dce-1efc-4d4b-a368-901a79016db9'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''oxygen_NEXAFS'', ''polarizations'':
-        [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM contamination'',
-        ''priority'': 3, ''polarization_frame'': ''lab'', ''exposure_time'': 1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_16-26-25'', ''uid_local'': ''891df569-29b3-4cd6-b740-cf575649cf77'',
-        ''notes'': None}, {''sample_id'': ''OpenBeam'', ''configuration_instrument'':
-        ''WAXSNEXAFS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''oxygen_NEXAFS'',
-        ''polarizations'': [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM
-        contamination'', ''priority'': 3, ''polarization_frame'': ''lab'', ''exposure_time'':
-        1, ''exposures_per_energy'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
-        None, ''acquire_status'': ''Finished 2025-08-09_16-35-26'', ''uid_local'':
-        ''891df569-29b3-4cd6-b740-cf575649cf77'', ''notes'': None}, {''sample_id'':
-        ''OpenBeam'', ''configuration_instrument'': ''WAXSNEXAFS'', ''scan_type'':
-        ''nexafs'', ''energy_list_parameters'': ''oxygen_NEXAFS'', ''polarizations'':
-        [0, 55, 90], ''cycles'': 1, ''group_name'': ''Assess PGM contamination'',
-        ''priority'': 3, ''polarization_frame'': ''lab'', ''exposure_time'': 1, ''exposures_per_energy'':
-        1, ''sample_angles'': [0], ''spiral_dimensions'': None, ''acquire_status'':
-        ''Started 2025-08-09_16-35-42'', ''uid_local'': ''891df569-29b3-4cd6-b740-cf575649cf77'',
-        ''notes'': None}]}]'
+        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
+        2, ''exposures_per_energy'': 1, ''cycles'': 1, ''sample_angles'': [0], ''spiral_dimensions'':
+        None, ''group_name'': ''TEY'', ''priority'': 13, ''acquire_status'': ''Not
+        begun'', ''uid_local'': ''660fc8cd-f2b5-4b05-bde1-9cc76558617a'', ''notes'':
+        None}]}]'
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1

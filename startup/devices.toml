@@ -226,6 +226,7 @@ _group = "motors"
 _load_order = 2
 _baseline = true
 ## Does not have drain current meausred
+## TODO: I have M2 and grating as having _baseline = true but they don't show up in baseline?
 
 [mirror2x]
 _alias = "en.monoen.mirror2x"
@@ -333,6 +334,9 @@ _role = "slits"
 [slits1_bottom_current] # was Slit1_Current_Bottom and Slit1_Current_Bottom_int
 _target = "sst_base.detectors.scalar.ophScalar"
 kind = "normal"
+## Connected to I400 electrometer XF:07ID-ES1{Slt1:I400-1}
+## --> Connected to Moxa NPort 5210AA Serial Device Server with RS-232 ports, xf07id-tsrv10.nsls2.bnl.local
+## --> Connected to IOC7 as softioc RSoXS_I400, xf07id-ioc7
 prefix = "XF:07ID-ES1{Slt1:I400-1}:IC1_MON"
 name = "RSoXS Slit 1 Bottom Current"
 
@@ -401,12 +405,17 @@ string = true
 
 
 [izero_mesh] #was Izero_Mesh_int and Izero_Mesh
-_target = "sst_base.detectors.scalar.ophScalar" #_target = "ophyd.EpicsSignalRO"
+name = "RSoXS Au Mesh Current"
 _group = "detectors"
 kind = "normal"
-prefix = "XF:07ID-ES1{Slt1:I400-1}:IC1_MON" #prefix = "XF:07ID-BI[ADC:2-Ch:7]" ## 20250604 - Putting TEY into this channel instead #prefix = "XF:07ID-BI[ADC:2-Ch:0]" ## 20250528 not reading anymore? #prefix = "XF:07ID-ES1{Slt1:I400-1}:IC1_MON" #prefix = "XF:07ID-BI[ADC:2-Ch:0]"
-name = "RSoXS Au Mesh Current"
 #_baseline = true
+## Connected to I400 electrometer XF:07ID-ES1{Slt1:I400-1}
+#_target = "sst_base.detectors.scalar.ophScalar" #_target = "ophyd.EpicsSignalRO"
+#prefix = "XF:07ID-ES1{Slt1:I400-1}:IC1_MON" #prefix = "XF:07ID-BI[ADC:2-Ch:7]" ## 20250604 - Putting TEY into this channel instead #prefix = "XF:07ID-BI[ADC:2-Ch:0]" ## 20250528 not reading anymore? #prefix = "XF:07ID-ES1{Slt1:I400-1}:IC1_MON" #prefix = "XF:07ID-BI[ADC:2-Ch:0]"
+## Connected to SRS570 curent pre-amplifier #13 on rack behind ucal station
+## --> Connected to ADC3 channel 2
+_target = "sst_base.detectors.scalar.ADCBuffer"
+prefix = "XF:07ID-BI[ADC:3-Ch:2]"
 ## Mesh specs; https://www.2spi.com/item/02901g-ab/ , catalog number: 02901G-AB.  25 mm x 25 mm size, 5.6 um thickness, 1500 lines per inch, ~55% maximum transmission
 
 [izero_diode] # was Izero_Diode # This is Jamie's definition, can be used for flyscanning (?)
@@ -415,6 +424,7 @@ _target = "sst_base.detectors.scalar.ophScalar" #"ophyd.EpicsSignalRO"
 kind = "normal"
 prefix = "XF:07ID-ES1{DMR:I400-1}:IC3_MON"
 name = "Izero Photodiode"
+
 
 [izero_cam] # was Izero_cam
 _target = "rsoxs.devices.cameras.StandardProsilicawstatsFactory"
@@ -519,11 +529,16 @@ prefix = "XF:07ID-ES1{Slt1:I400-1}:IC2_MON"
 name = "RSoXS Sample Current"
 
 [Sample_TEY_int]
-_target = "sst_base.detectors.scalar.ophScalar" #_target = "sst_base.detectors.scalar.ADCBuffer"
+name = "RSoXS Sample Current"
 _group = "detectors"
 kind = "normal"
-prefix = "XF:07ID-ES1{Slt1:I400-1}:IC2_MON"#prefix = "XF:07ID-BI[ADC:2-Ch:7]" #prefix = "XF:07ID-ES1{Slt1:I400-1}:IC2_MON"
-name = "RSoXS Sample Current"
+## Connected to 400 electrometer XF:07ID-ES1{Slt1:I400-1}
+#_target = "sst_base.detectors.scalar.ophScalar" 
+#prefix = "XF:07ID-ES1{Slt1:I400-1}:IC2_MON"
+## Connected to SRS570 curent pre-amplifier #12/16 on rack near ADC shared with M4C/D
+## --> Connected to ADC3 channel 1
+_target = "sst_base.detectors.scalar.ADCBuffer"
+prefix = "XF:07ID-BI[ADC:3-Ch:1]"
 
 [Sample_cam]
 _target = "sst_base.cameras.StandardProsilicaWithTIFFFactory"
@@ -871,17 +886,17 @@ name = "Photon Shutter 7"
 ## M4C is curved (meridional cylinder)
 ## M4 and downstream mirrors have drain currents measured
 
-#[DownstreamLargeDiode] 
-#_target = "ophyd.EpicsSignalRO"
-#kind = "normal"
-#prefix = "XF:07ID-ES1{DMR:I400-1}:IC4_MON"
-#name = "DownstreamLargeDiode"
+[DownstreamLargeDiode] 
+_target = "ophyd.EpicsSignalRO"
+kind = "normal"
+prefix = "XF:07ID-ES1{DMR:I400-1}:IC4_MON"
+name = "DownstreamLargeDiode"
 
-#[DownstreamLargeDiode_int] 
-#_target = "sst_base.detectors.scalar.ophScalar"
-#kind = "normal"
-#prefix = "XF:07ID-ES1{DMR:I400-1}:IC4_MON"
-#name = "DownstreamLargeDiode"
+[DownstreamLargeDiode_int] 
+_target = "sst_base.detectors.scalar.ophScalar"
+kind = "normal"
+prefix = "XF:07ID-ES1{DMR:I400-1}:IC4_MON"
+name = "DownstreamLargeDiode"
 
 #[bpm13_sum]
 #_target = "ophyd.EpicsSignalRO"
