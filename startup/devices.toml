@@ -856,6 +856,23 @@ prefix = "XF:07IDB-VA:2{RSoXS:Main-CCG:1}P-I"
 name = "Main Chamber Chamber Cold Cathode Gauge"
 _baseline = true
 
+## Main chamber bottom turbo pump specs
+## Drive unit ## Pfeiffer Vacuum, D-35614 Asslar, Mod.: TM 700, M.-No.: PM C01 850, Ser.-No.: 75839802, Input: 48 V +/- 10% DC 8.4 A, Output: 0-48 V 9 A 0–1000 Hz, 2022/02 Made in Germany
+## Air cooling kit ## Pfeiffer Vacuum, D-35614 Asslar, Mod.: Air cooling kit shielded 24 V DC, M.-No.: PM Z01 363 A, Made in Germany 2021/09
+## Pump head ## Pfeiffer Vacuum, D-35614 Asslar, Mod.: HiPace 700 M, P/N: PM P04 452, S/N: 17117070, Oil: -, n, f: 49200 1/min, 820 Hz, Mass: 20.8 kg, Made in Germany, 2022/04
+
+## Main chamber top turbo pump specs
+## Drive unit ## Pfeiffer Vacuum, D-35614 Asslar, Mod.: TM 700, M.-No.: PM C01 850, Ser.-No.: 75835996, Input: 48 V +/- 10% DC 8.4 A, Output: 0-48 V 9 A 0–1000 Hz, 2021/12 Made in Germany
+## Air cooling kit ## Pfeiffer Vacuum, D-35614 Asslar, Mod.: Air cooling kit shielded 24 V DC, M.-No.: PM Z01 363 A, Made in Germany 2021/09
+## Pump head ## Pfeiffer Vacuum, D-35614 Asslar, Mod.: HiPace 700 M, P/N: PM P04 452, S/N: 17115271, Oil: -, n, f: 49200 1/min, 820 Hz, Mass: 20.8 kg, Made in Germany, 2022/03
+## Controller ## Pfeiffer Vacuum D-35614 Asslar Berliner Strasse 43, Model: OmniControl 400, Product number: PE D70 100 0, Serial number: 80100525, Input: [100-240 V +/- 10%, 50/60 Hz, 5.8A], Output: [48 V 12 A, 24 V 3A], Made in Germany, 2021/08
+
+## Solid sample load lock top turbo pump specs
+## Drive unit ## Pfeiffer Vacuum, D-35614 Asslar, Mod.: TM 700, M.-No.: PM C01 850, Ser.-No.: 80803241, Input: 48 V +/- 10% DC 8.4 A, Output: 0-48 V 9 A 0–1000 Hz, 2022/11 Made in Germany
+## Air cooling kit ## 
+## Pump head ## Pfeiffer Vacuum, D-35614 Asslar, Mod.: HiPace 300 M, P/N: PM P03 952, S/N: 17159065, Oil: -, n, f: 60000 1/min, 1000 Hz, Mass: 17.2 kg, Made in Germany, 2022/12
+
+
 [gv28]
 _target = "sst_base.shutters.EPS_Shutter"
 _group = "gate_valves"
