@@ -627,6 +627,8 @@ prefix = "XF:07IDB-VA:2{RSoXS:LL-CCG:1}Pwr-Cmd"
 name = "Power to Load Lock Gauge"
 _baseline = true
 
+## Solid sample load lock pressure readout is "XF:07IDB-VA:2{RSoXS:LL-CCG:1}P:Raw-I"
+
 [gvll]
 _target = "sst_base.shutters.EPS_Shutter"
 _group = "gate_valves"
