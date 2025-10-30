@@ -57,6 +57,7 @@ from rsoxs.alignment.energy_calibration import *
 from rsoxs.HW.cameras import * ## 20250131 - temporary solution to using crosshairs, need a better long-term solution
 from rsoxs.Functions.alignment import *
 from rsoxs.Functions.alignment_local import *
+from rsoxs.Functions.magics import *
 
 
 
