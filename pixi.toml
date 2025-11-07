@@ -2,23 +2,23 @@
 channels = ["conda-forge"]
 name = "sst-rsoxs-profile-collection"
 platforms = ["linux-64"]
-version = "2025.3.0"
+version = "2025.3.1"
 
 [system-requirements]
 libc = "2.17"
 
 [feature.profile.dependencies]
-bluesky-base = "==1.14.4"
+bluesky-base = ">=1.14.4"
 bluesky-queueserver = "*"
 matplotlib-base= ">=3.9.3,<4"
 networkx = ">=3.4.2,<4"
 nslsii = "==0.11.4"
 numpy = "*"
-ophyd = "==1.11.0"
+ophyd = ">=1.11.0"
 pyepics = "*"
 python = ">=3.12,<3.13"
 semver = ">=3.0.4,<4"
-tiled-client = "==0.1.0b39"
+tiled-client = ">=0.1.6"
 # needed until we get ophyd-async packaged
 colorlog = ">=6.9.0,<7"
 pydantic-numpy = "*"
@@ -28,13 +28,14 @@ databroker = "==2.0.0b68"
 pyhyperscattering = ">=0.2.10,<0.3"
 p4p = ">=4.2.0,<5"
 epicscorelibs = ">=7.0.7.99.1.1,<8"
+bluesky-tiled-plugins = ">=2.0.0b68"
 
 [feature.profile.pypi-dependencies]
 ophyd-async = { version = ">0.10.0", extras = ["ca", "pva"] }
 sst-base = { git = "https://github.com/nsls-ii-sst/sst_base", rev = "v0.1.0" }
 nbs-bl = { git = "https://github.com/xraygui/nbs-bl", rev = "v0.1.2" }
 nbs-core = { git = "https://github.com/xraygui/nbs-core", rev="v0.0.2" }
-rsoxs = { git = "https://github.com/usnistgov/sst-rsoxs", branch = "spiralViewer" }
+rsoxs = { git = "https://github.com/usnistgov/sst-rsoxs", branch = "main" }
 
 [feature.qs.dependencies]
 bluesky-queueserver = "*"
