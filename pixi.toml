@@ -1,4 +1,4 @@
-[project]
+[workspace]
 channels = ["conda-forge"]
 name = "sst-rsoxs-profile-collection"
 platforms = ["linux-64"]
