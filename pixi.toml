@@ -36,6 +36,7 @@ sst-base = { git = "https://github.com/nsls-ii-sst/sst_base", rev = "v0.1.0" }
 nbs-bl = { git = "https://github.com/xraygui/nbs-bl", rev = "v0.1.2" }
 nbs-core = { git = "https://github.com/xraygui/nbs-core", rev="v0.0.2" }
 rsoxs = { git = "https://github.com/usnistgov/sst-rsoxs", branch = "main" }
+pvxslibs = ">=1.3.2, <2"
 
 [feature.qs.dependencies]
 bluesky-queueserver = "*"
