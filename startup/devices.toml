@@ -681,7 +681,7 @@ prefix = "XF:07ID1-ES"
 
 [BeamStopW] ## TODO: rename so that it is more obvious which is a signal vs. a motor
 _target = "sst_base.motors.PrettyMotorFMBODeadband"
- _group = "motors"
+_group = "motors"
 kind = "hinted"
 name = "Beam Stop WAXS"
 prefix = "XF:07ID2-ES1{BS-Ax:1}Mtr"
