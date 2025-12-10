@@ -12,6 +12,10 @@
 ## Everything on this list other than 2D camera images are being archived.  TODO: make sure all new additions are archived.
 
 
+## References:
+## Beamline optics: Reininger, R.;  Woicik, J. C.;  Hulbert, S. L.;  Fischer, D. A., NIST NSLS-II spectroscopy beamline optical plan for soft and tender X-ray spectroscopy and microscopy (100 eV to 7.5 keV). Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment 2011, 649 (1), 49-51. https://doi.org/10.1016/j.nima.2010.11.172
+## RSoXS instrument design: Gann, E.; Crofts, T.; Holland, G.; Beaucage, P.; McAfee, T.; Kline, R. J.; Collins, B. A.; McNeill, C. R.; Fischer, D. A.; DeLongchamp, D. M., A NIST facility for resonant soft x-ray scattering measuring nano-scale soft matter structure at NSLS-II. Journal of Physics: Condensed Matter 2021, 33 (16), 164001. https://doi.org/10.1088/1361-648X/abdffb
+
 
 
 #[ring_current_epics]
@@ -39,6 +43,8 @@ kind = "normal"
 prefix = "SR-OPS{}Mode-Sts"
 name = "NSLS-II Ring Status"
 string = true
+
+## EPU60: https://www.osti.gov/biblio/1569013
 
 [en]
 _target = "sst_base.energy.EnPosFactory"
@@ -150,7 +156,9 @@ prefix = "XF:07IDA-OP{Mir:M1"
 name = "SST 1 Mirror 1 fmb" 
 kind = "hinted"
 _baseline = true
+## Plane (flat) mirror
 ## Accessible in Phoebus by going to File --> Open --> /opt/css/opi/production/cs-studio-xf/07id/edl_conv/MC02/6Pod_TopLevel_M1.bob
+## Does not have drain current meausred
 
 [mir1_temperature] # was Temperature_M1
 _target = "ophyd.EpicsSignalRO"
@@ -209,6 +217,7 @@ kind = "hinted"
 _baseline = true
 
 ## M2 and PGM
+## M2 is a plane (flat) mirror.  PGM grating focuses the beam vertically.
 ## RSoXS 250 l/mm grating is made from nickel oxide.  250 l/mm is made from gold.  1200 l/mm grating is made from gold.
 
 [mirror2] ## angle
@@ -216,6 +225,8 @@ _alias = "en.monoen.mirror2"
 _group = "motors"
 _load_order = 2
 _baseline = true
+## Does not have drain current meausred
+## TODO: I have M2 and grating as having _baseline = true but they don't show up in baseline?
 
 [mirror2x]
 _alias = "en.monoen.mirror2x"
@@ -228,6 +239,7 @@ _alias = "en.monoen.grating"
 _group = "motors"
 _load_order = 2
 _baseline = true
+## Does not have drain current meausred
 
 [gratingx]
 _alias = "en.monoen.gratingx"
@@ -241,6 +253,9 @@ kind = "normal"
 prefix = "XF:07IDA-OP{Mono:PGM}T:Grg-I"
 name = "mono_pgm_temperature"
 
+## Zero-order mask to block out zero-order reflections from PGM
+## Other masks are also present between PGM nad M3
+
 ## GV15
 
 [mir3]
@@ -250,6 +265,8 @@ prefix = "XF:07ID1-OP{Mir:M3ABC"
 name = "SST 1 Mirror 3 fmb"
 kind = "hinted"
 _baseline = true
+## M3A/B (?) are curved mirrors that focus the beam horizontally.  M3C (?) is a plane mirror that steers the beam into the tender branch. 
+## Does not have drain current meausred
 
 [mir3_temperature] #was Temperature_M3
 _target = "ophyd.EpicsSignalRO"
@@ -317,6 +334,9 @@ _role = "slits"
 [slits1_bottom_current] # was Slit1_Current_Bottom and Slit1_Current_Bottom_int
 _target = "sst_base.detectors.scalar.ophScalar"
 kind = "normal"
+## Connected to I400 electrometer XF:07ID-ES1{Slt1:I400-1}
+## --> Connected to Moxa NPort 5210AA Serial Device Server with RS-232 ports, xf07id-tsrv10.nsls2.bnl.local
+## --> Connected to IOC7 as softioc RSoXS_I400, xf07id-ioc7
 prefix = "XF:07ID-ES1{Slt1:I400-1}:IC1_MON"
 name = "RSoXS Slit 1 Bottom Current"
 
@@ -385,12 +405,18 @@ string = true
 
 
 [izero_mesh] #was Izero_Mesh_int and Izero_Mesh
-_target = "ophyd.EpicsSignalRO"
+name = "RSoXS Au Mesh Current"
 _group = "detectors"
 kind = "normal"
-prefix = "XF:07ID-ES1{Slt1:I400-1}:IC1_MON" #prefix = "XF:07ID-BI[ADC:2-Ch:7]" ## 20250604 - Putting TEY into this channel instead #prefix = "XF:07ID-BI[ADC:2-Ch:0]" ## 20250528 not reading anymore? #prefix = "XF:07ID-ES1{Slt1:I400-1}:IC1_MON" #prefix = "XF:07ID-BI[ADC:2-Ch:0]"
-name = "RSoXS Au Mesh Current"
 #_baseline = true
+## Connected to I400 electrometer XF:07ID-ES1{Slt1:I400-1}
+#_target = "sst_base.detectors.scalar.ophScalar" #_target = "ophyd.EpicsSignalRO"
+#prefix = "XF:07ID-ES1{Slt1:I400-1}:IC1_MON" #prefix = "XF:07ID-BI[ADC:2-Ch:7]" ## 20250604 - Putting TEY into this channel instead #prefix = "XF:07ID-BI[ADC:2-Ch:0]" ## 20250528 not reading anymore? #prefix = "XF:07ID-ES1{Slt1:I400-1}:IC1_MON" #prefix = "XF:07ID-BI[ADC:2-Ch:0]"
+## Connected to SRS570 curent pre-amplifier #13 on rack behind ucal station
+## --> Connected to ADC3 channel 2
+_target = "sst_base.detectors.scalar.ADCBuffer"
+prefix = "XF:07ID-BI[ADC:3-Ch:2]"
+## Mesh specs; https://www.2spi.com/item/02901g-ab/ , catalog number: 02901G-AB.  25 mm x 25 mm size, 5.6 um thickness, 1500 lines per inch, ~55% maximum transmission
 
 [izero_diode] # was Izero_Diode # This is Jamie's definition, can be used for flyscanning (?)
 _target = "sst_base.detectors.scalar.ophScalar" #"ophyd.EpicsSignalRO"
@@ -398,6 +424,7 @@ _target = "sst_base.detectors.scalar.ophScalar" #"ophyd.EpicsSignalRO"
 kind = "normal"
 prefix = "XF:07ID-ES1{DMR:I400-1}:IC3_MON"
 name = "Izero Photodiode"
+
 
 [izero_cam] # was Izero_cam
 _target = "rsoxs.devices.cameras.StandardProsilicawstatsFactory"
@@ -408,6 +435,8 @@ camera_name = "izero_cam-1"
 date_template = "%Y/%m"
 read_attrs=['tiff','stats5']
 ## Manufacturer: Allied Vision Mako (some other cameras for flurescence screens are Alled Vision Prosilica, but all image processesing is done with classes named Prosilica)
+## TODO: find specs of the YAG that we have
+## If needed, see 20250829 email from racevedo@bnl.gov and gwang@bnl.gov "Question About Material Used in HEX Commissioning" for specs and vendor of a flurescence screen used at HEX.
 
 [izero_y] # was Izero_Y
 _target = "sst_base.motors.PrettyMotorFMBODeadband"
@@ -416,6 +445,7 @@ prefix = "XF:07ID2-ES1{Scr-Ax:1}Mtr"
 name = "Izero Assembly Vertical Translation" ## TODO: would like to name it something more generic like RSoXS diagnostic module to indicate that there is also a yag and photodiode
 kind = "hinted"
 _baseline = true
+## Motor range is -43 to 170.  Normally retracted at 144.  More measurements taken 20250714.
 
 [shutter_control] #was Shutter_control
 _target = "rsoxs.HW.motors.ShutterWait"
@@ -424,11 +454,11 @@ _baseline = true ## To check that the shutter starts closed and ends closed for 
 prefix = "XF:07IDB-CT{DIODE-Local:1}OutPt01:Data-Sel"
 name = "RSoXS Shutter Toggle"
 kind = "normal"
-## Specs and manual of amplifier (dsm linear piezoelectric amplifier, model: VF-500 XRS, serial number: E18-01499): https://www.dynamic-structures.com/product/open-loop-vf-500
+## Specs and manual of amplifier (dsm linear piezoelectric amplifier, model: VF-500 XRS, serial number: E18-01499, driver software: E18-01499, shipped to FMB Oxford on June 5, 2018): https://www.dynamic-structures.com/product/open-loop-vf-500
 ## The amplifier at the beamline is a specialized version likely with some customization.
 ## Input is a TTL signal from WAXS CCD camera through shutter PV filtered through DIODE box so that delays can be added and the signal can be turned off.  TTL signal is amplified to a -30 to 200V signal while controlling the current so that the piezo shutter is not burnt out
 ## Shutter should only be activated using a controlled amplifier and never manually, as it requires 160 V with correct polarity, otherwise, the piezo could get damaged.
-## Specs and manual for XRS1-900 Piezo Shutter: https://www.dynamic-structures.com/product/xrs1-900
+## Specs and manual for XRS1-900 (model number) Piezo Shutter (serial number: C17-00544): https://www.dynamic-structures.com/product/xrs1-900
 
 [shutter_enable] #was Shutter_enable
 _target = "ophyd.EpicsSignal"
@@ -461,6 +491,7 @@ kind = "hinted"
 _baseline = true
 
 ## RSoXS slit 2
+## If desired to measure slit drain currents, connect the slit 1 drain current cables here and use those PVs.
 [slits2]
 _target = "sst_base.slits.FMBOQuadSlits"
 _group = "motors"
@@ -498,11 +529,16 @@ prefix = "XF:07ID-ES1{Slt1:I400-1}:IC2_MON"
 name = "RSoXS Sample Current"
 
 [Sample_TEY_int]
-_target = "sst_base.detectors.scalar.ADCBuffer" #_target = "sst_base.detectors.scalar.ADCBuffer"
+name = "RSoXS Sample Current"
 _group = "detectors"
 kind = "normal"
-prefix = "XF:07ID-BI[ADC:2-Ch:7]" #prefix = "XF:07ID-ES1{Slt1:I400-1}:IC2_MON" ## 20250604 - moving to "XF:07ID-BI[ADC:2-Ch:7]"...need to connect on sample end  #prefix = "XF:07ID-BI[ADC:2-Ch:2]" ## 20250528 not working?
-name = "RSoXS Sample Current"
+## Connected to 400 electrometer XF:07ID-ES1{Slt1:I400-1}
+#_target = "sst_base.detectors.scalar.ophScalar" 
+#prefix = "XF:07ID-ES1{Slt1:I400-1}:IC2_MON"
+## Connected to SRS570 curent pre-amplifier #12/16 on rack near ADC shared with M4C/D
+## --> Connected to ADC3 channel 1
+_target = "sst_base.detectors.scalar.ADCBuffer"
+prefix = "XF:07ID-BI[ADC:3-Ch:1]"
 
 [Sample_cam]
 _target = "sst_base.cameras.StandardProsilicaWithTIFFFactory"
@@ -582,12 +618,16 @@ _group = "motors"
 #prefix = "XF:07ID2-ES1{Stg-Ax:Yaw}Mtr"
 _baseline = true
 
+## Readback values of the positions: XF:07ID2-ES1{Stg-Ax:X}Mtr.RBV, XF:07ID2-ES1{Stg-Ax:Y}Mtr.RBV, XF:07ID2-ES1{Stg-Ax:Z}Mtr.RBV, XF:07ID2-ES1{Stg-Ax:Yaw}Mtr.RBV
+
 [rsoxs_ll_gpwr]
 _target = "ophyd.EpicsSignal"
 kind = "hinted"
 prefix = "XF:07IDB-VA:2{RSoXS:LL-CCG:1}Pwr-Cmd"
 name = "Power to Load Lock Gauge"
 _baseline = true
+
+## Solid sample load lock pressure readout is "XF:07IDB-VA:2{RSoXS:LL-CCG:1}P:Raw-I"
 
 [gvll]
 _target = "sst_base.shutters.EPS_Shutter"
@@ -730,6 +770,7 @@ _load_order = 2
 prefix = "XF:07ID1-ES:1{GE:2}"
 name = "Wide Angle CCD Detector" ## TODO: Not sure how this is different from DetS_cam
 read_attrs = ['tiff', 'stats1.total', 'saturated','under_exposed','cam']
+## Greateyes GE 4k4k camera, serial number GE060232
 
 [BeamStopS]
 _target = "sst_base.motors.PrettyMotorFMBODeadband"
@@ -766,6 +807,8 @@ _target = "sst_base.cameras.StandardProsilica"
 _group = "all_standard_pros"
 prefix = "XF:07ID1-ES:1{Scr:3}"
 name = "WAXS Detector Area Camera"
+## Greateyes GE 4k4k camera, serial number GE060230
+## Power supply: Serial number PSK2002, Input 85-264VAC 50/60Hz 1.9/3.8A max 230/115VAC, Output 400 W 36VDC max, CE certified
 
 [mc19_fault]
 _target = "ophyd.EpicsSignalRO"
@@ -815,6 +858,23 @@ prefix = "XF:07IDB-VA:2{RSoXS:Main-CCG:1}P-I"
 name = "Main Chamber Chamber Cold Cathode Gauge"
 _baseline = true
 
+## Main chamber bottom turbo pump specs
+## Drive unit ## Pfeiffer Vacuum, D-35614 Asslar, Mod.: TM 700, M.-No.: PM C01 850, Ser.-No.: 75839802, Input: 48 V +/- 10% DC 8.4 A, Output: 0-48 V 9 A 0–1000 Hz, 2022/02 Made in Germany
+## Air cooling kit ## Pfeiffer Vacuum, D-35614 Asslar, Mod.: Air cooling kit shielded 24 V DC, M.-No.: PM Z01 363 A, Made in Germany 2021/09
+## Pump head ## Pfeiffer Vacuum, D-35614 Asslar, Mod.: HiPace 700 M, P/N: PM P04 452, S/N: 17117070, Oil: -, n, f: 49200 1/min, 820 Hz, Mass: 20.8 kg, Made in Germany, 2022/04
+
+## Main chamber top turbo pump specs
+## Drive unit ## Pfeiffer Vacuum, D-35614 Asslar, Mod.: TM 700, M.-No.: PM C01 850, Ser.-No.: 75835996, Input: 48 V +/- 10% DC 8.4 A, Output: 0-48 V 9 A 0–1000 Hz, 2021/12 Made in Germany
+## Air cooling kit ## Pfeiffer Vacuum, D-35614 Asslar, Mod.: Air cooling kit shielded 24 V DC, M.-No.: PM Z01 363 A, Made in Germany 2021/09
+## Pump head ## Pfeiffer Vacuum, D-35614 Asslar, Mod.: HiPace 700 M, P/N: PM P04 452, S/N: 17115271, Oil: -, n, f: 49200 1/min, 820 Hz, Mass: 20.8 kg, Made in Germany, 2022/03
+## Controller ## Pfeiffer Vacuum D-35614 Asslar Berliner Strasse 43, Model: OmniControl 400, Product number: PE D70 100 0, Serial number: 80100525, Input: [100-240 V +/- 10%, 50/60 Hz, 5.8A], Output: [48 V 12 A, 24 V 3A], Made in Germany, 2021/08
+
+## Solid sample load lock top turbo pump specs
+## Drive unit ## Pfeiffer Vacuum, D-35614 Asslar, Mod.: TM 700, M.-No.: PM C01 850, Ser.-No.: 80803241, Input: 48 V +/- 10% DC 8.4 A, Output: 0-48 V 9 A 0–1000 Hz, 2022/11 Made in Germany
+## Air cooling kit ## 
+## Pump head ## Pfeiffer Vacuum, D-35614 Asslar, Mod.: HiPace 300 M, P/N: PM P03 952, S/N: 17159065, Oil: -, n, f: 60000 1/min, 1000 Hz, Mass: 17.2 kg, Made in Germany, 2022/12
+
+
 [gv28]
 _target = "sst_base.shutters.EPS_Shutter"
 _group = "gate_valves"
@@ -836,12 +896,14 @@ closeval = 1
 prefix = "XF:07IDA-PPS{PSh:7}"
 name = "Photon Shutter 7"
 
-[mir4OLD]
-_target = "sst_base.mirrors.HexapodMirror"
-_group = "motors"
-prefix = "XF:07ID2-OP{Mir:M4CD-Ax:"
-name = "SST 1 Mirror 4" 
-kind = "hinted"
+#[mir4OLD]
+#_target = "sst_base.mirrors.HexapodMirror"
+#_group = "motors"
+#prefix = "XF:07ID2-OP{Mir:M4CD-Ax:"
+#name = "SST 1 Mirror 4" 
+#kind = "hinted"
+## M4C is curved (meridional cylinder)
+## M4 and downstream mirrors have drain currents measured
 
 [DownstreamLargeDiode] 
 _target = "ophyd.EpicsSignalRO"
@@ -855,65 +917,66 @@ kind = "normal"
 prefix = "XF:07ID-ES1{DMR:I400-1}:IC4_MON"
 name = "DownstreamLargeDiode"
 
-[bpm13_sum]
-_target = "ophyd.EpicsSignalRO"
-prefix = "XF:07ID-BI{BPM:13}Stats5:Total_RBV"
-name = "Downstream Izero Phosphor Intensity"
+#[bpm13_sum]
+#_target = "ophyd.EpicsSignalRO"
+#prefix = "XF:07ID-BI{BPM:13}Stats5:Total_RBV"
+#name = "Downstream Izero Phosphor Intensity"
 
-[Izero_ds]
-_target = "sst_base.motors.PrettyMotorFMBO"
-_group = "motors"
-prefix = "XF:07ID2-BI{Diag:07-Ax:Y}Mtr"
-name = "Downstream Izero DM7 Vertical Translation" ## TODO: would like to name it something more generic like diagnostic module 7 to indicate that there is also a yag and photodiode.  In the description, I can indicate that it is downstream of RSoXS.
-kind = "hinted"
-_baseline = true
+#[Izero_ds]
+#_target = "sst_base.motors.PrettyMotorFMBO"
+#_group = "motors"
+#prefix = "XF:07ID2-BI{Diag:07-Ax:Y}Mtr"
+#name = "Downstream Izero DM7 Vertical Translation" ## TODO: would like to name it something more generic like diagnostic module 7 to indicate that there is also a yag and photodiode.  In the description, I can indicate that it is downstream of RSoXS.
+#kind = "hinted"
+#_baseline = true
 
-[dm7] ## TODO: I believe this is a repeat of the above Izero_ds, but the motor class and normal vs. hinting is different, so I am not sure which one is more correct
-_target = "sst_base.motors.PrettyMotorFMBODeadbandFlyer"
-_group = "motors"
-prefix = "XF:07ID2-BI{Diag:07-Ax:Y}Mtr"
-name = "Downstream diagnostic module translation" 
-kind = "normal"
+#[dm7] ## TODO: I believe this is a repeat of the above Izero_ds, but the motor class and normal vs. hinting is different, so I am not sure which one is more correct
+#_target = "sst_base.motors.PrettyMotorFMBODeadbandFlyer"
+#_group = "motors"
+#prefix = "XF:07ID2-BI{Diag:07-Ax:Y}Mtr"
+#name = "Downstream diagnostic module translation" 
+#kind = "normal"
 
-[dm7_cam] 
-_target = "sst_base.cameras.StandardProsilicawstatsFactory"
-prefix = "XF:07ID-BI{BPM:13}"
-name = "dm7_cam"
-camera_name = "fs13_cam-1"
-date_template = "%Y/%m"
-read_attrs = ['tiff','stats5']
+#[dm7_cam] 
+#_target = "sst_base.cameras.StandardProsilicawstatsFactory"
+#prefix = "XF:07ID-BI{BPM:13}"
+#name = "dm7_cam"
+#camera_name = "fs13_cam-1"
+#date_template = "%Y/%m"
+#read_attrs = ['tiff','stats5']
 
 ## LARIAT 1
 
-[psh8]
-_target = "sst_base.shutters.EPS_Shutter"
-_group = "shutters"
-shutter_type = "PH"
-openval = 0
-closeval = 1
-prefix = "XF:07IDA-PPS{PSh:8}"
-name = "Photon Shutter 8"
+#[psh8]
+#_target = "sst_base.shutters.EPS_Shutter"
+#_group = "shutters"
+#shutter_type = "PH"
+#openval = 0
+#closeval = 1
+#prefix = "XF:07IDA-PPS{PSh:8}"
+#name = "Photon Shutter 8"
 
 ## GV30
 
 ## M5C
+## M5C is a plane mirror
 
 ## FS14
 
 ## GV31
 
-[dm8]
-_target = "sst_base.motors.PrettyMotor"
-prefix = "XF:07ID2-BI{Diag:08-Ax:Y}Mtr"
-name = "DM8Motor"
+#[dm8]
+#_target = "sst_base.motors.PrettyMotor"
+#prefix = "XF:07ID2-BI{Diag:08-Ax:Y}Mtr"
+#name = "DM8Motor"
 
-[dm8_cam] #was 
-_target = "sst_base.cameras.StandardProsilicawstatsFactory"
-prefix = "XF:07ID-BI{BPM:14}"
-name = "dm8_cam"
-camera_name = "fs14_cam-1"
-date_template = "%Y/%m"
-read_attrs = ['tiff','stats5']
+#[dm8_cam] #was 
+#_target = "sst_base.cameras.StandardProsilicawstatsFactory"
+#prefix = "XF:07ID-BI{BPM:14}"
+#name = "dm8_cam"
+#camera_name = "fs14_cam-1"
+#date_template = "%Y/%m"
+#read_attrs = ['tiff','stats5']
 
 
 ## PEY NEXAFS
