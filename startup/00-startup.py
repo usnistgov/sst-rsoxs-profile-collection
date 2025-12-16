@@ -57,6 +57,7 @@ from rsoxs.alignment.energy_calibration import *
 from rsoxs.HW.cameras import * ## 20250131 - temporary solution to using crosshairs, need a better long-term solution
 from rsoxs.Functions.alignment import *
 from rsoxs.Functions.alignment_local import *
+from rsoxs.Functions.magics import *
 
 
 
@@ -88,7 +89,7 @@ class TiledInserter:
 # Define tiled catalog
 tiled_writing_client = from_profile("nsls2", api_key=os.environ["TILED_BLUESKY_WRITING_API_KEY_RSOXS"])["rsoxs"]["raw"]
 #tiled_writing_client = from_profile("rsoxs")
-# tiled_inserter = TiledInserter()
+tiled_inserter = TiledInserter()
 #c = tiled_reading_client = from_profile("nsls2")["rsoxs"]["raw"]
 #db = Broker(c)
 
