@@ -3735,6 +3735,103 @@ existing_devices:
         is_movable: true
         is_readable: true
         module: sst_base.energy
+      flycontrol:
+        classname: FlyControl
+        components:
+          flymove_moving:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          flymove_speed_ev:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          flymove_start:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          flymove_stop:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          flymove_stop_ev:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          num_scans:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          scan_segments:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          scan_segments_n:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          scan_speed_ev:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          scan_start_go:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          scan_trigger_n:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          scan_trigger_width:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          scan_type:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          scanning:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          undulator_dance_enable:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+        is_flyable: false
+        is_movable: false
+        is_readable: true
+        module: sst_base.energy
       harmonic:
         classname: Signal
         is_flyable: false
@@ -22096,12 +22193,6 @@ existing_devices:
     is_movable: true
     is_readable: true
     module: ophyd.signal
-  waxs_det:
-    classname: RSOXSGreatEyesDetector
-    is_flyable: false
-    is_movable: false
-    is_readable: true
-    module: rsoxs.devices.detectors
 existing_plans:
   HOPG_energy_resolution_series:
     description: 'This series is especially helpful when selecting slits1.vsize to
@@ -22980,6 +23071,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: md
+    properties:
+      is_generator: true
+  clear_all_rois:
+    module: nbs_bl.plans.plan_stubs
+    name: clear_all_rois
+    parameters: []
     properties:
       is_generator: true
   clear_one_roi:
@@ -24540,75 +24637,6 @@ existing_plans:
       name: y2
     properties:
       is_generator: true
-  fly_scan:
-    description: Perform a fly scan over the specified motor range.
-    module: nbs_bl.plans.flyscan_base
-    name: fly_scan
-    parameters:
-    - description: List of detectors to use for the scan
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: detectors
-    - description: Motor to be scanned
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: motor
-    - description: Starting position of the scan
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: start
-    - description: Ending position of the scan
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: stop
-    - description: 'Additional scan parameters in groups of 3: start, stop, speed.
-
-        For example:
-
-        start1, stop1, speed1[, start2, stop2, speed2, ...]
-
-        This allows for multiple trajectory segments in a single scan'
-      kind:
-        name: VAR_POSITIONAL
-        value: 2
-      name: args
-    - annotation:
-        type: typing.Optional[dict]
-      default: None
-      description: Metadata dictionary to be included with the scan
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: md
-    - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: Time period between data points. If None, uses detector's default
-        period
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: period
-    - annotation:
-        type: bool
-      default: 'True'
-      description: 'If True, continuously stream data from detectors during the scan.
-
-        If False, collect data only at specified points. Default is True'
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: stream
-    - kind:
-        name: VAR_KEYWORD
-        value: 4
-      name: kwargs
-    properties:
-      is_generator: true
   gold_mesh_contamination_kinetics:
     module: rsoxs.plans.run_acquisitions
     name: gold_mesh_contamination_kinetics
@@ -24702,6 +24730,75 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: bar
+    properties:
+      is_generator: true
+  is_signal_above:
+    description: Check if a readable object is above a threshold value.
+    module: nbs_bl.plans.conditions
+    name: is_signal_above
+    parameters:
+    - annotation:
+        type: __READABLE__
+      convert_device_names: true
+      description: Any object that implements the Readable protocol (can be read with
+        rd()).
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: sig
+    - annotation:
+        type: float
+      description: The threshold value to wait for.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: val
+    properties:
+      is_generator: true
+  is_signal_below:
+    description: Check if a readable object is below a threshold value.
+    module: nbs_bl.plans.conditions
+    name: is_signal_below
+    parameters:
+    - annotation:
+        type: __READABLE__
+      convert_device_names: true
+      description: Any object that implements the Readable protocol (can be read with
+        rd()).
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: sig
+    - annotation:
+        type: float
+      description: The threshold value to wait for.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: val
+    properties:
+      is_generator: true
+  is_signal_equals:
+    description: Check if a readable object equals a target value.
+    module: nbs_bl.plans.conditions
+    name: is_signal_equals
+    parameters:
+    - annotation:
+        type: __READABLE__
+      convert_device_names: true
+      description: Any object that implements the Readable protocol (can be read with
+        rd()).
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: sig
+    - annotation:
+        type: float
+      description: The target value to wait for.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: val
     properties:
       is_generator: true
   k_rsoxs:
@@ -26493,44 +26590,16 @@ existing_plans:
     module: rsoxs.Functions.alignment
     name: move_to_location
     parameters:
-    - default: '[{''motor'': ''x'', ''position'': -0.9458900000000057, ''order'':
-        0}, {''motor'': ''y'', ''position'': -102.06509, ''order'': 0}, {''motor'':
-        ''z'', ''position'': -1.1315599999999932, ''order'': 0}, {''motor'': ''th'',
-        ''position'': 179.999842349, ''order'': 0}]'
+    - default: '[{''motor'': ''x'', ''position'': 0.0, ''order'': 0}, {''motor'':
+        ''y'', ''position'': 345.00023, ''order'': 0}, {''motor'': ''z'', ''position'':
+        -1.2165799999999933, ''order'': 0}, {''motor'': ''th'', ''position'': -0.0056487670000251455,
+        ''order'': 0}]'
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: locs
     properties:
       is_generator: true
-  mv:
-    description: Move one or more devices to a setpoint. Wait for all to complete.
-    module: bluesky.plan_stubs
-    name: mv
-    parameters:
-    - annotation:
-        type: typing.Union[__MOVABLE__, typing.Any]
-      convert_device_names: true
-      description: device1, value1, device2, value2, ...
-      kind:
-        name: VAR_POSITIONAL
-        value: 2
-      name: args
-    - annotation:
-        type: typing.Optional[collections.abc.Hashable]
-      default: None
-      description: Used to mark these as a unit to be waited on.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: group
-    - description: passed to obj.set()
-      kind:
-        name: VAR_KEYWORD
-        value: 4
-      name: kwargs
-    properties:
-      is_generator: false
   n_rsoxs:
     description: 'Perform an in-place RSoXS scan for  with energy pattern [380, 395,
       0.5, 397, 0.1, 403, 0.05, 407, 0.1, 417, 0.2, 440, 0.5, 480, 2] '
@@ -27794,7 +27863,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Union[collections.abc.Iterable, bool, NoneType]
+        type: typing.Union[collections.abc.Iterable[typing.Any], bool, NoneType]
       default: None
       description: 'which axes should be snaked, either ``False`` (do not snake any
         axes),
@@ -28531,7 +28600,10 @@ existing_plans:
     module: nbs_bl.plans.preprocessors
     name: nbs_log_scan
     parameters:
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -28725,7 +28797,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Union[collections.abc.Iterable, bool, NoneType]
+        type: typing.Union[collections.abc.Iterable[typing.Any], bool, NoneType]
       default: None
       description: 'which axes should be snaked, either ``False`` (do not snake any
         axes),
@@ -30641,12 +30713,18 @@ existing_plans:
     module: nbs_bl.plans.preprocessors
     name: nbs_spiral
     parameters:
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_motor
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -30874,12 +30952,18 @@ existing_plans:
     module: nbs_bl.plans.preprocessors
     name: nbs_spiral_fermat
     parameters:
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_motor
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -31106,12 +31190,18 @@ existing_plans:
     module: nbs_bl.plans.preprocessors
     name: nbs_spiral_square
     parameters:
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_motor
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -32252,6 +32342,148 @@ existing_plans:
     parameters: []
     properties:
       is_generator: true
+  repeat_plan_sequence_for_duration:
+    description: Repeat a sequence of plans for a specified duration.
+    module: nbs_bl.plans.metaplans
+    name: repeat_plan_sequence_for_duration
+    parameters:
+    - annotation:
+        type: typing.List[__PLAN__]
+      convert_plan_names: true
+      description: List of plan names or callables to run in sequence.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: plans
+    - annotation:
+        type: typing.List[typing.List]
+      description: List of argument lists, one for each plan.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: plan_args_list
+    - annotation:
+        type: typing.List[typing.Dict]
+      description: List of kwargs dicts, one for each plan.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: plan_kwargs_list
+    - annotation:
+        type: float
+      description: Total duration to repeat the sequence (seconds).
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: duration
+    properties:
+      is_generator: true
+  repeat_plan_sequence_until_condition:
+    description: Repeat a sequence of plans until a condition plan returns True.
+    module: nbs_bl.plans.metaplans
+    name: repeat_plan_sequence_until_condition
+    parameters:
+    - annotation:
+        type: typing.List[__PLAN__]
+      convert_plan_names: true
+      description: List of plan names or callables to run in sequence.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: plans
+    - annotation:
+        type: typing.List[typing.List]
+      description: List of argument lists, one for each plan.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: plan_args_list
+    - annotation:
+        type: typing.List[typing.Dict]
+      description: List of kwargs dicts, one for each plan.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: plan_kwargs_list
+    - annotation:
+        type: __PLAN__
+      convert_plan_names: true
+      description: A plan that returns a boolean; controls loop continuation.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: condition
+    - annotation:
+        type: typing.List
+      default: None
+      description: Arguments for the condition plan.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: condition_args
+    - annotation:
+        type: typing.Dict
+      default: None
+      description: Keyword arguments for the condition plan.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: condition_kwargs
+    properties:
+      is_generator: true
+  repeat_plan_sequence_while_condition:
+    description: Repeat a sequence of plans while a condition plan returns True.
+    module: nbs_bl.plans.metaplans
+    name: repeat_plan_sequence_while_condition
+    parameters:
+    - annotation:
+        type: typing.List[__PLAN__]
+      convert_plan_names: true
+      description: List of plan names or callables to run in sequence.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: plans
+    - annotation:
+        type: typing.List[typing.List]
+      description: List of argument lists, one for each plan.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: plan_args_list
+    - annotation:
+        type: typing.List[typing.Dict]
+      description: List of kwargs dicts, one for each plan.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: plan_kwargs_list
+    - annotation:
+        type: __PLAN__
+      convert_plan_names: true
+      description: A plan that returns a boolean; controls loop continuation.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: condition
+    - annotation:
+        type: typing.List
+      default: None
+      description: Arguments for the condition plan.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: condition_args
+    - annotation:
+        type: typing.Dict
+      default: None
+      description: Keyword arguments for the condition plan.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: condition_kwargs
+    properties:
+      is_generator: true
   reproduce_EPU_error:
     module: rsoxs.plans.run_acquisitions
     name: reproduce_EPU_error
@@ -32542,758 +32774,860 @@ existing_plans:
     module: rsoxs.plans.run_acquisitions
     name: run_acquisitions_queue
     parameters:
-    - default: "[{'bar_name': '20251201_WSU', 'sample_id': 'AF1_front', 'sample_name':\
-        \ 'AF1_front', 'project_name': 'Calibration', 'institution': 'NIST', 'proposal_id':\
-        \ 318915, 'bar_spot': '0A', 'front': True, 'grazing': False, 'angle': 0, 'height':\
-        \ 0.0, 'sample_priority': 1, 'notes': None, 'location': [{'motor': 'x', 'position':\
-        \ -1.5995478778859127, 'order': 0}, {'motor': 'y', 'position': -187.37897423865064,\
-        \ 'order': 0}, {'motor': 'z', 'position': 0.0, 'order': 0}, {'motor': 'th',\
-        \ 'position': 180.0, 'order': 0}], 'bar_loc': {'spot': '0A', 'ximg': 0.6674117921250371,\
-        \ 'yimg': -185.5872221497133, 'th0': 0.0, 'th': 0, 'xoff': -0.7855399254746024,\
-        \ 'x0': 0.02846802693670763, 'y0': -187.37897423865064, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 3.4109474250316967},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': 'Calibration',\
-        \ 'sample_set': None, 'sample_state': None, 'composition': None, 'acq_history':\
-        \ [], 'density': None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id':\
-        \ 'AF2_front', 'sample_name': 'AF2_front', 'project_name': 'Calibration',\
-        \ 'institution': 'NIST', 'proposal_id': 318915, 'bar_spot': '0A', 'front':\
-        \ True, 'grazing': False, 'angle': 0, 'height': 0.0, 'sample_priority': 1,\
-        \ 'notes': None, 'location': [{'motor': 'x', 'position': -2.452174232662121,\
-        \ 'order': 0}, {'motor': 'y', 'position': 3.021703250963311, 'order': 0},\
-        \ {'motor': 'z', 'position': 0.0, 'order': 0}, {'motor': 'th', 'position':\
-        \ 180.0, 'order': 0}], 'bar_loc': {'spot': '0A', 'ximg': 1.2705980080445496,\
-        \ 'yimg': 4.791595114600539, 'th0': 0.0, 'th': 0, 'xoff': -0.524179939550609,\
-        \ 'x0': 1.4038143535609031, 'y0': 3.021703250963311, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': -1.285160013051283},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': 'Calibration',\
-        \ 'sample_set': None, 'sample_state': None, 'composition': None, 'acq_history':\
-        \ [], 'density': None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id':\
-        \ 'diode', 'sample_name': 'diode', 'project_name': 'Calibration', 'institution':\
-        \ 'NIST', 'proposal_id': 318915, 'bar_spot': '0A', 'front': True, 'grazing':\
-        \ False, 'angle': 0, 'height': 0.0, 'sample_priority': 1, 'notes': None, 'location':\
-        \ [{'motor': 'x', 'position': -0.5959972928073318, 'order': 0}, {'motor':\
-        \ 'y', 'position': 44.331847431748265, 'order': 0}, {'motor': 'z', 'position':\
-        \ 0.0, 'order': 0}, {'motor': 'th', 'position': 180.0, 'order': 0}], 'bar_loc':\
-        \ {'spot': '0A', 'ximg': -0.6396985296840825, 'yimg': 46.09699640754036, 'th0':\
-        \ 0.0, 'th': 0, 'xoff': -0.46747416074792053, 'x0': -0.3389510286885089, 'y0':\
-        \ 44.331847431748265, 'af1y': -187.37918000000002, 'af2y': 3.0214999999999748,\
-        \ 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016, 'af1zoff':\
-        \ -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': -2.304047539679159},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': 'Calibration',\
-        \ 'sample_set': None, 'sample_state': None, 'composition': None, 'acq_history':\
-        \ [], 'density': None, 'acquisitions': [{'sample_id': 'diode', 'configuration_instrument':\
-        \ 'WAXS', 'scan_type': 'nexafs', 'energy_list_parameters': 'carbon_NEXAFS',\
-        \ 'polarization_frame': 'lab', 'polarizations': [0], 'exposure_time': 1.0,\
-        \ 'exposures_per_energy': 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions':\
-        \ None, 'group_name': 'calibration_sample', 'priority': 33, 'acquire_status':\
-        \ 'Not begun', 'uid_local': 'f6bfeee2-d83c-4923-b105-d3bd2796826b', 'notes':\
-        \ None}]}, {'bar_name': '20251201_WSU', 'sample_id': 'PC0', 'sample_name':\
-        \ 'PC0', 'project_name': 'Acacia Ternary', 'institution': 'WSU', 'proposal_id':\
-        \ 318915, 'bar_spot': '2B', 'front': True, 'grazing': False, 'angle': 0, 'height':\
-        \ 0.25, 'sample_priority': 1, 'notes': None, 'location': [{'motor': 'x', 'position':\
-        \ -1.8588088712579371}, {'motor': 'y', 'position': -174.12784942391798}, {'motor':\
-        \ 'th', 'position': 180.0}, {'motor': 'z', 'position': -1.1316}], 'bar_loc':\
-        \ {'spot': '2B', 'th': 180.0, 'ximg': 0.9093127505571932, 'yimg': -172.33761871913617,\
-        \ 'th0': 0.0, 'xoff': -0.7673503169043044, 'x0': 0.32410823744932793, 'y0':\
-        \ -174.12784942391798, 'af1y': -187.37918000000002, 'af2y': 3.0214999999999748,\
-        \ 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016, 'af1zoff':\
-        \ -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 2.8341171499197477},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': [{'sample_id': 'PC0', 'configuration_instrument':\
-        \ 'WAXS', 'scan_type': 'nexafs', 'energy_list_parameters': 'carbon_NEXAFS',\
-        \ 'polarization_frame': 'lab', 'polarizations': [0], 'exposure_time': 1.0,\
-        \ 'exposures_per_energy': 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions':\
-        \ None, 'group_name': 'Acacua_Ternary', 'priority': 2, 'acquire_status': 'Finished\
-        \ 2025-12-03_12-00-27', 'uid_local': 'acbcc28a-eedd-4c40-97f2-db43e943313b',\
-        \ 'notes': 'Do not delete this row.\\n\\nTEY NEXAFS (scan_type = nexafs) on\
-        \ HOPG (sample_id = HOPG). \\n2D detector is retracted, but beamstop is in\
-        \ position (configuration_instrument = WAXSNEXAFS) --> Protects 2D detector\
-        \ from sample bar rotation and reflected X-rays.\\nThe sample is rotated to\
-        \ an angle of 20 (angle between incident beam and sample is 20 degrees), sample_angles\
-        \ = [20] --> 20\xB0 angleensures a larger beam footprint on HOPG.  \\nA carbon-edge\
-        \ energy scan is performed at 90\xB0 polarization  --> The beam energy was\
-        \ calibrated at 90\xB0 polarization, so the calibration is being validated\
-        \ at this energy.\\nThe energy scan is performed in ascending and descending\
-        \ energy directions (cycles = 1) --> This checks for reproducibility of the\
-        \ NEXAFS profiles.\\n\\nOptional:\\nRun at additional polarizations (e.g.,\
-        \ polarizations =  [0, 20, 30, 55, 70, 90]) and/or sample angles (sample_angles\
-        \ = [20, 30, 55, 70, 90]) to see polarization dependence of HOPG.'}, {'sample_id':\
-        \ 'PC0', 'configuration_instrument': 'WAXS', 'scan_type': 'rsoxs', 'energy_list_parameters':\
-        \ [270, 2, 282, 0.2, 283], 'polarization_frame': 'lab', 'polarizations': [0],\
-        \ 'exposure_time': 0.1, 'exposures_per_energy': 1, 'cycles': 0, 'sample_angles':\
-        \ [0], 'spiral_dimensions': None, 'group_name': 'Acacua_Ternary', 'priority':\
-        \ 3, 'acquire_status': 'Finished 2025-12-03_12-02-01', 'uid_local': 'a0523cb7-57f2-4e62-ba8e-8a66b362aaa8',\
-        \ 'notes': None}, {'sample_id': 'PC0', 'configuration_instrument': 'WAXS',\
-        \ 'scan_type': 'rsoxs', 'energy_list_parameters': [284.1, 0.1, 288], 'polarization_frame':\
-        \ 'lab', 'polarizations': [0], 'exposure_time': 0.1, 'exposures_per_energy':\
-        \ 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions': None, 'group_name':\
-        \ 'Acacua_Ternary', 'priority': 4, 'acquire_status': 'Finished 2025-12-03_12-05-30',\
-        \ 'uid_local': '64c25f3e-924a-49fc-a1ae-c71121b91e27', 'notes': None}, {'sample_id':\
-        \ 'PC0', 'configuration_instrument': 'WAXS', 'scan_type': 'rsoxs', 'energy_list_parameters':\
-        \ [288.2, 0.2, 292, 1, 300, 2, 310, 5, 350], 'polarization_frame': 'lab',\
-        \ 'polarizations': [0], 'exposure_time': 0.1, 'exposures_per_energy': 1, 'cycles':\
-        \ 0, 'sample_angles': [0], 'spiral_dimensions': None, 'group_name': 'Acacua_Ternary',\
-        \ 'priority': 5, 'acquire_status': 'Finished 2025-12-03_12-09-02', 'uid_local':\
-        \ '14102fb1-f121-4b79-ab6c-c78b4532a74c', 'notes': None}]}, {'bar_name': '20251201_WSU',\
-        \ 'sample_id': 'PC1', 'sample_name': 'PC1', 'project_name': 'Acacia Ternary',\
-        \ 'institution': 'WSU', 'proposal_id': 318915, 'bar_spot': '4B', 'front':\
-        \ True, 'grazing': False, 'angle': 0, 'height': 0.25, 'sample_priority': 1,\
-        \ 'notes': None, 'location': [{'motor': 'x', 'position': -1.4631283400483464,\
-        \ 'order': 0}, {'motor': 'y', 'position': -162.17179401037032, 'order': 0},\
-        \ {'motor': 'z', 'position': 0.0, 'order': 0}, {'motor': 'th', 'position':\
-        \ 180.0, 'order': 0}], 'bar_loc': {'spot': '4B', 'th': 0, 'ximg': 0.4979688290600528,\
-        \ 'yimg': -160.38293600062556, 'th0': 0.0, 'xoff': -0.7509384295318882, 'x0':\
-        \ -0.03874851901543029, 'y0': -162.17179401037032, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 2.539228909510224},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'PC2',\
-        \ 'sample_name': 'PC2', 'project_name': 'Acacia Ternary', 'institution': 'WSU',\
-        \ 'proposal_id': 318915, 'bar_spot': '6B', 'front': True, 'grazing': False,\
-        \ 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None, 'location':\
-        \ [{'motor': 'x', 'position': -1.2987950799706007}, {'motor': 'y', 'position':\
-        \ -150.24145054394856}, {'motor': 'th', 'position': 180.0}, {'motor': 'z',\
-        \ 'position': -1.1316}], 'bar_loc': {'spot': '6B', 'th': 180.0, 'ximg': 0.31800586340505355,\
-        \ 'yimg': -148.4539622772085, 'th0': 0.0, 'xoff': -0.7345618365409179, 'x0':\
-        \ -0.17032859311123516, 'y0': -150.24145054394856, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 2.2449748373596456},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': [{'sample_id': 'PC2', 'configuration_instrument':\
-        \ 'WAXS', 'scan_type': 'nexafs', 'energy_list_parameters': 'carbon_NEXAFS',\
-        \ 'polarization_frame': 'lab', 'polarizations': [0], 'exposure_time': 1.0,\
-        \ 'exposures_per_energy': 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions':\
-        \ None, 'group_name': 'Acacua_Ternary', 'priority': 6, 'acquire_status': 'Finished\
-        \ 2025-12-03_12-14-35', 'uid_local': '7f3e491d-e6c5-4dec-a81e-9987bd5cfbb2',\
-        \ 'notes': None}, {'sample_id': 'PC2', 'configuration_instrument': 'WAXS',\
-        \ 'scan_type': 'rsoxs', 'energy_list_parameters': [270, 2, 282, 0.2, 284],\
-        \ 'polarization_frame': 'lab', 'polarizations': [0], 'exposure_time': 0.1,\
-        \ 'exposures_per_energy': 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions':\
-        \ None, 'group_name': 'Acacua_Ternary', 'priority': 7, 'acquire_status': 'Finished\
-        \ 2025-12-03_12-18-16', 'uid_local': '147ea156-33a6-4d68-82fc-7a58cea1c016',\
-        \ 'notes': None}, {'sample_id': 'PC2', 'configuration_instrument': 'WAXS',\
-        \ 'scan_type': 'rsoxs', 'energy_list_parameters': [284.1, 0.1, 288], 'polarization_frame':\
-        \ 'lab', 'polarizations': [0], 'exposure_time': 0.1, 'exposures_per_energy':\
-        \ 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions': None, 'group_name':\
-        \ 'Acacua_Ternary', 'priority': 8, 'acquire_status': 'Finished 2025-12-03_12-21-46',\
-        \ 'uid_local': 'dbf70773-b2e2-44a6-91f0-81dbdd62fb37', 'notes': None}, {'sample_id':\
-        \ 'PC2', 'configuration_instrument': 'WAXS', 'scan_type': 'rsoxs', 'energy_list_parameters':\
-        \ [288.2, 0.2, 292, 1, 300, 2, 310, 5, 350], 'polarization_frame': 'lab',\
-        \ 'polarizations': [0], 'exposure_time': 0.1, 'exposures_per_energy': 1, 'cycles':\
-        \ 0, 'sample_angles': [0], 'spiral_dimensions': None, 'group_name': 'Acacua_Ternary',\
-        \ 'priority': 9, 'acquire_status': 'Finished 2025-12-03_12-25-22', 'uid_local':\
-        \ 'bcc4e530-498c-4f3e-9418-0e587e922edb', 'notes': None}]}, {'bar_name': '20251201_WSU',\
-        \ 'sample_id': 'PC3', 'sample_name': 'PC3', 'project_name': 'Acacia Ternary',\
-        \ 'institution': 'WSU', 'proposal_id': 318915, 'bar_spot': '8B', 'front':\
-        \ True, 'grazing': False, 'angle': 0, 'height': 0.25, 'sample_priority': 1,\
-        \ 'notes': None, 'location': [{'motor': 'x', 'position': -1.0311933507333704,\
-        \ 'order': 0}, {'motor': 'y', 'position': -138.16933544837258, 'order': 0},\
-        \ {'motor': 'z', 'position': 0.0, 'order': 0}, {'motor': 'th', 'position':\
-        \ 180.0, 'order': 0}], 'bar_loc': {'spot': '8B', 'th': 0, 'ximg': 0.034588696400282615,\
-        \ 'yimg': -136.38323320167888, 'th0': 0.0, 'xoff': -0.717990635886316, 'x0':\
-        \ -0.4047879210392618, 'y0': -138.16933544837258, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 1.9472240612531864},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'PC4',\
-        \ 'sample_name': 'PC4', 'project_name': 'Acacia Ternary', 'institution': 'WSU',\
-        \ 'proposal_id': 318915, 'bar_spot': '10B', 'front': True, 'grazing': False,\
-        \ 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None, 'location':\
-        \ [{'motor': 'x', 'position': -1.4665274093054406}, {'motor': 'y', 'position':\
-        \ -126.22104889267615}, {'motor': 'th', 'position': 180.0}, {'motor': 'z',\
-        \ 'position': -1.1316}], 'bar_loc': {'spot': '10B', 'th': 180.0, 'ximg': 0.45426954251088425,\
-        \ 'yimg': -124.43631844906372, 'th0': 0.0, 'xoff': -0.701589412701682, 'x0':\
-        \ 0.06334858390207637, 'y0': -126.22104889267615, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 1.6525274346111223},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': [{'sample_id': 'PC4', 'configuration_instrument':\
-        \ 'WAXS', 'scan_type': 'nexafs', 'energy_list_parameters': 'carbon_NEXAFS',\
-        \ 'polarization_frame': 'lab', 'polarizations': [0], 'exposure_time': 1.0,\
-        \ 'exposures_per_energy': 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions':\
-        \ None, 'group_name': 'Acacua_Ternary', 'priority': 10, 'acquire_status':\
-        \ 'Finished 2025-12-03_12-30-56', 'uid_local': 'e254e30f-4072-486a-889b-10447cda7ec8',\
-        \ 'notes': None}, {'sample_id': 'PC4', 'configuration_instrument': 'WAXS',\
-        \ 'scan_type': 'rsoxs', 'energy_list_parameters': [270, 2, 282, 0.2, 284],\
-        \ 'polarization_frame': 'lab', 'polarizations': [0], 'exposure_time': 0.1,\
-        \ 'exposures_per_energy': 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions':\
-        \ None, 'group_name': 'Acacua_Ternary', 'priority': 11, 'acquire_status':\
-        \ 'Finished 2025-12-03_12-32-52', 'uid_local': '6da412d7-bf0a-4e05-a47d-90956d84b60e',\
-        \ 'notes': None}, {'sample_id': 'PC4', 'configuration_instrument': 'WAXS',\
-        \ 'scan_type': 'rsoxs', 'energy_list_parameters': [284.1, 0.1, 288], 'polarization_frame':\
-        \ 'lab', 'polarizations': [0], 'exposure_time': 0.1, 'exposures_per_energy':\
-        \ 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions': None, 'group_name':\
-        \ 'Acacua_Ternary', 'priority': 12, 'acquire_status': 'Finished 2025-12-03_12-36-17',\
-        \ 'uid_local': '3a760c6e-f8dc-456b-bf19-7afa5b0505ca', 'notes': None}, {'sample_id':\
-        \ 'PC4', 'configuration_instrument': 'WAXS', 'scan_type': 'rsoxs', 'energy_list_parameters':\
-        \ [288.2, 0.2, 292, 1, 300, 2, 310, 5, 350], 'polarization_frame': 'lab',\
-        \ 'polarizations': [0], 'exposure_time': 0.1, 'exposures_per_energy': 1, 'cycles':\
-        \ 0, 'sample_angles': [0], 'spiral_dimensions': None, 'group_name': 'Acacua_Ternary',\
-        \ 'priority': 13, 'acquire_status': 'Finished 2025-12-03_12-39-51', 'uid_local':\
-        \ '2fdf9a20-5ce8-444c-a148-16c8cf43973f', 'notes': None}]}, {'bar_name': '20251201_WSU',\
-        \ 'sample_id': 'PC5', 'sample_name': 'PC5', 'project_name': 'Acacia Ternary',\
-        \ 'institution': 'WSU', 'proposal_id': 318915, 'bar_spot': '12B', 'front':\
-        \ True, 'grazing': False, 'angle': 0, 'height': 0.25, 'sample_priority': 1,\
-        \ 'notes': None, 'location': [{'motor': 'x', 'position': -1.2859996330538899,\
-        \ 'order': 0}, {'motor': 'y', 'position': -114.52459975852837, 'order': 0},\
-        \ {'motor': 'z', 'position': 0.0, 'order': 0}, {'motor': 'th', 'position':\
-        \ 180.0, 'order': 0}], 'bar_loc': {'spot': '12B', 'th': 0, 'ximg': 0.2584184809926029,\
-        \ 'yimg': -112.74121220411493, 'th0': 0.0, 'xoff': -0.6855338827457641, 'x0':\
-        \ -0.0850681324376385, 'y0': -114.52459975852837, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 1.3640422122776727},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'BD1-1',\
-        \ 'sample_name': 'BD1-1', 'project_name': 'Neher blends', 'institution': 'WSU',\
-        \ 'proposal_id': 318915, 'bar_spot': '14B', 'front': True, 'grazing': False,\
-        \ 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None, 'location':\
-        \ [{'motor': 'x', 'position': -0.9456614524215811}, {'motor': 'y', 'position':\
-        \ -102.0651722119069}, {'motor': 'th', 'position': 180.0}, {'motor': 'z',\
-        \ 'position': -1.1316}], 'bar_loc': {'spot': '14B', 'th': 180.0, 'ximg': -0.09824254774235364,\
-        \ 'yimg': -100.28321514554041, 'th0': 0.0, 'xoff': -0.6684310244411573, 'x0':\
-        \ -0.3912005964607337, 'y0': -102.0651722119069, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 1.056738629394483},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': [{'sample_id': 'BD1-1', 'configuration_instrument':\
-        \ 'WAXS', 'scan_type': 'nexafs', 'energy_list_parameters': 'carbon_NEXAFS',\
-        \ 'polarization_frame': 'lab', 'polarizations': [0], 'exposure_time': 1.0,\
-        \ 'exposures_per_energy': 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions':\
-        \ None, 'group_name': 'Neher_blends', 'priority': 14, 'acquire_status': 'Finished\
-        \ 2025-12-03_13-00-41', 'uid_local': 'db19ad19-05da-40ba-b6a9-49026c221ccb',\
-        \ 'notes': None}, {'sample_id': 'BD1-1', 'configuration_instrument': 'WAXS',\
-        \ 'scan_type': 'rsoxs', 'energy_list_parameters': [270, 270, 0], 'polarization_frame':\
-        \ 'lab', 'polarizations': [0, 90], 'exposure_time': 0.1, 'exposures_per_energy':\
-        \ 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions': None, 'group_name':\
-        \ 'Neher_blends', 'priority': 15, 'acquire_status': 'Started 2025-12-03_13-01-01',\
-        \ 'uid_local': '76547abb-d073-4eaa-b2f5-eb6ac32d418d', 'notes': None}, {'sample_id':\
-        \ 'BD1-1', 'configuration_instrument': 'WAXS', 'scan_type': 'rsoxs', 'energy_list_parameters':\
-        \ [284.13, 284.13, 0], 'polarization_frame': 'lab', 'polarizations': [0, 90],\
-        \ 'exposure_time': 0.1, 'exposures_per_energy': 1, 'cycles': 0, 'sample_angles':\
-        \ [0], 'spiral_dimensions': None, 'group_name': 'Neher_blends', 'priority':\
-        \ 16, 'acquire_status': 'Not begun', 'uid_local': 'ffab50ee-4f5c-4802-9466-e392f123ecb2',\
-        \ 'notes': None}, {'sample_id': 'BD1-1', 'configuration_instrument': 'WAXS',\
-        \ 'scan_type': 'rsoxs', 'energy_list_parameters': [284.95, 284.95, 0], 'polarization_frame':\
-        \ 'lab', 'polarizations': [0, 90], 'exposure_time': 0.1, 'exposures_per_energy':\
-        \ 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions': None, 'group_name':\
-        \ 'Neher_blends', 'priority': 17, 'acquire_status': 'Not begun', 'uid_local':\
-        \ 'd620da70-89f7-4b41-863b-231f6e389094', 'notes': None}, {'sample_id': 'BD1-1',\
-        \ 'configuration_instrument': 'WAXS', 'scan_type': 'rsoxs', 'energy_list_parameters':\
-        \ [287.05, 287.05, 0], 'polarization_frame': 'lab', 'polarizations': [0, 90],\
-        \ 'exposure_time': 0.1, 'exposures_per_energy': 1, 'cycles': 0, 'sample_angles':\
-        \ [0], 'spiral_dimensions': None, 'group_name': 'Neher_blends', 'priority':\
-        \ 18, 'acquire_status': 'Not begun', 'uid_local': 'e508c78d-b155-45f7-a310-d072a9a88048',\
-        \ 'notes': None}, {'sample_id': 'BD1-1', 'configuration_instrument': 'WAXS',\
-        \ 'scan_type': 'rsoxs', 'energy_list_parameters': [350, 350, 0], 'polarization_frame':\
-        \ 'lab', 'polarizations': [0, 90], 'exposure_time': 0.1, 'exposures_per_energy':\
-        \ 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions': None, 'group_name':\
-        \ 'Neher_blends', 'priority': 19, 'acquire_status': 'Not begun', 'uid_local':\
-        \ 'e7e19263-1e45-4973-ac89-be9213de387a', 'notes': None}]}, {'bar_name': '20251201_WSU',\
-        \ 'sample_id': 'BD2-1', 'sample_name': 'BD2-1', 'project_name': 'Neher blends',\
-        \ 'institution': 'WSU', 'proposal_id': 318915, 'bar_spot': '16B', 'front':\
-        \ True, 'grazing': False, 'angle': 0, 'height': 0.25, 'sample_priority': 1,\
-        \ 'notes': None, 'location': [{'motor': 'x', 'position': -1.0}, {'motor':\
-        \ 'y', 'position': -90.4}, {'motor': 'th', 'position': 179.9998}, {'motor':\
-        \ 'z', 'position': -1.1316}], 'bar_loc': {'spot': '16B', 'th': 0, 'ximg':\
-        \ 0.2483326025941448, 'yimg': -88.32637245893125, 'th0': 0.0, 'xoff': -0.6520161717743876,\
-        \ 'x0': 0.003870479553002626, 'y0': -90.1069565822426, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 0.7617971086757351},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': [{'sample_id': 'BD2-1', 'configuration_instrument':\
-        \ 'WAXS', 'scan_type': 'nexafs', 'energy_list_parameters': 'carbon_NEXAFS',\
-        \ 'polarization_frame': 'lab', 'polarizations': [0], 'exposure_time': 1.0,\
-        \ 'exposures_per_energy': 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions':\
-        \ None, 'group_name': 'Neher_blends', 'priority': 20, 'acquire_status': 'Not\
-        \ begun', 'uid_local': '8293732e-f0aa-4cbe-a253-9053c4256c45', 'notes': None},\
-        \ {'sample_id': 'BD2-1', 'configuration_instrument': 'WAXS', 'scan_type':\
-        \ 'rsoxs', 'energy_list_parameters': [270, 270, 0], 'polarization_frame':\
-        \ 'lab', 'polarizations': [0, 90], 'exposure_time': 0.1, 'exposures_per_energy':\
-        \ 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions': None, 'group_name':\
-        \ 'Neher_blends', 'priority': 21, 'acquire_status': 'Not begun', 'uid_local':\
-        \ '550875eb-001e-41c6-af99-6108f558d608', 'notes': None}, {'sample_id': 'BD2-1',\
-        \ 'configuration_instrument': 'WAXS', 'scan_type': 'rsoxs', 'energy_list_parameters':\
-        \ [285.4, 285.4, 0], 'polarization_frame': 'lab', 'polarizations': [0, 90],\
-        \ 'exposure_time': 0.1, 'exposures_per_energy': 1, 'cycles': 0, 'sample_angles':\
-        \ [0], 'spiral_dimensions': None, 'group_name': 'Neher_blends', 'priority':\
-        \ 22, 'acquire_status': 'Not begun', 'uid_local': 'ae83b9d5-817e-4c77-8b01-f67443d3c8a5',\
-        \ 'notes': None}, {'sample_id': 'BD2-1', 'configuration_instrument': 'WAXS',\
-        \ 'scan_type': 'rsoxs', 'energy_list_parameters': [286.3, 286.3, 0], 'polarization_frame':\
-        \ 'lab', 'polarizations': [0, 90], 'exposure_time': 0.1, 'exposures_per_energy':\
-        \ 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions': None, 'group_name':\
-        \ 'Neher_blends', 'priority': 23, 'acquire_status': 'Not begun', 'uid_local':\
-        \ '5b794c2a-e7c4-4576-b4a0-e0f4dd2f4efa', 'notes': None}, {'sample_id': 'BD2-1',\
-        \ 'configuration_instrument': 'WAXS', 'scan_type': 'rsoxs', 'energy_list_parameters':\
-        \ [287.73, 287.73, 0], 'polarization_frame': 'lab', 'polarizations': [0, 90],\
-        \ 'exposure_time': 0.1, 'exposures_per_energy': 1, 'cycles': 0, 'sample_angles':\
-        \ [0], 'spiral_dimensions': None, 'group_name': 'Neher_blends', 'priority':\
-        \ 24, 'acquire_status': 'Not begun', 'uid_local': 'a3f4a14a-3f29-4658-9580-ce75094e3778',\
-        \ 'notes': None}, {'sample_id': 'BD2-1', 'configuration_instrument': 'WAXS',\
-        \ 'scan_type': 'rsoxs', 'energy_list_parameters': [350, 350, 0], 'polarization_frame':\
-        \ 'lab', 'polarizations': [0, 90], 'exposure_time': 0.1, 'exposures_per_energy':\
-        \ 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions': None, 'group_name':\
-        \ 'Neher_blends', 'priority': 25, 'acquire_status': 'Not begun', 'uid_local':\
-        \ '42f52b50-3712-4444-8634-cc5502b09774', 'notes': None}]}, {'bar_name': '20251201_WSU',\
-        \ 'sample_id': 'BD3-1', 'sample_name': 'BD3-1', 'project_name': 'Neher blends',\
-        \ 'institution': 'WSU', 'proposal_id': 318915, 'bar_spot': '18B', 'front':\
-        \ True, 'grazing': False, 'angle': 0, 'height': 0.25, 'sample_priority': 1,\
-        \ 'notes': None, 'location': [{'motor': 'x', 'position': -1.6}, {'motor':\
-        \ 'y', 'position': -78.4}, {'motor': 'th', 'position': 179.9998}, {'motor':\
-        \ 'z', 'position': -1.1316}], 'bar_loc': {'spot': '18B', 'th': 0, 'ximg':\
-        \ 0.4958862814059284, 'yimg': -76.29526366867854, 'th0': 0.0, 'xoff': -0.6354993635009921,\
-        \ 'x0': 0.3002213009716964, 'y0': -78.07446632133815, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 0.4650236530456904},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': [{'sample_id': 'BD3-1', 'configuration_instrument':\
-        \ 'WAXS', 'scan_type': 'nexafs', 'energy_list_parameters': 'carbon_NEXAFS',\
-        \ 'polarization_frame': 'lab', 'polarizations': [0], 'exposure_time': 1.0,\
-        \ 'exposures_per_energy': 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions':\
-        \ None, 'group_name': 'Neher_blends', 'priority': 26, 'acquire_status': 'Not\
-        \ begun', 'uid_local': '49ca0d80-fff7-4635-bc64-72c99ff65646', 'notes': None},\
-        \ {'sample_id': 'BD3-1', 'configuration_instrument': 'WAXS', 'scan_type':\
-        \ 'rsoxs', 'energy_list_parameters': [270, 270, 0], 'polarization_frame':\
-        \ 'lab', 'polarizations': [0, 90], 'exposure_time': 0.1, 'exposures_per_energy':\
-        \ 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions': None, 'group_name':\
-        \ 'Neher_blends', 'priority': 27, 'acquire_status': 'Not begun', 'uid_local':\
-        \ '525c3460-f1b8-43a7-a6fe-3a9afc535ea2', 'notes': None}, {'sample_id': 'BD3-1',\
-        \ 'configuration_instrument': 'WAXS', 'scan_type': 'rsoxs', 'energy_list_parameters':\
-        \ [285.4, 285.4, 0], 'polarization_frame': 'lab', 'polarizations': [0, 90],\
-        \ 'exposure_time': 0.1, 'exposures_per_energy': 1, 'cycles': 0, 'sample_angles':\
-        \ [0], 'spiral_dimensions': None, 'group_name': 'Neher_blends', 'priority':\
-        \ 28, 'acquire_status': 'Not begun', 'uid_local': '674878a6-e16b-408c-919b-038022f931f4',\
-        \ 'notes': None}, {'sample_id': 'BD3-1', 'configuration_instrument': 'WAXS',\
-        \ 'scan_type': 'rsoxs', 'energy_list_parameters': [286.3, 286.3, 0], 'polarization_frame':\
-        \ 'lab', 'polarizations': [0, 90], 'exposure_time': 0.1, 'exposures_per_energy':\
-        \ 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions': None, 'group_name':\
-        \ 'Neher_blends', 'priority': 29, 'acquire_status': 'Not begun', 'uid_local':\
-        \ '8f0369b1-65bf-4a7e-87f3-c1841a550e88', 'notes': None}, {'sample_id': 'BD3-1',\
-        \ 'configuration_instrument': 'WAXS', 'scan_type': 'rsoxs', 'energy_list_parameters':\
-        \ [287.73, 287.73, 0], 'polarization_frame': 'lab', 'polarizations': [0, 90],\
-        \ 'exposure_time': 0.1, 'exposures_per_energy': 1, 'cycles': 0, 'sample_angles':\
-        \ [0], 'spiral_dimensions': None, 'group_name': 'Neher_blends', 'priority':\
-        \ 30, 'acquire_status': 'Not begun', 'uid_local': '94881fc3-2b2e-44e9-86b1-ed99da7d53c8',\
-        \ 'notes': None}, {'sample_id': 'BD3-1', 'configuration_instrument': 'WAXS',\
-        \ 'scan_type': 'rsoxs', 'energy_list_parameters': [350, 350, 0], 'polarization_frame':\
-        \ 'lab', 'polarizations': [0, 90], 'exposure_time': 0.1, 'exposures_per_energy':\
-        \ 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions': None, 'group_name':\
-        \ 'Neher_blends', 'priority': 31, 'acquire_status': 'Not begun', 'uid_local':\
-        \ 'c77083c4-ef8b-45de-9369-5fb9a2cdc0b9', 'notes': None}]}, {'bar_name': '20251201_WSU',\
-        \ 'sample_id': 'PM6', 'sample_name': 'PM6', 'project_name': 'Tanner PM6',\
-        \ 'institution': 'WSU', 'proposal_id': 318915, 'bar_spot': '20B', 'front':\
-        \ True, 'grazing': False, 'angle': 0, 'height': 0.25, 'sample_priority': 1,\
-        \ 'notes': None, 'location': [{'motor': 'x', 'position': -1.3655013656251274,\
-        \ 'order': 0}, {'motor': 'y', 'position': -66.08796572576671, 'order': 0},\
-        \ {'motor': 'z', 'position': 0.0, 'order': 0}, {'motor': 'th', 'position':\
-        \ 180.0, 'order': 0}], 'bar_loc': {'spot': '20B', 'th': 0, 'ximg': 0.2744643431426752,\
-        \ 'yimg': -64.31013926360723, 'th0': 0.0, 'xoff': -0.6190456845107617, 'x0':\
-        \ 0.12740999660360391, 'y0': -66.08796572576671, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 0.16938450225264923},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'PM6_CN',\
-        \ 'sample_name': 'PM6_CN', 'project_name': 'Tanner PM6', 'institution': 'WSU',\
-        \ 'proposal_id': 318915, 'bar_spot': '22B', 'front': True, 'grazing': False,\
-        \ 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None, 'location':\
-        \ [{'motor': 'x', 'position': -1.748402617576021, 'order': 0}, {'motor': 'y',\
-        \ 'position': -54.106539273839864, 'order': 0}, {'motor': 'z', 'position':\
-        \ 0.0, 'order': 0}, {'motor': 'th', 'position': 180.0, 'order': 0}], 'bar_loc':\
-        \ {'spot': '22B', 'th': 0, 'ximg': 0.6416689667134889, 'yimg': -52.33008841960945,\
-        \ 'th0': 0.0, 'xoff': -0.6025989707169215, 'x0': 0.543204676142178, 'y0':\
-        \ -54.106539273839864, 'af1y': -187.37918000000002, 'af2y': 3.0214999999999748,\
-        \ 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016, 'af1zoff':\
-        \ -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': -0.12612949812587892},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'blank',\
-        \ 'sample_name': 'blank', 'project_name': 'calibration', 'institution': 'WSU',\
-        \ 'proposal_id': 318915, 'bar_spot': '24B', 'front': True, 'grazing': False,\
-        \ 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None, 'location':\
-        \ [{'motor': 'x', 'position': -1.8}, {'motor': 'y', 'position': -42.5}, {'motor':\
-        \ 'th', 'position': 179.9998}, {'motor': 'z', 'position': -1.1316}], 'bar_loc':\
-        \ {'spot': '24B', 'th': 0, 'ximg': 0.9400227233647733, 'yimg': -40.44183873150439,\
-        \ 'th0': 0.0, 'xoff': -0.5862782853812716, 'x0': 0.8897761511676002, 'y0':\
-        \ -42.216924518862655, 'af1y': -187.37918000000002, 'af2y': 3.0214999999999748,\
-        \ 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016, 'af1zoff':\
-        \ -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': -0.4193790234057211},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': [{'sample_id': 'blank', 'configuration_instrument':\
-        \ 'WAXS', 'scan_type': 'nexafs', 'energy_list_parameters': 'carbon_NEXAFS',\
-        \ 'polarization_frame': 'lab', 'polarizations': [0], 'exposure_time': 1.0,\
-        \ 'exposures_per_energy': 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions':\
-        \ None, 'group_name': 'calibration_sample', 'priority': 32, 'acquire_status':\
-        \ 'Not begun', 'uid_local': '93c9e1d0-1d68-4eb0-a0ed-8a2203782008', 'notes':\
-        \ None}]}, {'bar_name': '20251201_WSU', 'sample_id': '50nmPS', 'sample_name':\
-        \ '50nmPS', 'project_name': 'calibration', 'institution': 'WSU', 'proposal_id':\
-        \ 318915, 'bar_spot': '25A', 'front': True, 'grazing': False, 'angle': 0,\
-        \ 'height': 0.25, 'sample_priority': 1, 'notes': None, 'location': [{'motor':\
-        \ 'x', 'position': 0.7}, {'motor': 'y', 'position': -36.3}, {'motor': 'th',\
-        \ 'position': 179.9998}, {'motor': 'z', 'position': -1.1316}], 'bar_loc':\
-        \ {'spot': '25A', 'th': 0, 'ximg': -2.7621533780728296, 'yimg': -34.84438371676756,\
-        \ 'th0': 0.0, 'xoff': -0.5785938655236216, 'x0': -2.7896971540978686, 'y0':\
-        \ -36.61882677701213, 'af1y': -187.37918000000002, 'af2y': 3.0214999999999748,\
-        \ 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016, 'af1zoff':\
-        \ -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': -0.5574524209967233},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': [{'sample_id': '50nmPS', 'configuration_instrument':\
-        \ 'WAXS', 'scan_type': 'rsoxs', 'energy_list_parameters': [285, 285, 0], 'polarization_frame':\
-        \ 'lab', 'polarizations': [0, 90], 'exposure_time': 0.1, 'exposures_per_energy':\
-        \ 1, 'cycles': 0, 'sample_angles': [0], 'spiral_dimensions': None, 'group_name':\
-        \ 'calibration_sample', 'priority': 34, 'acquire_status': 'Not begun', 'uid_local':\
-        \ 'aa326772-281d-4b57-a0ac-a67eab3e3a05', 'notes': None}]}, {'bar_name': '20251201_WSU',\
-        \ 'sample_id': '25nmPS', 'sample_name': '25nmPS', 'project_name': 'calibration',\
-        \ 'institution': 'WSU', 'proposal_id': 318915, 'bar_spot': '25C', 'front':\
-        \ True, 'grazing': False, 'angle': 0, 'height': 0.25, 'sample_priority': 1,\
-        \ 'notes': None, 'location': [{'motor': 'x', 'position': -5.981384717380184,\
-        \ 'order': 0}, {'motor': 'y', 'position': -36.24822009085248, 'order': 0},\
-        \ {'motor': 'z', 'position': 0.0, 'order': 0}, {'motor': 'th', 'position':\
-        \ 180.0, 'order': 0}], 'bar_loc': {'spot': '25C', 'th': 0, 'ximg': 4.851255237913026,\
-        \ 'yimg': -34.473819580591254, 'th0': 0.0, 'xoff': -0.578085139611744, 'x0':\
-        \ 4.825214438156696, 'y0': -36.24822009085248, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': -0.5665931910739346},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'PM6_TEY',\
-        \ 'sample_name': 'PM6_TEY', 'project_name': 'Tanner PM6', 'institution': 'WSU',\
-        \ 'proposal_id': 318915, 'bar_spot': '27B', 'front': True, 'grazing': True,\
-        \ 'angle': 90, 'height': 0.5, 'sample_priority': 1, 'notes': None, 'location':\
-        \ [{'motor': 'x', 'position': 1.1898786924109608, 'order': 0}, {'motor': 'y',\
-        \ 'position': -27.21889355532637, 'order': 0}, {'motor': 'z', 'position':\
-        \ 0.0, 'order': 0}, {'motor': 'th', 'position': 0.0, 'order': 0}], 'bar_loc':\
-        \ {'spot': '27B', 'th': 90, 'ximg': 1.1793015248932992, 'yimg': -25.44552971738679,\
-        \ 'th0': 0.0, 'xoff': -0.5656907264859978, 'x0': 1.1898786924109608, 'y0':\
-        \ -27.21889355532637, 'af1y': -187.37918000000002, 'af2y': 3.0214999999999748,\
-        \ 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016, 'af1zoff':\
-        \ -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': -1.0392955893186944},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'PM6_CN_TEY',\
-        \ 'sample_name': 'PM6_CN_TEY', 'project_name': 'Tanner PM6', 'institution':\
-        \ 'WSU', 'proposal_id': 318915, 'bar_spot': '28B', 'front': True, 'grazing':\
-        \ True, 'angle': 90, 'height': 0.5, 'sample_priority': 1, 'notes': None, 'location':\
-        \ [{'motor': 'x', 'position': 1.68487022408527, 'order': 0}, {'motor': 'y',\
-        \ 'position': -21.457644161389936, 'order': 0}, {'motor': 'z', 'position':\
-        \ 0.0, 'order': 0}, {'motor': 'th', 'position': 0.0, 'order': 0}], 'bar_loc':\
-        \ {'spot': '28B', 'th': 90, 'ximg': 1.6509286072995017, 'yimg': -19.684941782282444,\
-        \ 'th0': 0.0, 'xoff': -0.557782350946809, 'x0': 1.68487022408527, 'y0': -21.457644161389936,\
-        \ 'af1y': -187.37918000000002, 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003,\
-        \ 'af2xoff': -0.5266100000000016, 'af1zoff': -1.0890474999999995, 'af2zoff':\
-        \ -5.785155, 'zoff': -1.181393015064418}, 'components': None, 'sample_desc':\
-        \ None, 'project_desc': None, 'sample_set': None, 'sample_state': None, 'composition':\
-        \ None, 'acq_history': [], 'density': None, 'acquisitions': []}, {'bar_name':\
-        \ '20251201_WSU', 'sample_id': 'SBA15', 'sample_name': 'SBA15', 'project_name':\
-        \ 'calibration', 'institution': 'NIST', 'proposal_id': 318915, 'bar_spot':\
-        \ '29A', 'front': True, 'grazing': False, 'angle': 0, 'height': 0.25, 'sample_priority':\
-        \ 1, 'notes': \"For SDD and beam center calibration. Don't change this row.\"\
-        , 'location': [{'motor': 'x', 'position': -1.1622313573682483, 'order': 0},\
-        \ {'motor': 'y', 'position': -11.92294487200976, 'order': 0}, {'motor': 'z',\
-        \ 'position': 0.0, 'order': 0}, {'motor': 'th', 'position': 180.0, 'order':\
-        \ 0}], 'bar_loc': {'spot': '29A', 'th': 180.0, 'ximg': 0.00023381887779017063,\
-        \ 'yimg': -10.151337187928476, 'th0': 0.0, 'xoff': -0.5446942206685024, 'x0':\
-        \ 0.07284291603124393, 'y0': -11.92294487200976, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': -1.1665600997781018},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': [{'sample_id': 'SBA15', 'configuration_instrument':\
-        \ 'WAXS', 'scan_type': 'rsoxs', 'energy_list_parameters': [200, 91.65, 291.65,\
-        \ 8.35, 300, 100, 1300], 'polarization_frame': 'lab', 'polarizations': [90],\
-        \ 'exposure_time': 0.1, 'exposures_per_energy': 1, 'cycles': 0, 'sample_angles':\
-        \ [0], 'spiral_dimensions': None, 'group_name': 'BeamCalibration', 'priority':\
-        \ 1, 'acquire_status': 'Finished 2025-12-03_11-50-04', 'uid_local': '491c0aca-7e3e-4a33-b52d-9dba51f76c0c',\
-        \ 'notes': 'Do not delete this row.\\n\\nRSoXS energy scan (scan_type = rsoxs)\
-        \ on SBA15 (sample_id = SBA15). \\n2D detector and beamstop are in the beam\
-        \ path (configuration_instrument = WAXS) --> Scattering images can be captured.\\\
-        nScan is over a custom list of energies.  Between 200 and 291.65 eV, scans\
-        \ will be taken in 91.65 eV steps.  Between 291.65 and 300 eV, scans will\
-        \ be taken in 8.35 eV steps.  Between 300 and 1300 eV, scans will be taken\
-        \ in  100 eV steps.\\n0.1 s exposure times per image (exposure_time = 0.1)\
-        \ --> Reduces saturation of 2D detector.\\nThe scan is performed at 90\xB0\
-        \ polarization (polarizations = [90]), cycles = 0 (default, only runs in ascending\
-        \ energy order but no descending energy order), and sample_angles = [0] (beam\
-        \ is at normal incidence from sample surface for transmission sample).\\n\\\
-        nOptional:\\nUse multiple exposures (e.g., exposures_per_energy = 50) to increase\
-        \ signal-to-noise to assess more subtle features in the sample and/or 2D detector\
-        \ artifacts.'}]}, {'bar_name': '20251201_WSU', 'sample_id': 'TiO', 'sample_name':\
-        \ 'TiO', 'project_name': 'calibration', 'institution': 'NIST', 'proposal_id':\
-        \ 318915, 'bar_spot': '29C', 'front': True, 'grazing': True, 'angle': 90,\
-        \ 'height': 0.5, 'sample_priority': 1, 'notes': None, 'location': [{'motor':\
-        \ 'x', 'position': 9.416255928346784, 'order': 0}, {'motor': 'y', 'position':\
-        \ -13.574383338057894, 'order': 0}, {'motor': 'z', 'position': 0.0, 'order':\
-        \ 0}, {'motor': 'th', 'position': 0.0, 'order': 0}], 'bar_loc': {'spot': '29C',\
-        \ 'th': 90, 'ximg': 9.350344154572525, 'yimg': -11.802586049520297, 'th0':\
-        \ 0.0, 'xoff': -0.5469611240216389, 'x0': 9.416255928346784, 'y0': -13.574383338057894,\
-        \ 'af1y': -187.37918000000002, 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003,\
-        \ 'af2xoff': -0.5266100000000016, 'af1zoff': -1.0890474999999995, 'af2zoff':\
-        \ -5.785155, 'zoff': -1.3758284565602459}, 'components': None, 'sample_desc':\
-        \ None, 'project_desc': None, 'sample_set': None, 'sample_state': None, 'composition':\
-        \ None, 'acq_history': [], 'density': None, 'acquisitions': []}, {'bar_name':\
-        \ '20251201_WSU', 'sample_id': 'HOPG_old', 'sample_name': 'HOPG_old', 'project_name':\
-        \ 'calibration', 'institution': 'NIST', 'proposal_id': 318915, 'bar_spot':\
-        \ '30A', 'front': True, 'grazing': True, 'angle': 90, 'height': 0.5, 'sample_priority':\
-        \ 1, 'notes': \"Energy calibrant.  Don't change this row.\", 'location': [{'motor':\
-        \ 'x', 'position': -6.927586037728728, 'order': 0}, {'motor': 'y', 'position':\
-        \ -2.647692428412986, 'order': 0}, {'motor': 'z', 'position': 0.0, 'order':\
-        \ 0}, {'motor': 'th', 'position': 0.0, 'order': 0}], 'bar_loc': {'spot': '30A',\
-        \ 'th': 90, 'ximg': -7.037810441970846, 'yimg': -0.877149651824709, 'th0':\
-        \ 0.0, 'xoff': -0.531962228954701, 'x0': -6.927586037728728, 'y0': -2.647692428412986,\
-        \ 'af1y': -187.37918000000002, 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003,\
-        \ 'af2xoff': -0.5266100000000016, 'af1zoff': -1.0890474999999995, 'af2zoff':\
-        \ -5.785155, 'zoff': -1.645328098740963}, 'components': None, 'sample_desc':\
-        \ None, 'project_desc': None, 'sample_set': None, 'sample_state': None, 'composition':\
-        \ None, 'acq_history': [], 'density': None, 'acquisitions': []}, {'bar_name':\
-        \ '20251201_WSU', 'sample_id': 'HOPG_new', 'sample_name': 'HOPG_new', 'project_name':\
-        \ 'calibration', 'institution': 'NIST', 'proposal_id': 318915, 'bar_spot':\
-        \ '30C', 'front': True, 'grazing': True, 'angle': 90, 'height': 0.5, 'sample_priority':\
-        \ 1, 'notes': None, 'location': [{'motor': 'x', 'position': 8.430171484168248,\
-        \ 'order': 0}, {'motor': 'y', 'position': -3.441511853472658, 'order': 0},\
-        \ {'motor': 'z', 'position': 0.0, 'order': 0}, {'motor': 'th', 'position':\
-        \ 0.0, 'order': 0}], 'bar_loc': {'spot': '30C', 'th': 90, 'ximg': 8.3231663735926,\
-        \ 'yimg': -1.6708779371273792, 'th0': 0.0, 'xoff': -0.5330518922715297, 'x0':\
-        \ 8.430171484168248, 'y0': -3.441511853472658, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': -1.6257490649073212},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'OpenBeam',\
-        \ 'sample_name': 'OpenBeam', 'project_name': 'calibration', 'institution':\
-        \ 'NIST', 'proposal_id': 318915, 'bar_spot': '40A', 'front': True, 'grazing':\
-        \ False, 'angle': 0, 'height': 0.0, 'sample_priority': 1, 'notes': \"Bar moved\
-        \ out of beam path for reference scan.  Don't change this row.\", 'location':\
-        \ [{'motor': 'x', 'position': 0.4495488135398816, 'order': 0}, {'motor': 'y',\
-        \ 'position': 43.461409359649565, 'order': 0}, {'motor': 'z', 'position':\
-        \ 0.0, 'order': 0}, {'motor': 'th', 'position': 180.0, 'order': 0}], 'bar_loc':\
-        \ {'spot': '40A', 'th': 0, 'ximg': -1.6841042924336094, 'yimg': 45.22665827191571,\
-        \ 'th0': 0.0, 'xoff': -0.4686689972646332, 'x0': -1.3868868080691477, 'y0':\
-        \ 43.461409359649565, 'af1y': -187.37918000000002, 'af2y': 3.0214999999999748,\
-        \ 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016, 'af1zoff':\
-        \ -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': -2.282578757326762},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'PC0_1',\
-        \ 'sample_name': 'PC0_1', 'project_name': 'Acacia Ternary', 'institution':\
-        \ 'WSU', 'proposal_id': 318915, 'bar_spot': '2B', 'front': True, 'grazing':\
-        \ False, 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None,\
-        \ 'location': [{'motor': 'x', 'position': -1.3}, {'motor': 'y', 'position':\
-        \ -174.1}, {'motor': 'th', 'position': 180.0005}, {'motor': 'z', 'position':\
-        \ -1.1316}], 'bar_loc': {'spot': '2B', 'th': 0, 'ximg': 0.9093127505571932,\
-        \ 'yimg': -172.33761871913617, 'th0': 0.0, 'xoff': -0.7673503169043044, 'x0':\
-        \ 0.32410823744932793, 'y0': -174.12784942391798, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 2.8341171499197477},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'PC0_2',\
-        \ 'sample_name': 'PC0_2', 'project_name': 'Acacia Ternary', 'institution':\
-        \ 'WSU', 'proposal_id': 318915, 'bar_spot': '2B', 'front': True, 'grazing':\
-        \ False, 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None,\
-        \ 'location': [{'motor': 'x', 'position': -1.3}, {'motor': 'y', 'position':\
-        \ -173.5}, {'motor': 'th', 'position': 180.0005}, {'motor': 'z', 'position':\
-        \ -1.1316}], 'bar_loc': {'spot': '2B', 'th': 0, 'ximg': 0.9093127505571932,\
-        \ 'yimg': -172.33761871913617, 'th0': 0.0, 'xoff': -0.7673503169043044, 'x0':\
-        \ 0.32410823744932793, 'y0': -174.12784942391798, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 2.8341171499197477},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'PC2_1',\
-        \ 'sample_name': 'PC2_1', 'project_name': 'Acacia Ternary', 'institution':\
-        \ 'WSU', 'proposal_id': 318915, 'bar_spot': '6B', 'front': True, 'grazing':\
-        \ False, 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None,\
-        \ 'location': [{'motor': 'x', 'position': -1.3}, {'motor': 'y', 'position':\
-        \ -150.8}, {'motor': 'th', 'position': 179.9998}, {'motor': 'z', 'position':\
-        \ -1.1316}], 'bar_loc': {'spot': '6B', 'th': 0, 'ximg': 0.31800586340505355,\
-        \ 'yimg': -148.4539622772085, 'th0': 0.0, 'xoff': -0.7345618365409179, 'x0':\
-        \ -0.17032859311123516, 'y0': -150.24145054394856, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 2.2449748373596456},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'PC2_2',\
-        \ 'sample_name': 'PC2_2', 'project_name': 'Acacia Ternary', 'institution':\
-        \ 'WSU', 'proposal_id': 318915, 'bar_spot': '6B', 'front': True, 'grazing':\
-        \ False, 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None,\
-        \ 'location': [{'motor': 'x', 'position': -1.9}, {'motor': 'y', 'position':\
-        \ -149.9}, {'motor': 'th', 'position': 179.9998}, {'motor': 'z', 'position':\
-        \ -1.1316}], 'bar_loc': {'spot': '6B', 'th': 0, 'ximg': 0.31800586340505355,\
-        \ 'yimg': -148.4539622772085, 'th0': 0.0, 'xoff': -0.7345618365409179, 'x0':\
-        \ -0.17032859311123516, 'y0': -150.24145054394856, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 2.2449748373596456},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'PC4_1',\
-        \ 'sample_name': 'PC4_1', 'project_name': 'Acacia Ternary', 'institution':\
-        \ 'WSU', 'proposal_id': 318915, 'bar_spot': '10B', 'front': True, 'grazing':\
-        \ False, 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None,\
-        \ 'location': [{'motor': 'x', 'position': -1.2}, {'motor': 'y', 'position':\
-        \ -126.8}, {'motor': 'th', 'position': 179.9998}, {'motor': 'z', 'position':\
-        \ -1.1316}], 'bar_loc': {'spot': '10B', 'th': 0, 'ximg': 0.45426954251088425,\
-        \ 'yimg': -124.43631844906372, 'th0': 0.0, 'xoff': -0.701589412701682, 'x0':\
-        \ 0.06334858390207637, 'y0': -126.22104889267615, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 1.6525274346111223},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'PC4_2',\
-        \ 'sample_name': 'PC4_2', 'project_name': 'Acacia Ternary', 'institution':\
-        \ 'WSU', 'proposal_id': 318915, 'bar_spot': '10B', 'front': True, 'grazing':\
-        \ False, 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None,\
-        \ 'location': [{'motor': 'x', 'position': -0.9}, {'motor': 'y', 'position':\
-        \ -125.6}, {'motor': 'th', 'position': 179.9998}, {'motor': 'z', 'position':\
-        \ -1.1316}], 'bar_loc': {'spot': '10B', 'th': 0, 'ximg': 0.45426954251088425,\
-        \ 'yimg': -124.43631844906372, 'th0': 0.0, 'xoff': -0.701589412701682, 'x0':\
-        \ 0.06334858390207637, 'y0': -126.22104889267615, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 1.6525274346111223},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'BD1-1_1',\
-        \ 'sample_name': 'BD1-1_1', 'project_name': 'Neher blends', 'institution':\
-        \ 'WSU', 'proposal_id': 318915, 'bar_spot': '14B', 'front': True, 'grazing':\
-        \ False, 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None,\
-        \ 'location': [{'motor': 'x', 'position': -1.5}, {'motor': 'y', 'position':\
-        \ -101.8}, {'motor': 'th', 'position': 179.9998}, {'motor': 'z', 'position':\
-        \ -1.1316}], 'bar_loc': {'spot': '14B', 'th': 0, 'ximg': -0.09824254774235364,\
-        \ 'yimg': -100.28321514554041, 'th0': 0.0, 'xoff': -0.6684310244411573, 'x0':\
-        \ -0.3912005964607337, 'y0': -102.0651722119069, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 1.056738629394483},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'BD1-1_2',\
-        \ 'sample_name': 'BD1-1_2', 'project_name': 'Neher blends', 'institution':\
-        \ 'WSU', 'proposal_id': 318915, 'bar_spot': '14B', 'front': True, 'grazing':\
-        \ False, 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None,\
-        \ 'location': [{'motor': 'x', 'position': -1.2}, {'motor': 'y', 'position':\
-        \ -101.5}, {'motor': 'th', 'position': 179.9998}, {'motor': 'z', 'position':\
-        \ -1.1316}], 'bar_loc': {'spot': '14B', 'th': 0, 'ximg': -0.09824254774235364,\
-        \ 'yimg': -100.28321514554041, 'th0': 0.0, 'xoff': -0.6684310244411573, 'x0':\
-        \ -0.3912005964607337, 'y0': -102.0651722119069, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 1.056738629394483},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'BD2-1_1',\
-        \ 'sample_name': 'BD2-1_1', 'project_name': 'Neher blends', 'institution':\
-        \ 'WSU', 'proposal_id': 318915, 'bar_spot': '16B', 'front': True, 'grazing':\
-        \ False, 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None,\
-        \ 'location': [{'motor': 'x', 'position': -1.6}, {'motor': 'y', 'position':\
-        \ -90.7}, {'motor': 'th', 'position': 179.9998}, {'motor': 'z', 'position':\
-        \ -1.1316}], 'bar_loc': {'spot': '16B', 'th': 0, 'ximg': 0.2483326025941448,\
-        \ 'yimg': -88.32637245893125, 'th0': 0.0, 'xoff': -0.6520161717743876, 'x0':\
-        \ 0.003870479553002626, 'y0': -90.1069565822426, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 0.7617971086757351},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'BD2-1_2',\
-        \ 'sample_name': 'BD2-1_2', 'project_name': 'Neher blends', 'institution':\
-        \ 'WSU', 'proposal_id': 318915, 'bar_spot': '16B', 'front': True, 'grazing':\
-        \ False, 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None,\
-        \ 'location': [{'motor': 'x', 'position': -1.3}, {'motor': 'y', 'position':\
-        \ -89.5}, {'motor': 'th', 'position': 179.9998}, {'motor': 'z', 'position':\
-        \ -1.1316}], 'bar_loc': {'spot': '16B', 'th': 0, 'ximg': 0.2483326025941448,\
-        \ 'yimg': -88.32637245893125, 'th0': 0.0, 'xoff': -0.6520161717743876, 'x0':\
-        \ 0.003870479553002626, 'y0': -90.1069565822426, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 0.7617971086757351},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'BD3-1_1',\
-        \ 'sample_name': 'BD3-1_1', 'project_name': 'Neher blends', 'institution':\
-        \ 'WSU', 'proposal_id': 318915, 'bar_spot': '18B', 'front': True, 'grazing':\
-        \ False, 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None,\
-        \ 'location': [{'motor': 'x', 'position': -1.0}, {'motor': 'y', 'position':\
-        \ -77.8}, {'motor': 'th', 'position': 179.9998}, {'motor': 'z', 'position':\
-        \ -1.1316}], 'bar_loc': {'spot': '18B', 'th': 0, 'ximg': 0.4958862814059284,\
-        \ 'yimg': -76.29526366867854, 'th0': 0.0, 'xoff': -0.6354993635009921, 'x0':\
-        \ 0.3002213009716964, 'y0': -78.07446632133815, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 0.4650236530456904},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'BD3-1_2',\
-        \ 'sample_name': 'BD3-1_2', 'project_name': 'Neher blends', 'institution':\
-        \ 'WSU', 'proposal_id': 318915, 'bar_spot': '18B', 'front': True, 'grazing':\
-        \ False, 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None,\
-        \ 'location': [{'motor': 'x', 'position': -2.2}, {'motor': 'y', 'position':\
-        \ -77.8}, {'motor': 'th', 'position': 179.9998}, {'motor': 'z', 'position':\
-        \ -1.1316}], 'bar_loc': {'spot': '18B', 'th': 0, 'ximg': 0.4958862814059284,\
-        \ 'yimg': -76.29526366867854, 'th0': 0.0, 'xoff': -0.6354993635009921, 'x0':\
-        \ 0.3002213009716964, 'y0': -78.07446632133815, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': 0.4650236530456904},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'blank_1',\
-        \ 'sample_name': 'blank_1', 'project_name': 'calibration', 'institution':\
-        \ 'WSU', 'proposal_id': 318915, 'bar_spot': '24B', 'front': True, 'grazing':\
-        \ False, 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None,\
-        \ 'location': [{'motor': 'x', 'position': -2.4}, {'motor': 'y', 'position':\
-        \ -41.9}, {'motor': 'th', 'position': 179.9998}, {'motor': 'z', 'position':\
-        \ -1.1316}], 'bar_loc': {'spot': '24B', 'th': 0, 'ximg': 0.9400227233647733,\
-        \ 'yimg': -40.44183873150439, 'th0': 0.0, 'xoff': -0.5862782853812716, 'x0':\
-        \ 0.8897761511676002, 'y0': -42.216924518862655, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': -0.4193790234057211},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': 'blank_2',\
-        \ 'sample_name': 'blank_2', 'project_name': 'calibration', 'institution':\
-        \ 'WSU', 'proposal_id': 318915, 'bar_spot': '24B', 'front': True, 'grazing':\
-        \ False, 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None,\
-        \ 'location': [{'motor': 'x', 'position': -2.1}, {'motor': 'y', 'position':\
-        \ -41.3}, {'motor': 'th', 'position': 179.9998}, {'motor': 'z', 'position':\
-        \ -1.1316}], 'bar_loc': {'spot': '24B', 'th': 0, 'ximg': 0.9400227233647733,\
-        \ 'yimg': -40.44183873150439, 'th0': 0.0, 'xoff': -0.5862782853812716, 'x0':\
-        \ 0.8897761511676002, 'y0': -42.216924518862655, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': -0.4193790234057211},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': '50nmPS_1',\
-        \ 'sample_name': '50nmPS_1', 'project_name': 'calibration', 'institution':\
-        \ 'WSU', 'proposal_id': 318915, 'bar_spot': '25A', 'front': True, 'grazing':\
-        \ False, 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None,\
-        \ 'location': [{'motor': 'x', 'position': 0.7}, {'motor': 'y', 'position':\
-        \ -35.7}, {'motor': 'th', 'position': 179.9998}, {'motor': 'z', 'position':\
-        \ -1.1316}], 'bar_loc': {'spot': '25A', 'th': 0, 'ximg': -2.7621533780728296,\
-        \ 'yimg': -34.84438371676756, 'th0': 0.0, 'xoff': -0.5785938655236216, 'x0':\
-        \ -2.7896971540978686, 'y0': -36.61882677701213, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': -0.5574524209967233},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}, {'bar_name': '20251201_WSU', 'sample_id': '50nmPS_2',\
-        \ 'sample_name': '50nmPS_2', 'project_name': 'calibration', 'institution':\
-        \ 'WSU', 'proposal_id': 318915, 'bar_spot': '25A', 'front': True, 'grazing':\
-        \ False, 'angle': 0, 'height': 0.25, 'sample_priority': 1, 'notes': None,\
-        \ 'location': [{'motor': 'x', 'position': 1.6}, {'motor': 'y', 'position':\
-        \ -35.7}, {'motor': 'th', 'position': 179.9998}, {'motor': 'z', 'position':\
-        \ -1.1316}], 'bar_loc': {'spot': '25A', 'th': 0, 'ximg': -2.7621533780728296,\
-        \ 'yimg': -34.84438371676756, 'th0': 0.0, 'xoff': -0.5785938655236216, 'x0':\
-        \ -2.7896971540978686, 'y0': -36.61882677701213, 'af1y': -187.37918000000002,\
-        \ 'af2y': 3.0214999999999748, 'af1xoff': -0.7880000000000003, 'af2xoff': -0.5266100000000016,\
-        \ 'af1zoff': -1.0890474999999995, 'af2zoff': -5.785155, 'zoff': -0.5574524209967233},\
-        \ 'components': None, 'sample_desc': None, 'project_desc': None, 'sample_set':\
-        \ None, 'sample_state': None, 'composition': None, 'acq_history': [], 'density':\
-        \ None, 'acquisitions': []}]"
+    - default: '[{''bar_name'': ''20251201_WSU'', ''sample_id'': ''AF1_front'', ''sample_name'':
+        ''AF1_front'', ''project_name'': ''Calibration'', ''institution'': ''NIST'',
+        ''proposal_id'': 318915, ''bar_spot'': ''0A'', ''front'': True, ''grazing'':
+        False, ''angle'': 0, ''height'': 0.0, ''sample_priority'': 1, ''notes'': None,
+        ''location'': [{''motor'': ''x'', ''position'': -1.5995478778859127, ''order'':
+        0}, {''motor'': ''y'', ''position'': -187.37897423865064, ''order'': 0}, {''motor'':
+        ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
+        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''0A'', ''ximg'': 0.6674117921250371,
+        ''yimg'': -185.5872221497133, ''th0'': 0.0, ''th'': 0, ''xoff'': -0.7855399254746024,
+        ''x0'': 0.02846802693670763, ''y0'': -187.37897423865064, ''af1y'': -187.37918000000002,
+        ''af2y'': 3.0214999999999748, ''af1xoff'': -0.7880000000000003, ''af2xoff'':
+        -0.5266100000000016, ''af1zoff'': -1.0890474999999995, ''af2zoff'': -5.785155,
+        ''zoff'': 3.4109474250316967}, ''sample_desc'': None, ''sample_state'': None,
+        ''acq_history'': [], ''components'': None, ''density'': None, ''composition'':
+        None, ''project_desc'': ''Calibration'', ''sample_set'': None, ''acquisitions'':
+        []}, {''bar_name'': ''20251201_WSU'', ''sample_id'': ''AF2_front'', ''sample_name'':
+        ''AF2_front'', ''project_name'': ''Calibration'', ''institution'': ''NIST'',
+        ''proposal_id'': 318915, ''bar_spot'': ''0A'', ''front'': True, ''grazing'':
+        False, ''angle'': 0, ''height'': 0.0, ''sample_priority'': 1, ''notes'': None,
+        ''location'': [{''motor'': ''x'', ''position'': -2.452174232662121, ''order'':
+        0}, {''motor'': ''y'', ''position'': 3.021703250963311, ''order'': 0}, {''motor'':
+        ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
+        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''0A'', ''ximg'': 1.2705980080445496,
+        ''yimg'': 4.791595114600539, ''th0'': 0.0, ''th'': 0, ''xoff'': -0.524179939550609,
+        ''x0'': 1.4038143535609031, ''y0'': 3.021703250963311, ''af1y'': -187.37918000000002,
+        ''af2y'': 3.0214999999999748, ''af1xoff'': -0.7880000000000003, ''af2xoff'':
+        -0.5266100000000016, ''af1zoff'': -1.0890474999999995, ''af2zoff'': -5.785155,
+        ''zoff'': -1.285160013051283}, ''sample_desc'': None, ''sample_state'': None,
+        ''acq_history'': [], ''components'': None, ''density'': None, ''composition'':
+        None, ''project_desc'': ''Calibration'', ''sample_set'': None, ''acquisitions'':
+        []}, {''bar_name'': ''20251201_WSU'', ''sample_id'': ''diode'', ''sample_name'':
+        ''diode'', ''project_name'': ''Calibration'', ''institution'': ''NIST'', ''proposal_id'':
+        318915, ''bar_spot'': ''0A'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.0, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': -0.5959972928073318, ''order'': 0}, {''motor'':
+        ''y'', ''position'': 44.331847431748265, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''0A'', ''ximg'': -0.6396985296840825,
+        ''yimg'': 46.09699640754036, ''th0'': 0.0, ''th'': 0, ''xoff'': -0.46747416074792053,
+        ''x0'': -0.3389510286885089, ''y0'': 44.331847431748265, ''af1y'': -187.37918000000002,
+        ''af2y'': 3.0214999999999748, ''af1xoff'': -0.7880000000000003, ''af2xoff'':
+        -0.5266100000000016, ''af1zoff'': -1.0890474999999995, ''af2zoff'': -5.785155,
+        ''zoff'': -2.304047539679159}, ''sample_desc'': None, ''sample_state'': None,
+        ''acq_history'': [], ''components'': None, ''density'': None, ''composition'':
+        None, ''project_desc'': ''Calibration'', ''sample_set'': None, ''acquisitions'':
+        [{''sample_id'': ''diode'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
+        ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarization_frame'':
+        ''lab'', ''polarizations'': [0], ''exposure_time'': 1.0, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''calibration_sample'', ''priority'': 33, ''acquire_status'': ''Finished 2025-12-03_13-50-37'',
+        ''uid_local'': ''55ca548f-0cce-465e-a4ac-70f6d1882430'', ''notes'': None}]},
+        {''bar_name'': ''20251201_WSU'', ''sample_id'': ''PC0'', ''sample_name'':
+        ''PC0'', ''project_name'': ''Acacia Ternary'', ''institution'': ''WSU'', ''proposal_id'':
+        318915, ''bar_spot'': ''2B'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': -1.9}, {''motor'': ''y'', ''position'':
+        -173.8}, {''motor'': ''th'', ''position'': 180.0005}, {''motor'': ''z'', ''position'':
+        -1.1316}], ''bar_loc'': {''spot'': ''2B'', ''th'': 0, ''ximg'': 0.9093127505571932,
+        ''yimg'': -172.33761871913617, ''th0'': 0.0, ''xoff'': -0.7673503169043044,
+        ''x0'': 0.32410823744932793, ''y0'': -174.12784942391798, ''af1y'': -187.37918000000002,
+        ''af2y'': 3.0214999999999748, ''af1xoff'': -0.7880000000000003, ''af2xoff'':
+        -0.5266100000000016, ''af1zoff'': -1.0890474999999995, ''af2zoff'': -5.785155,
+        ''zoff'': 2.8341171499197477}, ''sample_desc'': None, ''sample_state'': None,
+        ''acq_history'': [], ''components'': None, ''density'': None, ''composition'':
+        None, ''project_desc'': None, ''sample_set'': None, ''acquisitions'': [{''sample_id'':
+        ''PC0'', ''configuration_instrument'': ''WAXS'', ''scan_type'': ''nexafs'',
+        ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarization_frame'': ''lab'',
+        ''polarizations'': [0], ''exposure_time'': 1.0, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Acacua_Ternary'', ''priority'': 2, ''acquire_status'': ''Finished'', ''uid_local'':
+        ''fcefb379-fb6c-4b3d-aa97-416212387dd6'', ''notes'': None}, {''sample_id'':
+        ''PC0'', ''configuration_instrument'': ''WAXS'', ''scan_type'': ''rsoxs'',
+        ''energy_list_parameters'': [270, 2, 282, 0.2, 283], ''polarization_frame'':
+        ''lab'', ''polarizations'': [0], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Acacua_Ternary'', ''priority'': 3, ''acquire_status'': ''Finished'', ''uid_local'':
+        ''261f452f-d85b-4580-ba54-21ea2674a995'', ''notes'': None}, {''sample_id'':
+        ''PC0'', ''configuration_instrument'': ''WAXS'', ''scan_type'': ''rsoxs'',
+        ''energy_list_parameters'': [284.1, 0.1, 288], ''polarization_frame'': ''lab'',
+        ''polarizations'': [0], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Acacua_Ternary'', ''priority'': 4, ''acquire_status'': ''Finished'', ''uid_local'':
+        ''847092f3-3b43-4967-a3dc-7c5f66dd4d8e'', ''notes'': None}, {''sample_id'':
+        ''PC0'', ''configuration_instrument'': ''WAXS'', ''scan_type'': ''rsoxs'',
+        ''energy_list_parameters'': [288.2, 0.2, 292, 1, 300, 2, 310, 5, 350], ''polarization_frame'':
+        ''lab'', ''polarizations'': [0], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Acacua_Ternary'', ''priority'': 5, ''acquire_status'': ''Finished'', ''uid_local'':
+        ''9d47d861-7b7c-4d56-b1a9-3075373f56f3'', ''notes'': None}]}, {''bar_name'':
+        ''20251201_WSU'', ''sample_id'': ''PC1'', ''sample_name'': ''PC1'', ''project_name'':
+        ''Acacia Ternary'', ''institution'': ''WSU'', ''proposal_id'': 318915, ''bar_spot'':
+        ''4B'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.25,
+        ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'': ''x'',
+        ''position'': -1.4631283400483464, ''order'': 0}, {''motor'': ''y'', ''position'':
+        -162.17179401037032, ''order'': 0}, {''motor'': ''z'', ''position'': 0.0,
+        ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}], ''bar_loc'':
+        {''spot'': ''4B'', ''th'': 0, ''ximg'': 0.4979688290600528, ''yimg'': -160.38293600062556,
+        ''th0'': 0.0, ''xoff'': -0.7509384295318882, ''x0'': -0.03874851901543029,
+        ''y0'': -162.17179401037032, ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748,
+        ''af1xoff'': -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'':
+        -1.0890474999999995, ''af2zoff'': -5.785155, ''zoff'': 2.539228909510224},
+        ''sample_desc'': None, ''sample_state'': None, ''acq_history'': [], ''components'':
+        None, ''density'': None, ''composition'': None, ''project_desc'': None, ''sample_set'':
+        None, ''acquisitions'': []}, {''bar_name'': ''20251201_WSU'', ''sample_id'':
+        ''PC2'', ''sample_name'': ''PC2'', ''project_name'': ''Acacia Ternary'', ''institution'':
+        ''WSU'', ''proposal_id'': 318915, ''bar_spot'': ''6B'', ''front'': True, ''grazing'':
+        False, ''angle'': 0, ''height'': 0.25, ''sample_priority'': 1, ''notes'':
+        None, ''location'': [{''motor'': ''x'', ''position'': -1.0}, {''motor'': ''y'',
+        ''position'': -149.9}, {''motor'': ''th'', ''position'': 179.9998}, {''motor'':
+        ''z'', ''position'': -1.1316}], ''bar_loc'': {''spot'': ''6B'', ''th'': 0,
+        ''ximg'': 0.31800586340505355, ''yimg'': -148.4539622772085, ''th0'': 0.0,
+        ''xoff'': -0.7345618365409179, ''x0'': -0.17032859311123516, ''y0'': -150.24145054394856,
+        ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748, ''af1xoff'':
+        -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'': -1.0890474999999995,
+        ''af2zoff'': -5.785155, ''zoff'': 2.2449748373596456}, ''sample_desc'': None,
+        ''sample_state'': None, ''acq_history'': [], ''components'': None, ''density'':
+        None, ''composition'': None, ''project_desc'': None, ''sample_set'': None,
+        ''acquisitions'': [{''sample_id'': ''PC2'', ''configuration_instrument'':
+        ''WAXS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
+        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
+        1.0, ''exposures_per_energy'': 1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'':
+        None, ''group_name'': ''Acacua_Ternary'', ''priority'': 6, ''acquire_status'':
+        ''Finished'', ''uid_local'': ''59bc53be-1629-4d22-a378-87b4a368e251'', ''notes'':
+        None}, {''sample_id'': ''PC2'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
+        ''rsoxs'', ''energy_list_parameters'': [270, 2, 282, 0.2, 284], ''polarization_frame'':
+        ''lab'', ''polarizations'': [0], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Acacua_Ternary'', ''priority'': 7, ''acquire_status'': ''Finished'', ''uid_local'':
+        ''f63a87bd-890f-4e82-a9c1-3f10a3987ec8'', ''notes'': None}, {''sample_id'':
+        ''PC2'', ''configuration_instrument'': ''WAXS'', ''scan_type'': ''rsoxs'',
+        ''energy_list_parameters'': [284.1, 0.1, 288], ''polarization_frame'': ''lab'',
+        ''polarizations'': [0], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Acacua_Ternary'', ''priority'': 8, ''acquire_status'': ''Finished'', ''uid_local'':
+        ''12407a54-710c-46e5-a8d7-141ceaaabb06'', ''notes'': None}, {''sample_id'':
+        ''PC2'', ''configuration_instrument'': ''WAXS'', ''scan_type'': ''rsoxs'',
+        ''energy_list_parameters'': [288.2, 0.2, 292, 1, 300, 2, 310, 5, 350], ''polarization_frame'':
+        ''lab'', ''polarizations'': [0], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Acacua_Ternary'', ''priority'': 9, ''acquire_status'': ''Finished'', ''uid_local'':
+        ''548b8584-7c4a-40d0-b542-ae15e1f43eee'', ''notes'': None}]}, {''bar_name'':
+        ''20251201_WSU'', ''sample_id'': ''PC3'', ''sample_name'': ''PC3'', ''project_name'':
+        ''Acacia Ternary'', ''institution'': ''WSU'', ''proposal_id'': 318915, ''bar_spot'':
+        ''8B'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.25,
+        ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'': ''x'',
+        ''position'': -1.0311933507333704, ''order'': 0}, {''motor'': ''y'', ''position'':
+        -138.16933544837258, ''order'': 0}, {''motor'': ''z'', ''position'': 0.0,
+        ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}], ''bar_loc'':
+        {''spot'': ''8B'', ''th'': 0, ''ximg'': 0.034588696400282615, ''yimg'': -136.38323320167888,
+        ''th0'': 0.0, ''xoff'': -0.717990635886316, ''x0'': -0.4047879210392618, ''y0'':
+        -138.16933544837258, ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748,
+        ''af1xoff'': -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'':
+        -1.0890474999999995, ''af2zoff'': -5.785155, ''zoff'': 1.9472240612531864},
+        ''sample_desc'': None, ''sample_state'': None, ''acq_history'': [], ''components'':
+        None, ''density'': None, ''composition'': None, ''project_desc'': None, ''sample_set'':
+        None, ''acquisitions'': []}, {''bar_name'': ''20251201_WSU'', ''sample_id'':
+        ''PC4'', ''sample_name'': ''PC4'', ''project_name'': ''Acacia Ternary'', ''institution'':
+        ''WSU'', ''proposal_id'': 318915, ''bar_spot'': ''10B'', ''front'': True,
+        ''grazing'': False, ''angle'': 0, ''height'': 0.25, ''sample_priority'': 1,
+        ''notes'': None, ''location'': [{''motor'': ''x'', ''position'': -1.5}, {''motor'':
+        ''y'', ''position'': -125.9}, {''motor'': ''th'', ''position'': 179.9998},
+        {''motor'': ''z'', ''position'': -1.1316}], ''bar_loc'': {''spot'': ''10B'',
+        ''th'': 0, ''ximg'': 0.45426954251088425, ''yimg'': -124.43631844906372, ''th0'':
+        0.0, ''xoff'': -0.701589412701682, ''x0'': 0.06334858390207637, ''y0'': -126.22104889267615,
+        ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748, ''af1xoff'':
+        -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'': -1.0890474999999995,
+        ''af2zoff'': -5.785155, ''zoff'': 1.6525274346111223}, ''sample_desc'': None,
+        ''sample_state'': None, ''acq_history'': [], ''components'': None, ''density'':
+        None, ''composition'': None, ''project_desc'': None, ''sample_set'': None,
+        ''acquisitions'': [{''sample_id'': ''PC4'', ''configuration_instrument'':
+        ''WAXS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
+        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
+        1.0, ''exposures_per_energy'': 1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'':
+        None, ''group_name'': ''Acacua_Ternary'', ''priority'': 10, ''acquire_status'':
+        ''Finished'', ''uid_local'': ''70cf2bc8-85ad-403f-ace3-03cc2e284a42'', ''notes'':
+        None}, {''sample_id'': ''PC4'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
+        ''rsoxs'', ''energy_list_parameters'': [270, 2, 282, 0.2, 284], ''polarization_frame'':
+        ''lab'', ''polarizations'': [0], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Acacua_Ternary'', ''priority'': 11, ''acquire_status'': ''Finished'', ''uid_local'':
+        ''8a3b3cd4-b5ba-47c6-81d8-083e5fb4ff25'', ''notes'': None}, {''sample_id'':
+        ''PC4'', ''configuration_instrument'': ''WAXS'', ''scan_type'': ''rsoxs'',
+        ''energy_list_parameters'': [284.1, 0.1, 288], ''polarization_frame'': ''lab'',
+        ''polarizations'': [0], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Acacua_Ternary'', ''priority'': 12, ''acquire_status'': ''Finished'', ''uid_local'':
+        ''1dfd3629-7546-4277-902f-4d675b60308a'', ''notes'': None}, {''sample_id'':
+        ''PC4'', ''configuration_instrument'': ''WAXS'', ''scan_type'': ''rsoxs'',
+        ''energy_list_parameters'': [288.2, 0.2, 292, 1, 300, 2, 310, 5, 350], ''polarization_frame'':
+        ''lab'', ''polarizations'': [0], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Acacua_Ternary'', ''priority'': 13, ''acquire_status'': ''Finished'', ''uid_local'':
+        ''66446c15-cf8a-445a-8ce5-b5fdf8e97176'', ''notes'': None}]}, {''bar_name'':
+        ''20251201_WSU'', ''sample_id'': ''PC5'', ''sample_name'': ''PC5'', ''project_name'':
+        ''Acacia Ternary'', ''institution'': ''WSU'', ''proposal_id'': 318915, ''bar_spot'':
+        ''12B'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.25,
+        ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'': ''x'',
+        ''position'': -1.2859996330538899, ''order'': 0}, {''motor'': ''y'', ''position'':
+        -114.52459975852837, ''order'': 0}, {''motor'': ''z'', ''position'': 0.0,
+        ''order'': 0}, {''motor'': ''th'', ''position'': 180.0, ''order'': 0}], ''bar_loc'':
+        {''spot'': ''12B'', ''th'': 0, ''ximg'': 0.2584184809926029, ''yimg'': -112.74121220411493,
+        ''th0'': 0.0, ''xoff'': -0.6855338827457641, ''x0'': -0.0850681324376385,
+        ''y0'': -114.52459975852837, ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748,
+        ''af1xoff'': -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'':
+        -1.0890474999999995, ''af2zoff'': -5.785155, ''zoff'': 1.3640422122776727},
+        ''sample_desc'': None, ''sample_state'': None, ''acq_history'': [], ''components'':
+        None, ''density'': None, ''composition'': None, ''project_desc'': None, ''sample_set'':
+        None, ''acquisitions'': []}, {''bar_name'': ''20251201_WSU'', ''sample_id'':
+        ''BD1-1'', ''sample_name'': ''BD1-1'', ''project_name'': ''Neher blends'',
+        ''institution'': ''WSU'', ''proposal_id'': 318915, ''bar_spot'': ''14B'',
+        ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.25, ''sample_priority'':
+        1, ''notes'': None, ''location'': [{''motor'': ''x'', ''position'': -0.9456614524215811},
+        {''motor'': ''y'', ''position'': -102.0651722119069}, {''motor'': ''th'',
+        ''position'': 180.0}, {''motor'': ''z'', ''position'': -1.1316}], ''bar_loc'':
+        {''spot'': ''14B'', ''th'': 0, ''ximg'': -0.09824254774235364, ''yimg'': -100.28321514554041,
+        ''th0'': 0.0, ''xoff'': -0.6684310244411573, ''x0'': -0.3912005964607337,
+        ''y0'': -102.0651722119069, ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748,
+        ''af1xoff'': -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'':
+        -1.0890474999999995, ''af2zoff'': -5.785155, ''zoff'': 1.056738629394483},
+        ''sample_desc'': None, ''sample_state'': None, ''acq_history'': [], ''components'':
+        None, ''density'': None, ''composition'': None, ''project_desc'': None, ''sample_set'':
+        None, ''acquisitions'': [{''sample_id'': ''BD1-1'', ''configuration_instrument'':
+        ''WAXS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
+        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
+        1.0, ''exposures_per_energy'': 1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'':
+        None, ''group_name'': ''Neher_blends'', ''priority'': 14, ''acquire_status'':
+        ''Finished'', ''uid_local'': ''05459da4-2ab9-4db6-bc30-622e8a1fa316'', ''notes'':
+        None}, {''sample_id'': ''BD1-1'', ''configuration_instrument'': ''WAXS'',
+        ''scan_type'': ''rsoxs'', ''energy_list_parameters'': [270], ''polarization_frame'':
+        ''lab'', ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Neher_blends'', ''priority'': 15, ''acquire_status'': ''Finished 2025-12-03_13-08-48'',
+        ''uid_local'': ''85c55501-95a8-4f67-89e6-4d63b4b4ed1d'', ''notes'': None},
+        {''sample_id'': ''BD1-1'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
+        ''rsoxs'', ''energy_list_parameters'': [284.13], ''polarization_frame'': ''lab'',
+        ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Neher_blends'', ''priority'': 16, ''acquire_status'': ''Finished 2025-12-03_13-10-09'',
+        ''uid_local'': ''b94aa382-b883-4baf-8df2-286b66eafc5f'', ''notes'': None},
+        {''sample_id'': ''BD1-1'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
+        ''rsoxs'', ''energy_list_parameters'': [284.95], ''polarization_frame'': ''lab'',
+        ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Neher_blends'', ''priority'': 17, ''acquire_status'': ''Finished 2025-12-03_13-11-42'',
+        ''uid_local'': ''ee453f8d-df8a-4651-929b-32ae5309dd8e'', ''notes'': None},
+        {''sample_id'': ''BD1-1'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
+        ''rsoxs'', ''energy_list_parameters'': [287.05], ''polarization_frame'': ''lab'',
+        ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Neher_blends'', ''priority'': 18, ''acquire_status'': ''Finished 2025-12-03_13-12-55'',
+        ''uid_local'': ''d7072dd0-bdde-4350-844f-c701054f35aa'', ''notes'': None},
+        {''sample_id'': ''BD1-1'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
+        ''rsoxs'', ''energy_list_parameters'': [350], ''polarization_frame'': ''lab'',
+        ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Neher_blends'', ''priority'': 19, ''acquire_status'': ''Finished 2025-12-03_13-14-11'',
+        ''uid_local'': ''213be000-e29b-42eb-86cd-800c0766572c'', ''notes'': None}]},
+        {''bar_name'': ''20251201_WSU'', ''sample_id'': ''BD2-1'', ''sample_name'':
+        ''BD2-1'', ''project_name'': ''Neher blends'', ''institution'': ''WSU'', ''proposal_id'':
+        318915, ''bar_spot'': ''16B'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': -1.3079028231017777}, {''motor'': ''y'',
+        ''position'': -90.1069565822426}, {''motor'': ''th'', ''position'': 180.0},
+        {''motor'': ''z'', ''position'': -1.1316}], ''bar_loc'': {''spot'': ''16B'',
+        ''th'': 0, ''ximg'': 0.2483326025941448, ''yimg'': -88.32637245893125, ''th0'':
+        0.0, ''xoff'': -0.6520161717743876, ''x0'': 0.003870479553002626, ''y0'':
+        -90.1069565822426, ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748,
+        ''af1xoff'': -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'':
+        -1.0890474999999995, ''af2zoff'': -5.785155, ''zoff'': 0.7617971086757351},
+        ''sample_desc'': None, ''sample_state'': None, ''acq_history'': [], ''components'':
+        None, ''density'': None, ''composition'': None, ''project_desc'': None, ''sample_set'':
+        None, ''acquisitions'': [{''sample_id'': ''BD2-1'', ''configuration_instrument'':
+        ''WAXS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
+        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
+        1.0, ''exposures_per_energy'': 1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'':
+        None, ''group_name'': ''Neher_blends'', ''priority'': 20, ''acquire_status'':
+        ''Finished 2025-12-03_13-19-14'', ''uid_local'': ''c4e7a7e2-f652-441e-a600-af83078f4a4e'',
+        ''notes'': None}, {''sample_id'': ''BD2-1'', ''configuration_instrument'':
+        ''WAXS'', ''scan_type'': ''rsoxs'', ''energy_list_parameters'': [270], ''polarization_frame'':
+        ''lab'', ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Neher_blends'', ''priority'': 21, ''acquire_status'': ''Finished 2025-12-03_13-20-34'',
+        ''uid_local'': ''69e5e884-ff3f-4f2c-8148-7b645b3cca9a'', ''notes'': None},
+        {''sample_id'': ''BD2-1'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
+        ''rsoxs'', ''energy_list_parameters'': [285.4], ''polarization_frame'': ''lab'',
+        ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Neher_blends'', ''priority'': 22, ''acquire_status'': ''Finished 2025-12-03_13-21-48'',
+        ''uid_local'': ''944cac1f-438d-48bb-a349-ab8a9bc119f4'', ''notes'': None},
+        {''sample_id'': ''BD2-1'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
+        ''rsoxs'', ''energy_list_parameters'': [286.3], ''polarization_frame'': ''lab'',
+        ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Neher_blends'', ''priority'': 23, ''acquire_status'': ''Finished 2025-12-03_13-23-01'',
+        ''uid_local'': ''644d7e5f-2461-4d66-8a86-cf52f5d79a24'', ''notes'': None},
+        {''sample_id'': ''BD2-1'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
+        ''rsoxs'', ''energy_list_parameters'': [287.73], ''polarization_frame'': ''lab'',
+        ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Neher_blends'', ''priority'': 24, ''acquire_status'': ''Finished 2025-12-03_13-24-30'',
+        ''uid_local'': ''bc1b02a5-693f-4df7-af19-958453c501be'', ''notes'': None},
+        {''sample_id'': ''BD2-1'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
+        ''rsoxs'', ''energy_list_parameters'': [350], ''polarization_frame'': ''lab'',
+        ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Neher_blends'', ''priority'': 25, ''acquire_status'': ''Finished 2025-12-03_13-25-45'',
+        ''uid_local'': ''f2b10085-6524-4cf9-ab04-32165dddf1e2'', ''notes'': None}]},
+        {''bar_name'': ''20251201_WSU'', ''sample_id'': ''BD3-1'', ''sample_name'':
+        ''BD3-1'', ''project_name'': ''Neher blends'', ''institution'': ''WSU'', ''proposal_id'':
+        318915, ''bar_spot'': ''18B'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': -1.5712200279736805}, {''motor'': ''y'',
+        ''position'': -78.07446632133815}, {''motor'': ''th'', ''position'': 180.0},
+        {''motor'': ''z'', ''position'': -1.1316}], ''bar_loc'': {''spot'': ''18B'',
+        ''th'': 0, ''ximg'': 0.4958862814059284, ''yimg'': -76.29526366867854, ''th0'':
+        0.0, ''xoff'': -0.6354993635009921, ''x0'': 0.3002213009716964, ''y0'': -78.07446632133815,
+        ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748, ''af1xoff'':
+        -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'': -1.0890474999999995,
+        ''af2zoff'': -5.785155, ''zoff'': 0.4650236530456904}, ''sample_desc'': None,
+        ''sample_state'': None, ''acq_history'': [], ''components'': None, ''density'':
+        None, ''composition'': None, ''project_desc'': None, ''sample_set'': None,
+        ''acquisitions'': [{''sample_id'': ''BD3-1'', ''configuration_instrument'':
+        ''WAXS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
+        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
+        1.0, ''exposures_per_energy'': 1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'':
+        None, ''group_name'': ''Neher_blends'', ''priority'': 26, ''acquire_status'':
+        ''Finished 2025-12-03_13-30-52'', ''uid_local'': ''0fccb162-054e-40e9-96ae-7ab1cc9c1657'',
+        ''notes'': None}, {''sample_id'': ''BD3-1'', ''configuration_instrument'':
+        ''WAXS'', ''scan_type'': ''rsoxs'', ''energy_list_parameters'': [270], ''polarization_frame'':
+        ''lab'', ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Neher_blends'', ''priority'': 27, ''acquire_status'': ''Finished 2025-12-03_13-32-09'',
+        ''uid_local'': ''71d6e7f5-ddbe-4e4c-84fc-b4b9278c9b02'', ''notes'': None},
+        {''sample_id'': ''BD3-1'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
+        ''rsoxs'', ''energy_list_parameters'': [285.4], ''polarization_frame'': ''lab'',
+        ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Neher_blends'', ''priority'': 28, ''acquire_status'': ''Finished 2025-12-03_13-33-23'',
+        ''uid_local'': ''0390c34a-fc21-408f-95b5-30a2731e75a9'', ''notes'': None},
+        {''sample_id'': ''BD3-1'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
+        ''rsoxs'', ''energy_list_parameters'': [286.3], ''polarization_frame'': ''lab'',
+        ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Neher_blends'', ''priority'': 29, ''acquire_status'': ''Finished 2025-12-03_13-34-35'',
+        ''uid_local'': ''660871a6-fbc2-4038-85fd-f67d9b0339ba'', ''notes'': None},
+        {''sample_id'': ''BD3-1'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
+        ''rsoxs'', ''energy_list_parameters'': [287.73], ''polarization_frame'': ''lab'',
+        ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Neher_blends'', ''priority'': 30, ''acquire_status'': ''Finished 2025-12-03_13-36-04'',
+        ''uid_local'': ''39b04434-b22f-4092-a319-a009a1b89e5b'', ''notes'': None},
+        {''sample_id'': ''BD3-1'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
+        ''rsoxs'', ''energy_list_parameters'': [350], ''polarization_frame'': ''lab'',
+        ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Neher_blends'', ''priority'': 31, ''acquire_status'': ''Finished 2025-12-03_13-37-20'',
+        ''uid_local'': ''f14d744d-5d51-4b42-a27e-ff1e80a9b0ec'', ''notes'': None}]},
+        {''bar_name'': ''20251201_WSU'', ''sample_id'': ''PM6'', ''sample_name'':
+        ''PM6'', ''project_name'': ''Tanner PM6'', ''institution'': ''WSU'', ''proposal_id'':
+        318915, ''bar_spot'': ''20B'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': -1.3655013656251274, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -66.08796572576671, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''20B'', ''th'': 0, ''ximg'': 0.2744643431426752,
+        ''yimg'': -64.31013926360723, ''th0'': 0.0, ''xoff'': -0.6190456845107617,
+        ''x0'': 0.12740999660360391, ''y0'': -66.08796572576671, ''af1y'': -187.37918000000002,
+        ''af2y'': 3.0214999999999748, ''af1xoff'': -0.7880000000000003, ''af2xoff'':
+        -0.5266100000000016, ''af1zoff'': -1.0890474999999995, ''af2zoff'': -5.785155,
+        ''zoff'': 0.16938450225264923}, ''sample_desc'': None, ''sample_state'': None,
+        ''acq_history'': [], ''components'': None, ''density'': None, ''composition'':
+        None, ''project_desc'': None, ''sample_set'': None, ''acquisitions'': []},
+        {''bar_name'': ''20251201_WSU'', ''sample_id'': ''PM6_CN'', ''sample_name'':
+        ''PM6_CN'', ''project_name'': ''Tanner PM6'', ''institution'': ''WSU'', ''proposal_id'':
+        318915, ''bar_spot'': ''22B'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': -1.748402617576021, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -54.106539273839864, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''22B'', ''th'': 0, ''ximg'': 0.6416689667134889,
+        ''yimg'': -52.33008841960945, ''th0'': 0.0, ''xoff'': -0.6025989707169215,
+        ''x0'': 0.543204676142178, ''y0'': -54.106539273839864, ''af1y'': -187.37918000000002,
+        ''af2y'': 3.0214999999999748, ''af1xoff'': -0.7880000000000003, ''af2xoff'':
+        -0.5266100000000016, ''af1zoff'': -1.0890474999999995, ''af2zoff'': -5.785155,
+        ''zoff'': -0.12612949812587892}, ''sample_desc'': None, ''sample_state'':
+        None, ''acq_history'': [], ''components'': None, ''density'': None, ''composition'':
+        None, ''project_desc'': None, ''sample_set'': None, ''acquisitions'': []},
+        {''bar_name'': ''20251201_WSU'', ''sample_id'': ''blank'', ''sample_name'':
+        ''blank'', ''project_name'': ''calibration'', ''institution'': ''WSU'', ''proposal_id'':
+        318915, ''bar_spot'': ''24B'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': -2.0623327219301433}, {''motor'': ''y'',
+        ''position'': -42.216924518862655}, {''motor'': ''th'', ''position'': 180.0},
+        {''motor'': ''z'', ''position'': -1.1316}], ''bar_loc'': {''spot'': ''24B'',
+        ''th'': 0, ''ximg'': 0.9400227233647733, ''yimg'': -40.44183873150439, ''th0'':
+        0.0, ''xoff'': -0.5862782853812716, ''x0'': 0.8897761511676002, ''y0'': -42.216924518862655,
+        ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748, ''af1xoff'':
+        -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'': -1.0890474999999995,
+        ''af2zoff'': -5.785155, ''zoff'': -0.4193790234057211}, ''sample_desc'': None,
+        ''sample_state'': None, ''acq_history'': [], ''components'': None, ''density'':
+        None, ''composition'': None, ''project_desc'': None, ''sample_set'': None,
+        ''acquisitions'': [{''sample_id'': ''blank'', ''configuration_instrument'':
+        ''WAXS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
+        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
+        1.0, ''exposures_per_energy'': 1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'':
+        None, ''group_name'': ''calibration_sample'', ''priority'': 32, ''acquire_status'':
+        ''Finished 2025-12-03_13-43-10'', ''uid_local'': ''d03c15c2-191d-40ab-b556-7873aea0bde1'',
+        ''notes'': None}]}, {''bar_name'': ''20251201_WSU'', ''sample_id'': ''50nmPS'',
+        ''sample_name'': ''50nmPS'', ''project_name'': ''calibration'', ''institution'':
+        ''WSU'', ''proposal_id'': 318915, ''bar_spot'': ''25A'', ''front'': True,
+        ''grazing'': False, ''angle'': 0, ''height'': 0.25, ''sample_priority'': 1,
+        ''notes'': None, ''location'': [{''motor'': ''x'', ''position'': 1.6325094230506252},
+        {''motor'': ''y'', ''position'': -36.61882677701213}, {''motor'': ''th'',
+        ''position'': 180.0}, {''motor'': ''z'', ''position'': -1.1316}], ''bar_loc'':
+        {''spot'': ''25A'', ''th'': 0, ''ximg'': -2.7621533780728296, ''yimg'': -34.84438371676756,
+        ''th0'': 0.0, ''xoff'': -0.5785938655236216, ''x0'': -2.7896971540978686,
+        ''y0'': -36.61882677701213, ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748,
+        ''af1xoff'': -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'':
+        -1.0890474999999995, ''af2zoff'': -5.785155, ''zoff'': -0.5574524209967233},
+        ''sample_desc'': None, ''sample_state'': None, ''acq_history'': [], ''components'':
+        None, ''density'': None, ''composition'': None, ''project_desc'': None, ''sample_set'':
+        None, ''acquisitions'': [{''sample_id'': ''50nmPS'', ''configuration_instrument'':
+        ''WAXS'', ''scan_type'': ''rsoxs'', ''energy_list_parameters'': [285], ''polarization_frame'':
+        ''lab'', ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''calibration_sample'', ''priority'': 34, ''acquire_status'': ''Finished 2025-12-03_13-54-32'',
+        ''uid_local'': ''5168b83d-f799-41d6-9a8a-31650d4e9360'', ''notes'': None}]},
+        {''bar_name'': ''20251201_WSU'', ''sample_id'': ''25nmPS'', ''sample_name'':
+        ''25nmPS'', ''project_name'': ''calibration'', ''institution'': ''WSU'', ''proposal_id'':
+        318915, ''bar_spot'': ''25C'', ''front'': True, ''grazing'': False, ''angle'':
+        0, ''height'': 0.25, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': -5.981384717380184, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -36.24822009085248, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''25C'', ''th'': 0, ''ximg'': 4.851255237913026,
+        ''yimg'': -34.473819580591254, ''th0'': 0.0, ''xoff'': -0.578085139611744,
+        ''x0'': 4.825214438156696, ''y0'': -36.24822009085248, ''af1y'': -187.37918000000002,
+        ''af2y'': 3.0214999999999748, ''af1xoff'': -0.7880000000000003, ''af2xoff'':
+        -0.5266100000000016, ''af1zoff'': -1.0890474999999995, ''af2zoff'': -5.785155,
+        ''zoff'': -0.5665931910739346}, ''sample_desc'': None, ''sample_state'': None,
+        ''acq_history'': [], ''components'': None, ''density'': None, ''composition'':
+        None, ''project_desc'': None, ''sample_set'': None, ''acquisitions'': []},
+        {''bar_name'': ''20251201_WSU'', ''sample_id'': ''PM6_TEY'', ''sample_name'':
+        ''PM6_TEY'', ''project_name'': ''Tanner PM6'', ''institution'': ''WSU'', ''proposal_id'':
+        318915, ''bar_spot'': ''27B'', ''front'': True, ''grazing'': True, ''angle'':
+        90, ''height'': 0.5, ''sample_priority'': 1, ''notes'': None, ''location'':
+        [{''motor'': ''x'', ''position'': 1.1898786924109608, ''order'': 0}, {''motor'':
+        ''y'', ''position'': -27.21889355532637, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 0.0, ''order'':
+        0}], ''bar_loc'': {''spot'': ''27B'', ''th'': 90, ''ximg'': 1.1793015248932992,
+        ''yimg'': -25.44552971738679, ''th0'': 0.0, ''xoff'': -0.5656907264859978,
+        ''x0'': 1.1898786924109608, ''y0'': -27.21889355532637, ''af1y'': -187.37918000000002,
+        ''af2y'': 3.0214999999999748, ''af1xoff'': -0.7880000000000003, ''af2xoff'':
+        -0.5266100000000016, ''af1zoff'': -1.0890474999999995, ''af2zoff'': -5.785155,
+        ''zoff'': -1.0392955893186944}, ''sample_desc'': None, ''sample_state'': None,
+        ''acq_history'': [], ''components'': None, ''density'': None, ''composition'':
+        None, ''project_desc'': None, ''sample_set'': None, ''acquisitions'': []},
+        {''bar_name'': ''20251201_WSU'', ''sample_id'': ''PM6_CN_TEY'', ''sample_name'':
+        ''PM6_CN_TEY'', ''project_name'': ''Tanner PM6'', ''institution'': ''WSU'',
+        ''proposal_id'': 318915, ''bar_spot'': ''28B'', ''front'': True, ''grazing'':
+        True, ''angle'': 90, ''height'': 0.5, ''sample_priority'': 1, ''notes'': None,
+        ''location'': [{''motor'': ''x'', ''position'': 1.68487022408527, ''order'':
+        0}, {''motor'': ''y'', ''position'': -21.457644161389936, ''order'': 0}, {''motor'':
+        ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
+        0.0, ''order'': 0}], ''bar_loc'': {''spot'': ''28B'', ''th'': 90, ''ximg'':
+        1.6509286072995017, ''yimg'': -19.684941782282444, ''th0'': 0.0, ''xoff'':
+        -0.557782350946809, ''x0'': 1.68487022408527, ''y0'': -21.457644161389936,
+        ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748, ''af1xoff'':
+        -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'': -1.0890474999999995,
+        ''af2zoff'': -5.785155, ''zoff'': -1.181393015064418}, ''sample_desc'': None,
+        ''sample_state'': None, ''acq_history'': [], ''components'': None, ''density'':
+        None, ''composition'': None, ''project_desc'': None, ''sample_set'': None,
+        ''acquisitions'': []}, {''bar_name'': ''20251201_WSU'', ''sample_id'': ''SBA15'',
+        ''sample_name'': ''SBA15'', ''project_name'': ''calibration'', ''institution'':
+        ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''29A'', ''front'': True,
+        ''grazing'': False, ''angle'': 0, ''height'': 0.25, ''sample_priority'': 1,
+        ''notes'': "For SDD and beam center calibration. Don''t change this row.",
+        ''location'': [{''motor'': ''x'', ''position'': -1.1622313573682483, ''order'':
+        0}, {''motor'': ''y'', ''position'': -11.92294487200976, ''order'': 0}, {''motor'':
+        ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
+        180.0, ''order'': 0}], ''bar_loc'': {''spot'': ''29A'', ''th'': 0, ''ximg'':
+        0.00023381887779017063, ''yimg'': -10.151337187928476, ''th0'': 0.0, ''xoff'':
+        -0.5446942206685024, ''x0'': 0.07284291603124393, ''y0'': -11.92294487200976,
+        ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748, ''af1xoff'':
+        -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'': -1.0890474999999995,
+        ''af2zoff'': -5.785155, ''zoff'': -1.1665600997781018}, ''sample_desc'': None,
+        ''sample_state'': None, ''acq_history'': [], ''components'': None, ''density'':
+        None, ''composition'': None, ''project_desc'': None, ''sample_set'': None,
+        ''acquisitions'': [{''sample_id'': ''SBA15'', ''configuration_instrument'':
+        ''WAXS'', ''scan_type'': ''rsoxs'', ''energy_list_parameters'': [200, 91.65,
+        291.65, 8.35, 300, 100, 1300], ''polarization_frame'': ''lab'', ''polarizations'':
+        [90], ''exposure_time'': 0.1, ''exposures_per_energy'': 1, ''cycles'': 0,
+        ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'': ''BeamCalibration'',
+        ''priority'': 1, ''acquire_status'': ''Finished'', ''uid_local'': ''7d8f14b2-d8bf-4e90-910e-8ff12d85f8fa'',
+        ''notes'': None}]}, {''bar_name'': ''20251201_WSU'', ''sample_id'': ''TiO'',
+        ''sample_name'': ''TiO'', ''project_name'': ''calibration'', ''institution'':
+        ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''29C'', ''front'': True,
+        ''grazing'': True, ''angle'': 90, ''height'': 0.5, ''sample_priority'': 1,
+        ''notes'': None, ''location'': [{''motor'': ''x'', ''position'': 9.416255928346784,
+        ''order'': 0}, {''motor'': ''y'', ''position'': -13.574383338057894, ''order'':
+        0}, {''motor'': ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'',
+        ''position'': 0.0, ''order'': 0}], ''bar_loc'': {''spot'': ''29C'', ''th'':
+        90, ''ximg'': 9.350344154572525, ''yimg'': -11.802586049520297, ''th0'': 0.0,
+        ''xoff'': -0.5469611240216389, ''x0'': 9.416255928346784, ''y0'': -13.574383338057894,
+        ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748, ''af1xoff'':
+        -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'': -1.0890474999999995,
+        ''af2zoff'': -5.785155, ''zoff'': -1.3758284565602459}, ''sample_desc'': None,
+        ''sample_state'': None, ''acq_history'': [], ''components'': None, ''density'':
+        None, ''composition'': None, ''project_desc'': None, ''sample_set'': None,
+        ''acquisitions'': []}, {''bar_name'': ''20251201_WSU'', ''sample_id'': ''HOPG_old'',
+        ''sample_name'': ''HOPG_old'', ''project_name'': ''calibration'', ''institution'':
+        ''NIST'', ''proposal_id'': 318915, ''bar_spot'': ''30A'', ''front'': True,
+        ''grazing'': True, ''angle'': 90, ''height'': 0.5, ''sample_priority'': 1,
+        ''notes'': "Energy calibrant.  Don''t change this row.", ''location'': [{''motor'':
+        ''x'', ''position'': -6.927586037728728, ''order'': 0}, {''motor'': ''y'',
+        ''position'': -2.647692428412986, ''order'': 0}, {''motor'': ''z'', ''position'':
+        0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 0.0, ''order'': 0}],
+        ''bar_loc'': {''spot'': ''30A'', ''th'': 90, ''ximg'': -7.037810441970846,
+        ''yimg'': -0.877149651824709, ''th0'': 0.0, ''xoff'': -0.531962228954701,
+        ''x0'': -6.927586037728728, ''y0'': -2.647692428412986, ''af1y'': -187.37918000000002,
+        ''af2y'': 3.0214999999999748, ''af1xoff'': -0.7880000000000003, ''af2xoff'':
+        -0.5266100000000016, ''af1zoff'': -1.0890474999999995, ''af2zoff'': -5.785155,
+        ''zoff'': -1.645328098740963}, ''sample_desc'': None, ''sample_state'': None,
+        ''acq_history'': [], ''components'': None, ''density'': None, ''composition'':
+        None, ''project_desc'': None, ''sample_set'': None, ''acquisitions'': []},
+        {''bar_name'': ''20251201_WSU'', ''sample_id'': ''HOPG_new'', ''sample_name'':
+        ''HOPG_new'', ''project_name'': ''calibration'', ''institution'': ''NIST'',
+        ''proposal_id'': 318915, ''bar_spot'': ''30C'', ''front'': True, ''grazing'':
+        True, ''angle'': 20, ''height'': 0.5, ''sample_priority'': 1, ''notes'': None,
+        ''location'': [{''motor'': ''x'', ''position'': 4.060255451141389, ''order'':
+        0}, {''motor'': ''y'', ''position'': -3.441511853472658, ''order'': 0}, {''motor'':
+        ''z'', ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'':
+        70.0, ''order'': 0}], ''bar_loc'': {''spot'': ''30C'', ''th'': 70.0, ''ximg'':
+        8.3231663735926, ''yimg'': -1.6708779371273792, ''th0'': 0.0, ''xoff'': -0.5330518922715297,
+        ''x0'': 8.430171484168248, ''y0'': -3.441511853472658, ''af1y'': -187.37918000000002,
+        ''af2y'': 3.0214999999999748, ''af1xoff'': -0.7880000000000003, ''af2xoff'':
+        -0.5266100000000016, ''af1zoff'': -1.0890474999999995, ''af2zoff'': -5.785155,
+        ''zoff'': -1.6257490649073212}, ''sample_desc'': None, ''sample_state'': None,
+        ''acq_history'': [], ''components'': None, ''density'': None, ''composition'':
+        None, ''project_desc'': None, ''sample_set'': None, ''acquisitions'': []},
+        {''bar_name'': ''20251201_WSU'', ''sample_id'': ''OpenBeam'', ''sample_name'':
+        ''OpenBeam'', ''project_name'': ''calibration'', ''institution'': ''NIST'',
+        ''proposal_id'': 318915, ''bar_spot'': ''40A'', ''front'': True, ''grazing'':
+        False, ''angle'': 0, ''height'': 0.0, ''sample_priority'': 1, ''notes'': "Bar
+        moved out of beam path for reference scan.  Don''t change this row.", ''location'':
+        [{''motor'': ''x'', ''position'': 0.4495488135398816, ''order'': 0}, {''motor'':
+        ''y'', ''position'': 43.461409359649565, ''order'': 0}, {''motor'': ''z'',
+        ''position'': 0.0, ''order'': 0}, {''motor'': ''th'', ''position'': 180.0,
+        ''order'': 0}], ''bar_loc'': {''spot'': ''40A'', ''th'': 0, ''ximg'': -1.6841042924336094,
+        ''yimg'': 45.22665827191571, ''th0'': 0.0, ''xoff'': -0.4686689972646332,
+        ''x0'': -1.3868868080691477, ''y0'': 43.461409359649565, ''af1y'': -187.37918000000002,
+        ''af2y'': 3.0214999999999748, ''af1xoff'': -0.7880000000000003, ''af2xoff'':
+        -0.5266100000000016, ''af1zoff'': -1.0890474999999995, ''af2zoff'': -5.785155,
+        ''zoff'': -2.282578757326762}, ''sample_desc'': None, ''sample_state'': None,
+        ''acq_history'': [], ''components'': None, ''density'': None, ''composition'':
+        None, ''project_desc'': None, ''sample_set'': None, ''acquisitions'': []},
+        {''bar_name'': ''20251201_WSU'', ''sample_id'': ''PC0_1'', ''sample_name'':
+        ''PC0_1'', ''project_name'': ''Acacia Ternary'', ''institution'': ''WSU'',
+        ''proposal_id'': 318915, ''bar_spot'': ''2B'', ''front'': True, ''grazing'':
+        False, ''angle'': 0, ''height'': 0.25, ''sample_priority'': 1, ''notes'':
+        None, ''location'': [{''motor'': ''x'', ''position'': -1.8588088712579371},
+        {''motor'': ''y'', ''position'': -174.12784942391798}, {''motor'': ''th'',
+        ''position'': 180.0}, {''motor'': ''z'', ''position'': -1.1316}], ''bar_loc'':
+        {''spot'': ''2B'', ''th'': 180.0, ''ximg'': 0.9093127505571932, ''yimg'':
+        -172.33761871913617, ''th0'': 0.0, ''xoff'': -0.7673503169043044, ''x0'':
+        0.32410823744932793, ''y0'': -174.12784942391798, ''af1y'': -187.37918000000002,
+        ''af2y'': 3.0214999999999748, ''af1xoff'': -0.7880000000000003, ''af2xoff'':
+        -0.5266100000000016, ''af1zoff'': -1.0890474999999995, ''af2zoff'': -5.785155,
+        ''zoff'': 2.8341171499197477}, ''sample_desc'': None, ''sample_state'': None,
+        ''acq_history'': [], ''components'': None, ''density'': None, ''composition'':
+        None, ''project_desc'': None, ''sample_set'': None, ''acquisitions'': [{''sample_id'':
+        ''PC0_1'', ''configuration_instrument'': ''WAXS'', ''scan_type'': ''nexafs'',
+        ''energy_list_parameters'': ''carbon_NEXAFS'', ''polarization_frame'': ''lab'',
+        ''polarizations'': [0], ''exposure_time'': 1.0, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Acacua_Ternary'', ''priority'': 2, ''acquire_status'': ''Finished 2025-12-03_22-29-14'',
+        ''uid_local'': ''10710226-acdc-4ab7-88a8-f8d70fafd289'', ''notes'': None},
+        {''sample_id'': ''PC0_1'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
+        ''rsoxs'', ''energy_list_parameters'': [270, 2, 282, 0.2, 283], ''polarization_frame'':
+        ''lab'', ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Acacua_Ternary'', ''priority'': 3, ''acquire_status'': ''Finished 2025-12-03_22-32-03'',
+        ''uid_local'': ''635bdec9-8997-4bfc-acfd-8bb5c409f6bc'', ''notes'': None},
+        {''sample_id'': ''PC0_1'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
+        ''rsoxs'', ''energy_list_parameters'': [284.1, 0.1, 288], ''polarization_frame'':
+        ''lab'', ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Acacua_Ternary'', ''priority'': 4, ''acquire_status'': ''Started 2025-12-03_22-32-42'',
+        ''uid_local'': ''310e6341-9fb6-48e7-97e3-b045978b0d5a'', ''notes'': None},
+        {''sample_id'': ''PC0_1'', ''configuration_instrument'': ''WAXS'', ''scan_type'':
+        ''rsoxs'', ''energy_list_parameters'': [288.2, 0.2, 292, 1, 300, 2, 310, 5,
+        350], ''polarization_frame'': ''lab'', ''polarizations'': [0, 90], ''exposure_time'':
+        0.1, ''exposures_per_energy'': 1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'':
+        None, ''group_name'': ''Acacua_Ternary'', ''priority'': 5, ''acquire_status'':
+        ''Not begun'', ''uid_local'': ''81008214-58ba-438d-b6a9-64315132e740'', ''notes'':
+        None}]}, {''bar_name'': ''20251201_WSU'', ''sample_id'': ''PC0_2'', ''sample_name'':
+        ''PC0_2'', ''project_name'': ''Acacia Ternary'', ''institution'': ''WSU'',
+        ''proposal_id'': 318915, ''bar_spot'': ''2B'', ''front'': True, ''grazing'':
+        False, ''angle'': 0, ''height'': 0.25, ''sample_priority'': 1, ''notes'':
+        None, ''location'': [{''motor'': ''x'', ''position'': -1.3}, {''motor'': ''y'',
+        ''position'': -173.5}, {''motor'': ''th'', ''position'': 180.0005}, {''motor'':
+        ''z'', ''position'': -1.1316}], ''bar_loc'': {''spot'': ''2B'', ''th'': 0,
+        ''ximg'': 0.9093127505571932, ''yimg'': -172.33761871913617, ''th0'': 0.0,
+        ''xoff'': -0.7673503169043044, ''x0'': 0.32410823744932793, ''y0'': -174.12784942391798,
+        ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748, ''af1xoff'':
+        -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'': -1.0890474999999995,
+        ''af2zoff'': -5.785155, ''zoff'': 2.8341171499197477}, ''sample_desc'': None,
+        ''sample_state'': None, ''acq_history'': [], ''components'': None, ''density'':
+        None, ''composition'': None, ''project_desc'': None, ''sample_set'': None,
+        ''acquisitions'': []}, {''bar_name'': ''20251201_WSU'', ''sample_id'': ''PC2_1'',
+        ''sample_name'': ''PC2_1'', ''project_name'': ''Acacia Ternary'', ''institution'':
+        ''WSU'', ''proposal_id'': 318915, ''bar_spot'': ''6B'', ''front'': True, ''grazing'':
+        False, ''angle'': 0, ''height'': 0.25, ''sample_priority'': 1, ''notes'':
+        None, ''location'': [{''motor'': ''x'', ''position'': -1.3}, {''motor'': ''y'',
+        ''position'': -150.8}, {''motor'': ''th'', ''position'': 179.9998}, {''motor'':
+        ''z'', ''position'': -1.1316}], ''bar_loc'': {''spot'': ''6B'', ''th'': 0,
+        ''ximg'': 0.31800586340505355, ''yimg'': -148.4539622772085, ''th0'': 0.0,
+        ''xoff'': -0.7345618365409179, ''x0'': -0.17032859311123516, ''y0'': -150.24145054394856,
+        ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748, ''af1xoff'':
+        -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'': -1.0890474999999995,
+        ''af2zoff'': -5.785155, ''zoff'': 2.2449748373596456}, ''sample_desc'': None,
+        ''sample_state'': None, ''acq_history'': [], ''components'': None, ''density'':
+        None, ''composition'': None, ''project_desc'': None, ''sample_set'': None,
+        ''acquisitions'': [{''sample_id'': ''PC2_1'', ''configuration_instrument'':
+        ''WAXS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
+        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
+        1.0, ''exposures_per_energy'': 1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'':
+        None, ''group_name'': ''Acacua_Ternary'', ''priority'': 6, ''acquire_status'':
+        ''Not begun'', ''uid_local'': ''f6f217e5-056d-4a68-9427-dc875f376fa9'', ''notes'':
+        None}, {''sample_id'': ''PC2_1'', ''configuration_instrument'': ''WAXS'',
+        ''scan_type'': ''rsoxs'', ''energy_list_parameters'': [270, 2, 282, 0.2, 284],
+        ''polarization_frame'': ''lab'', ''polarizations'': [0, 90], ''exposure_time'':
+        0.1, ''exposures_per_energy'': 1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'':
+        None, ''group_name'': ''Acacua_Ternary'', ''priority'': 7, ''acquire_status'':
+        ''Not begun'', ''uid_local'': ''a53d6249-1a76-4daa-97dc-f1a9eb2554cb'', ''notes'':
+        None}, {''sample_id'': ''PC2_1'', ''configuration_instrument'': ''WAXS'',
+        ''scan_type'': ''rsoxs'', ''energy_list_parameters'': [284.1, 0.1, 288], ''polarization_frame'':
+        ''lab'', ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Acacua_Ternary'', ''priority'': 8, ''acquire_status'': ''Not begun'', ''uid_local'':
+        ''cf587cce-2953-4678-aed8-dc2dcc24864c'', ''notes'': None}, {''sample_id'':
+        ''PC2_1'', ''configuration_instrument'': ''WAXS'', ''scan_type'': ''rsoxs'',
+        ''energy_list_parameters'': [288.2, 0.2, 292, 1, 300, 2, 310, 5, 350], ''polarization_frame'':
+        ''lab'', ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Acacua_Ternary'', ''priority'': 9, ''acquire_status'': ''Not begun'', ''uid_local'':
+        ''ae6d2770-52d9-4705-b226-18d123171347'', ''notes'': None}]}, {''bar_name'':
+        ''20251201_WSU'', ''sample_id'': ''PC2_2'', ''sample_name'': ''PC2_2'', ''project_name'':
+        ''Acacia Ternary'', ''institution'': ''WSU'', ''proposal_id'': 318915, ''bar_spot'':
+        ''6B'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.25,
+        ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'': ''x'',
+        ''position'': -1.9}, {''motor'': ''y'', ''position'': -149.9}, {''motor'':
+        ''th'', ''position'': 179.9998}, {''motor'': ''z'', ''position'': -1.1316}],
+        ''bar_loc'': {''spot'': ''6B'', ''th'': 0, ''ximg'': 0.31800586340505355,
+        ''yimg'': -148.4539622772085, ''th0'': 0.0, ''xoff'': -0.7345618365409179,
+        ''x0'': -0.17032859311123516, ''y0'': -150.24145054394856, ''af1y'': -187.37918000000002,
+        ''af2y'': 3.0214999999999748, ''af1xoff'': -0.7880000000000003, ''af2xoff'':
+        -0.5266100000000016, ''af1zoff'': -1.0890474999999995, ''af2zoff'': -5.785155,
+        ''zoff'': 2.2449748373596456}, ''sample_desc'': None, ''sample_state'': None,
+        ''acq_history'': [], ''components'': None, ''density'': None, ''composition'':
+        None, ''project_desc'': None, ''sample_set'': None, ''acquisitions'': []},
+        {''bar_name'': ''20251201_WSU'', ''sample_id'': ''PC4_1'', ''sample_name'':
+        ''PC4_1'', ''project_name'': ''Acacia Ternary'', ''institution'': ''WSU'',
+        ''proposal_id'': 318915, ''bar_spot'': ''10B'', ''front'': True, ''grazing'':
+        False, ''angle'': 0, ''height'': 0.25, ''sample_priority'': 1, ''notes'':
+        None, ''location'': [{''motor'': ''x'', ''position'': -1.2}, {''motor'': ''y'',
+        ''position'': -126.8}, {''motor'': ''th'', ''position'': 179.9998}, {''motor'':
+        ''z'', ''position'': -1.1316}], ''bar_loc'': {''spot'': ''10B'', ''th'': 0,
+        ''ximg'': 0.45426954251088425, ''yimg'': -124.43631844906372, ''th0'': 0.0,
+        ''xoff'': -0.701589412701682, ''x0'': 0.06334858390207637, ''y0'': -126.22104889267615,
+        ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748, ''af1xoff'':
+        -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'': -1.0890474999999995,
+        ''af2zoff'': -5.785155, ''zoff'': 1.6525274346111223}, ''sample_desc'': None,
+        ''sample_state'': None, ''acq_history'': [], ''components'': None, ''density'':
+        None, ''composition'': None, ''project_desc'': None, ''sample_set'': None,
+        ''acquisitions'': [{''sample_id'': ''PC4_1'', ''configuration_instrument'':
+        ''WAXS'', ''scan_type'': ''nexafs'', ''energy_list_parameters'': ''carbon_NEXAFS'',
+        ''polarization_frame'': ''lab'', ''polarizations'': [0], ''exposure_time'':
+        1.0, ''exposures_per_energy'': 1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'':
+        None, ''group_name'': ''Acacua_Ternary'', ''priority'': 10, ''acquire_status'':
+        ''Not begun'', ''uid_local'': ''fda28c24-583c-4e88-999f-70f1fa19ed09'', ''notes'':
+        None}, {''sample_id'': ''PC4_1'', ''configuration_instrument'': ''WAXS'',
+        ''scan_type'': ''rsoxs'', ''energy_list_parameters'': [270, 2, 282, 0.2, 284],
+        ''polarization_frame'': ''lab'', ''polarizations'': [0, 90], ''exposure_time'':
+        0.1, ''exposures_per_energy'': 1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'':
+        None, ''group_name'': ''Acacua_Ternary'', ''priority'': 11, ''acquire_status'':
+        ''Not begun'', ''uid_local'': ''39dc5862-7556-47af-8b00-7ffaf9febea1'', ''notes'':
+        None}, {''sample_id'': ''PC4_1'', ''configuration_instrument'': ''WAXS'',
+        ''scan_type'': ''rsoxs'', ''energy_list_parameters'': [284.1, 0.1, 288], ''polarization_frame'':
+        ''lab'', ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Acacua_Ternary'', ''priority'': 12, ''acquire_status'': ''Not begun'', ''uid_local'':
+        ''0357aa2d-74d0-4031-9b9b-6cdd32556ccf'', ''notes'': None}, {''sample_id'':
+        ''PC4_1'', ''configuration_instrument'': ''WAXS'', ''scan_type'': ''rsoxs'',
+        ''energy_list_parameters'': [288.2, 0.2, 292, 1, 300, 2, 310, 5, 350], ''polarization_frame'':
+        ''lab'', ''polarizations'': [0, 90], ''exposure_time'': 0.1, ''exposures_per_energy'':
+        1, ''cycles'': 0, ''sample_angles'': [0], ''spiral_dimensions'': None, ''group_name'':
+        ''Acacua_Ternary'', ''priority'': 13, ''acquire_status'': ''Not begun'', ''uid_local'':
+        ''1a044de3-76c9-4169-9781-85eea392c249'', ''notes'': None}]}, {''bar_name'':
+        ''20251201_WSU'', ''sample_id'': ''PC4_2'', ''sample_name'': ''PC4_2'', ''project_name'':
+        ''Acacia Ternary'', ''institution'': ''WSU'', ''proposal_id'': 318915, ''bar_spot'':
+        ''10B'', ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.25,
+        ''sample_priority'': 1, ''notes'': None, ''location'': [{''motor'': ''x'',
+        ''position'': -0.9}, {''motor'': ''y'', ''position'': -125.6}, {''motor'':
+        ''th'', ''position'': 179.9998}, {''motor'': ''z'', ''position'': -1.1316}],
+        ''bar_loc'': {''spot'': ''10B'', ''th'': 0, ''ximg'': 0.45426954251088425,
+        ''yimg'': -124.43631844906372, ''th0'': 0.0, ''xoff'': -0.701589412701682,
+        ''x0'': 0.06334858390207637, ''y0'': -126.22104889267615, ''af1y'': -187.37918000000002,
+        ''af2y'': 3.0214999999999748, ''af1xoff'': -0.7880000000000003, ''af2xoff'':
+        -0.5266100000000016, ''af1zoff'': -1.0890474999999995, ''af2zoff'': -5.785155,
+        ''zoff'': 1.6525274346111223}, ''sample_desc'': None, ''sample_state'': None,
+        ''acq_history'': [], ''components'': None, ''density'': None, ''composition'':
+        None, ''project_desc'': None, ''sample_set'': None, ''acquisitions'': []},
+        {''bar_name'': ''20251201_WSU'', ''sample_id'': ''BD1-1_1'', ''sample_name'':
+        ''BD1-1_1'', ''project_name'': ''Neher blends'', ''institution'': ''WSU'',
+        ''proposal_id'': 318915, ''bar_spot'': ''14B'', ''front'': True, ''grazing'':
+        False, ''angle'': 0, ''height'': 0.25, ''sample_priority'': 1, ''notes'':
+        None, ''location'': [{''motor'': ''x'', ''position'': -1.5}, {''motor'': ''y'',
+        ''position'': -101.8}, {''motor'': ''th'', ''position'': 179.9998}, {''motor'':
+        ''z'', ''position'': -1.1316}], ''bar_loc'': {''spot'': ''14B'', ''th'': 0,
+        ''ximg'': -0.09824254774235364, ''yimg'': -100.28321514554041, ''th0'': 0.0,
+        ''xoff'': -0.6684310244411573, ''x0'': -0.3912005964607337, ''y0'': -102.0651722119069,
+        ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748, ''af1xoff'':
+        -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'': -1.0890474999999995,
+        ''af2zoff'': -5.785155, ''zoff'': 1.056738629394483}, ''sample_desc'': None,
+        ''sample_state'': None, ''acq_history'': [], ''components'': None, ''density'':
+        None, ''composition'': None, ''project_desc'': None, ''sample_set'': None,
+        ''acquisitions'': []}, {''bar_name'': ''20251201_WSU'', ''sample_id'': ''BD1-1_2'',
+        ''sample_name'': ''BD1-1_2'', ''project_name'': ''Neher blends'', ''institution'':
+        ''WSU'', ''proposal_id'': 318915, ''bar_spot'': ''14B'', ''front'': True,
+        ''grazing'': False, ''angle'': 0, ''height'': 0.25, ''sample_priority'': 1,
+        ''notes'': None, ''location'': [{''motor'': ''x'', ''position'': -1.2}, {''motor'':
+        ''y'', ''position'': -101.5}, {''motor'': ''th'', ''position'': 179.9998},
+        {''motor'': ''z'', ''position'': -1.1316}], ''bar_loc'': {''spot'': ''14B'',
+        ''th'': 0, ''ximg'': -0.09824254774235364, ''yimg'': -100.28321514554041,
+        ''th0'': 0.0, ''xoff'': -0.6684310244411573, ''x0'': -0.3912005964607337,
+        ''y0'': -102.0651722119069, ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748,
+        ''af1xoff'': -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'':
+        -1.0890474999999995, ''af2zoff'': -5.785155, ''zoff'': 1.056738629394483},
+        ''sample_desc'': None, ''sample_state'': None, ''acq_history'': [], ''components'':
+        None, ''density'': None, ''composition'': None, ''project_desc'': None, ''sample_set'':
+        None, ''acquisitions'': []}, {''bar_name'': ''20251201_WSU'', ''sample_id'':
+        ''BD2-1_1'', ''sample_name'': ''BD2-1_1'', ''project_name'': ''Neher blends'',
+        ''institution'': ''WSU'', ''proposal_id'': 318915, ''bar_spot'': ''16B'',
+        ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.25, ''sample_priority'':
+        1, ''notes'': None, ''location'': [{''motor'': ''x'', ''position'': -1.6},
+        {''motor'': ''y'', ''position'': -90.7}, {''motor'': ''th'', ''position'':
+        179.9998}, {''motor'': ''z'', ''position'': -1.1316}], ''bar_loc'': {''spot'':
+        ''16B'', ''th'': 0, ''ximg'': 0.2483326025941448, ''yimg'': -88.32637245893125,
+        ''th0'': 0.0, ''xoff'': -0.6520161717743876, ''x0'': 0.003870479553002626,
+        ''y0'': -90.1069565822426, ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748,
+        ''af1xoff'': -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'':
+        -1.0890474999999995, ''af2zoff'': -5.785155, ''zoff'': 0.7617971086757351},
+        ''sample_desc'': None, ''sample_state'': None, ''acq_history'': [], ''components'':
+        None, ''density'': None, ''composition'': None, ''project_desc'': None, ''sample_set'':
+        None, ''acquisitions'': []}, {''bar_name'': ''20251201_WSU'', ''sample_id'':
+        ''BD2-1_2'', ''sample_name'': ''BD2-1_2'', ''project_name'': ''Neher blends'',
+        ''institution'': ''WSU'', ''proposal_id'': 318915, ''bar_spot'': ''16B'',
+        ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.25, ''sample_priority'':
+        1, ''notes'': None, ''location'': [{''motor'': ''x'', ''position'': -1.3},
+        {''motor'': ''y'', ''position'': -89.5}, {''motor'': ''th'', ''position'':
+        179.9998}, {''motor'': ''z'', ''position'': -1.1316}], ''bar_loc'': {''spot'':
+        ''16B'', ''th'': 0, ''ximg'': 0.2483326025941448, ''yimg'': -88.32637245893125,
+        ''th0'': 0.0, ''xoff'': -0.6520161717743876, ''x0'': 0.003870479553002626,
+        ''y0'': -90.1069565822426, ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748,
+        ''af1xoff'': -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'':
+        -1.0890474999999995, ''af2zoff'': -5.785155, ''zoff'': 0.7617971086757351},
+        ''sample_desc'': None, ''sample_state'': None, ''acq_history'': [], ''components'':
+        None, ''density'': None, ''composition'': None, ''project_desc'': None, ''sample_set'':
+        None, ''acquisitions'': []}, {''bar_name'': ''20251201_WSU'', ''sample_id'':
+        ''BD3-1_1'', ''sample_name'': ''BD3-1_1'', ''project_name'': ''Neher blends'',
+        ''institution'': ''WSU'', ''proposal_id'': 318915, ''bar_spot'': ''18B'',
+        ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.25, ''sample_priority'':
+        1, ''notes'': None, ''location'': [{''motor'': ''x'', ''position'': -1.0},
+        {''motor'': ''y'', ''position'': -77.8}, {''motor'': ''th'', ''position'':
+        179.9998}, {''motor'': ''z'', ''position'': -1.1316}], ''bar_loc'': {''spot'':
+        ''18B'', ''th'': 0, ''ximg'': 0.4958862814059284, ''yimg'': -76.29526366867854,
+        ''th0'': 0.0, ''xoff'': -0.6354993635009921, ''x0'': 0.3002213009716964, ''y0'':
+        -78.07446632133815, ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748,
+        ''af1xoff'': -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'':
+        -1.0890474999999995, ''af2zoff'': -5.785155, ''zoff'': 0.4650236530456904},
+        ''sample_desc'': None, ''sample_state'': None, ''acq_history'': [], ''components'':
+        None, ''density'': None, ''composition'': None, ''project_desc'': None, ''sample_set'':
+        None, ''acquisitions'': []}, {''bar_name'': ''20251201_WSU'', ''sample_id'':
+        ''BD3-1_2'', ''sample_name'': ''BD3-1_2'', ''project_name'': ''Neher blends'',
+        ''institution'': ''WSU'', ''proposal_id'': 318915, ''bar_spot'': ''18B'',
+        ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.25, ''sample_priority'':
+        1, ''notes'': None, ''location'': [{''motor'': ''x'', ''position'': -2.2},
+        {''motor'': ''y'', ''position'': -77.8}, {''motor'': ''th'', ''position'':
+        179.9998}, {''motor'': ''z'', ''position'': -1.1316}], ''bar_loc'': {''spot'':
+        ''18B'', ''th'': 0, ''ximg'': 0.4958862814059284, ''yimg'': -76.29526366867854,
+        ''th0'': 0.0, ''xoff'': -0.6354993635009921, ''x0'': 0.3002213009716964, ''y0'':
+        -78.07446632133815, ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748,
+        ''af1xoff'': -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'':
+        -1.0890474999999995, ''af2zoff'': -5.785155, ''zoff'': 0.4650236530456904},
+        ''sample_desc'': None, ''sample_state'': None, ''acq_history'': [], ''components'':
+        None, ''density'': None, ''composition'': None, ''project_desc'': None, ''sample_set'':
+        None, ''acquisitions'': []}, {''bar_name'': ''20251201_WSU'', ''sample_id'':
+        ''blank_1'', ''sample_name'': ''blank_1'', ''project_name'': ''calibration'',
+        ''institution'': ''WSU'', ''proposal_id'': 318915, ''bar_spot'': ''24B'',
+        ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.25, ''sample_priority'':
+        1, ''notes'': None, ''location'': [{''motor'': ''x'', ''position'': -2.4},
+        {''motor'': ''y'', ''position'': -41.9}, {''motor'': ''th'', ''position'':
+        179.9998}, {''motor'': ''z'', ''position'': -1.1316}], ''bar_loc'': {''spot'':
+        ''24B'', ''th'': 0, ''ximg'': 0.9400227233647733, ''yimg'': -40.44183873150439,
+        ''th0'': 0.0, ''xoff'': -0.5862782853812716, ''x0'': 0.8897761511676002, ''y0'':
+        -42.216924518862655, ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748,
+        ''af1xoff'': -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'':
+        -1.0890474999999995, ''af2zoff'': -5.785155, ''zoff'': -0.4193790234057211},
+        ''sample_desc'': None, ''sample_state'': None, ''acq_history'': [], ''components'':
+        None, ''density'': None, ''composition'': None, ''project_desc'': None, ''sample_set'':
+        None, ''acquisitions'': []}, {''bar_name'': ''20251201_WSU'', ''sample_id'':
+        ''blank_2'', ''sample_name'': ''blank_2'', ''project_name'': ''calibration'',
+        ''institution'': ''WSU'', ''proposal_id'': 318915, ''bar_spot'': ''24B'',
+        ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.25, ''sample_priority'':
+        1, ''notes'': None, ''location'': [{''motor'': ''x'', ''position'': -2.1},
+        {''motor'': ''y'', ''position'': -41.3}, {''motor'': ''th'', ''position'':
+        179.9998}, {''motor'': ''z'', ''position'': -1.1316}], ''bar_loc'': {''spot'':
+        ''24B'', ''th'': 0, ''ximg'': 0.9400227233647733, ''yimg'': -40.44183873150439,
+        ''th0'': 0.0, ''xoff'': -0.5862782853812716, ''x0'': 0.8897761511676002, ''y0'':
+        -42.216924518862655, ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748,
+        ''af1xoff'': -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'':
+        -1.0890474999999995, ''af2zoff'': -5.785155, ''zoff'': -0.4193790234057211},
+        ''sample_desc'': None, ''sample_state'': None, ''acq_history'': [], ''components'':
+        None, ''density'': None, ''composition'': None, ''project_desc'': None, ''sample_set'':
+        None, ''acquisitions'': []}, {''bar_name'': ''20251201_WSU'', ''sample_id'':
+        ''50nmPS_1'', ''sample_name'': ''50nmPS_1'', ''project_name'': ''calibration'',
+        ''institution'': ''WSU'', ''proposal_id'': 318915, ''bar_spot'': ''25A'',
+        ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.25, ''sample_priority'':
+        1, ''notes'': None, ''location'': [{''motor'': ''x'', ''position'': 0.7},
+        {''motor'': ''y'', ''position'': -35.7}, {''motor'': ''th'', ''position'':
+        179.9998}, {''motor'': ''z'', ''position'': -1.1316}], ''bar_loc'': {''spot'':
+        ''25A'', ''th'': 0, ''ximg'': -2.7621533780728296, ''yimg'': -34.84438371676756,
+        ''th0'': 0.0, ''xoff'': -0.5785938655236216, ''x0'': -2.7896971540978686,
+        ''y0'': -36.61882677701213, ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748,
+        ''af1xoff'': -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'':
+        -1.0890474999999995, ''af2zoff'': -5.785155, ''zoff'': -0.5574524209967233},
+        ''sample_desc'': None, ''sample_state'': None, ''acq_history'': [], ''components'':
+        None, ''density'': None, ''composition'': None, ''project_desc'': None, ''sample_set'':
+        None, ''acquisitions'': []}, {''bar_name'': ''20251201_WSU'', ''sample_id'':
+        ''50nmPS_2'', ''sample_name'': ''50nmPS_2'', ''project_name'': ''calibration'',
+        ''institution'': ''WSU'', ''proposal_id'': 318915, ''bar_spot'': ''25A'',
+        ''front'': True, ''grazing'': False, ''angle'': 0, ''height'': 0.25, ''sample_priority'':
+        1, ''notes'': None, ''location'': [{''motor'': ''x'', ''position'': 1.6},
+        {''motor'': ''y'', ''position'': -35.7}, {''motor'': ''th'', ''position'':
+        179.9998}, {''motor'': ''z'', ''position'': -1.1316}], ''bar_loc'': {''spot'':
+        ''25A'', ''th'': 0, ''ximg'': -2.7621533780728296, ''yimg'': -34.84438371676756,
+        ''th0'': 0.0, ''xoff'': -0.5785938655236216, ''x0'': -2.7896971540978686,
+        ''y0'': -36.61882677701213, ''af1y'': -187.37918000000002, ''af2y'': 3.0214999999999748,
+        ''af1xoff'': -0.7880000000000003, ''af2xoff'': -0.5266100000000016, ''af1zoff'':
+        -1.0890474999999995, ''af2zoff'': -5.785155, ''zoff'': -0.5574524209967233},
+        ''sample_desc'': None, ''sample_state'': None, ''acq_history'': [], ''components'':
+        None, ''density'': None, ''composition'': None, ''project_desc'': None, ''sample_set'':
+        None, ''acquisitions'': []}]'
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -33323,41 +33657,6 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: dryrun
-    properties:
-      is_generator: true
-  sampleholder_move_sample:
-    description: Set and move a sample.
-    module: nbs_bl.plans.plan_stubs
-    name: sampleholder_move_sample
-    parameters:
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: sampleholder
-    - default: None
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: sample_id
-    - kind:
-        name: VAR_KEYWORD
-        value: 4
-      name: position
-    properties:
-      is_generator: true
-  sampleholder_set_sample:
-    description: Set a sample without moving it
-    module: nbs_bl.plans.plan_stubs
-    name: sampleholder_set_sample
-    parameters:
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: sampleholder
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: sample_id
     properties:
       is_generator: true
   samxscan:
@@ -33510,18 +33809,6 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: ulim
-    properties:
-      is_generator: true
-  set_sample:
-    description: Set the current sample without moving the sample holder.
-    module: nbs_bl.samples
-    name: set_sample
-    parameters:
-    - description: Identifier of the sample to select
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: sample_id
     properties:
       is_generator: true
   si_rsoxs:
@@ -34806,16 +35093,6 @@ existing_plans:
       name: md
     properties:
       is_generator: true
-  update_plan_status:
-    module: nbs_bl.plans.plan_stubs
-    name: update_plan_status
-    parameters:
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: status
-    properties:
-      is_generator: true
   v_rsoxs:
     description: 'Perform an in-place RSoXS scan for  with energy pattern [505, 510,
       0.2, 535, 0.1, 545, 0.2, 565, 0.3] '
@@ -35158,6 +35435,50 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: md
+    properties:
+      is_generator: true
+  wait_for_condition:
+    description: Wait for a condition function to return True.
+    module: nbs_bl.plans.plan_stubs
+    name: wait_for_condition
+    parameters:
+    - description: A condition function that returns a boolean.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: condition
+    - annotation:
+        type: typing.List
+      default: None
+      description: Arguments for the condition function.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: condition_args
+    - annotation:
+        type: typing.Dict
+      default: None
+      description: Keyword arguments for the condition function.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: condition_kwargs
+    - annotation:
+        type: typing.Optional[float]
+      default: None
+      description: Maximum time to wait in seconds. If None, wait indefinitely.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: timeout
+    - annotation:
+        type: float
+      default: '10'
+      description: Time to sleep between checks in seconds. Default is 10.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: sleep_time
     properties:
       is_generator: true
   waxs_back_on:

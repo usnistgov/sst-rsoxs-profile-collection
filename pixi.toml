@@ -25,16 +25,21 @@ ipython = ">=9.5.0,<10"
 databroker = "==2.0.0"
 epicscorelibs = ">=7.0.7.99.1.1,<8"
 pyzmq = ">=27.0.2,<28"
+bluesky-live = ">=0.0.8,<0.0.9"
 bluesky-tiled-plugins = ">=2.0.0b68"
 ophyd-async = ">=0.13.7,<0.14"
 
-[feature.nbs.dependencies]
-pyhyperscattering = ">=0.2.10,<0.3"
+#[feature.nbs.dependencies]
+#pyhyperscattering = ">=0.2.10,<0.3"
 
 [feature.nbs.pypi-dependencies]
-nbs-core = { git = "https://github.com/xraygui/nbs-core", rev = "v0.0.2" }
-nbs-bl = { git = "https://github.com/xraygui/nbs-bl", rev = "v0.1.2" }
-sst-base = { git = "https://github.com/nsls-ii-sst/sst_base", rev = "v0.1.0" }
+pyfai = { git = "https://github.com/silx-kit/pyFAI"}
+pyhyperscattering = { git = "https://github.com/usnistgov/PyHyperScattering" }
+nbs-core = ">=0.1.0"
+nbs-bl = ">=0.2.0"
+bluesky-darkframes = ">=0.6.0"
+slackclient = "*"
+sst-base = { git = "https://github.com/nsls-ii-sst/sst_base", branch = "multi_speed_flyscan" }
 rsoxs = { git = "https://github.com/usnistgov/sst-rsoxs", branch = "main" }
 pvxslibs = ">=1.3.2, <2"
 
@@ -47,15 +52,15 @@ pyside6 = "*"
 
 [feature.gui.pypi-dependencies]
 livetable = { git="https://github.com/xraygui/livetable" }
-nbs-gui = { git="https://github.com/xraygui/nbs-gui", rev="v0.1.1" }
+nbs-gui = ">=0.1.2"
 qtconsole = "*"
 
 [feature.viewer.dependencies]
 pyqtgraph = ">=0.13.7,<0.14"
 
 [feature.viewer.pypi-dependencies]
-#nbs-viewer = ">=0.3.4, <0.4"
-nbs-viewer = { git = "https://github.com/xraygui/nbs-viewer", branch="combination"}
+nbs-viewer = ">=0.3.4, <0.4"
+#nbs-viewer = { git = "https://github.com/xraygui/nbs-viewer", branch="combination"}
 
 [feature.qs.dependencies]
 bluesky-queueserver = "*"
