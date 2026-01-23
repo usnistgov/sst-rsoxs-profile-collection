@@ -23863,25 +23863,6 @@ existing_plans:
       name: samples
     properties:
       is_generator: true
-  do_rsoxs:
-    description: "inputs:\n    edge,\n    exposure_time = 1,\n    frames='full',\n\
-      \    ratios=None,\n    repeats =1,\n    polarizations = [0],\n    angles = None,\n\
-      \    grating='rsoxs',\n    diode_range='high',\n    temperatures=None,\n   \
-      \ temp_ramp_speed=10,\n    temp_wait=True,\n    md=None,"
-    module: rsoxs.Functions.rsoxs_plans
-    name: do_rsoxs
-    parameters:
-    - default: None
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: md
-    - kind:
-        name: VAR_KEYWORD
-        value: 4
-      name: kwargs
-    properties:
-      is_generator: true
   enc_clr_gx:
     module: rsoxs.Functions.contingencies
     name: enc_clr_gx
@@ -24635,6 +24616,75 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: y2
+    properties:
+      is_generator: true
+  fly_scan:
+    description: Perform a fly scan over the specified motor range.
+    module: nbs_bl.plans.flyscan_base
+    name: fly_scan
+    parameters:
+    - description: List of detectors to use for the scan
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: detectors
+    - description: Motor to be scanned
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: motor
+    - description: Starting position of the scan
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: start
+    - description: Ending position of the scan
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: stop
+    - description: 'Additional scan parameters in groups of 3: start, stop, speed.
+
+        For example:
+
+        start1, stop1, speed1[, start2, stop2, speed2, ...]
+
+        This allows for multiple trajectory segments in a single scan'
+      kind:
+        name: VAR_POSITIONAL
+        value: 2
+      name: args
+    - annotation:
+        type: typing.Optional[dict]
+      default: None
+      description: Metadata dictionary to be included with the scan
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: md
+    - annotation:
+        type: typing.Optional[float]
+      default: None
+      description: Time period between data points. If None, uses detector's default
+        period
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: period
+    - annotation:
+        type: bool
+      default: 'True'
+      description: 'If True, continuously stream data from detectors during the scan.
+
+        If False, collect data only at specified points. Default is True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: stream
+    - kind:
+        name: VAR_KEYWORD
+        value: 4
+      name: kwargs
     properties:
       is_generator: true
   gold_mesh_contamination_kinetics:
@@ -26591,7 +26641,7 @@ existing_plans:
     name: move_to_location
     parameters:
     - default: '[{''motor'': ''x'', ''position'': 0.0, ''order'': 0}, {''motor'':
-        ''y'', ''position'': 345.00023, ''order'': 0}, {''motor'': ''z'', ''position'':
+        ''y'', ''position'': 345.000555, ''order'': 0}, {''motor'': ''z'', ''position'':
         -1.2165799999999933, ''order'': 0}, {''motor'': ''th'', ''position'': -0.0056487670000251455,
         ''order'': 0}]'
       kind:
@@ -26600,6 +26650,42 @@ existing_plans:
       name: locs
     properties:
       is_generator: true
+  mv:
+    description: Move one or more devices to a setpoint. Wait for all to complete.
+    module: bluesky.plan_stubs
+    name: mv
+    parameters:
+    - annotation:
+        type: typing.Union[__MOVABLE__, typing.Any]
+      convert_device_names: true
+      description: device1, value1, device2, value2, ...
+      kind:
+        name: VAR_POSITIONAL
+        value: 2
+      name: args
+    - annotation:
+        type: typing.Optional[collections.abc.Hashable]
+      default: None
+      description: Used to mark these as a unit to be waited on.
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: group
+    - annotation:
+        type: typing.Optional[float]
+      default: None
+      description: Specify a maximum time that the move(s) can be waited for.
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: timeout
+    - description: passed to obj.set()
+      kind:
+        name: VAR_KEYWORD
+        value: 4
+      name: kwargs
+    properties:
+      is_generator: false
   n_rsoxs:
     description: 'Perform an in-place RSoXS scan for  with energy pattern [380, 395,
       0.5, 397, 0.1, 403, 0.05, 407, 0.1, 417, 0.2, 440, 0.5, 480, 2] '
@@ -33659,6 +33745,41 @@ existing_plans:
       name: dryrun
     properties:
       is_generator: true
+  sampleholder_move_sample:
+    description: Set and move a sample.
+    module: nbs_bl.plans.plan_stubs
+    name: sampleholder_move_sample
+    parameters:
+    - kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: sampleholder
+    - default: None
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: sample_id
+    - kind:
+        name: VAR_KEYWORD
+        value: 4
+      name: position
+    properties:
+      is_generator: true
+  sampleholder_set_sample:
+    description: Set a sample without moving it
+    module: nbs_bl.plans.plan_stubs
+    name: sampleholder_set_sample
+    parameters:
+    - kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: sampleholder
+    - kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: sample_id
+    properties:
+      is_generator: true
   samxscan:
     module: rsoxs.Functions.alignment
     name: samxscan
@@ -33809,6 +33930,18 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: ulim
+    properties:
+      is_generator: true
+  set_sample:
+    description: Set the current sample without moving the sample holder.
+    module: nbs_bl.samples
+    name: set_sample
+    parameters:
+    - description: Identifier of the sample to select
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: sample_id
     properties:
       is_generator: true
   si_rsoxs:
@@ -35091,6 +35224,16 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: md
+    properties:
+      is_generator: true
+  update_plan_status:
+    module: nbs_bl.plans.plan_stubs
+    name: update_plan_status
+    parameters:
+    - kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: status
     properties:
       is_generator: true
   v_rsoxs:
