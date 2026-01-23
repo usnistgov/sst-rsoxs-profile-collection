@@ -684,7 +684,7 @@ _target = "sst_base.motors.PrettyMotorFMBODeadband"
 _group = "motors"
 kind = "hinted"
 name = "Beam Stop WAXS"
-prefix = "XF:07ID2-ES1{BS-Ax:1}Mtr"
+prefix = "XF:07ID2-ES1{BS-Ax:2}Mtr" #prefix = "XF:07ID2-ES1{BS-Ax:1}Mtr" ## December 2025, put SAXS beamstop Ax:2 into WAXS position
 _baseline = true
 
 #[Beamstop_WAXS] ## This is Jamie's definition, can be used for flyscanning (?)
@@ -773,41 +773,41 @@ _baseline = true
 #read_attrs = ['tiff', 'stats1.total', 'saturated','under_exposed','cam']
 ## Greateyes GE 4k4k camera, serial number GE060232
 
-[BeamStopS]
-_target = "sst_base.motors.PrettyMotorFMBODeadband"
-_group = "motors"
-kind = "hinted"
-name = "Beam Stop SAXS"
-prefix = "XF:07ID2-ES1{BS-Ax:2}Mtr"
-_baseline = true
-
-[Beamstop_SAXS] ## This is Jamie's definition, can be used for flyscanning (?)
-_target = "ophyd.EpicsSignalRO"
-kind = "normal"
-prefix = "XF:07ID-ES1{DMR:I400-1}:IC2_MON"
-name = "SAXS Beamstop"
+#[BeamStopS]
+#_target = "sst_base.motors.PrettyMotorFMBODeadband"
+#_group = "motors"
+#kind = "hinted"
+#name = "Beam Stop SAXS"
+#prefix = "XF:07ID2-ES1{BS-Ax:2}Mtr"
 #_baseline = true
 
-[Beamstop_SAXS_int]
-_target = "sst_base.detectors.scalar.ophScalar"
-_group = ["detectors"]
-kind = "normal"
-prefix = "XF:07ID-ES1{DMR:I400-1}:IC2_MON"
-name = "SAXS Beamstop"
+#[Beamstop_SAXS] ## This is Jamie's definition, can be used for flyscanning (?)
+#_target = "ophyd.EpicsSignalRO"
+#kind = "normal"
+#prefix = "XF:07ID-ES1{DMR:I400-1}:IC2_MON"
+#name = "SAXS Beamstop"
+#_baseline = true
 
-[Det_S]
-_target = "sst_base.motors.PrettyMotorFMBODeadband"
-_group = "motors"
-kind = "hinted"
-name = "Detector SAXS Translation"
-prefix = "XF:07ID2-ES1{Det-Ax:1}Mtr"
-_baseline = true
+#[Beamstop_SAXS_int]
+#_target = "sst_base.detectors.scalar.ophScalar"
+#_group = ["detectors"]
+#kind = "normal"
+#prefix = "XF:07ID-ES1{DMR:I400-1}:IC2_MON"
+#name = "SAXS Beamstop"
 
-[DetS_cam]
-_target = "sst_base.cameras.StandardProsilica"
-_group = "all_standard_pros"
-prefix = "XF:07ID1-ES:1{Scr:3}"
-name = "WAXS Detector Area Camera"
+#[Det_S]
+#_target = "sst_base.motors.PrettyMotorFMBODeadband"
+#_group = "motors"
+#kind = "hinted"
+#name = "Detector SAXS Translation"
+#prefix = "XF:07ID2-ES1{Det-Ax:1}Mtr"
+#_baseline = true
+
+#[DetS_cam]
+#_target = "sst_base.cameras.StandardProsilica"
+#_group = "all_standard_pros"
+#prefix = "XF:07ID1-ES:1{Scr:3}"
+#name = "WAXS Detector Area Camera"
 ## Greateyes GE 4k4k camera, serial number GE060230
 ## Power supply: Serial number PSK2002, Input 85-264VAC 50/60Hz 1.9/3.8A max 230/115VAC, Output 400 W 36VDC max, CE certified
 

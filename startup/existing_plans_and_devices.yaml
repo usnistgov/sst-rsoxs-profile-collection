@@ -26640,10 +26640,10 @@ existing_plans:
     module: rsoxs.Functions.alignment
     name: move_to_location
     parameters:
-    - default: '[{''motor'': ''x'', ''position'': 0.0, ''order'': 0}, {''motor'':
-        ''y'', ''position'': 345.000555, ''order'': 0}, {''motor'': ''z'', ''position'':
-        -1.2165799999999933, ''order'': 0}, {''motor'': ''th'', ''position'': -0.0056487670000251455,
-        ''order'': 0}]'
+    - default: '[{''motor'': ''x'', ''position'': -5.000000008692496e-06, ''order'':
+        0}, {''motor'': ''y'', ''position'': 345.000095, ''order'': 0}, {''motor'':
+        ''z'', ''position'': -1.1715149999999923, ''order'': 0}, {''motor'': ''th'',
+        ''position'': -0.0056487670000251455, ''order'': 0}]'
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
